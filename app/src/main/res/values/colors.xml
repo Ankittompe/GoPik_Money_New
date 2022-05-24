@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#000000</color>
+    <color name="colorPrimaryLight">#F8DFDF</color>
+    <color name="cement">#D5C2ED</color>
+
+    <color name="coloeAccent">#7fc242</color>
+    <color name="coloeAccentLight">#466A2C</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#212426</color>
+    <color name="green">#0A6E0E</color>
+    <color name="blue">#4054B2</color>
+    <color name="colorStatusBar">#000000</color>
+    <color name="red">#CC2828</color>
+    <color name="transparent">#004A4848</color>
+    <color name="shimmer_color_for_image">#55efefef</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="colorgrey">#CFCFCF</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="copper_text_color">#f9d3b4</color>
+    <color name="copper_text_color_30">#33f9d3b4</color>
+    <color name="synth_color">#212426</color>
+    <color name="categorybackground">#d9d9d9</color>
+    <color name="colorGrey">#C5C5C5</color>
+    <color name="colorgrey1">#F4F3F3</color>
+    <color name="colorGrey2">#737373</color>
+    <color name="orange">#3F51B5</color>
+    <color name="draft">#F35B2C</color>
+    <color name="light_yellow">#fffdeb</color>
+    <color name="yellow_dark">#abaa9d</color>
+    <color name="editcolour">#F6EFB0</color>
+
+
+    <color name="coloeAccent_second">#FFE5F8D2</color>
+</resources>

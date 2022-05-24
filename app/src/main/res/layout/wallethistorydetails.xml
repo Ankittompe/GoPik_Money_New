@@ -1,0 +1,87 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:stretchColumns="0,1,2,3,4,5">
+
+
+
+
+
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+
+        android:background="#000000">
+
+        <TextView
+            android:id="@+id/referencenouser"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_column="0"
+            android:layout_margin="1dp"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:textColor="@color/colorPrimary"
+            android:text=" Text"
+            />
+
+        <TextView
+            android:id="@+id/transactiontypeuser"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_column="1"
+            android:layout_margin="1dp"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:textColor="@color/colorPrimary"
+            android:text=" Text"
+            />
+
+        <TextView
+            android:id="@+id/amountuser"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_column="2"
+            android:layout_margin="1dp"
+            android:background="#FFFFFF"
+            android:textColor="@color/colorPrimary"
+            android:gravity="center"
+            android:text=" Text"
+            />
+        <TextView
+            android:id="@+id/dateandtimeuser"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_column="2"
+            android:layout_margin="1dp"
+            android:textColor="@color/colorPrimary"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:text=" Text"
+            />
+        <TextView
+            android:id="@+id/remark"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_column="2"
+            android:layout_margin="1dp"
+            android:textColor="@color/colorPrimary"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:text=" Text"
+            />
+
+    </TableRow>
+
+
+</TableLayout>

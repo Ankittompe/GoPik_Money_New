@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/headerlayout"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/coloeAccent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:src="@drawable/gu"
+            android:layout_marginTop="20dp"
+            android:id="@+id/girl"
+            android:layout_marginRight="25dp"
+            android:background="@drawable/raound_login"
+            />
+
+
+        <!--  <TextView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="Sign In"
+              android:textColor="@color/coloeAccent"
+              android:layout_toRightOf="@+id/sin"
+              android:textSize="16sp"/>
+          -->
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp">
+
+
+
+
+
+
+    </LinearLayout>
+
+</LinearLayout>
