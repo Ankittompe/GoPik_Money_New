@@ -279,12 +279,28 @@ public class Bank_Details extends Fragment implements TextWatcher, AdapterView.O
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+        Log.e("hhghghhuu", "6666");
+        validaccountno.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void afterTextChanged(Editable s) {
+        Log.e("hhghghhuu", "9999");
+        String account = accountno.getText().toString();
+        String reaccount = reaccountno.getText().toString();
+        if (account.equals(reaccount)) {
+            validaccountno.setVisibility(View.GONE);
 
+
+        }
+        if (accountno.length() == 0) {
+            validaccountno.setVisibility(View.GONE);
+
+        }
+        if (reaccount.length() == 0) {
+            validaccountno.setVisibility(View.GONE);
+
+        }
     }
 
     @Override
