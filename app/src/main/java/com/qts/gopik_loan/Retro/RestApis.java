@@ -581,4 +581,11 @@ public interface RestApis {
 
     @POST("Resend_verify_mobile_number")
     Call<Resend_verify_mobile_number_MODEL>Resend_verify_mobile_number(@Body Resend_verify_mobile_number_POJO data);
+
+
+
+
+
+
+
 }
