@@ -168,4 +168,5 @@ public interface AppConstants {
     String CHECKBOXLOGINVALUE = "ch";
     String LOGIN_STATUS = "stta";
     String IMAGE_LOAN_PROFILE = "loanp";
+    String FCM_TOKEN = "fcm";
 }

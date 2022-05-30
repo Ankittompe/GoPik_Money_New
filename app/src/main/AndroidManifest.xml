@@ -29,6 +29,7 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:directBootAware="true"
         android:usesCleartextTraffic="true">
         <activity
             android:name=".Dealer_Activity.Resend_OTP_CAP_Otp_DEALER_Verify"
@@ -165,6 +166,14 @@
 
             <!-- Any inner elements would go here. -->
         </service>
+   <!--     <service
+            android:name=".Utils.FirebaseService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>-->
+
     </application>
 
 </manifest>

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "439849028743",
+    "project_id": "gopik-money-b1d7e",
+    "storage_bucket": "gopik-money-b1d7e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:439849028743:android:fe3d6eef67555dfc0b3c22",
+        "android_client_info": {
+          "package_name": "com.qts.gopik_loan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "439849028743-godkf7r1a3f29hink3nkul4n7vhr3mld.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.qts.gopik_loan",
+            "certificate_hash": "1cd0903f7db619dcbf5829eb0ebde9e1064e42f2"
+          }
+        },
+        {
+          "client_id": "439849028743-isfhae8k6o8digqfpm0igovreul4ivch.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCioMTL2asEeiJSWzJi6_w4EBVRCxuWTic"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "439849028743-isfhae8k6o8digqfpm0igovreul4ivch.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
