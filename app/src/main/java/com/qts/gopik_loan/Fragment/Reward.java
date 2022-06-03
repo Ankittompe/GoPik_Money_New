@@ -54,6 +54,15 @@ public class Reward extends Fragment {
     RecyclerView rvblog;
     ImageView loannext;
     Scratch_Card_Adapter scratch_card_adapter;
+
+    ArrayList<String>Amount= new ArrayList<>();
+    ArrayList<String>id= new ArrayList<>();
+    ArrayList<String>user_code= new ArrayList<>();
+    ArrayList<String>card_type= new ArrayList<>();
+    ArrayList<String>expdate= new ArrayList<>();
+    ArrayList<String>status= new ArrayList<>();
+    ArrayList<String>created_at= new ArrayList<>();
+    ArrayList<String>updated_at= new ArrayList<>();
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -130,71 +139,33 @@ public class Reward extends Fragment {
             @Override
             public void onResponse(Call<View_scratchcard_MODEL> call, Response<View_scratchcard_MODEL> response) {
                 if (response.body() != null) {
-
-
-                    custPrograssbar.closePrograssBar();
-                    if (response.body().getStatus()==201){
-                        Log.e("1","amit1");
-                        rvblog.setVisibility(View.GONE);
-
-                        status_massage.setText(response.body().getMessage());
-                        status_massage.setVisibility(View.VISIBLE);
-                        Log.e("1","amit2"+response.body().getMessage());
-                    }
-                    else
-                    {
-                        rvblog.setVisibility(View.VISIBLE);
-                        Log.e("1","2");
-                        ArrayList<String> id = new ArrayList<>();
-                        Log.e("1","amit3");
-                        ArrayList<String> user_code = new ArrayList<>();
-                        Log.e("1","amit4");
-                        ArrayList<String> card_type = new ArrayList<>();
-                        Log.e("1","amit5");
-                        ArrayList<String> amount = new ArrayList<>();
-                        Log.e("1","amit6");
-                        ArrayList<String> status = new ArrayList<>();
-                        Log.e("1","amit7");
-                        ArrayList<String> created_at = new ArrayList<>();
-                        Log.e("1","amit8");
-                        ArrayList<String> updated_at = new ArrayList<>();
-                        Log.e("1","amit9");
-                        if (response.body().getPayload().size() > 0) {
-                            Log.e("1","amit10");
-                            Log.e(TAG, "getpayloadmethod");
-                            Log.e("1","amit11");
-                            Log.e(TAG, "City Payload Size: "+response.body().getPayload().size());
-                            Log.e("1","amit12");
-                            for (int i = 0; i < response.body().getPayload().size(); i++) {
-
-                                Log.e("Body", "body3");
-
-                                id.add(response.body().getPayload().get(i).getId());
-                                Log.e("1","amit14");
-
-                                if (response.body().getPayload().size() - 1 == i) {
-
-                                    Log.e("1","amit15");
-                                    GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
-                                    Log.e("1","amit16");
-                                    rvblog.setLayoutManager(gridLayoutManager);
-                                    Log.e("1","amit17");
-                                    rvblog.setItemAnimator(new DefaultItemAnimator());
-                                    Log.e("1","amit18");
-                                    scratch_card_adapter = new Scratch_Card_Adapter(getContext(), id,  user_code,  card_type
-                                            , amount,  status,  created_at
-                                            ,  updated_at   );
-                                    Log.e("1","amit19");
-                                    rvblog.setAdapter(scratch_card_adapter);
-
-                                }
+                    Log.e("Response1", "bodyyy11" + response.body().getPayload());
+                    if (response.body().getPayload().size() > 0) {
+                        Log.e("Sizeee", "frommmZero");
+                        for (int i = 0; i < response.body().getPayload().size(); i++) {
+                            Log.e("SizeeeResponse", "frommmZeroResponseX");
+                            id.add(response.body().getPayload().get(i).getId());
+                            Amount.add(response.body().getPayload().get(i).getAmount());
+                            status.add(response.body().getPayload().get(i).getStatus());
+                            expdate.add(response.body().getPayload().get(i).getExpdate());
+                            created_at.add(response.body().getPayload().get(i).getCreated_at());
+                            Log.e("SizeeeResponseAmount", "SizeeeResponseAmount2");
+                            if (response.body().getPayload().size() - 1 == i) {
+                                Log.d("payloadLoop", "sizeee");
+                                GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
+                                rvblog.setLayoutManager(gridLayoutManager);
+                                Log.e("recyclev", "recycleviewwww");
+                                Scratch_Card_Adapter scratchAdaptor = new Scratch_Card_Adapter(getActivity(), Amount, status,expdate,created_at,
+                                        id);
+                                Log.e("recyclev1", "recycleviewwww2");
+                                rvblog.setAdapter(scratchAdaptor);
                             }
                         }
+
                     }
-
-
-
                 }
+
+
             }
             @Override
             public void onFailure(Call<View_scratchcard_MODEL> call, Throwable t) {

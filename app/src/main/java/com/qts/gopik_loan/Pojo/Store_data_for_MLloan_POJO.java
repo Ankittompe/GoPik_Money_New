@@ -9,6 +9,7 @@ public class Store_data_for_MLloan_POJO {
     private String customer_name;
     private String customer_middl_name;
     private String customer_last_name;
+    private String customer_gender;
     private String customer_mobile;
     private String customer_email;
     private String pin;
@@ -24,6 +25,7 @@ public class Store_data_for_MLloan_POJO {
     public Store_data_for_MLloan_POJO(String user_code, String customercode, String customer_sal,String customer_name,
                                       String customer_middl_name,
                                       String customer_last_name,
+                                      String  customer_gender,
                                       String customer_mobile,String customer_email,
                                       String pin, String state,
                                       String city, String loan_amount, String loan_type,String loan_category,String loan_subcategory) {
@@ -34,6 +36,7 @@ public class Store_data_for_MLloan_POJO {
         this.customer_name = customer_name;
         this.customer_middl_name = customer_middl_name;
         this.customer_last_name = customer_last_name;
+        this.customer_gender = customer_gender;
         this.customer_mobile = customer_mobile;
         this.customer_email = customer_email;
         this.pin = pin;

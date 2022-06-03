@@ -328,11 +328,11 @@ public class ImageCapture extends AppCompatActivity {
 
 
 
-        /* if (!checkPermission()) {
+     /*    if (!checkPermission()) {
              requestPermission();
-         }*/
-        //requestMultiplePermissions();/
-        /* if (SDK_INT >= Build.VERSION_CODES.R){
+         }
+        requestMultiplePermissions();
+       if (SDK_INT >= Build.VERSION_CODES.R){
              if (!Environment.isExternalStorageManager()){
                  Intent getpermission = new Intent();
 

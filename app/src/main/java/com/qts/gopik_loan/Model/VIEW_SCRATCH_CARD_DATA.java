@@ -89,6 +89,17 @@ public class VIEW_SCRATCH_CARD_DATA {
     private String updated_at;
 
 
+    public String getExpdate() {
+        return expdate;
+    }
+
+    public void setExpdate(String expdate) {
+        this.expdate = expdate;
+    }
+
+    @Expose
+    @SerializedName("expdate")
+    private String expdate;
 
 
 }

@@ -32,6 +32,9 @@ import com.razorpay.PaymentResultWithDataListener;
 
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -44,6 +47,7 @@ public class Recharge__Wallet_DEALER_Activity extends AppCompatActivity implemen
     ImageView hometoolbar, backarrow;
     String TAG = "finalbikepayment";
     String paymentId, signature, orderId;
+    int amount_razorpay = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,7 +104,7 @@ public class Recharge__Wallet_DEALER_Activity extends AppCompatActivity implemen
     }
     private void check() {
         finalprice1 = topupamount.getText().toString();
-        int amount = Integer.parseInt(finalprice1);
+        int amount = Integer.parseInt(finalprice1) * 100;
         //Log.e("Amount",Float.toString(amount));
         startPayment(amount);
     }
@@ -112,10 +116,10 @@ public class Recharge__Wallet_DEALER_Activity extends AppCompatActivity implemen
         final Activity activity = this;
 
         try {
-//            Map opt = new HashMap();
-//            opt.put("name", "GoPik Dost");
-//            opt.put("currency", "INR");
-//            opt.put("amount","amount");
+            Map opt = new HashMap();
+            opt.put("name", "GoPik Money");
+            opt.put("currency", "INR");
+            opt.put("amount", "amount");
 
 //            int paise, mantisa;
 //            float rs, exponent;
@@ -133,13 +137,16 @@ public class Recharge__Wallet_DEALER_Activity extends AppCompatActivity implemen
             restApis.createNewOrderID(data).enqueue(new Callback<RazorpayOrderResponse>() {
                 @Override
                 public void onResponse(Call<RazorpayOrderResponse> call, Response<RazorpayOrderResponse> response) {
-                    Log.e(TAG, "New Order ID from Razorpay: " + response.body().getId());
+                 /*   Log.e(TAG, "New Order ID from Razorpay: " + response.body().getId());
                     Log.e(TAG, "New Order ID from Razorpay: " + response.body().getStatus());
-                    Log.e(TAG, "New Order ID from Razorpay: " + response.body().getAmount());
+                    Log.e(TAG, "New Order ID from Razorpay: " + response.body().getAmount());*/
                     SharedPref.saveStringInSharedPref(AppConstants.RAZARPAY_ID, response.body().getId(), getApplicationContext());
                     SharedPref.saveStringInSharedPref(AppConstants.RAZARPAY_STATUS, response.body().getStatus(), getApplicationContext());
-                    SharedPref.saveStringInSharedPref(AppConstants.RAZARPAY_AMOUNT, response.body().getAmount(), getApplicationContext());
 
+                    Log.e(TAG, "sai " + amount);
+                    int temporary_amount=Integer.parseInt(response.body().getAmount());
+                    amount_razorpay = temporary_amount/100;
+                    SharedPref.saveStringInSharedPref(AppConstants.RAZARPAY_AMOUNT, String.valueOf(amount_razorpay), getApplicationContext());
                     try {
                         JSONObject options = new JSONObject();
                         options.put("name", "GoPik Money");
@@ -169,7 +176,6 @@ public class Recharge__Wallet_DEALER_Activity extends AppCompatActivity implemen
     }
 
 
-    //Sucess Method
     @Override
     public void onPaymentSuccess(String s, PaymentData paymentData) {
 
@@ -188,13 +194,15 @@ public class Recharge__Wallet_DEALER_Activity extends AppCompatActivity implemen
         Log.e(TAG, "paymentId > " + paymentId);
         Log.e(TAG, "signature > " + signature);
         Log.e(TAG, "orderId > " + orderId);
+
         Log.e(TAG, "paymentData " + paymentData.getUserEmail());
         update_wallet_credit();
         /*  razorPaymentResponsemethod();*/
 
 
-
     }
+
+
 
 
     //Error Method

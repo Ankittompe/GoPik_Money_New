@@ -22,11 +22,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.qts.gopik_loan.Dealer_Activity.MainActivity;
 import com.qts.gopik_loan.Model.ACCOUNT_NO_MODEL;
 import com.qts.gopik_loan.Model.Broker_profile_details_MODEL;
 import com.qts.gopik_loan.Model.Broker_profile_update_MODEL;
+import com.qts.gopik_loan.Model.Profile_Update_DEALER_MODEL;
 import com.qts.gopik_loan.Pojo.Broker_profile_details_POJO;
 import com.qts.gopik_loan.Pojo.Broker_profile_update_POJO;
+import com.qts.gopik_loan.Pojo.Profile_Update_DEALER_POJO;
 import com.qts.gopik_loan.R;
 import com.qts.gopik_loan.Retro.NetworkHandler;
 import com.qts.gopik_loan.Retro.RestApis;
@@ -70,14 +73,12 @@ public class Edit_Profile extends AppCompatActivity implements TextWatcher, Adap
         email = (EditText) findViewById(R.id.email);
         name1 = (EditText) findViewById(R.id.name1);
         state = (EditText) findViewById(R.id.state);
-        reacc = (LinearLayout) findViewById(R.id.reacc);
+
         phonenumber = (TextView) findViewById(R.id.phonenumber);
-        layout = (LinearLayout) findViewById(R.id.layout);
+
         reaccountno = (TextView) findViewById(R.id.reaccountno);
         custPrograssbar = new CustPrograssbar();
-        reaccountno.addTextChangedListener(this);
-        ifsccode.addTextChangedListener(this);
-        search = (ImageView) findViewById(R.id.search);
+
         choose_identity = (Spinner) findViewById(R.id.choose_identity);
         statetextview = (TextView) findViewById(R.id.statetextview);
         statespinner = (LinearLayout) findViewById(R.id.statespinner);
@@ -86,7 +87,7 @@ public class Edit_Profile extends AppCompatActivity implements TextWatcher, Adap
 
         visible = (ImageView) findViewById(R.id.eye);
 
-        validaccountno = (TextView) findViewById(R.id.validaccountno);
+
 
         SharedPref.saveStringInSharedPref(AppConstants.NOTIFICATIONPOPUP, "2", getApplicationContext());
         phonenumber.setText(SharedPref.getStringFromSharedPref(AppConstants.MOBILE_NUMBER, getApplicationContext()));
@@ -102,31 +103,6 @@ public class Edit_Profile extends AppCompatActivity implements TextWatcher, Adap
                 statespinner.setVisibility(View.VISIBLE);
             }
         });*/
-        visible.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-
-
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    Log.e("hhghghhuu", "apppppppkkkkkk");
-                    accountno.setTransformationMethod(null);
-                } else {
-                    Log.e("hhghghhuu", "apppppppkkkkkkgg");
-                    accountno.setTransformationMethod(new PasswordTransformationMethod());
-                }
-
-                return true;
-            }
-
-        });
-        search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                acc = ifsccode.getText().toString();
-                account(acc);
-            }
-        });
 
         statetextview.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -253,18 +229,13 @@ public class Edit_Profile extends AppCompatActivity implements TextWatcher, Adap
                             email.setText(response.body().getPayload().getProfile().get(0).getBroker_email());
                             Log.e("hhghghhuu", "bfvn");
                             SharedPref.saveStringInSharedPref(AppConstants.CONTEST_NAME,response.body().getPayload().getProfile().get(0).getBroker_name(),getApplicationContext());
-                            address.setText(response.body().getPayload().getProfile().get(0).getBroker_address());
-                            bankname.setText(response.body().getPayload().getProfile().get(0).getBank_name());
-                            accountno.setText(response.body().getPayload().getProfile().get(0).getAcc_no());
-                            ifsccode.setText(response.body().getPayload().getProfile().get(0).getIfsc_no());
-                            branch.setText(response.body().getPayload().getProfile().get(0).getBranch_name());
-                            layout.setVisibility(View.VISIBLE);
+
                             statetextview.setText(response.body().getPayload().getProfile().get(0).getBroker_state());
                           /*  reaccountno.setText(response.body().getPayload().getProfile().get(0).getAcc_no());*/
                             String state_index = SharedPref.getStringFromSharedPref(AppConstants.STATE_SPINNER, getApplicationContext());
                             /*      int state_position=statelocation.get*/
 
-                            search.setVisibility(View.GONE);
+
 
                         }
 
@@ -293,53 +264,26 @@ public class Edit_Profile extends AppCompatActivity implements TextWatcher, Adap
 
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-        validaccountno.setVisibility(View.VISIBLE);
+
 
     }
 
     @Override
     public void afterTextChanged(Editable editable) {
-        String account = accountno.getText().toString();
-        String reaccount = reaccountno.getText().toString();
 
-        if (account.equals(reaccount)) {
-            validaccountno.setVisibility(View.GONE);
-            layout.setVisibility(View.VISIBLE);
-            ifsccode.setText("");
-            search.setVisibility(View.VISIBLE);
-            address.setText("");
-            bankname.setText("");
-            branch.setText("");
-        }
-        if (accountno.length() == 0) {
-            validaccountno.setVisibility(View.GONE);
-            layout.setVisibility(View.GONE);
-        }
-        if (reaccount.length() == 0) {
-            validaccountno.setVisibility(View.GONE);
-            layout.setVisibility(View.GONE);
-
-        }    Log.e("yyyy","bdhcdsh"+ifsccode.length());
-
-        if(ifsccode.getText().toString().length()==0){
-            ifsccode.setError("Please enter valid IFSC code");
-            address.setText("");
-            branch.setText("");
-            bankname.setText("");
-        }
-        Log.e("yyyy","bdhcdsh"+ifsccode.length());
 
 
     }
 
 
     private void broker_profile_update() {
-        custPrograssbar.prograssCreate(Edit_Profile.this);
-        Broker_profile_update_POJO pojo = new Broker_profile_update_POJO(name1.getText().toString(), SharedPref.getStringFromSharedPref(AppConstants.USER_CODE, getApplicationContext()),
-                email.getText().toString(), phonenumber.getText().toString(),
-                bankname.getText().toString(), accountno.getText().toString(), ifsccode.getText().toString(),
-                branch.getText().toString(), SharedPref.getStringFromSharedPref(AppConstants.STATE_SPINNER, getApplicationContext())
-                , address.getText().toString());
+        custPrograssbar.prograssCreate(getApplicationContext());
+
+        Broker_profile_update_POJO pojo = new Broker_profile_update_POJO
+                (SharedPref.getStringFromSharedPref(AppConstants.USER_CODE, getApplicationContext()),
+                        name1.getText().toString(),
+                        SharedPref.getStringFromSharedPref(AppConstants.STATE_SPINNER,getApplicationContext()),
+                        email.getText().toString());
         RestApis restApis = NetworkHandler.getRetrofit().create(RestApis.class);
         Call<Broker_profile_update_MODEL> call = restApis.broker_profile_update(pojo);
         call.enqueue(new Callback<Broker_profile_update_MODEL>() {
@@ -349,7 +293,6 @@ public class Edit_Profile extends AppCompatActivity implements TextWatcher, Adap
 
 
                     if (response.body().getCode().equals("200")) {
-                        broker_profile_details();
 
                         x = 1;
                         Intent it = new Intent(getApplicationContext(), Home.class);
@@ -357,7 +300,7 @@ public class Edit_Profile extends AppCompatActivity implements TextWatcher, Adap
 
 
                     } else {
-
+                        Toast.makeText(getApplicationContext(), "Something went wrong!234!", Toast.LENGTH_LONG).show();
                     }
 
 
@@ -368,7 +311,7 @@ public class Edit_Profile extends AppCompatActivity implements TextWatcher, Adap
             public void onFailure(Call<Broker_profile_update_MODEL> call, Throwable t) {
 
 
-                Toast.makeText(getApplicationContext(), "Something went wrong!!!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Something went wrong!", Toast.LENGTH_LONG).show();
             }
 
         });

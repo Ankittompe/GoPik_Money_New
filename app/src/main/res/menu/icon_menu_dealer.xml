@@ -15,13 +15,16 @@
         android:title="Notification"
 
         />
+  <item android:id="@+id/profile_dealer"
+            android:icon="@drawable/ic_baseline_account_circle_24"
+            android:title="My Profile"
+            />
 
 
-
-    <item android:id="@+id/profile_dealer"
+    <!--<item android:id="@+id/profile_dealer"
         android:icon="@drawable/ic_baseline_account_circle_24"
         android:title="My Profile"
-        />
+        />-->
 
     <item android:id="@+id/contest_dealer"
         android:icon="@drawable/ic_trophy__1_"

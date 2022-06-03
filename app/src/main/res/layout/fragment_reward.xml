@@ -134,7 +134,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:clipToPadding="false"
-                        android:visibility="invisible"
+                        android:visibility="visible"
                         app:cardPreventCornerOverlap="false"
                         app:cardUseCompatPadding="false"
 

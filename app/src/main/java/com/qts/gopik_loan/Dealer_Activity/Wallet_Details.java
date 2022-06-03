@@ -49,7 +49,9 @@ public class Wallet_Details extends AppCompatActivity implements PaymentResultWi
     LinearLayout liner2, linear;
     String TAG = "finalbikepayment";
     CustPrograssbar custPrograssbar;
-    ImageView hometoolbar,backarrow;
+    ImageView hometoolbar, backarrow;
+    int amount_razorpay = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,14 +65,14 @@ public class Wallet_Details extends AppCompatActivity implements PaymentResultWi
         linear = (LinearLayout) findViewById(R.id.linear);
         backarrow = (ImageView) findViewById(R.id.arrow);
         hometoolbar = (ImageView) findViewById(R.id.hometoolbar);
-        SharedPref.saveStringInSharedPref(AppConstants.NOTIFICATIONPOPUP,"3",getApplicationContext());
+        SharedPref.saveStringInSharedPref(AppConstants.NOTIFICATIONPOPUP, "3", getApplicationContext());
         custPrograssbar = new CustPrograssbar();
         /*check();*/
        /* bal= Integer.valueOf(SharedPref.getStringFromSharedPref(AppConstants.BALANCE,getApplicationContext()));
         if(bal<100){
             textView2.setText ("Your Wallet Balance is Insufficient, Please recharge.");
         }*/
-        Log.e(TAG, "saiiiiiiiiiiiiiiiiiiiit"+SharedPref.getStringFromSharedPref(AppConstants.BALANCE,getApplicationContext()));
+        Log.e(TAG, "saiiiiiiiiiiiiiiiiiiiit" + SharedPref.getStringFromSharedPref(AppConstants.BALANCE, getApplicationContext()));
         valid();
 
         recharge_now.setOnClickListener(new View.OnClickListener() {
@@ -109,44 +111,41 @@ public class Wallet_Details extends AppCompatActivity implements PaymentResultWi
 
     private void valid() {
         if (SharedPref.getStringFromSharedPref(AppConstants.BALANCE, getApplicationContext()).equals("NA")) {
-            Log.e(TAG, "ruhoiiiiiiiiiiii"+SharedPref.getStringFromSharedPref(AppConstants.BALANCE,getApplicationContext()));
+            Log.e(TAG, "ruhoiiiiiiiiiiii" + SharedPref.getStringFromSharedPref(AppConstants.BALANCE, getApplicationContext()));
             currentbalance.setText("₹ 0");
             procced.setVisibility(View.GONE);
             linear.setVisibility(View.VISIBLE);
 
-        }
-        else if(SharedPref.getStringFromSharedPref(AppConstants.BALANCE, getApplicationContext()).equals("0"))  {
+        } else if (SharedPref.getStringFromSharedPref(AppConstants.BALANCE, getApplicationContext()).equals("0")) {
             currentbalance.setText("₹ 0");
             procced.setVisibility(View.GONE);
             linear.setVisibility(View.VISIBLE);
-        }
-        else {
+        } else {
             procced.setVisibility(View.VISIBLE);
             linear.setVisibility(View.GONE);
             recharge_now.setVisibility(View.GONE);
             textview3.setVisibility(View.GONE);
             textview4.setVisibility(View.GONE);
-            currentbalance.setText("₹" +SharedPref.getStringFromSharedPref(AppConstants.BALANCE, getApplicationContext()));
+            currentbalance.setText("₹" + SharedPref.getStringFromSharedPref(AppConstants.BALANCE, getApplicationContext()));
         }
     }
 
     private void validation() {
-        if ((textview4.getText().toString().isEmpty()) ) {
+        if ((textview4.getText().toString().isEmpty())) {
             textview4.setError("Please Enter The Amount");
 
 
-        }
-
-        else{
+        } else {
 
             check();
 
         }
 
     }
+
     private void check() {
         finalprice1 = textview4.getText().toString();
-        int amount = Integer.parseInt(finalprice1)*100;
+        int amount = Integer.parseInt(finalprice1) * 100;
         //Log.e("Amount",Float.toString(amount));
         startPayment(amount);
     }
@@ -161,7 +160,7 @@ public class Wallet_Details extends AppCompatActivity implements PaymentResultWi
             Map opt = new HashMap();
             opt.put("name", "GoPik Money");
             opt.put("currency", "INR");
-            opt.put("amount","amount");
+            opt.put("amount", "amount");
 
 //            int paise, mantisa;
 //            float rs, exponent;
@@ -184,9 +183,11 @@ public class Wallet_Details extends AppCompatActivity implements PaymentResultWi
                     Log.e(TAG, "New Order ID from Razorpay: " + response.body().getAmount());*/
                     SharedPref.saveStringInSharedPref(AppConstants.RAZARPAY_ID, response.body().getId(), getApplicationContext());
                     SharedPref.saveStringInSharedPref(AppConstants.RAZARPAY_STATUS, response.body().getStatus(), getApplicationContext());
-                    SharedPref.saveStringInSharedPref(AppConstants.RAZARPAY_AMOUNT, response.body().getAmount(), getApplicationContext());
-                    Log.e(TAG, "sai " +amount);
 
+                    Log.e(TAG, "sai " + amount);
+                    int temporary_amount=Integer.parseInt(response.body().getAmount());
+                    amount_razorpay = temporary_amount/100;
+                    SharedPref.saveStringInSharedPref(AppConstants.RAZARPAY_AMOUNT, String.valueOf(amount_razorpay), getApplicationContext());
                     try {
                         JSONObject options = new JSONObject();
                         options.put("name", "GoPik Money");
@@ -235,10 +236,10 @@ public class Wallet_Details extends AppCompatActivity implements PaymentResultWi
         Log.e(TAG, "paymentId > " + paymentId);
         Log.e(TAG, "signature > " + signature);
         Log.e(TAG, "orderId > " + orderId);
+
         Log.e(TAG, "paymentData " + paymentData.getUserEmail());
         update_wallet_credit();
         /*  razorPaymentResponsemethod();*/
-
 
 
     }
@@ -329,34 +330,33 @@ public class Wallet_Details extends AppCompatActivity implements PaymentResultWi
 
     private void get_wallet_details() {
         custPrograssbar.prograssCreate(Wallet_Details.this);
-        Get_wallet_details_POJO pojo = new Get_wallet_details_POJO( SharedPref.getStringFromSharedPref(AppConstants.USER_CODE,getApplicationContext()),
-                "Gopik Wallet",SharedPref.getStringFromSharedPref(AppConstants.CUTOMER_CODE,getApplicationContext()));
+        Get_wallet_details_POJO pojo = new Get_wallet_details_POJO(SharedPref.getStringFromSharedPref(AppConstants.USER_CODE, getApplicationContext()),
+                "Gopik Wallet", SharedPref.getStringFromSharedPref(AppConstants.CUTOMER_CODE, getApplicationContext()));
         RestApis restApis = NetworkHandler.getRetrofit().create(RestApis.class);
         Call<Get_wallet_details_MODEL> call = restApis.get_wallet_details(pojo);
         call.enqueue(new Callback<Get_wallet_details_MODEL>() {
             @Override
             public void onResponse(Call<Get_wallet_details_MODEL> call, Response<Get_wallet_details_MODEL> response) {
-                Log.e("sdssad","tysdfyuadgbvja");
+                Log.e("sdssad", "tysdfyuadgbvja");
                 custPrograssbar.closePrograssBar();
                 if (response.body() != null) {
                     Log.e(TAG, "onResponse: " + new Gson().toJson(response.body()));
 
-                    if(response.body().getCode().equals("200")) {
+                    if (response.body().getCode().equals("200")) {
 
                         if (response.body().getPayload().size() > 0) {
 
                             for (int i = 0; i < response.body().getPayload().size(); i++) {
                                 Log.e("Body", "body3");
-                                SharedPref.saveStringInSharedPref(AppConstants.BALANCE,response.body().getPayload().get(i).getBalance(),getApplicationContext());
+                                SharedPref.saveStringInSharedPref(AppConstants.BALANCE, response.body().getPayload().get(i).getBalance(), getApplicationContext());
                                 Log.e(TAG, "errorrrrdrgvgh: " + response.body().getPayload().get(i).getBalance());
-                                Log.e(TAG, "errorrrrdrgvgh: " + SharedPref.getStringFromSharedPref(AppConstants.BALANCE,getApplicationContext()));
+                                Log.e(TAG, "errorrrrdrgvgh: " + SharedPref.getStringFromSharedPref(AppConstants.BALANCE, getApplicationContext()));
                                 /*   currentbalance.setText("₹" +SharedPref.getStringFromSharedPref(AppConstants.BALANCE, getApplicationContext()));*/
                                 valid();
                             }
                         }
-                    }
-                    else  {
-                        Toast.makeText(getApplicationContext(),"Something went wrong!234!",Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Something went wrong!234!", Toast.LENGTH_LONG).show();
                     }
 
                 }
@@ -365,8 +365,8 @@ public class Wallet_Details extends AppCompatActivity implements PaymentResultWi
             @Override
             public void onFailure(Call<Get_wallet_details_MODEL> call, Throwable t) {
                 custPrograssbar.closePrograssBar();
-                Log.e("sdssad","tysdfyuadgbvja"+t);
-                Toast.makeText(getApplicationContext(),"Something went wrong!",Toast.LENGTH_LONG).show();
+                Log.e("sdssad", "tysdfyuadgbvja" + t);
+                Toast.makeText(getApplicationContext(), "Something went wrong!", Toast.LENGTH_LONG).show();
             }
 
         });

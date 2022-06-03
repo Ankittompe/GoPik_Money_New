@@ -52,7 +52,7 @@ public class CashCalculator extends AppCompatActivity  implements PaymentResultW
     Integer val1;
     Integer val2;
     CustPrograssbar custPrograssbar;
-
+    int amount_razorpay = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,13 +108,13 @@ public class CashCalculator extends AppCompatActivity  implements PaymentResultW
     }
 
     private void check() {
-        finalprice1 = "100";
-        Float amount = Float.parseFloat(finalprice1);
-        amount = amount * 100;
+        finalprice1 = textview4.getText().toString();
+        int amount = Integer.parseInt(finalprice1) * 100;
+        //Log.e("Amount",Float.toString(amount));
         startPayment(amount);
     }
 
-    private void startPayment(Float amount) {
+    private void startPayment(int amount) {
 
         Checkout checkout = new Checkout();
         checkout.setKeyID(getString(R.string.razorpay_key));
@@ -122,46 +122,49 @@ public class CashCalculator extends AppCompatActivity  implements PaymentResultW
 
         try {
             Map opt = new HashMap();
-            opt.put("name", "GoPik Dost");
+            opt.put("name", "GoPik Money");
             opt.put("currency", "INR");
-            opt.put("amount", amount);
+            opt.put("amount", "amount");
 
-            int paise,mantisa;
-            float rs,exponent;
-            rs=Float.parseFloat(String.valueOf(1));
-            mantisa=(int)rs;
-            exponent=rs-(float)mantisa;
-            paise=(int)((mantisa*100) + (exponent*100));
+//            int paise, mantisa;
+//            float rs, exponent;
+//            rs = Float.parseFloat(String.valueOf(amount));
+//            mantisa = (int) rs;
+//            exponent = rs - (float) mantisa;
+//            paise = (int) ((mantisa ) + (exponent * 100));
 
-            RequestBody rb_name = RequestBody.create(MediaType.parse("multipart/form-data") , "YoYo Rydes");
-            RequestBody rb_currency = RequestBody.create(MediaType.parse("multipart/form-data") , "1");
-            RequestBody rb_amount = RequestBody.create(MediaType.parse("multipart/form-data") , String.valueOf(paise));
+//            RequestBody rb_name = RequestBody.create(MediaType.parse("multipart/form-data"), "GoPik Dost");
+//            RequestBody rb_currency = RequestBody.create(MediaType.parse("multipart/form-data"), String.valueOf(paise));
+//            RequestBody rb_amount = RequestBody.create(MediaType.parse("multipart/form-data"), String.valueOf(paise));
 
-            RazorpayOrderPojo data = new RazorpayOrderPojo(String.valueOf(paise) , "INR");
+            RazorpayOrderPojo data = new RazorpayOrderPojo(String.valueOf(amount), "INR");
             RestApis restApis = RetrofitMaker.razorPayInstanceMaker().create(RestApis.class);
             restApis.createNewOrderID(data).enqueue(new Callback<RazorpayOrderResponse>() {
                 @Override
                 public void onResponse(Call<RazorpayOrderResponse> call, Response<RazorpayOrderResponse> response) {
-                    Log.e(TAG , "New Order ID from Razorpay: "+response.body().getId());
-                    Log.e(TAG , "New Order ID from Razorpay: "+response.body().getStatus());
-                    Log.e(TAG , "New Order ID from Razorpay: "+response.body().getAmount());
-                    SharedPref.saveStringInSharedPref(AppConstants.RAZARPAY_ID,response.body().getId(),getApplicationContext());
-                    SharedPref.saveStringInSharedPref(AppConstants.RAZARPAY_STATUS,response.body().getStatus(),getApplicationContext());
-                    SharedPref.saveStringInSharedPref(AppConstants.RAZARPAY_AMOUNT,response.body().getAmount(),getApplicationContext());
+                 /*   Log.e(TAG, "New Order ID from Razorpay: " + response.body().getId());
+                    Log.e(TAG, "New Order ID from Razorpay: " + response.body().getStatus());
+                    Log.e(TAG, "New Order ID from Razorpay: " + response.body().getAmount());*/
+                    SharedPref.saveStringInSharedPref(AppConstants.RAZARPAY_ID, response.body().getId(), getApplicationContext());
+                    SharedPref.saveStringInSharedPref(AppConstants.RAZARPAY_STATUS, response.body().getStatus(), getApplicationContext());
 
+                    Log.e(TAG, "sai " + amount);
+                    int temporary_amount=Integer.parseInt(response.body().getAmount());
+                    amount_razorpay = temporary_amount/100;
+                    SharedPref.saveStringInSharedPref(AppConstants.RAZARPAY_AMOUNT, String.valueOf(amount_razorpay), getApplicationContext());
                     try {
                         JSONObject options = new JSONObject();
-                        options.put("name", "GoPik Dost");
+                        options.put("name", "GoPik Money");
                         options.put("currency", "INR");
                         options.put("amount", amount);
                         options.put("order_id", response.body().getId());
 
                         JSONObject preFill = new JSONObject();
                         preFill.put("contact", "8327754247");
-                        preFill.put("email", "example@gopikdost.com");
+                        preFill.put("email", "gopikmoney@gmail.com");
                         options.put("prefill", preFill);
                         checkout.open(CashCalculator.this, options);
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
@@ -178,6 +181,7 @@ public class CashCalculator extends AppCompatActivity  implements PaymentResultW
     }
 
 
+
     //Sucess Method
     @Override
     public void onPaymentSuccess(String s, PaymentData paymentData) {
@@ -186,23 +190,23 @@ public class CashCalculator extends AppCompatActivity  implements PaymentResultW
         signature = paymentData.getSignature();
         orderId = paymentData.getOrderId();
 
-        SharedPref.saveStringInSharedPref(AppConstants.RZPPAYMENTID,paymentData.getPaymentId(),getApplicationContext());
-        SharedPref.saveStringInSharedPref(AppConstants.RZPORDERID,paymentData.getOrderId(),getApplicationContext());
-        SharedPref.saveStringInSharedPref(AppConstants.RZPPAYMENTID,paymentData.getPaymentId(),getApplicationContext());
-        SharedPref.saveStringInSharedPref(AppConstants.RZPORDERID,paymentData.getOrderId(),getApplicationContext());
+        SharedPref.saveStringInSharedPref(AppConstants.RZPPAYMENTID, paymentData.getPaymentId(), getApplicationContext());
+        SharedPref.saveStringInSharedPref(AppConstants.RZPORDERID, paymentData.getOrderId(), getApplicationContext());
+        SharedPref.saveStringInSharedPref(AppConstants.RZPPAYMENTID, paymentData.getPaymentId(), getApplicationContext());
+        SharedPref.saveStringInSharedPref(AppConstants.RZPORDERID, paymentData.getOrderId(), getApplicationContext());
         int payment_status = 1;
         int code = 0;
         String responsee = "";
         Toast.makeText(CashCalculator.this, "Payment done successfully", Toast.LENGTH_SHORT).show();
-        Log.e(TAG,"paymentId > "+paymentId);
-        Log.e(TAG,"signature > "+signature);
-        Log.e(TAG,"orderId > "+orderId);
-        Log.e(TAG,"paymentData "+paymentData);
+        Log.e(TAG, "paymentId > " + paymentId);
+        Log.e(TAG, "signature > " + signature);
+        Log.e(TAG, "orderId > " + orderId);
 
+        Log.e(TAG, "paymentData " + paymentData.getUserEmail());
+        update_wallet_credit();
         /*  razorPaymentResponsemethod();*/
 
 
-        update_wallet_credit();
     }
 
 

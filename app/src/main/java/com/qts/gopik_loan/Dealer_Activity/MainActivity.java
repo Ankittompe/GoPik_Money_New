@@ -30,6 +30,7 @@ import com.qts.gopik_loan.Activity.AppConstants;
 import com.qts.gopik_loan.Activity.LogIn;
 import com.qts.gopik_loan.Activity.SharedPref;
 import com.qts.gopik_loan.Dealer_Fragment.Dealer_Profile_Fragment;
+import com.qts.gopik_loan.Dealer_Fragment.Tab_Fragment_Dealer;
 import com.qts.gopik_loan.Fragment.HomeFragment;
 import com.qts.gopik_loan.Dealer_Fragment.Home_Dealer_Fragment;
 import com.qts.gopik_loan.Fragment.Profile;
@@ -182,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.profile_dealer:
                         Log.e("HomeClass", "Inside profile");
-                        fragment = new Dealer_Profile_Fragment();
+                        fragment = new Tab_Fragment_Dealer();
                         break;
                     case R.id.contest_dealer:
                         Log.e("HomeClass", "Inside profile");
