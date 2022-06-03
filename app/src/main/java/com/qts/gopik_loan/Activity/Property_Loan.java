@@ -405,6 +405,7 @@ public class Property_Loan extends AppCompatActivity implements TextWatcher {
                 SharedPref.getStringFromSharedPref(AppConstants.CUTOMER_CODE_HOME_LOAN, getApplicationContext()),
                 SharedPref.getStringFromSharedPref(AppConstants.SALUTION_LOAN, getApplicationContext()),
                 firstname.getText().toString(), middlename.getText().toString(), lastname.getText().toString(),
+                SharedPref.getStringFromSharedPref(AppConstants.GENDER, getApplicationContext()),
                 moblog.getText().toString(),
                 email.getText().toString(), pincodevalue.getText().toString(), state.getText().toString(), city.getText().toString(),
                 loanamounthouse.getText().toString(),

@@ -76,6 +76,15 @@ public class FORM_DATA_PAYLOAD {
     @Expose
     @SerializedName("customer_address")
     private String customer_address;
+
+    public String getCustomer_dob() {
+        return customer_dob;
+    }
+
+    public void setCustomer_dob(String customer_dob) {
+        this.customer_dob = customer_dob;
+    }
+
     @Expose
     @SerializedName("customer_dob")
     private String customer_dob;
@@ -175,6 +184,8 @@ public class FORM_DATA_PAYLOAD {
     @Expose
     @SerializedName("cust_tc_response")
     private String cust_tc_response;
+
+
 
 
 }

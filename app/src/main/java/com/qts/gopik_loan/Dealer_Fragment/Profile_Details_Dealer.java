@@ -1,4 +1,4 @@
-package com.qts.gopik_loan.Fragment;
+package com.qts.gopik_loan.Dealer_Fragment;
 
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
@@ -23,6 +23,7 @@ import androidx.fragment.app.Fragment;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.provider.Settings;
+import android.text.InputType;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -46,16 +47,12 @@ import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.PermissionRequestErrorListener;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.qts.gopik_loan.Activity.AppConstants;
-import com.qts.gopik_loan.Activity.Edit_Profile;
-import com.qts.gopik_loan.Activity.Home;
-import com.qts.gopik_loan.Activity.KYC_Details;
 import com.qts.gopik_loan.Activity.SharedPref;
+import com.qts.gopik_loan.Dealer_Activity.Edit_delaer_Profile;
 import com.qts.gopik_loan.Dealer_Activity.MainActivity;
-import com.qts.gopik_loan.Model.Broker_profile_details_MODEL;
-import com.qts.gopik_loan.Model.Broker_profile_update_MODEL;
+import com.qts.gopik_loan.Model.ProfileDetails_DEALER_MODEL;
 import com.qts.gopik_loan.Model.Profile_Update_DEALER_MODEL;
-import com.qts.gopik_loan.Pojo.Broker_profile_details_POJO;
-import com.qts.gopik_loan.Pojo.Broker_profile_update_POJO;
+import com.qts.gopik_loan.Pojo.ProfileDetails_DEALER_POJO;
 import com.qts.gopik_loan.Pojo.Profile_Update_DEALER_POJO;
 import com.qts.gopik_loan.R;
 import com.qts.gopik_loan.Retro.NetworkHandler;
@@ -75,23 +72,23 @@ import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Profile_Details#newInstance} factory method to
+ * Use the {@link Profile_Details_Dealer#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Profile_Details extends Fragment implements AdapterView.OnItemSelectedListener {
-
+public class Profile_Details_Dealer extends Fragment implements AdapterView.OnItemSelectedListener {
     private final int PERMISSION_REQUEST_CODE = 1000;
 
     private static final String IMAGE_DIRECTORY = "/gopikmoney";
     private int GALLERY = 1, CAMERA = 2;
     private static final int RESULT_OK = 123;
-    EditText ifsccode, accountno, email, name1, reaccountno, state,accountholdername;
+    EditText ifsccode, accountno, email, name1, gst;
     String acc;
     Integer x = 0;
-    int z=0,y=0;
+    int z = 0, y = 0;
+    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     LinearLayout layout, reacc, st;
     ImageView search;
-    TextView bankname,     policy_button, tt, phonenumber, address, branch, btn_countinue, statetextview, validaccountno, btn_edit, textviewprofile;
+    TextView bankname, policy_button, tt, phonenumber, address, branch, btn_countinue, statetextview, validaccountno, btn_edit, textviewprofile;
     CustPrograssbar custPrograssbar;
     LinearLayout statespinner;
     Spinner choose_identity;
@@ -99,13 +96,6 @@ public class Profile_Details extends Fragment implements AdapterView.OnItemSelec
     Boolean flag = false;
     CircleImageView pr;
     private static int TIME_OUT = 3000;
-    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-    String[] statelocation = {"Select State", "Odisha", "Arunachal Pradesh", "Assam", "Bihar",
-            "Chhattisgarh", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand",
-            "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur",
-            "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan",
-            "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh",
-            "Uttarakhand", "West Bengal", "Andhra Pradesh"};
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -116,7 +106,7 @@ public class Profile_Details extends Fragment implements AdapterView.OnItemSelec
     private String mParam1;
     private String mParam2;
 
-    public Profile_Details() {
+    public Profile_Details_Dealer() {
         // Required empty public constructor
     }
 
@@ -126,11 +116,11 @@ public class Profile_Details extends Fragment implements AdapterView.OnItemSelec
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Profile_Details.
+     * @return A new instance of fragment Profile_Details_Dealer.
      */
     // TODO: Rename and change types and number of parameters
-    public static Profile_Details newInstance(String param1, String param2) {
-        Profile_Details fragment = new Profile_Details();
+    public static Profile_Details_Dealer newInstance(String param1, String param2) {
+        Profile_Details_Dealer fragment = new Profile_Details_Dealer();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -151,13 +141,10 @@ public class Profile_Details extends Fragment implements AdapterView.OnItemSelec
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_profile__details, container, false);
-
-
+        View view = inflater.inflate(R.layout.fragment_profile__details__dealer, container, false);
         btn_countinue = (TextView) view.findViewById(R.id.btn_countinue);
 
         policy_button = (TextView) view.findViewById(R.id.policy_button2);
-
 
 
         policy_button.setMovementMethod(LinkMovementMethod.getInstance());
@@ -165,8 +152,9 @@ public class Profile_Details extends Fragment implements AdapterView.OnItemSelec
 
         policy_button.setLinkTextColor(Color.BLACK);
         email = (EditText) view.findViewById(R.id.email);
+        gst = (EditText) view.findViewById(R.id.gst);
         name1 = (EditText) view.findViewById(R.id.name1);
-        pr= (CircleImageView) view.findViewById(R.id.pr);
+        pr = (CircleImageView) view.findViewById(R.id.pr);
         phonenumber = (TextView) view.findViewById(R.id.phonenumber);
         layout = (LinearLayout) view.findViewById(R.id.layout);
         btn_edit = (TextView) view.findViewById(R.id.btn_edit);
@@ -175,22 +163,20 @@ public class Profile_Details extends Fragment implements AdapterView.OnItemSelec
 
         search = (ImageView) view.findViewById(R.id.search);
         choose_identity = (Spinner) view.findViewById(R.id.choose_identity);
-        statetextview = (TextView) view.findViewById(R.id.statetextview);
-        statespinner = (LinearLayout) view.findViewById(R.id.statespinner);
+
         textviewprofile = (TextView) view.findViewById(R.id.textviewprofile);
-        st = (LinearLayout) view.findViewById(R.id.st);
-        tt = (TextView) view.findViewById(R.id.tt);
+        SharedPref.saveStringInSharedPref(AppConstants.NOTIFICATIONPOPUP, "3", getContext());
 
         visible = (ImageView) view.findViewById(R.id.eye);
-          requestMultiplePermissions();
+        requestMultiplePermissions();
         /*  requestMultiplePermissions();*/
-       if (!checkPermission()) {
+        if (!checkPermission()) {
             requestPermission();
         }
         btn_countinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                statespinner.setVisibility(View.GONE);
+
                 // broker_profile_update();
                 signupvalidation();
 
@@ -200,175 +186,43 @@ public class Profile_Details extends Fragment implements AdapterView.OnItemSelec
             @Override
             public void onClick(View view) {
                 showPictureDialog();
-                   z=1;
-                    y=1;
+                z = 1;
+                y = 1;
             }
         });
+
+        phonenumber.setText(SharedPref.getStringFromSharedPref(AppConstants.MOBILE_NUMBER, getContext()));
+        profile_details();
         btn_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent it = new Intent(getContext(), Edit_Profile.class);
+                Intent it = new Intent(getContext(), Edit_delaer_Profile.class);
                 startActivity(it);
 
             }
         });
-
-        statetextview.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                statespinner.setVisibility(View.VISIBLE);
-
-                return true;
-            }
-        });
-
-        ArrayAdapter ad
-                = new ArrayAdapter(
-                getContext(),
-                android.R.layout.simple_spinner_item,
-                statelocation);
-
-        ad.setDropDownViewResource(
-                android.R.layout
-                        .simple_spinner_dropdown_item);
-
-        choose_identity.setAdapter(ad);
-        choose_identity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                int index = choose_identity.getSelectedItemPosition();
-
-                SharedPref.saveStringInSharedPref(AppConstants.STATE_SPINNER, statelocation[index], getContext());
-                /*       SharedPref.saveStringInSharedPref(AppConstants.STATE_SPINNER_ITEM,statelocation,getContext());*/
-                Log.e("hhghghhuu", "bfvn" + SharedPref.getStringFromSharedPref(AppConstants.STATE_SPINNER, getContext()));
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-        SharedPref.saveStringInSharedPref(AppConstants.NOTIFICATIONPOPUP, "2", getContext());
-        phonenumber.setText(SharedPref.getStringFromSharedPref(AppConstants.MOBILE_NUMBER, getContext()));
-        name1.setText(SharedPref.getStringFromSharedPref(AppConstants.NAME_BROKER, getContext()));
-
-        broker_profile_details();
-
         return view;
 
 
     }
 
     private void signupvalidation() {
-       if (email.getText().toString().isEmpty()) {
+        if (name1.getText().toString().isEmpty() && email.getText().toString().isEmpty()) {
+            Toast.makeText(getContext(), "Please enter above details", Toast.LENGTH_LONG).show();
+        } else if (name1.getText().toString().isEmpty()) {
+
+            name1.setError("Please Enter Valid Customer Name");
+
+        } else if (email.getText().toString().isEmpty()) {
 
             email.setError("Please Enter Valid Customer Name");
 
-        } else if (!email.getText().toString().matches(emailPattern)) {
+        }else if (!email.getText().toString().matches(emailPattern)) {
             email.setError("Please Enter Valid Customer Email Address");
-        }   else {
-            statespinner.setVisibility(View.GONE);
-            broker_profile_update();
-
+        }else{
+            profile_update();
         }
 
-    }
-    private void broker_profile_details() {
-        custPrograssbar.prograssCreate(getContext());
-        Broker_profile_details_POJO pojo = new Broker_profile_details_POJO(SharedPref.getStringFromSharedPref(
-                AppConstants.MOBILE_NUMBER, getContext()),
-                SharedPref.getStringFromSharedPref(AppConstants.TOKEN, getContext()));
-        RestApis restApis = NetworkHandler.getRetrofit().create(RestApis.class);
-        Call<Broker_profile_details_MODEL> call = restApis.broker_profile_details(pojo);
-        call.enqueue(new Callback<Broker_profile_details_MODEL>() {
-            @Override
-            public void onResponse(Call<Broker_profile_details_MODEL> call, Response<Broker_profile_details_MODEL> response) {
-                if (response.body() != null) {
-
-
-                    if (response.body().getCode().equals("200")) {
-                        SharedPref.saveStringInSharedPref(AppConstants.USER_CODE, response.body().getPayload().getProfile().get(0).getBroker_code(), getContext());
-                        if ((response.body().getPayload().getProfile().get(0).getBroker_email().equals("NA"))) {
-                            custPrograssbar.closePrograssBar();
-                        } else {
-                            custPrograssbar.closePrograssBar();
-                            email.setText(response.body().getPayload().getProfile().get(0).getBroker_email());
-                            Log.e("hhghghhuu", "bfvn");
-                            SharedPref.saveStringInSharedPref(AppConstants.CONTEST_NAME,response.body().getPayload().getProfile().get(0).getBroker_name(),getContext());
-
-
-                            statetextview.setText(response.body().getPayload().getProfile().get(0).getBroker_state());
-
-                            String state_index = SharedPref.getStringFromSharedPref(AppConstants.STATE_SPINNER, getContext());
-
-
-                            name1.setFocusable(false);
-                            email.setFocusable(false);
-                            statetextview.setFocusable(false);
-
-
-                            btn_edit.setVisibility(View.VISIBLE);
-                            btn_countinue.setVisibility(View.GONE);
-                            textviewprofile.setVisibility(View.GONE);
-                        }
-
-                    } else {
-                        Toast.makeText(getContext(), "Something went wrong!!!", Toast.LENGTH_LONG).show();
-                    }
-
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Broker_profile_details_MODEL> call, Throwable t) {
-
-
-                Toast.makeText(getContext(), "Something went wrong!!!", Toast.LENGTH_LONG).show();
-            }
-
-        });
-    }
-    private void broker_profile_update() {
-        custPrograssbar.prograssCreate(getContext());
-
-        Broker_profile_update_POJO pojo = new Broker_profile_update_POJO
-                (SharedPref.getStringFromSharedPref(AppConstants.USER_CODE, getActivity()),
-                        name1.getText().toString(),
-                        SharedPref.getStringFromSharedPref(AppConstants.STATE_SPINNER,getContext()),
-                        email.getText().toString());
-        RestApis restApis = NetworkHandler.getRetrofit().create(RestApis.class);
-        Call<Broker_profile_update_MODEL> call = restApis.broker_profile_update(pojo);
-        call.enqueue(new Callback<Broker_profile_update_MODEL>() {
-            @Override
-            public void onResponse(Call<Broker_profile_update_MODEL> call, Response<Broker_profile_update_MODEL> response) {
-                if (response.body() != null) {
-
-
-                    if (response.body().getCode().equals("200")) {
-
-                        x = 1;
-                        Intent it = new Intent(getContext(), Home.class);
-                        startActivity(it);
-
-
-                    } else {
-                        Toast.makeText(getContext(), "Something went wrong!234!", Toast.LENGTH_LONG).show();
-                    }
-
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Broker_profile_update_MODEL> call, Throwable t) {
-
-
-                Toast.makeText(getContext(), "Something went wrong!", Toast.LENGTH_LONG).show();
-            }
-
-        });
     }
 
     private void showPictureDialog() {
@@ -528,7 +382,7 @@ public class Profile_Details extends Fragment implements AdapterView.OnItemSelec
             }*/
             try {
                 Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                        Uri.fromParts("package",getActivity().getPackageName(), null));
+                        Uri.fromParts("package", getActivity().getPackageName(), null));
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 startActivityForResult(intent, PERMISSION_REQUEST_CODE);
@@ -595,4 +449,111 @@ public class Profile_Details extends Fragment implements AdapterView.OnItemSelec
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
+    private void profile_update() {
+        custPrograssbar.prograssCreate(getContext());
+
+        Profile_Update_DEALER_POJO pojo = new Profile_Update_DEALER_POJO
+                (SharedPref.getStringFromSharedPref(AppConstants.USER_CODE, getActivity()),
+                        name1.getText().toString(),
+                        email.getText().toString(),
+                        gst.getText().toString());
+        RestApis restApis = NetworkHandler.getRetrofit().create(RestApis.class);
+        Call<Profile_Update_DEALER_MODEL> call = restApis.profile_update(pojo);
+        call.enqueue(new Callback<Profile_Update_DEALER_MODEL>() {
+            @Override
+            public void onResponse(Call<Profile_Update_DEALER_MODEL> call, Response<Profile_Update_DEALER_MODEL> response) {
+                if (response.body() != null) {
+
+
+                    if (response.body().getCode() == 200) {
+
+                        x = 1;
+                        Intent it = new Intent(getContext(), MainActivity.class);
+                        startActivity(it);
+
+
+                    } else {
+                        Toast.makeText(getContext(), "Something went wrong!234!", Toast.LENGTH_LONG).show();
+                    }
+
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Profile_Update_DEALER_MODEL> call, Throwable t) {
+
+
+                Toast.makeText(getContext(), "Something went wrong!", Toast.LENGTH_LONG).show();
+            }
+
+        });
+    }
+    private void profile_details() {
+        custPrograssbar.prograssCreate(getContext());
+        ProfileDetails_DEALER_POJO pojo = new ProfileDetails_DEALER_POJO(SharedPref.getStringFromSharedPref(AppConstants.PHONENUMBER, getActivity()), SharedPref.getStringFromSharedPref(AppConstants.TOKEN, getActivity()));
+        RestApis restApis = NetworkHandler.getRetrofit().create(RestApis.class);
+        Call<ProfileDetails_DEALER_MODEL> call = restApis.profile_details(pojo);
+        call.enqueue(new Callback<ProfileDetails_DEALER_MODEL>() {
+            @Override
+            public void onResponse(Call<ProfileDetails_DEALER_MODEL> call, Response<ProfileDetails_DEALER_MODEL> response) {
+                if (response.body() != null) {
+
+
+                    if (response.body().getCode()==200) {
+                        SharedPref.saveStringInSharedPref(AppConstants.USER_CODE, response.body().getPayload().getProfile().get(0).getUser_code(), getContext());
+                        if ((response.body().getPayload().getProfile().get(0).getGst_no().equals("NA"))) {
+                            custPrograssbar.closePrograssBar();
+                        } else {
+                            custPrograssbar.closePrograssBar();
+                            name1.setText(response.body().getPayload().getProfile().get(0).getName());
+                            email.setText(response.body().getPayload().getProfile().get(0).getEmail());
+                            Log.e("hhghghhuu", "bfvn");
+
+
+                            gst.setText(response.body().getPayload().getProfile().get(0).getGst_no());
+
+
+
+                            String state_index = SharedPref.getStringFromSharedPref(AppConstants.STATE_SPINNER, getContext());
+                            /*      int state_position=statelocation.get*/
+                            SharedPref.saveStringInSharedPref(AppConstants.MOBILE_NUMBER, phonenumber.getText().toString(), getContext());
+                            SharedPref.saveStringInSharedPref(AppConstants.USER_CODE, response.body().getPayload().getProfile().get(0).getUser_code(), getContext());
+
+                            SharedPref.saveStringInSharedPref(AppConstants.NAME_SUBUSER, response.body().getPayload().getProfile().get(0).getName(), getContext());
+                            SharedPref.saveStringInSharedPref(AppConstants.DEALER_EMAIL, response.body().getPayload().getProfile().get(0).getEmail(),getContext());
+
+                            name1.setFocusable(false);
+
+                            email.setFocusable(false);
+
+                            btn_edit.setVisibility(View.VISIBLE);
+                            btn_countinue.setVisibility(View.GONE);
+                            textviewprofile.setVisibility(View.GONE);
+                        }
+
+                    } else {
+                        Toast.makeText(getContext(), "Something went wrong!234!", Toast.LENGTH_LONG).show();
+                    }
+
+
+                }
+
+            }
+
+
+            @Override
+            public void onFailure(Call<ProfileDetails_DEALER_MODEL> call, Throwable t) {
+
+
+                Toast.makeText(getContext(), "Something went wrong!", Toast.LENGTH_LONG).show();
+            }
+
+        });
+
+
+    }
+
 }
+

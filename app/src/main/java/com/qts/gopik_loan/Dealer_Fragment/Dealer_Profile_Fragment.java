@@ -365,9 +365,9 @@ public class Dealer_Profile_Fragment extends Fragment implements TextWatcher, Ad
         custPrograssbar.prograssCreate(getContext());
 
         Profile_Update_DEALER_POJO pojo = new Profile_Update_DEALER_POJO
-                (name1.getText().toString(),SharedPref.getStringFromSharedPref(AppConstants.USER_CODE, getActivity()),  email.getText().toString(),
-                        bankname.getText().toString(), accountno.getText().toString(), ifsccode.getText().toString(),
-                branch.getText().toString(), gst.getText().toString());
+                (SharedPref.getStringFromSharedPref(AppConstants.USER_CODE, getActivity()),
+                        name1.getText().toString(),email.getText().toString(),
+                      gst.getText().toString());
         RestApis restApis = NetworkHandler.getRetrofit().create(RestApis.class);
         Call<Profile_Update_DEALER_MODEL> call = restApis.profile_update(pojo);
         call.enqueue(new Callback<Profile_Update_DEALER_MODEL>() {

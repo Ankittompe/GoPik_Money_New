@@ -219,8 +219,8 @@ public class NetworkHandler {
 
             OkHttpClient.Builder builder = new OkHttpClient.Builder();
             builder.sslSocketFactory(sslSocketFactory);
-            builder .readTimeout(150, TimeUnit.SECONDS)
-                    .connectTimeout(150, TimeUnit.SECONDS)
+            builder .readTimeout(250, TimeUnit.SECONDS)
+                    .connectTimeout(250, TimeUnit.SECONDS)
                     .addInterceptor(logging);
 
 

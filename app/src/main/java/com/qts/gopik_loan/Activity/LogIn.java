@@ -31,6 +31,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.location.LocationRequest;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.gson.Gson;
 import com.qts.gopik_loan.Model.Login_actPOJO;
 import com.qts.gopik_loan.Model.Login_act_MODEL;
@@ -45,13 +46,15 @@ import com.qts.gopik_loan.Utils.CustPrograssbar;
 import com.qts.gopik_loan.Utils.GooglePlayStoreAppVersionNameLoader;
 
 
+import java.util.Objects;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LogIn extends AppCompatActivity implements TextWatcher {
 
-    EditText moblog;
+    TextInputEditText moblog,user_name;
     TextView btsend;
     ImageView backarrow;
     String TAG = "loginotp";
@@ -70,7 +73,8 @@ public class LogIn extends AppCompatActivity implements TextWatcher {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
-        moblog = (EditText) findViewById(R.id.moblog);
+        moblog = (TextInputEditText) findViewById(R.id.moblog);
+        user_name = (TextInputEditText) findViewById(R.id.user_name);
         btsend = (TextView) findViewById(R.id.btsend);
         backarrow = (ImageView) findViewById(R.id.arrow);
         relativelogin = (RelativeLayout) findViewById(R.id.relativelogin);
@@ -119,11 +123,15 @@ public class LogIn extends AppCompatActivity implements TextWatcher {
 
     private void checkedValidation() {
 
-        if (moblog.getText().toString().isEmpty()) {
+        if ((user_name.getText()).toString().isEmpty()) {
+
+            Toast.makeText(LogIn.this, "Please Enter Your Name", Toast.LENGTH_SHORT).show();
+
+        }else if (moblog.getText().toString().isEmpty()){
 
             Toast.makeText(LogIn.this, "Please Enter Your Mobile Number", Toast.LENGTH_SHORT).show();
 
-        } else if (!(android.util.Patterns.PHONE.matcher(moblog.getText().toString()).matches())) {
+        }else if (!(android.util.Patterns.PHONE.matcher(moblog.getText().toString()).matches())) {
 
             Toast.makeText(LogIn.this, "Please Enter Valid Mobile Number", Toast.LENGTH_SHORT).show();
 
@@ -185,6 +193,7 @@ public class LogIn extends AppCompatActivity implements TextWatcher {
                     Log.e(TAG, "onResponse: " + new Gson().toJson(response.body()));
 
                     if (response.body().getCode().equals("200")) {
+                        SharedPref.saveStringInSharedPref(AppConstants.NAME_BROKER, user_name.getText().toString(), getApplicationContext());
                         SharedPref.saveStringInSharedPref(AppConstants.MOBILE_NUMBER, moblog.getText().toString(), getApplicationContext());
                         SharedPref.saveStringInSharedPref(AppConstants.PHONENUMBER, moblog.getText().toString(), getApplicationContext());
                         SharedPref.saveStringInSharedPref(AppConstants.OTP, response.body().getOTP(), getApplicationContext());

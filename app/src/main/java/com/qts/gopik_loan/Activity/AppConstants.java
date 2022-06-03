@@ -169,4 +169,7 @@ public interface AppConstants {
     String LOGIN_STATUS = "stta";
     String IMAGE_LOAN_PROFILE = "loanp";
     String FCM_TOKEN = "fcm";
+    String BANK_CHEQUE_IMG = "bank";
+    String SCRATCHID ="scratchid" ;
+    String NAME_BROKER ="nammm" ;
 }

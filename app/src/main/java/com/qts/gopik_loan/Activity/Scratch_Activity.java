@@ -104,7 +104,8 @@ public class Scratch_Activity extends AppCompatActivity implements ScratchListen
 
     private void add_scratchcard() {
         custPrograssbar.prograssCreate(Scratch_Activity.this);
-        Add_scratchcard_POJO pojo = new Add_scratchcard_POJO(SharedPref.getStringFromSharedPref(AppConstants.USER_CODE, getApplicationContext()));
+        Add_scratchcard_POJO pojo = new Add_scratchcard_POJO(SharedPref.getStringFromSharedPref(AppConstants.USER_CODE, getApplicationContext()),
+                SharedPref.getStringFromSharedPref(AppConstants.APPLICATION_NUMBER, getApplicationContext()));
         RestApis restApis = NetworkHandler.getRetrofit().create(RestApis.class);
         Call<Add_scratchcard_MODEL> call = restApis.add_scratchcard(pojo);
         call.enqueue(new Callback<Add_scratchcard_MODEL>() {

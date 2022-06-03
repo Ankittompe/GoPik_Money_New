@@ -9,6 +9,7 @@ import com.qts.gopik_loan.Model.Add_scratchcard_MODEL;
 import com.qts.gopik_loan.Model.Apiget_panid_details_MODEL;
 import com.qts.gopik_loan.Model.Bankacc_verification_MODEL;
 import com.qts.gopik_loan.Model.Banner_list_MODEL;
+import com.qts.gopik_loan.Model.Broker_bank_details_update_MODEL;
 import com.qts.gopik_loan.Model.Broker_profile_details_MODEL;
 import com.qts.gopik_loan.Model.Broker_profile_update_MODEL;
 import com.qts.gopik_loan.Model.Calculation_data_MODEL;
@@ -18,6 +19,7 @@ import com.qts.gopik_loan.Model.Dealer_Subuser_action_MODEL;
 import com.qts.gopik_loan.Model.Dealer_Subuser_edit_MODEL;
 import com.qts.gopik_loan.Model.Dealer_Subuser_fetch_MODEL;
 import com.qts.gopik_loan.Model.Dealer_Subuser_insert_MODEL;
+import com.qts.gopik_loan.Model.Dealer_bank_update_MODEL;
 import com.qts.gopik_loan.Model.Dealer_logout_MODEL;
 import com.qts.gopik_loan.Model.Draftview_MODEL;
 import com.qts.gopik_loan.Model.Fetch_application_list_MODEL;
@@ -97,6 +99,7 @@ import com.qts.gopik_loan.Pojo.Add_scratchcard_POJO;
 import com.qts.gopik_loan.Pojo.Apiget_panid_details_POJO;
 import com.qts.gopik_loan.Pojo.Bankacc_verification_POJO;
 import com.qts.gopik_loan.Pojo.Banner_POJO;
+import com.qts.gopik_loan.Pojo.Broker_bank_details_update_POJO;
 import com.qts.gopik_loan.Pojo.Broker_profile_details_POJO;
 import com.qts.gopik_loan.Pojo.Broker_profile_update_POJO;
 import com.qts.gopik_loan.Pojo.Calculation_data_POJO;
@@ -106,6 +109,7 @@ import com.qts.gopik_loan.Pojo.Dealer_Subuser_action_POJO;
 import com.qts.gopik_loan.Pojo.Dealer_Subuser_edit_POJO;
 import com.qts.gopik_loan.Pojo.Dealer_Subuser_fetch_POJO;
 import com.qts.gopik_loan.Pojo.Dealer_Subuser_insert_POJO;
+import com.qts.gopik_loan.Pojo.Dealer_bank_update_POJO;
 import com.qts.gopik_loan.Pojo.Dealer_logoutPOJO;
 import com.qts.gopik_loan.Pojo.Draftview_POJO;
 import com.qts.gopik_loan.Pojo.Fetch_application_list_POJO;
@@ -161,10 +165,14 @@ import com.qts.gopik_loan.Pojo.Wallet_balance_POJO;
 import com.qts.gopik_loan.Pojo.Wallethistory_POJO;
 import com.qts.gopik_loan.Pojo.bkr_declrtn_POJO;
 
+import java.util.Map;
+
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.FieldMap;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
@@ -582,10 +590,16 @@ public interface RestApis {
     @POST("Resend_verify_mobile_number")
     Call<Resend_verify_mobile_number_MODEL>Resend_verify_mobile_number(@Body Resend_verify_mobile_number_POJO data);
 
+    @POST("broker_bank_details_update")
+    Call<Broker_bank_details_update_MODEL>broker_bank_details_update(@Body Broker_bank_details_update_POJO data);
 
-
-
-
-
+    @Multipart
+    @POST("dealerbank_Details_Update")
+    Call<Dealer_bank_update_MODEL> dealerbank_Details_Update(@Part("user_code") RequestBody user_code,
+                                                      @Part("acc_no") RequestBody acc_no,
+                                                      @Part("acc_holdr_name") RequestBody acc_holdr_name,
+                                                      @Part("ifsc") RequestBody ifsc,
+                                                      @Part("branch")  RequestBody branch,
+                                                      @Part MultipartBody.Part chackimage);
 
 }

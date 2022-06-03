@@ -60,55 +60,31 @@ public class Edit_delaer_Profile extends AppCompatActivity implements TextWatche
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_delaer__profile);
-        branch = (TextView) findViewById(R.id.branch);
+
         btn_countinue = (TextView) findViewById(R.id.btn_countinue);
-        address = (TextView) findViewById(R.id.address);
-        bankname = (TextView) findViewById(R.id.bankname);
-        ifsccode = (EditText) findViewById(R.id.ifsccode);
-        accountno = (EditText) findViewById(R.id.accountno);
+
         email = (EditText) findViewById(R.id.email);
         name1 = (EditText) findViewById(R.id.name1);
         state = (EditText)findViewById(R.id.state);
         gsst= (TextView) findViewById(R.id.gs);
         gst = (EditText) findViewById(R.id.gst);
         textviewprofile= (TextView) findViewById(R.id.textviewprofile);
-        validaccountno = (TextView) findViewById(R.id.validaccountno);
-        SharedPref.saveStringInSharedPref(AppConstants.NOTIFICATIONPOPUP,"3",getApplicationContext());
-        reacc = (LinearLayout) findViewById(R.id.reacc);
-        phonenumber = (TextView) findViewById(R.id.phonenumber);
-        layout = (LinearLayout) findViewById(R.id.layout);
-        reaccountno = (EditText) findViewById(R.id.reaccountno);
-        custPrograssbar = new CustPrograssbar();
-        reaccountno.addTextChangedListener(this);
-        search = (ImageView) findViewById(R.id.search);
-        choose_identity = (Spinner) findViewById(R.id.choose_identity);
-        statetextview = (TextView) findViewById(R.id.statetextview);
-        statespinner = (LinearLayout) findViewById(R.id.statespinner);
-        st = (LinearLayout) findViewById(R.id.st);
-        tt = (TextView) findViewById(R.id.tt);
-        ifsccode.addTextChangedListener(this);
-        btn_edit= (TextView) findViewById(R.id.btn_edit);
-        visible = (ImageView) findViewById(R.id.eye);
-        phonenumber.setText(SharedPref.getStringFromSharedPref(AppConstants.MOBILE_NUMBER, getApplicationContext()));
-        statetextview.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                statespinner.setVisibility(View.VISIBLE);
 
-                return true;
-            }
-        });
-        search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                acc = ifsccode.getText().toString();
-                account(acc);
-            }
-        });
+        SharedPref.saveStringInSharedPref(AppConstants.NOTIFICATIONPOPUP,"3",getApplicationContext());
+
+        phonenumber = (TextView) findViewById(R.id.phonenumber);
+
+        custPrograssbar = new CustPrograssbar();
+
+        btn_edit= (TextView) findViewById(R.id.btn_edit);
+
+        phonenumber.setText(SharedPref.getStringFromSharedPref(AppConstants.MOBILE_NUMBER, getApplicationContext()));
+
+
         btn_countinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                statespinner.setVisibility(View.GONE);
+
 
                 profile_update();
             }
@@ -139,58 +115,11 @@ public class Edit_delaer_Profile extends AppCompatActivity implements TextWatche
             }
         });
 
-        visible.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-
-
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    Log.e("hhghghhuu", "apppppppkkkkkk");
-                    accountno.setTransformationMethod(null);
-                } else {
-                    Log.e("hhghghhuu", "apppppppkkkkkkgg");
-                    accountno.setTransformationMethod(new PasswordTransformationMethod());
-                }
-
-                return true;
-            }
-
-        });
 
 
 
-        //spinner1
-        ArrayAdapter ad
-                = new ArrayAdapter(
-                getApplicationContext(),
-                android.R.layout.simple_spinner_item,
-                statelocation);
 
-        ad.setDropDownViewResource(
-                android.R.layout
-                        .simple_spinner_dropdown_item);
 
-        choose_identity.setAdapter(ad);
-        choose_identity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                int index = choose_identity.getSelectedItemPosition();
-
-                SharedPref.saveStringInSharedPref(AppConstants.STATE_SPINNER, statelocation[index], getApplicationContext());
-                /*       SharedPref.saveStringInSharedPref(AppConstants.STATE_SPINNER_ITEM,statelocation,getContext());*/
-                Log.e("hhghghhuu", "bfvn" + SharedPref.getStringFromSharedPref(AppConstants.STATE_SPINNER, getApplicationContext()));
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
-        if (x == 1) {
-            statespinner.setVisibility(View.GONE);
-        }
         profile_details();
 
         return ;
@@ -217,23 +146,15 @@ public class Edit_delaer_Profile extends AppCompatActivity implements TextWatche
                             email.setText(response.body().getPayload().getProfile().get(0).getEmail());
                             Log.e("hhghghhuu", "bfvn");
 
-                            address.setText(response.body().getPayload().getProfile().get(0).getAddress());
-                            bankname.setText(response.body().getPayload().getProfile().get(0).getBank_name());
-                            accountno.setText(response.body().getPayload().getProfile().get(0).getAcc_no());
-                            ifsccode.setText(response.body().getPayload().getProfile().get(0).getIfsc());
-                            branch.setText(response.body().getPayload().getProfile().get(0).getBranch());
                             gst.setText(response.body().getPayload().getProfile().get(0).getGst_no());
-                            statetextview.setText(response.body().getPayload().getProfile().get(0).getUserstate());
-                            layout.setVisibility(View.VISIBLE);
 
-                            String state_index = SharedPref.getStringFromSharedPref(AppConstants.STATE_SPINNER, getApplicationContext());
-                            /*      int state_position=statelocation.get*/
+
                             SharedPref.saveStringInSharedPref(AppConstants.MOBILE_NUMBER, phonenumber.getText().toString(), getApplicationContext());
                             SharedPref.saveStringInSharedPref(AppConstants.USER_CODE, response.body().getPayload().getProfile().get(0).getUser_code(), getApplicationContext());
 
                             SharedPref.saveStringInSharedPref(AppConstants.NAME_SUBUSER, response.body().getPayload().getProfile().get(0).getName(), getApplicationContext());
                             SharedPref.saveStringInSharedPref(AppConstants.DEALER_EMAIL, response.body().getPayload().getProfile().get(0).getEmail(),getApplicationContext());
-                            search.setVisibility(View.GONE);
+
 
 
                             textviewprofile.setVisibility(View.GONE);
@@ -268,85 +189,22 @@ public class Edit_delaer_Profile extends AppCompatActivity implements TextWatche
 
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-        validaccountno.setVisibility(View.VISIBLE);
+
     }
 
     @Override
     public void afterTextChanged(Editable editable) {
-        Log.e("hhghghhuu", "bfvn" + accountno.getText().toString().length());
 
-        String account = accountno.getText().toString();
-        String reaccount = reaccountno.getText().toString();
-        if (account.equals(reaccount)) {
-            validaccountno.setVisibility(View.GONE);
-            layout.setVisibility(View.VISIBLE);
-            ifsccode.setText("");
-            search.setVisibility(View.VISIBLE);
-            address.setText("");
-            bankname.setText("");
-            branch.setText("");
-        }
-        if (accountno.length() == 0) {
-            validaccountno.setVisibility(View.GONE);
-            layout.setVisibility(View.GONE);
-        }
-        if (reaccount.length() == 0) {
-            validaccountno.setVisibility(View.GONE);
-            layout.setVisibility(View.GONE);
-
-        }
-        if(ifsccode.getText().toString().length()==0){
-            ifsccode.setError("Please enter valid IFSC code");
-            address.setText("");
-            branch.setText("");
-            bankname.setText("");
-        }
-
-    }
-    private void account(String acc) {
-        custPrograssbar.prograssCreate(getApplicationContext());
-        Log.e("ankit", "akit" + acc);
-        RestApis restApis = NetworkHandler.instanceMaker3().create(RestApis.class);
-        Call<ACCOUNT_NO_MODEL> call = restApis.account(acc);
-        call.enqueue(new Callback<ACCOUNT_NO_MODEL>() {
-            @Override
-            public void onResponse(Call<ACCOUNT_NO_MODEL> call, Response<ACCOUNT_NO_MODEL> response) {
-                if (response.body() != null) {
-                    custPrograssbar.closePrograssBar();
-
-
-                    address.setText(response.body().getADDRESS());
-                    branch.setText(response.body().getBRANCH());
-
-                    bankname.setText(response.body().getBANK());
-
-
-                } else {
-                    custPrograssbar.closePrograssBar();
-
-                    ifsccode.setError("Please enter valid IFSC code");
-                }
-                custPrograssbar.closePrograssBar();
-
-            }
-
-            @Override
-            public void onFailure(Call<ACCOUNT_NO_MODEL> call, Throwable t) {
-
-
-                Toast.makeText(getApplicationContext(), "Something went wrong!", Toast.LENGTH_LONG).show();
-            }
-
-        });
     }
 
     private void profile_update() {
         custPrograssbar.prograssCreate(getApplicationContext());
 
         Profile_Update_DEALER_POJO pojo = new Profile_Update_DEALER_POJO
-                (name1.getText().toString(),SharedPref.getStringFromSharedPref(AppConstants.USER_CODE, getApplicationContext()),  email.getText().toString(),
-                        bankname.getText().toString(), accountno.getText().toString(), ifsccode.getText().toString(),
-                        branch.getText().toString(), gst.getText().toString());
+                (SharedPref.getStringFromSharedPref(AppConstants.USER_CODE, getApplicationContext()),
+                        name1.getText().toString(),
+                        email.getText().toString(),
+                      gst.getText().toString());
         RestApis restApis = NetworkHandler.getRetrofit().create(RestApis.class);
         Call<Profile_Update_DEALER_MODEL> call = restApis.profile_update(pojo);
         call.enqueue(new Callback<Profile_Update_DEALER_MODEL>() {
@@ -365,7 +223,7 @@ public class Edit_delaer_Profile extends AppCompatActivity implements TextWatche
 
 
                     } else {
-                        Toast.makeText(getApplicationContext(), "Something went wrong!234!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Something went wrong!!!", Toast.LENGTH_LONG).show();
                     }
 
 
