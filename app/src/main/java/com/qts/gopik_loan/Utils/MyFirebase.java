@@ -52,11 +52,16 @@ public class MyFirebase extends FirebaseMessagingService{
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         Log.d(TAG, "From: " + remoteMessage.getFrom());
-        if (mRemoteMessage.getData().size() > 0) {
+        if(!remoteMessage.getData().isEmpty()){
+            Log.e(TAG,"message"+remoteMessage.getData());
+            sendNotification(remoteMessage.getData().get("body".toString()));
+        }
+      /*  sendNotification(mRemoteMessage.getNotification().getBody());*/
+      /*  if (mRemoteMessage.getData().size() > 0) {
         Log.d(TAG, "Message data payload: " + mRemoteMessage.getData());
-        sendNotification(mRemoteMessage.getNotification().getBody());
 
-        if (/* Check if data needs to be processed by long running job */ true) {
+
+        if (*//* Check if data needs to be processed by long running job *//* true) {
             // For long-running tasks (10 seconds or more) use WorkManager.
             scheduleJob();
         } else {
@@ -65,12 +70,13 @@ public class MyFirebase extends FirebaseMessagingService{
         }
 
     }
-
+*/
     // Check if message contains a notification payload.
-        if (mRemoteMessage.getNotification() != null) {
-        Log.e(TAG, "Message Notification Body: " + mRemoteMessage.getNotification().getBody());
-        sendNotification(mRemoteMessage.getNotification().getBody());
+        if (remoteMessage.getNotification() != null) {
+        Log.e(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
+        sendNotification(remoteMessage.getNotification().getBody());
     }
+
 }
     @Override
     public void onNewToken(String token) {

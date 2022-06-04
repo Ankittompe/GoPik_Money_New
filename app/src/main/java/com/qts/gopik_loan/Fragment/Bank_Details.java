@@ -217,7 +217,8 @@ public class Bank_Details extends Fragment implements TextWatcher, AdapterView.O
                             Log.e("hhghghhuu", "bfvn");
                             SharedPref.saveStringInSharedPref(AppConstants.CONTEST_NAME, response.body().getPayload().getProfile().get(0).getBroker_name(), getContext());
                             reaccountno.setVisibility(View.GONE);
-
+                            btn_edit.setVisibility(View.VISIBLE);
+                            btn_countinue.setVisibility(View.GONE);
 
                         }
 

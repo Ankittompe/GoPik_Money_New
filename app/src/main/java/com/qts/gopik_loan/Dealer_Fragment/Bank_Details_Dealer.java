@@ -59,9 +59,11 @@ import com.qts.gopik_loan.Dealer_Activity.Voter_ID_CARD_Details;
 import com.qts.gopik_loan.Model.Bankacc_verification_MODEL;
 import com.qts.gopik_loan.Model.Broker_bank_details_update_MODEL;
 import com.qts.gopik_loan.Model.Dealer_bank_update_MODEL;
+import com.qts.gopik_loan.Model.ProfileDetails_DEALER_MODEL;
 import com.qts.gopik_loan.Model.Store_Bank_Document_Details_MODEL;
 import com.qts.gopik_loan.Pojo.Bankacc_verification_POJO;
 import com.qts.gopik_loan.Pojo.Broker_bank_details_update_POJO;
+import com.qts.gopik_loan.Pojo.ProfileDetails_DEALER_POJO;
 import com.qts.gopik_loan.R;
 import com.qts.gopik_loan.Retro.NetworkHandler;
 import com.qts.gopik_loan.Retro.RestApis;
@@ -214,6 +216,7 @@ public class Bank_Details_Dealer extends Fragment implements TextWatcher, Adapte
         if (!checkPermission_version()) {
             requestPermission();
         }
+        profile_details();
         return view;
     }
 
@@ -291,7 +294,7 @@ public class Bank_Details_Dealer extends Fragment implements TextWatcher, Adapte
             Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
 
 
-            if (z== 1) {
+            if (z == 1) {
 
                 checkimg.setImageBitmap(thumbnail);
                 saveImage(thumbnail);
@@ -381,6 +384,61 @@ public class Bank_Details_Dealer extends Fragment implements TextWatcher, Adapte
             bankacc_verification();
 
         }
+
+    }
+
+    private void profile_details() {
+        custPrograssbar.prograssCreate(getContext());
+        ProfileDetails_DEALER_POJO pojo = new ProfileDetails_DEALER_POJO(SharedPref.getStringFromSharedPref(AppConstants.PHONENUMBER, getActivity()), SharedPref.getStringFromSharedPref(AppConstants.TOKEN, getActivity()));
+        RestApis restApis = NetworkHandler.getRetrofit().create(RestApis.class);
+        Call<ProfileDetails_DEALER_MODEL> call = restApis.profile_details(pojo);
+        call.enqueue(new Callback<ProfileDetails_DEALER_MODEL>() {
+            @Override
+            public void onResponse(Call<ProfileDetails_DEALER_MODEL> call, Response<ProfileDetails_DEALER_MODEL> response) {
+                if (response.body() != null) {
+
+
+                    if (response.body().getCode() == 200) {
+                        SharedPref.saveStringInSharedPref(AppConstants.USER_CODE, response.body().getPayload().getProfile().get(0).getUser_code(), getContext());
+                        if ((response.body().getPayload().getProfile().get(0).getAcc_holder().equals("NA"))) {
+                            custPrograssbar.closePrograssBar();
+                        } else {
+                            custPrograssbar.closePrograssBar();
+                            accountholdername.setText(response.body().getPayload().getProfile().get(0).getAcc_holder());
+                            accountno.setText(response.body().getPayload().getProfile().get(0).getAcc_no());
+                            branch.setText(response.body().getPayload().getProfile().get(0).getBranch());
+                            ifsccode.setText(response.body().getPayload().getProfile().get(0).getIfsc());
+                            Log.e("hhghghhuu", "bfvn");
+
+                            reacc.setVisibility(View.GONE);
+
+                            SharedPref.saveStringInSharedPref(AppConstants.USER_CODE, response.body().getPayload().getProfile().get(0).getUser_code(), getContext());
+
+
+                            btn_edit.setVisibility(View.VISIBLE);
+                            btn_countinue.setVisibility(View.GONE);
+
+                        }
+
+                    } else {
+                        Toast.makeText(getContext(), "Something went wrong!234!", Toast.LENGTH_LONG).show();
+                    }
+
+
+                }
+
+            }
+
+
+            @Override
+            public void onFailure(Call<ProfileDetails_DEALER_MODEL> call, Throwable t) {
+
+
+                Toast.makeText(getContext(), "Something went wrong!", Toast.LENGTH_LONG).show();
+            }
+
+        });
+
 
     }
 
@@ -561,7 +619,6 @@ public class Bank_Details_Dealer extends Fragment implements TextWatcher, Adapte
                 if (response.body() != null) {
 
 
-
                     Intent it = new Intent(getContext(), MainActivity.class);
                     startActivity(it);
                 }
@@ -580,6 +637,7 @@ public class Bank_Details_Dealer extends Fragment implements TextWatcher, Adapte
         });
 
     }
+
     private void requestMultiplePermissions() {
 
 
@@ -676,14 +734,14 @@ public class Bank_Details_Dealer extends Fragment implements TextWatcher, Adapte
     }
 
     private boolean checkPermission_version() {
-        Log.e("jcdbc","ccnds");
+        Log.e("jcdbc", "ccnds");
         int read_external_storage_permission = ContextCompat.checkSelfPermission(getContext(), READ_EXTERNAL_STORAGE);
         int write_external_storage_permission = ContextCompat.checkSelfPermission(getContext(), WRITE_EXTERNAL_STORAGE);
         int camera_permission = ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CAMERA);
 
         String[] PERMISSIONS = {android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
         if (Build.VERSION.SDK_INT >= 23) {
-            Log.e("jcdbc","hfthth");
+            Log.e("jcdbc", "hfthth");
             if (!hasPermissions(getContext(), PERMISSIONS)) {
                 ActivityCompat.requestPermissions(getActivity(), new String[]{WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
             }
@@ -694,6 +752,7 @@ public class Bank_Details_Dealer extends Fragment implements TextWatcher, Adapte
                 && write_external_storage_permission == PackageManager.PERMISSION_GRANTED
                 && camera_permission == PackageManager.PERMISSION_GRANTED;
     }
+
     private static boolean hasPermissions(Context context, String... permissions) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && context != null && permissions != null) {
             for (String permission : permissions) {
