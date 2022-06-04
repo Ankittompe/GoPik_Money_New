@@ -220,7 +220,8 @@ public class ResendOTPVerify extends AppCompatActivity  implements TextWatcher {
 
     private void send_login_otp() {
         custPrograssbar.prograssCreate(ResendOTPVerify.this);
-        LoginsendOtpPOJO pojo = new LoginsendOtpPOJO(SharedPref.getStringFromSharedPref(AppConstants.MOBILE_NUMBER, getApplicationContext()));
+        LoginsendOtpPOJO pojo = new LoginsendOtpPOJO(   SharedPref.getStringFromSharedPref(AppConstants.NAME_BROKER, getApplicationContext()),
+                SharedPref.getStringFromSharedPref(AppConstants.MOBILE_NUMBER, getApplicationContext()));
         RestApis restApis = NetworkHandler.getRetrofit().create(RestApis.class);
         Call<LoginsendOtpMODEL> call = restApis.send_login_otp(pojo);
         call.enqueue(new Callback<LoginsendOtpMODEL>() {
