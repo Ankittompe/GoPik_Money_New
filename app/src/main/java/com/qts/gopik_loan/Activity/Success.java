@@ -12,8 +12,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.qts.gopik_loan.Model.Send_MLData_to_ICICI_MODEL;
 import com.qts.gopik_loan.Model.Send_otp_for_loan_MODEL;
 import com.qts.gopik_loan.Model.Submit_loan_application_MODEL;
+import com.qts.gopik_loan.Pojo.Send_MLData_to_ICICI_POJO;
 import com.qts.gopik_loan.Pojo.Send_otp_for_loan_POJO;
 import com.qts.gopik_loan.Pojo.Submit_loan_application_POJO;
 import com.qts.gopik_loan.R;
@@ -86,6 +88,8 @@ TextView btn_proceed,applicationnumber,applicationstatus;
                         SharedPref.saveStringInSharedPref(AppConstants.APPLICATION_STATUS,response.body().getPayload().getApplication_status() , getApplicationContext());
                         applicationnumber.setText(response.body().getPayload().getApplication_number());
                         applicationstatus.setText(response.body().getPayload().getApplication_status());
+                        Send_MLData_to_ICICI();
+
                     } else {
                         Toast.makeText(getApplicationContext(), "Something went wrong!!", Toast.LENGTH_LONG).show();
                     }
@@ -103,4 +107,36 @@ TextView btn_proceed,applicationnumber,applicationstatus;
 
         });
     }
+    private void Send_MLData_to_ICICI() {
+        custPrograssbar.prograssCreate(Success.this);
+        Send_MLData_to_ICICI_POJO pojo = new Send_MLData_to_ICICI_POJO(SharedPref.getStringFromSharedPref(AppConstants.USER_CODE,getApplicationContext()),
+                SharedPref.getStringFromSharedPref(AppConstants.CUTOMER_CODE_HOME_LOAN,getApplicationContext()));
+        RestApis restApis = NetworkHandler.getRetrofit().create(RestApis.class);
+        Call<Send_MLData_to_ICICI_MODEL> call = restApis.Send_MLData_to_ICICI(pojo);
+        call.enqueue(new Callback<Send_MLData_to_ICICI_MODEL>() {
+            @Override
+            public void onResponse(Call<Send_MLData_to_ICICI_MODEL> call, Response<Send_MLData_to_ICICI_MODEL> response) {
+                if (response.body() != null) {
+
+
+                    if (response.body().getCode()==200) {
+                        custPrograssbar.closePrograssBar();
+
+
+                    }
+
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Send_MLData_to_ICICI_MODEL> call, Throwable t) {
+
+
+                Toast.makeText(getApplicationContext(), "Something went wrong!", Toast.LENGTH_LONG).show();
+            }
+
+        });
+    }
+
 }

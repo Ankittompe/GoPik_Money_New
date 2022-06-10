@@ -127,25 +127,21 @@ public class Bank_Details extends Fragment implements TextWatcher, AdapterView.O
 
         policy_button = (TextView) view.findViewById(R.id.policy_button2);
 
-
         policy_button.setLinkTextColor(Color.BLACK);
         policy_button.setMovementMethod(LinkMovementMethod.getInstance());
         visible.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-
-
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                Log.e("hhghghhuu", "apppppppkkkkkk");
+                if(event.getAction() == MotionEvent.ACTION_DOWN) {
                     Log.e("hhghghhuu", "apppppppkkkkkk");
                     accountno.setTransformationMethod(null);
-                } else {
-                    Log.e("hhghghhuu", "apppppppkkkkkkgg");
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    Log.e("hhghghhuu", "apppppppkkkkkk");
                     accountno.setTransformationMethod(new PasswordTransformationMethod());
                 }
-
                 return true;
             }
-
         });
         btn_countinue.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -219,6 +215,11 @@ public class Bank_Details extends Fragment implements TextWatcher, AdapterView.O
                             reaccountno.setVisibility(View.GONE);
                             btn_edit.setVisibility(View.VISIBLE);
                             btn_countinue.setVisibility(View.GONE);
+                            accountno.setFocusable(false);
+                            accountholdername.setFocusable(false);
+                            reacc.setVisibility(View.GONE);
+                            ifsccode.setFocusable(false);
+                            branch.setFocusable(false);
 
                         }
 

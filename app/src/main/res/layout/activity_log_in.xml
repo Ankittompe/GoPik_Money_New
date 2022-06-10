@@ -51,6 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:visibility="gone"
             android:textColorHint="@color/colorGrey">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -58,6 +59,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Enter your full name"
+                android:visibility="gone"
                 android:inputType="textCapWords"
                 android:textColor="@color/colorPrimary" />
         </com.google.android.material.textfield.TextInputLayout>
