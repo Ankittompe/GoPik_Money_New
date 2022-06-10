@@ -6,6 +6,7 @@ import static android.os.Build.VERSION.SDK_INT;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -51,6 +52,7 @@ import com.qts.gopik_loan.Activity.Home;
 import com.qts.gopik_loan.Activity.KYC_Details;
 import com.qts.gopik_loan.Activity.SharedPref;
 import com.qts.gopik_loan.Dealer_Activity.MainActivity;
+import com.qts.gopik_loan.Dealer_Activity.Voter_ID_CARD_Details;
 import com.qts.gopik_loan.Model.Broker_profile_details_MODEL;
 import com.qts.gopik_loan.Model.Broker_profile_update_MODEL;
 import com.qts.gopik_loan.Model.Profile_Update_DEALER_MODEL;
@@ -81,17 +83,17 @@ import retrofit2.Response;
 public class Profile_Details extends Fragment implements AdapterView.OnItemSelectedListener {
 
     private final int PERMISSION_REQUEST_CODE = 1000;
-
+    private Context mContext = getActivity();
     private static final String IMAGE_DIRECTORY = "/gopikmoney";
     private int GALLERY = 1, CAMERA = 2;
     private static final int RESULT_OK = 123;
-    EditText ifsccode, accountno, email, name1, reaccountno, state,accountholdername;
+    EditText ifsccode, accountno, email, name1, reaccountno, state, accountholdername;
     String acc;
     Integer x = 0;
-    int z=0,y=0;
+    int z = 0, y = 0;
     LinearLayout layout, reacc, st;
     ImageView search;
-    TextView bankname,     policy_button, tt, phonenumber, address, branch, btn_countinue, statetextview, validaccountno, btn_edit, textviewprofile;
+    TextView bankname, policy_button, tt, phonenumber, address, branch, btn_countinue, statetextview, validaccountno, btn_edit, textviewprofile;
     CustPrograssbar custPrograssbar;
     LinearLayout statespinner;
     Spinner choose_identity;
@@ -151,13 +153,12 @@ public class Profile_Details extends Fragment implements AdapterView.OnItemSelec
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_profile__details, container, false);
+        View view = inflater.inflate(R.layout.fragment_profile__details, container, false);
 
 
         btn_countinue = (TextView) view.findViewById(R.id.btn_countinue);
 
         policy_button = (TextView) view.findViewById(R.id.policy_button2);
-
 
 
         policy_button.setMovementMethod(LinkMovementMethod.getInstance());
@@ -166,7 +167,7 @@ public class Profile_Details extends Fragment implements AdapterView.OnItemSelec
         policy_button.setLinkTextColor(Color.BLACK);
         email = (EditText) view.findViewById(R.id.email);
         name1 = (EditText) view.findViewById(R.id.name1);
-        pr= (CircleImageView) view.findViewById(R.id.pr);
+        pr = (CircleImageView) view.findViewById(R.id.pr);
         phonenumber = (TextView) view.findViewById(R.id.phonenumber);
         layout = (LinearLayout) view.findViewById(R.id.layout);
         btn_edit = (TextView) view.findViewById(R.id.btn_edit);
@@ -182,11 +183,9 @@ public class Profile_Details extends Fragment implements AdapterView.OnItemSelec
         tt = (TextView) view.findViewById(R.id.tt);
 
         visible = (ImageView) view.findViewById(R.id.eye);
-          requestMultiplePermissions();
+        requestMultiplePermissions();
         /*  requestMultiplePermissions();*/
-       if (!checkPermission()) {
-            requestPermission();
-        }
+
         btn_countinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -199,9 +198,17 @@ public class Profile_Details extends Fragment implements AdapterView.OnItemSelec
         pr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showPictureDialog();
-                   z=1;
-                    y=1;
+                if (!checkPermission()) {
+                    requestPermission();
+                }
+                if (!checkPermission_version()) {
+                    requestPermission();
+                } else {
+                    showPictureDialog();
+                    z = 1;
+                    y = 1;
+                }
+
             }
         });
         btn_edit.setOnClickListener(new View.OnClickListener() {
@@ -261,19 +268,20 @@ public class Profile_Details extends Fragment implements AdapterView.OnItemSelec
     }
 
     private void signupvalidation() {
-       if (email.getText().toString().isEmpty()) {
+        if (email.getText().toString().isEmpty()) {
 
             email.setError("Please Enter Valid Customer Name");
 
         } else if (!email.getText().toString().matches(emailPattern)) {
             email.setError("Please Enter Valid Customer Email Address");
-        }   else {
+        } else {
             statespinner.setVisibility(View.GONE);
             broker_profile_update();
 
         }
 
     }
+
     private void broker_profile_details() {
         custPrograssbar.prograssCreate(getContext());
         Broker_profile_details_POJO pojo = new Broker_profile_details_POJO(SharedPref.getStringFromSharedPref(
@@ -289,14 +297,14 @@ public class Profile_Details extends Fragment implements AdapterView.OnItemSelec
 
                     if (response.body().getCode().equals("200")) {
                         SharedPref.saveStringInSharedPref(AppConstants.USER_CODE, response.body().getPayload().getProfile().get(0).getBroker_code(), getContext());
-                        if ((response.body().getPayload().getProfile().get(0).getBroker_email().equals("NA"))) {
+                        if ((response.body().getPayload().getProfile().get(0).getBroker_name().equals("NA"))) {
                             custPrograssbar.closePrograssBar();
                         } else {
                             custPrograssbar.closePrograssBar();
                             email.setText(response.body().getPayload().getProfile().get(0).getBroker_email());
                             Log.e("hhghghhuu", "bfvn");
-                            SharedPref.saveStringInSharedPref(AppConstants.CONTEST_NAME,response.body().getPayload().getProfile().get(0).getBroker_name(),getContext());
-
+                            SharedPref.saveStringInSharedPref(AppConstants.CONTEST_NAME, response.body().getPayload().getProfile().get(0).getBroker_name(), getContext());
+                            name1.setText(response.body().getPayload().getProfile().get(0).getBroker_name());
 
                             statetextview.setText(response.body().getPayload().getProfile().get(0).getBroker_state());
 
@@ -306,8 +314,9 @@ public class Profile_Details extends Fragment implements AdapterView.OnItemSelec
                             name1.setFocusable(false);
                             email.setFocusable(false);
                             statetextview.setFocusable(false);
-
-
+                            statetextview.setClickable(false);
+                            statespinner.setFocusable(false);
+                            statespinner.setVisibility(View.GONE);
                             btn_edit.setVisibility(View.VISIBLE);
                             btn_countinue.setVisibility(View.GONE);
                             textviewprofile.setVisibility(View.GONE);
@@ -330,13 +339,14 @@ public class Profile_Details extends Fragment implements AdapterView.OnItemSelec
 
         });
     }
+
     private void broker_profile_update() {
         custPrograssbar.prograssCreate(getContext());
 
         Broker_profile_update_POJO pojo = new Broker_profile_update_POJO
                 (SharedPref.getStringFromSharedPref(AppConstants.USER_CODE, getActivity()),
                         name1.getText().toString(),
-                        SharedPref.getStringFromSharedPref(AppConstants.STATE_SPINNER,getContext()),
+                        SharedPref.getStringFromSharedPref(AppConstants.STATE_SPINNER, getContext()),
                         email.getText().toString());
         RestApis restApis = NetworkHandler.getRetrofit().create(RestApis.class);
         Call<Broker_profile_update_MODEL> call = restApis.broker_profile_update(pojo);
@@ -528,7 +538,7 @@ public class Profile_Details extends Fragment implements AdapterView.OnItemSelec
             }*/
             try {
                 Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                        Uri.fromParts("package",getActivity().getPackageName(), null));
+                        Uri.fromParts("package", getActivity().getPackageName(), null));
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 startActivityForResult(intent, PERMISSION_REQUEST_CODE);
@@ -595,4 +605,36 @@ public class Profile_Details extends Fragment implements AdapterView.OnItemSelec
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
+    private boolean checkPermission_version() {
+        Log.e("jcdbc", "ccnds");
+        int read_external_storage_permission = ContextCompat.checkSelfPermission(getActivity(), READ_EXTERNAL_STORAGE);
+        int write_external_storage_permission = ContextCompat.checkSelfPermission(getActivity(), WRITE_EXTERNAL_STORAGE);
+        int camera_permission = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA);
+
+        String[] PERMISSIONS = {android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        if (Build.VERSION.SDK_INT >= 23) {
+            Log.e("jcdbc", "hfthth");
+            if (!hasPermissions(mContext, PERMISSIONS)) {
+                ActivityCompat.requestPermissions(getActivity(), new String[]{WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
+            }
+
+
+        }
+        return read_external_storage_permission == PackageManager.PERMISSION_GRANTED
+                && write_external_storage_permission == PackageManager.PERMISSION_GRANTED
+                && camera_permission == PackageManager.PERMISSION_GRANTED;
+    }
+
+    private static boolean hasPermissions(Context context, String... permissions) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && context != null && permissions != null) {
+            for (String permission : permissions) {
+                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
 }

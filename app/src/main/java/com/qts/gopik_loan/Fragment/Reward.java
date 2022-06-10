@@ -163,6 +163,11 @@ public class Reward extends Fragment {
                         }
 
                     }
+                    else{
+                        status_massage.setVisibility(View.VISIBLE);
+                        status_massage.setText("Book more loans for more rewards...");
+
+                    }
                 }
 
 

@@ -6,6 +6,7 @@ import static android.os.Build.VERSION.SDK_INT;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -50,6 +51,7 @@ import com.qts.gopik_loan.Activity.AppConstants;
 import com.qts.gopik_loan.Activity.SharedPref;
 import com.qts.gopik_loan.Dealer_Activity.Edit_delaer_Profile;
 import com.qts.gopik_loan.Dealer_Activity.MainActivity;
+import com.qts.gopik_loan.Dealer_Activity.Voter_ID_CARD_Details;
 import com.qts.gopik_loan.Model.ProfileDetails_DEALER_MODEL;
 import com.qts.gopik_loan.Model.Profile_Update_DEALER_MODEL;
 import com.qts.gopik_loan.Pojo.ProfileDetails_DEALER_POJO;
@@ -77,6 +79,7 @@ import retrofit2.Response;
  */
 public class Profile_Details_Dealer extends Fragment implements AdapterView.OnItemSelectedListener {
     private final int PERMISSION_REQUEST_CODE = 1000;
+    private Context mContext = getActivity();
 
     private static final String IMAGE_DIRECTORY = "/gopikmoney";
     private int GALLERY = 1, CAMERA = 2;
@@ -170,9 +173,7 @@ public class Profile_Details_Dealer extends Fragment implements AdapterView.OnIt
         visible = (ImageView) view.findViewById(R.id.eye);
         requestMultiplePermissions();
         /*  requestMultiplePermissions();*/
-        if (!checkPermission()) {
-            requestPermission();
-        }
+
         btn_countinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -185,13 +186,21 @@ public class Profile_Details_Dealer extends Fragment implements AdapterView.OnIt
         pr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showPictureDialog();
-                z = 1;
-                y = 1;
+                if (!checkPermission()) {
+                    requestPermission();
+                }
+                if (!checkPermission_version()) {
+                    requestPermission();
+                }
+                else{
+                    showPictureDialog();
+                    z=1;
+                    y=1;
+                }
             }
         });
 
-        phonenumber.setText(SharedPref.getStringFromSharedPref(AppConstants.MOBILE_NUMBER, getContext()));
+        phonenumber.setText(SharedPref.getStringFromSharedPref(AppConstants.DEALER_MOBILE_NUMBER, getContext()));
         profile_details();
         btn_edit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -502,12 +511,13 @@ public class Profile_Details_Dealer extends Fragment implements AdapterView.OnIt
 
 
                     if (response.body().getCode()==200) {
+                        name1.setText(response.body().getPayload().getProfile().get(0).getName());
                         SharedPref.saveStringInSharedPref(AppConstants.USER_CODE, response.body().getPayload().getProfile().get(0).getUser_code(), getContext());
                         if ((response.body().getPayload().getProfile().get(0).getGst_no().equals("NA"))) {
                             custPrograssbar.closePrograssBar();
                         } else {
                             custPrograssbar.closePrograssBar();
-                            name1.setText(response.body().getPayload().getProfile().get(0).getName());
+
                             email.setText(response.body().getPayload().getProfile().get(0).getEmail());
                             Log.e("hhghghhuu", "bfvn");
 
@@ -554,6 +564,37 @@ public class Profile_Details_Dealer extends Fragment implements AdapterView.OnIt
 
 
     }
+
+    private boolean checkPermission_version() {
+        Log.e("jcdbc","ccnds");
+        int read_external_storage_permission = ContextCompat.checkSelfPermission(getActivity(), READ_EXTERNAL_STORAGE);
+        int write_external_storage_permission = ContextCompat.checkSelfPermission(getActivity(), WRITE_EXTERNAL_STORAGE);
+        int camera_permission = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA);
+
+        String[] PERMISSIONS = {android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        if (Build.VERSION.SDK_INT >= 23) {
+            Log.e("jcdbc","hfthth");
+            if (!hasPermissions(mContext, PERMISSIONS)) {
+                ActivityCompat.requestPermissions(getActivity(), new String[]{WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
+            }
+
+
+        }
+        return read_external_storage_permission == PackageManager.PERMISSION_GRANTED
+                && write_external_storage_permission == PackageManager.PERMISSION_GRANTED
+                && camera_permission == PackageManager.PERMISSION_GRANTED;
+    }
+    private static boolean hasPermissions(Context context, String... permissions) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && context != null && permissions != null) {
+            for (String permission : permissions) {
+                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
 
 }
 
