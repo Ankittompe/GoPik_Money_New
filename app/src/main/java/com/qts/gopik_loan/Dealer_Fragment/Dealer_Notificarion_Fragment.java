@@ -114,7 +114,7 @@ public class Dealer_Notificarion_Fragment extends Fragment {
                         }
                     } else {
 
-                            Toast.makeText(getContext(), "No notification!!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "No notification!!", Toast.LENGTH_SHORT).show();
 
 
                     }

@@ -123,11 +123,7 @@ public class LogIn extends AppCompatActivity implements TextWatcher {
 
     private void checkedValidation() {
 
-        if ((user_name.getText()).toString().isEmpty()) {
-
-            Toast.makeText(LogIn.this, "Please Enter Your Full Name", Toast.LENGTH_SHORT).show();
-
-        }else if (moblog.getText().toString().isEmpty()){
+      if (moblog.getText().toString().isEmpty()){
 
             Toast.makeText(LogIn.this, "Please Enter Your Mobile Number", Toast.LENGTH_SHORT).show();
 
@@ -162,11 +158,7 @@ public class LogIn extends AppCompatActivity implements TextWatcher {
             Toast.makeText(LogIn.this, "Please Enter Your Mobile Number", Toast.LENGTH_SHORT).show();
 
         }
-       else if ((user_name.getText()).toString().isEmpty()) {
-
-            Toast.makeText(LogIn.this, "Please Enter Your Full Name", Toast.LENGTH_SHORT).show();
-
-        }else if (!(android.util.Patterns.PHONE.matcher(moblog.getText().toString()).matches())) {
+     else if (!(android.util.Patterns.PHONE.matcher(moblog.getText().toString()).matches())) {
 
             Toast.makeText(LogIn.this, "Please Enter Valid Mobile Number", Toast.LENGTH_SHORT).show();
 
@@ -188,7 +180,7 @@ public class LogIn extends AppCompatActivity implements TextWatcher {
 
     private void send_login_otp() {
         custPrograssbar.prograssCreate(LogIn.this);
-        LoginsendOtpPOJO pojo = new LoginsendOtpPOJO(user_name.getText().toString(),moblog.getText().toString());
+        LoginsendOtpPOJO pojo = new LoginsendOtpPOJO(moblog.getText().toString());
         RestApis restApis = NetworkHandler.getRetrofit().create(RestApis.class);
         Call<LoginsendOtpMODEL> call = restApis.send_login_otp(pojo);
         call.enqueue(new Callback<LoginsendOtpMODEL>() {
@@ -198,7 +190,8 @@ public class LogIn extends AppCompatActivity implements TextWatcher {
                     Log.e(TAG, "onResponse: " + new Gson().toJson(response.body()));
 
                     if (response.body().getCode().equals("200")) {
-                        SharedPref.saveStringInSharedPref(AppConstants.NAME_BROKER, user_name.getText().toString(), getApplicationContext());
+                        SharedPref.saveStringInSharedPref(AppConstants.DEALER_MOBILE_NUMBER, moblog.getText().toString(), getApplicationContext());
+                   /*     SharedPref.saveStringInSharedPref(AppConstants.NAME_BROKER, user_name.getText().toString(), getApplicationContext());*/
                         SharedPref.saveStringInSharedPref(AppConstants.MOBILE_NUMBER, moblog.getText().toString(), getApplicationContext());
                         SharedPref.saveStringInSharedPref(AppConstants.PHONENUMBER, moblog.getText().toString(), getApplicationContext());
                         SharedPref.saveStringInSharedPref(AppConstants.OTP, response.body().getOTP(), getApplicationContext());

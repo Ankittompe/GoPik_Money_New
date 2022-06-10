@@ -172,4 +172,5 @@ public interface AppConstants {
     String BANK_CHEQUE_IMG = "bank";
     String SCRATCHID ="scratchid" ;
     String NAME_BROKER ="nammm" ;
+    String DEALER_MOBILE_NUMBER = "dealermob";
 }

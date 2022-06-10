@@ -67,6 +67,7 @@ import com.qts.gopik_loan.Model.RegisterMODEL;
 import com.qts.gopik_loan.Model.Resend_login_otp_MODEL;
 import com.qts.gopik_loan.Model.Resend_otp_to_user_MODEL;
 import com.qts.gopik_loan.Model.Resend_verify_mobile_number_MODEL;
+import com.qts.gopik_loan.Model.Send_MLData_to_ICICI_MODEL;
 import com.qts.gopik_loan.Model.Send_login_otp_for_ML_MODEL;
 import com.qts.gopik_loan.Model.Send_otp_for_loan_MODEL;
 import com.qts.gopik_loan.Model.Send_otp_to_user_DEALER_MODEL;
@@ -148,6 +149,7 @@ import com.qts.gopik_loan.Pojo.RegistrationPOJO;
 import com.qts.gopik_loan.Pojo.Resend_login_otp_POJO;
 import com.qts.gopik_loan.Pojo.Resend_otp_to_user_POJO;
 import com.qts.gopik_loan.Pojo.Resend_verify_mobile_number_POJO;
+import com.qts.gopik_loan.Pojo.Send_MLData_to_ICICI_POJO;
 import com.qts.gopik_loan.Pojo.Send_login_otp_for_ML_POJO;
 import com.qts.gopik_loan.Pojo.Send_otp_for_loan_POJO;
 import com.qts.gopik_loan.Pojo.Send_otp_to_user_POJO;
@@ -601,5 +603,8 @@ public interface RestApis {
                                                       @Part("ifsc") RequestBody ifsc,
                                                       @Part("branch")  RequestBody branch,
                                                       @Part MultipartBody.Part chackimage);
+
+    @POST("Send_MLData_to_ICICI")
+    Call<Send_MLData_to_ICICI_MODEL>Send_MLData_to_ICICI(@Body Send_MLData_to_ICICI_POJO data);
 
 }

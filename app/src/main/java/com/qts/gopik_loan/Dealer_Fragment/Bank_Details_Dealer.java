@@ -179,19 +179,16 @@ public class Bank_Details_Dealer extends Fragment implements TextWatcher, Adapte
         visible.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-
-
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                Log.e("hhghghhuu", "apppppppkkkkkk");
+                if(event.getAction() == MotionEvent.ACTION_DOWN) {
                     Log.e("hhghghhuu", "apppppppkkkkkk");
                     accountno.setTransformationMethod(null);
-                } else {
-                    Log.e("hhghghhuu", "apppppppkkkkkkgg");
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    Log.e("hhghghhuu", "apppppppkkkkkk");
                     accountno.setTransformationMethod(new PasswordTransformationMethod());
                 }
-
                 return true;
             }
-
         });
         btn_countinue.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -205,17 +202,18 @@ public class Bank_Details_Dealer extends Fragment implements TextWatcher, Adapte
         checkimg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (!checkPermission()) {
+                    requestPermission();
+                }
+                if (!checkPermission_version()) {
+                    requestPermission();
+                }
                 z = 1;
                 y = 1;
                 showPictureDialog();
             }
         });
-        if (!checkPermission()) {
-            requestPermission();
-        }
-        if (!checkPermission_version()) {
-            requestPermission();
-        }
+
         profile_details();
         return view;
     }
@@ -417,6 +415,14 @@ public class Bank_Details_Dealer extends Fragment implements TextWatcher, Adapte
 
                             btn_edit.setVisibility(View.VISIBLE);
                             btn_countinue.setVisibility(View.GONE);
+
+                            reaccountno.setVisibility(View.GONE);
+                            btn_edit.setVisibility(View.VISIBLE);
+                            btn_countinue.setVisibility(View.GONE);
+                            accountno.setFocusable(false);
+                            accountholdername.setFocusable(false);
+                            ifsccode.setFocusable(false);
+                            branch.setFocusable(false);
 
                         }
 
