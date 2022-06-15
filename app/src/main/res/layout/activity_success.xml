@@ -60,8 +60,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:animateLayoutChanges="true"
                 android:layout_marginBottom="10dp"
+                android:animateLayoutChanges="true"
                 android:orientation="vertical">
 
                 <View
@@ -107,9 +107,9 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginLeft="10dp"
+                            android:layout_marginTop="8dp"
                             android:gravity="center"
                             android:padding="5dp"
-                            android:layout_marginTop="8dp"
                             android:text="Your loan has been successfully applied."
                             android:textColor="@color/colorPrimary"
                             android:textSize="16dp"
@@ -118,7 +118,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-android:layout_marginTop="5dp"
+                            android:layout_marginTop="5dp"
                             android:orientation="horizontal">
 
                             <TextView
@@ -161,13 +161,13 @@ android:layout_marginTop="5dp"
                                 android:layout_gravity="center"
                                 android:layout_marginLeft="10dp"
                                 android:layout_marginTop="20dp"
+                                android:layout_marginBottom="20dp"
                                 android:layout_weight="2"
                                 android:gravity="left"
                                 android:padding="5dp"
                                 android:text="Application Status"
                                 android:textColor="@color/colorPrimary"
                                 android:textSize="14dp"
-                                android:layout_marginBottom="20dp"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -177,15 +177,14 @@ android:layout_marginTop="5dp"
                                 android:layout_gravity="center"
                                 android:layout_marginLeft="10dp"
                                 android:layout_marginTop="20dp"
+                                android:layout_marginBottom="20dp"
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:padding="5dp"
                                 android:text="Success"
-                                android:layout_marginBottom="20dp"
                                 android:textColor="@color/colorPrimary"
                                 android:textSize="14dp"
-                                android:textStyle="bold"
-                                />
+                                android:textStyle="bold" />
                         </LinearLayout>
 
 
@@ -200,10 +199,10 @@ android:layout_marginTop="5dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="10dp"
+                    android:layout_marginBottom="20dp"
                     android:background="@drawable/rounded_button"
                     android:gravity="center"
                     android:text="Collect Your Rewards"
-                    android:layout_marginBottom="20dp"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="18dp"

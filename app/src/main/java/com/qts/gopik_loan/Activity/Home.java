@@ -31,6 +31,7 @@ import com.qts.gopik_loan.Fragment.Contest;
 import com.qts.gopik_loan.Fragment.HomeFragment;
 import com.qts.gopik_loan.Fragment.Notification;
 import com.qts.gopik_loan.Fragment.Profile;
+import com.qts.gopik_loan.Fragment.Profile_Details;
 import com.qts.gopik_loan.Fragment.Reward;
 import com.qts.gopik_loan.Fragment.Tab_Fragment;
 import com.qts.gopik_loan.Model.Dealer_logout_MODEL;
@@ -101,7 +102,7 @@ public class Home extends AppCompatActivity {
 
 
                     case R.id.profile_drawer:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.frameContainer, new Profile()).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frameContainer, new Tab_Fragment()).commit();
                         /*   bnv.setCurrentItem(3);*/
                         break;
                     case R.id.menu_login:

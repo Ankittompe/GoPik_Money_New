@@ -1,7 +1,7 @@
 package com.qts.gopik_loan.Activity;
 
 
-
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
@@ -11,6 +11,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
@@ -30,7 +31,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.gson.Gson;
 import com.qts.gopik_loan.Model.Login_actPOJO;
@@ -46,6 +50,8 @@ import com.qts.gopik_loan.Utils.CustPrograssbar;
 import com.qts.gopik_loan.Utils.GooglePlayStoreAppVersionNameLoader;
 
 
+import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 import retrofit2.Call;
@@ -54,7 +60,7 @@ import retrofit2.Response;
 
 public class LogIn extends AppCompatActivity implements TextWatcher {
 
-    TextInputEditText moblog,user_name;
+    TextInputEditText moblog, user_name;
     TextView btsend;
     ImageView backarrow;
     String TAG = "loginotp";
@@ -67,13 +73,16 @@ public class LogIn extends AppCompatActivity implements TextWatcher {
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 2;
 
     public static final int RequestPermissionCode = 7;
-
     private Location currentLocation;
+    FusedLocationProviderClient mFusedLocationProviderClient;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
         moblog = (TextInputEditText) findViewById(R.id.moblog);
+        mFusedLocationProviderClient = new FusedLocationProviderClient(this);
         user_name = (TextInputEditText) findViewById(R.id.user_name);
         btsend = (TextView) findViewById(R.id.btsend);
         backarrow = (ImageView) findViewById(R.id.arrow);
@@ -90,10 +99,10 @@ public class LogIn extends AppCompatActivity implements TextWatcher {
 
                 if (SharedPref.getStringFromSharedPref(AppConstants.LOGIN_STATUS, getApplicationContext()).equals("201")) {
                     signupvalidation();
-
+                    startLocationUpdates();
                 } else {
-
-                 checkedValidation();
+                    startLocationUpdates();
+                    checkedValidation();
                 }
             }
         });
@@ -119,15 +128,17 @@ public class LogIn extends AppCompatActivity implements TextWatcher {
             // method to change color of link
             linkTextView2.setLinkTextColor(Color.YELLOW);*/
         RequestMultiplePermission();
+        startLocationUpdates();
+
     }
 
     private void checkedValidation() {
 
-      if (moblog.getText().toString().isEmpty()){
+        if (moblog.getText().toString().isEmpty()) {
 
             Toast.makeText(LogIn.this, "Please Enter Your Mobile Number", Toast.LENGTH_SHORT).show();
 
-        }else if (!(android.util.Patterns.PHONE.matcher(moblog.getText().toString()).matches())) {
+        } else if (!(android.util.Patterns.PHONE.matcher(moblog.getText().toString()).matches())) {
 
             Toast.makeText(LogIn.this, "Please Enter Valid Mobile Number", Toast.LENGTH_SHORT).show();
 
@@ -157,8 +168,7 @@ public class LogIn extends AppCompatActivity implements TextWatcher {
 
             Toast.makeText(LogIn.this, "Please Enter Your Mobile Number", Toast.LENGTH_SHORT).show();
 
-        }
-     else if (!(android.util.Patterns.PHONE.matcher(moblog.getText().toString()).matches())) {
+        } else if (!(android.util.Patterns.PHONE.matcher(moblog.getText().toString()).matches())) {
 
             Toast.makeText(LogIn.this, "Please Enter Valid Mobile Number", Toast.LENGTH_SHORT).show();
 
@@ -191,7 +201,7 @@ public class LogIn extends AppCompatActivity implements TextWatcher {
 
                     if (response.body().getCode().equals("200")) {
                         SharedPref.saveStringInSharedPref(AppConstants.DEALER_MOBILE_NUMBER, moblog.getText().toString(), getApplicationContext());
-                   /*     SharedPref.saveStringInSharedPref(AppConstants.NAME_BROKER, user_name.getText().toString(), getApplicationContext());*/
+                        /*     SharedPref.saveStringInSharedPref(AppConstants.NAME_BROKER, user_name.getText().toString(), getApplicationContext());*/
                         SharedPref.saveStringInSharedPref(AppConstants.MOBILE_NUMBER, moblog.getText().toString(), getApplicationContext());
                         SharedPref.saveStringInSharedPref(AppConstants.PHONENUMBER, moblog.getText().toString(), getApplicationContext());
                         SharedPref.saveStringInSharedPref(AppConstants.OTP, response.body().getOTP(), getApplicationContext());
@@ -292,25 +302,19 @@ public class LogIn extends AppCompatActivity implements TextWatcher {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                                           int[] grantResults) {
-        switch (requestCode) {
-
-
-            case LOCATION_PERMISSION_REQUEST_CODE: {
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    startLocationUpdates();
-                } else {
-                    Toast.makeText(this, "Location permission not granted, " +
-                                    "restart the app if you want the feature",
-                            Toast.LENGTH_SHORT).show();
-                }
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                startLocationUpdates();
+            } else {
+                Toast.makeText(this, "Location permission not granted, " +
+                                "restart the app if you want the feature",
+                        Toast.LENGTH_SHORT).show();
             }
-
-            break;
         }
     }
+
     private void startLocationUpdates() {
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION)
@@ -324,53 +328,33 @@ public class LogIn extends AppCompatActivity implements TextWatcher {
             locationRequest.setFastestInterval(1000);
             locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
+            mFusedLocationProviderClient.requestLocationUpdates(locationRequest, new LocationCallback() {
+                @Override
+                public void onLocationResult(@NonNull LocationResult locationResult) {
+                    super.onLocationResult(locationResult);
+                    Geocoder geocoder;
+                    List<Address> addresses;
+                    geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
+                 /*   Log.e("Location ", "lat " + locationResult.getLastLocation().getLatitude() + " long " + locationResult.getLastLocation().getLongitude() + " address " );
+                    Toast.makeText(getApplicationContext(), "Location permission ", Toast.LENGTH_SHORT).show();*/
+                  /*  try {
+                        addresses = geocoder.getFromLocation(locationResult.getLastLocation().getLatitude(), locationResult.getLastLocation().getLongitude(), 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+                        String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+//                        String city = addresses.get(0).getLocality();
+//                        String state = addresses.get(0).getAdminArea();
+//                        String country = addresses.get(0).getCountryName();
+//                        String postalCode = addresses.get(0).getPostalCode();
+//                        String knownName = addresses.get(0).getFeatureName(); // Only if available else return NULL
+                        Log.e("Location ", "lat " + locationResult.getLastLocation().getLatitude() + " long " + locationResult.getLastLocation().getLongitude() + " address " + address);
 
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }*/
+                }
+            }, null);
         }
     }
 
-    @SuppressWarnings("MissingPermission")
-    private void getAddress() {
-        Log.e(TAG , "Inside getAddress method!");
-        Log.e(TAG , "Gecoder isPresent: "+ Geocoder.isPresent());
-        if (!Geocoder.isPresent()) {
-            Toast.makeText(LogIn.this,
-                    "Can't find current address, ",
-                    Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-
-    }
-
-    private class LocationAddressResultReceiver extends ResultReceiver {
-        LocationAddressResultReceiver(Handler handler) {
-            super(handler);
-        }
-
-        @Override
-        protected void onReceiveResult(int resultCode, Bundle resultData) {
-
-            if (resultCode == 0) {
-                //Last Location can be null for various reasons
-                //for example the api is called first time
-                //so retry till location is set
-                //since intent service runs on background thread, it doesn't block main thread
-                Log.d("Address", "Location null retrying");
-                getAddress();
-            }
-
-            if (resultCode == 1) {
-                Toast.makeText(LogIn.this,
-                        "Address not found, " ,
-                        Toast.LENGTH_SHORT).show();
-            }
-
-            String currentAdd = resultData.getString("address_result");
-
-            Log.e(TAG , "GopikDost Current Address: "+currentAdd);
-
-        }
-    }
 
 
 

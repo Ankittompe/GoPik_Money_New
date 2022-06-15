@@ -1,7 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/androidcode/app/src/main/res/layout/activity_dost_main.xml" value="0.16096491228070176" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/activity_edit__profile.xml" value="0.17962962962962964" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/activity_edit_delaer__profile.xml" value="0.1921875" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/activity_image_capture.xml" value="0.1921875" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/activity_log_in.xml" value="0.1574074074074074" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/activity_main2.xml" value="0.17962962962962964" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/activity_recharge___wallet__d_e_a_l_e_r_.xml" value="0.1574074074074074" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/activity_splash.xml" value="0.1" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/activity_success.xml" value="0.15775972637879435" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/activity_success__dealer.xml" value="0.17962962962962964" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/activity_voter__i_d__c_a_r_d__details.xml" value="0.1574074074074074" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/allcontent_dealer.xml" value="0.17962962962962964" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/allcontent_dost.xml" value="0.1618421052631579" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/appbar_delaer.xml" value="0.1618421052631579" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/appbar_dost.xml" value="0.16096491228070176" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/category_dost_layout.xml" value="0.16096491228070176" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/fragment_bank__details.xml" value="0.17037037037037037" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/fragment_bank__details__dealer.xml" value="0.1921875" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/fragment_dealer__profile_.xml" value="0.1921875" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/fragment_home__dost_.xml" value="0.1618421052631579" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/fragment_profile.xml" value="0.17037037037037037" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/fragment_profile__details.xml" value="0.1921875" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/fragment_profile__details__dealer.xml" value="0.1921875" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/fragment_reward.xml" value="0.1921875" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/fragment_tab_.xml" value="0.17037037037037037" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/fragment_tab___dealer.xml" value="0.1921875" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/main_layout_content_dealer.xml" value="0.1574074074074074" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/main_layout_content_dost.xml" value="0.16096491228070176" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/menuui_dealer.xml" value="0.1618421052631579" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/menuui_dost.xml" value="0.1618421052631579" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/scratch_dailog.xml" value="0.19114583333333332" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/scratch_layout.xml" value="0.1921875" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/subcategory_dost_layout.xml" value="0.1618421052631579" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/success_toolbar.xml" value="0.1921875" />
+        <entry key="..\:/androidcode/app/src/main/res/menu/icon_menu_dealer.xml" value="0.1921875" />
+        <entry key="..\:/androidcode/app/src/main/res/menu/icon_menu_dost.xml" value="0.1618421052631579" />
+        <entry key="..\:/androidcode/app/src/main/res/menu/iconmenu_dealer.xml" value="0.1574074074074074" />
+        <entry key="..\:/androidcode/app/src/main/res/menu/iconmenu_dost.xml" value="0.1618421052631579" />
+        <entry key="..\:/androidcode/app/src/main/res/menu/menuui_dost.xml" value="0.1618421052631579" />
+      </map>
+    </option>
+  </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

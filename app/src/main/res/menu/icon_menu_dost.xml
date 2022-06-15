@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:background="@color/colorPrimary">
+
+    <item android:id="@+id/homebtn_dost"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="Home"
+
+        />
+
+    <item android:id="@+id/not_dost"
+        android:icon="@drawable/ic_baseline_add_alert_24"
+        android:title="Notification"
+
+        />
+    <item android:id="@+id/profile_dost"
+        android:icon="@drawable/ic_baseline_account_circle_24"
+        android:title="My Profile"
+        />
+
+
+    <!--<item android:id="@+id/profile_dealer"
+        android:icon="@drawable/ic_baseline_account_circle_24"
+        android:title="My Profile"
+        />-->
+
+  <!--  <item android:id="@+id/contest_dost"
+        android:icon="@drawable/ic_trophy__1_"
+        android:title="Contest"
+        />
+-->
+</menu>
