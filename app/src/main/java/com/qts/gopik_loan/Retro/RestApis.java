@@ -15,6 +15,7 @@ import com.qts.gopik_loan.Model.Broker_profile_update_MODEL;
 import com.qts.gopik_loan.Model.Calculation_data_MODEL;
 import com.qts.gopik_loan.Model.Category_brand_wise_MODEL;
 import com.qts.gopik_loan.Model.DL_MODEL;
+import com.qts.gopik_loan.Model.Dealer_QR_MODEL;
 import com.qts.gopik_loan.Model.Dealer_Subuser_action_MODEL;
 import com.qts.gopik_loan.Model.Dealer_Subuser_edit_MODEL;
 import com.qts.gopik_loan.Model.Dealer_Subuser_fetch_MODEL;
@@ -62,6 +63,7 @@ import com.qts.gopik_loan.Model.ProfileDetailsMODEL;
 import com.qts.gopik_loan.Model.ProfileDetails_DEALER_MODEL;
 import com.qts.gopik_loan.Model.Profile_Update_DEALER_MODEL;
 import com.qts.gopik_loan.Model.Profile_data_MODEL;
+import com.qts.gopik_loan.Model.QR_ScannedList_MODEL;
 import com.qts.gopik_loan.Model.RazorpayOrderResponse;
 import com.qts.gopik_loan.Model.RegisterMODEL;
 import com.qts.gopik_loan.Model.Resend_login_otp_MODEL;
@@ -92,6 +94,7 @@ import com.qts.gopik_loan.Model.Verify_mobile_number_forloan_MODEL;
 import com.qts.gopik_loan.Model.View_scratchcard_MODEL;
 import com.qts.gopik_loan.Model.Wallet_balance_MODEL;
 import com.qts.gopik_loan.Model.Wallethistory_MODEL;
+import com.qts.gopik_loan.Model.WhatsAppStatusList_MODEL;
 import com.qts.gopik_loan.Model.bkr_declrtn_MODEL;
 import com.qts.gopik_loan.Model.store_voterid_details_MODEL;
 import com.qts.gopik_loan.Pojo.AADHAR_CONSENT_POJO;
@@ -106,6 +109,7 @@ import com.qts.gopik_loan.Pojo.Broker_profile_update_POJO;
 import com.qts.gopik_loan.Pojo.Calculation_data_POJO;
 import com.qts.gopik_loan.Pojo.Category_brand_wise_POJO;
 import com.qts.gopik_loan.Pojo.DL_POJO;
+import com.qts.gopik_loan.Pojo.Dealer_CODE_POJO;
 import com.qts.gopik_loan.Pojo.Dealer_Subuser_action_POJO;
 import com.qts.gopik_loan.Pojo.Dealer_Subuser_edit_POJO;
 import com.qts.gopik_loan.Pojo.Dealer_Subuser_fetch_POJO;
@@ -144,6 +148,7 @@ import com.qts.gopik_loan.Pojo.ProfileDetailsPOJO;
 import com.qts.gopik_loan.Pojo.ProfileDetails_DEALER_POJO;
 import com.qts.gopik_loan.Pojo.Profile_Update_DEALER_POJO;
 import com.qts.gopik_loan.Pojo.Profile_data_POJO;
+import com.qts.gopik_loan.Pojo.QR_CODE_POJO;
 import com.qts.gopik_loan.Pojo.RazorpayOrderPojo;
 import com.qts.gopik_loan.Pojo.RegistrationPOJO;
 import com.qts.gopik_loan.Pojo.Resend_login_otp_POJO;
@@ -606,5 +611,20 @@ public interface RestApis {
 
     @POST("Send_MLData_to_ICICI")
     Call<Send_MLData_to_ICICI_MODEL>Send_MLData_to_ICICI(@Body Send_MLData_to_ICICI_POJO data);
+
+
+    @POST("getqrstatus")
+    Call<Dealer_QR_MODEL> Get_QR_Status(@Body QR_CODE_POJO data);
+
+    @POST("updateqrstatus")
+    Call<Dealer_QR_MODEL> Set_QR_Status(@Body QR_CODE_POJO data);
+
+    @POST("totalqrcount")
+    Call<QR_ScannedList_MODEL> Get_Total_Count(@Body QR_CODE_POJO data);
+
+    @POST("getwpqrstatus")
+    Call<WhatsAppStatusList_MODEL> Get_WhatsApp_Status(@Body Dealer_CODE_POJO data);
+
+
 
 }

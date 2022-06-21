@@ -173,4 +173,5 @@ public interface AppConstants {
     String SCRATCHID ="scratchid" ;
     String NAME_BROKER ="nammm" ;
     String DEALER_MOBILE_NUMBER = "dealermob";
+    String NOTIFICATION_TYPE ="hh" ;
 }

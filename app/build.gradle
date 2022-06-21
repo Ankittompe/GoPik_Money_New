@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 30
@@ -10,7 +11,7 @@ android {
         minSdkVersion 23
         targetSdkVersion 30
         versionCode 18
-        versionName "18.0"
+        versionName "3.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -106,7 +107,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     implementation 'com.squareup.retrofit2:converter-scalars:2.5.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
-    compile 'com.riyagayasen.android:easyaccordion:1.0.3'
+    implementation 'com.riyagayasen.android:easyaccordion:1.0.3'
 
     implementation 'com.tomergoldst.android:tooltips:1.0.10'
     implementation 'com.google.android.material:material:1.0.0'
@@ -127,10 +128,12 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:30.1.0')
     implementation 'com.google.firebase:firebase-analytics'
     //noinspection GradleCompatible
-    compile 'com.google.firebase:firebase-messaging:9.4.0'
+    implementation 'com.google.firebase:firebase-messaging:9.4.0'
     implementation platform('com.google.firebase:firebase-bom:29.2.1')
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation platform('com.google.firebase:firebase-bom:30.1.0')
     implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.github.HBiSoft:PickiT:2.0.5'
+    implementation 'com.google.android.material:material:1.2.0-alpha02'
 
 }

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Dealer_Fragment.Dealer_QR_Code_Fragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtGenQRCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/button_round"
+            android:fontFamily="@font/coresanscrbold"
+            android:gravity="center"
+            android:text="@string/generate_qr_code"
+            android:textColor="@color/white"
+            android:visibility="gone" />
+
+        <com.qts.gopik_loan.Utils.CustomRegularTextView
+            android:id="@+id/txtOne"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/blue"
+            android:gravity="center"
+            android:padding="@dimen/_5sdp"
+            android:text="QR Code"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <WebView
+            android:id="@+id/webVw"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_200sdp"
+            tools:ignore="MissingConstraints" />
+
+        <LinearLayout
+            android:id="@+id/linTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.qts.gopik_loan.Utils.CustomRegularTextView
+                android:id="@+id/txtScannedList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:background="@drawable/button_click"
+                android:gravity="center"
+                android:padding="@dimen/_10sdp"
+                android:text="Total Scanned \n List"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <com.qts.gopik_loan.Utils.CustomRegularTextView
+                android:id="@+id/txtTitleWhatsAppList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:background="@drawable/button_click"
+                android:gravity="center"
+                android:padding="@dimen/_10sdp"
+                android:text="Submitted Applications"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recVwScannedList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="50dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recVwStatusList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="50dp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</FrameLayout>

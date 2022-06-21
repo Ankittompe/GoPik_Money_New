@@ -32,9 +32,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".Dost_Main_Activity"
-            android:exported="false" />
+
         <activity
             android:name=".Dealer_Activity.Resend_OTP_CAP_Otp_DEALER_Verify"
             android:exported="false" />

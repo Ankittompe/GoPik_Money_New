@@ -20,4 +20,5 @@
     <string name="msg_subscribe_failed">msg failed</string>
     <string name="msg_subscribed">msg subscribed</string>
     <string name="msg_token_fmt">msg_token</string>
+    <string name="generate_qr_code">Generate QR Code</string>
 </resources>
