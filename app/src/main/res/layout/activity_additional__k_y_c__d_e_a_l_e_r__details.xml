@@ -1,0 +1,2030 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/trendingbike"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/logintoolBar"
+            layout="@layout/logintoolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_alignParentTop="true" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@drawable/round_login2"
+                    android:gravity="center">
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/button_round"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="Enter Additional KYC Details "
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginBottom="50dp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="5dp"
+                        app:cardMaxElevation="10dp"
+                        app:cardPreventCornerOverlap="true"
+                        app:cardUseCompatPadding="false"
+
+
+                        >
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="7dp"
+                                    android:background="@drawable/edittext_kyc_background"
+                                    android:orientation="horizontal"
+                                    android:padding="10dp">
+
+                                    <ImageView
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_gravity="center_vertical"
+                                        android:src="@drawable/documents" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="8dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/salution"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginLeft="5dp"
+                                            android:fontFamily="@font/coresanscrbold"
+                                            android:text="1. Salutation"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="14sp"
+
+                                            />
+
+
+                                        <View
+                                            android:layout_width="match_parent"
+                                            android:layout_height="0.6dp"
+                                            android:layout_marginLeft="9dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginRight="20dp"
+                                            android:background="@color/colorPrimary"
+
+                                            />
+
+                                        <LinearLayout
+                                            android:id="@+id/linearspinner1"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginRight="20dp"
+                                            android:background="@drawable/dropdown_shape"
+                                            android:orientation="horizontal">
+
+                                            <Spinner
+
+                                                android:id="@+id/choose_salution"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="0.8"
+                                                android:gravity="start"
+                                                android:popupBackground="@color/white"
+
+                                                />
+                                        </LinearLayout>
+                                    </LinearLayout>
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="7dp"
+                                    android:background="@drawable/edittext_kyc_background"
+                                    android:orientation="horizontal"
+                                    android:padding="10dp">
+
+                                    <ImageView
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_gravity="center_vertical"
+                                        android:src="@drawable/documents" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="8dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/customername"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginLeft="5dp"
+                                            android:fontFamily="@font/coresanscrbold"
+                                            android:text="2. Customer Name"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="14sp" />
+
+
+                                        <View
+                                            android:layout_width="match_parent"
+                                            android:layout_height="0.6dp"
+                                            android:layout_marginLeft="9dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginRight="20dp"
+                                            android:background="@color/colorPrimary"
+
+                                            />
+
+                                        <LinearLayout
+                                            android:id="@+id/linearspinner2"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginRight="20dp"
+                                            android:background="@drawable/dropdown_shape"
+                                            android:orientation="horizontal">
+
+                                            <Spinner
+
+                                                android:id="@+id/choose_customername"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="0.8"
+                                                android:gravity="start"
+                                                android:popupBackground="@color/white"
+
+                                                />
+
+                                        </LinearLayout>
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="7dp"
+                                    android:background="@drawable/edittext_kyc_background"
+                                    android:orientation="horizontal"
+                                    android:padding="10dp">
+
+                                    <ImageView
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_gravity="center_vertical"
+                                        android:src="@drawable/documents" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="8dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/emailid"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginLeft="5dp"
+                                            android:fontFamily="@font/coresanscrbold"
+                                            android:text="3. Email ID"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="14sp"
+
+                                            />
+
+
+                                        <View
+                                            android:layout_width="match_parent"
+                                            android:layout_height="0.6dp"
+                                            android:layout_marginLeft="9dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginRight="20dp"
+                                            android:background="@color/colorPrimary"
+
+                                            />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginRight="20dp"
+                                            android:orientation="vertical"
+
+                                            >
+
+                                            <EditText
+                                                android:id="@+id/emailideditext"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:background="@null"
+                                                android:fontFamily="@font/montserrat_medium"
+                                                android:hint="Enter Your Email ID"
+                                                android:textColorHint="@color/colorPrimary"
+                                                android:textSize="12sp" />
+
+                                        </LinearLayout>
+                                    </LinearLayout>
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="7dp"
+                                    android:background="@drawable/edittext_kyc_background"
+                                    android:orientation="horizontal"
+                                    android:padding="10dp">
+
+                                    <ImageView
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_gravity="center_vertical"
+                                        android:src="@drawable/documents" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="8dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/mobileno"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginLeft="5dp"
+                                            android:fontFamily="@font/coresanscrbold"
+                                            android:inputType="number"
+                                            android:text="4. Mobile No"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="14sp"
+
+                                            />
+
+
+                                        <View
+                                            android:layout_width="match_parent"
+                                            android:layout_height="0.6dp"
+                                            android:layout_marginLeft="9dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginRight="20dp"
+                                            android:background="@color/colorPrimary"
+
+                                            />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="10dp"
+                                            android:layout_marginRight="20dp"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:id="@+id/mobilenoedittext"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:background="@null"
+                                                android:fontFamily="@font/montserrat_medium"
+                                                android:text="Enter Your Mobile No"
+                                                android:inputType="number"
+                                                android:textColor="@color/colorPrimary"
+                                                android:textSize="12sp" />
+
+                                        </LinearLayout>
+                                    </LinearLayout>
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="7dp"
+                                    android:background="@drawable/edittext_kyc_background"
+                                    android:orientation="horizontal"
+                                    android:padding="10dp">
+
+                                    <ImageView
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_gravity="center_vertical"
+                                        android:src="@drawable/documents" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="8dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/maritalstatus"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginLeft="5dp"
+                                            android:fontFamily="@font/coresanscrbold"
+                                            android:inputType="number"
+                                            android:text="5. Marital Status"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="14sp"
+
+                                            />
+
+
+                                        <View
+                                            android:layout_width="match_parent"
+                                            android:layout_height="0.6dp"
+                                            android:layout_marginLeft="9dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginRight="20dp"
+                                            android:background="@color/colorPrimary"
+
+                                            />
+
+                                        <LinearLayout
+                                            android:id="@+id/linearspinner3"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginRight="20dp"
+                                            android:background="@drawable/dropdown_shape"
+                                            android:orientation="horizontal">
+
+                                            <Spinner
+
+                                                android:id="@+id/choose_maritialstatus"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="0.8"
+                                                android:gravity="start"
+                                                android:popupBackground="@color/white"
+
+                                                />
+                                        </LinearLayout>
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="7dp"
+                                    android:background="@drawable/edittext_kyc_background"
+                                    android:orientation="horizontal"
+                                    android:padding="10dp">
+
+                                    <ImageView
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_gravity="center_vertical"
+                                        android:src="@drawable/documents" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="8dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/qualification"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginLeft="5dp"
+                                            android:fontFamily="@font/coresanscrbold"
+                                            android:inputType="number"
+                                            android:text="6. Qualification"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="14sp"
+
+                                            />
+
+
+                                        <View
+                                            android:layout_width="match_parent"
+                                            android:layout_height="0.6dp"
+                                            android:layout_marginLeft="9dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginRight="20dp"
+                                            android:background="@color/colorPrimary"
+
+                                            />
+
+                                        <LinearLayout
+                                            android:id="@+id/linearspinner4"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginRight="20dp"
+                                            android:background="@drawable/dropdown_shape"
+                                            android:orientation="horizontal">
+
+                                            <Spinner
+
+                                                android:id="@+id/choose_qualification"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="0.8"
+                                                android:gravity="start"
+                                                android:popupBackground="@color/white"
+
+                                                />
+                                        </LinearLayout>
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="7dp"
+                                    android:background="@drawable/edittext_kyc_background"
+                                    android:orientation="horizontal"
+                                    android:padding="10dp">
+
+                                    <ImageView
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_gravity="center_vertical"
+                                        android:src="@drawable/documents" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="8dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/accomodationtype"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginLeft="5dp"
+                                            android:fontFamily="@font/coresanscrbold"
+                                            android:text="7. Accomodation Type"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="14sp"
+
+                                            />
+
+
+                                        <View
+                                            android:layout_width="match_parent"
+                                            android:layout_height="0.6dp"
+                                            android:layout_marginLeft="9dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginRight="20dp"
+                                            android:background="@color/colorPrimary"
+
+                                            />
+
+                                        <LinearLayout
+                                            android:id="@+id/linearspinner5"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginRight="20dp"
+                                            android:background="@drawable/dropdown_shape"
+                                            android:orientation="horizontal">
+
+                                            <Spinner
+
+                                                android:id="@+id/choose_accomodationtype"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="0.8"
+                                                android:gravity="start"
+                                                android:popupBackground="@color/white"
+
+                                                />
+                                        </LinearLayout>
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="7dp"
+                                    android:background="@drawable/edittext_kyc_background"
+                                    android:orientation="horizontal"
+                                    android:padding="10dp">
+
+                                    <ImageView
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_gravity="center_vertical"
+                                        android:src="@drawable/documents" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="8dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/currentaddress"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginLeft="5dp"
+                                            android:fontFamily="@font/coresanscrbold"
+                                            android:text="8. Current Address"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="14sp"
+
+                                            />
+
+
+                                        <View
+                                            android:layout_width="match_parent"
+                                            android:layout_height="0.6dp"
+                                            android:layout_marginLeft="9dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginRight="20dp"
+                                            android:background="@color/colorPrimary"
+
+                                            />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="10dp"
+                                            android:layout_marginRight="20dp"
+                                            android:orientation="vertical">
+
+                                            <EditText
+                                                android:id="@+id/currentaddressedittext"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="80dp"
+                                                android:background="@drawable/additionakkyc_edittext_background"
+                                                android:fontFamily="@font/montserrat_medium"
+                                                android:hint="Enter Your Current Address"
+                                                android:padding="5dp"
+                                                android:textColorHint="@color/colorPrimary"
+                                                android:textSize="12sp" />
+
+                                        </LinearLayout>
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="7dp"
+                                    android:background="@drawable/edittext_kyc_background"
+                                    android:orientation="horizontal"
+                                    android:padding="10dp">
+
+                                    <ImageView
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_gravity="center_vertical"
+                                        android:src="@drawable/documents" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="8dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/currentaddresspincode"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginLeft="5dp"
+                                            android:fontFamily="@font/coresanscrbold"
+                                            android:text="9. Current Address Pincode"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="14sp"
+
+                                            />
+
+
+                                        <View
+                                            android:layout_width="match_parent"
+                                            android:layout_height="0.6dp"
+                                            android:layout_marginLeft="9dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginRight="20dp"
+                                            android:background="@color/colorPrimary"
+
+                                            />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="10dp"
+                                            android:layout_marginRight="20dp"
+                                            android:orientation="vertical">
+
+                                            <EditText
+                                                android:id="@+id/currentaddresspincodeedittext"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:fontFamily="@font/montserrat_medium"
+                                                android:hint="Current Address Pincode"
+                                                android:padding="5dp"
+                                                android:inputType="number"
+                                                android:background="@null"
+                                                android:textColorHint="@color/colorPrimary"
+                                                android:textSize="12sp" />
+
+                                        </LinearLayout>
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="7dp"
+                                    android:background="@drawable/edittext_kyc_background"
+                                    android:orientation="horizontal"
+                                    android:padding="10dp">
+
+                                    <ImageView
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_gravity="center_vertical"
+                                        android:src="@drawable/documents" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="8dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/is_current_address"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginLeft="5dp"
+                                            android:fontFamily="@font/coresanscrbold"
+                                            android:text="10. Is Current Address same as Permanent Address?"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="14sp"
+
+                                            />
+
+
+                                        <View
+                                            android:layout_width="match_parent"
+                                            android:layout_height="0.6dp"
+                                            android:layout_marginLeft="9dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginRight="20dp"
+                                            android:background="@color/colorPrimary"
+
+                                            />
+
+                                        <LinearLayout
+                                            android:id="@+id/linearspinner6"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginRight="20dp"
+                                            android:background="@drawable/dropdown_shape"
+                                            android:orientation="horizontal">
+
+                                            <Spinner
+
+                                                android:id="@+id/choose_current_permanentaddress"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="0.8"
+                                                android:gravity="start"
+                                                android:popupBackground="@color/white"
+
+                                                />
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="7dp"
+                                    android:background="@drawable/edittext_kyc_background"
+                                    android:orientation="horizontal"
+                                    android:padding="10dp">
+
+                                    <ImageView
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_gravity="center_vertical"
+                                        android:src="@drawable/documents" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="8dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/permanent_address"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginLeft="5dp"
+                                            android:fontFamily="@font/coresanscrbold"
+                                            android:text="11. Permanent Address"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="14sp"
+
+                                            />
+
+
+                                        <View
+                                            android:layout_width="match_parent"
+                                            android:layout_height="0.6dp"
+                                            android:layout_marginLeft="9dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginRight="20dp"
+                                            android:background="@color/colorPrimary"
+
+                                            />
+
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="10dp"
+                                            android:layout_marginRight="20dp"
+                                            android:orientation="vertical">
+
+                                            <EditText
+                                                android:id="@+id/permamentadressedittext"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="80dp"
+                                                android:background="@drawable/additionakkyc_edittext_background"
+                                                android:fontFamily="@font/montserrat_medium"
+                                                android:hint="Enter Your Permanent Address"
+                                                android:padding="5dp"
+                                                android:textColorHint="@color/colorPrimary"
+                                                android:textSize="12sp" />
+
+                                        </LinearLayout>
+
+
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="7dp"
+                                    android:background="@drawable/edittext_kyc_background"
+                                    android:orientation="horizontal"
+                                    android:padding="10dp">
+
+                                    <ImageView
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_gravity="center_vertical"
+                                        android:src="@drawable/documents" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="8dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/permanent_address_pincode"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginLeft="5dp"
+                                            android:fontFamily="@font/coresanscrbold"
+                                            android:text="12. Permanent Address Pincode"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="14sp"
+
+                                            />
+
+
+                                        <View
+                                            android:layout_width="match_parent"
+                                            android:layout_height="0.6dp"
+                                            android:layout_marginLeft="9dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginRight="20dp"
+                                            android:background="@color/colorPrimary"
+
+                                            />
+
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="10dp"
+                                            android:layout_marginRight="20dp"
+                                            android:orientation="vertical">
+
+                                            <EditText
+                                                android:id="@+id/permamentadresspincodeedittext"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:background="@null"
+                                                android:fontFamily="@font/montserrat_medium"
+                                                android:hint="Permanent Address Pincode"
+                                                android:padding="5dp"
+                                                android:inputType="number"
+                                                android:textColorHint="@color/colorPrimary"
+                                                android:textSize="12sp" />
+
+                                        </LinearLayout>
+
+
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="7dp"
+                                    android:background="@drawable/edittext_kyc_background"
+                                    android:orientation="horizontal"
+                                    android:padding="10dp">
+
+                                    <ImageView
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_gravity="center_vertical"
+                                        android:src="@drawable/documents" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="8dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/no_ofYear_CurrentAddress"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginLeft="5dp"
+                                            android:fontFamily="@font/coresanscrbold"
+                                            android:text="13. No Of Years At Current Address"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="14sp"
+
+                                            />
+
+
+                                        <View
+                                            android:layout_width="match_parent"
+                                            android:layout_height="0.6dp"
+                                            android:layout_marginLeft="9dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginRight="20dp"
+                                            android:background="@color/colorPrimary"
+
+                                            />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="10dp"
+                                            android:layout_marginRight="20dp"
+                                            android:orientation="vertical">
+
+                                            <EditText
+                                                android:id="@+id/noofyearedittext"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:background="@null"
+                                                android:fontFamily="@font/montserrat_medium"
+                                                android:hint="Enter Number in year(s)"
+                                                android:inputType="number"
+                                                android:textColorHint="@color/colorPrimary"
+                                                android:textSize="12sp" />
+
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="7dp"
+                                    android:background="@drawable/edittext_kyc_background"
+                                    android:orientation="horizontal"
+                                    android:padding="10dp">
+
+                                    <ImageView
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_gravity="center_vertical"
+                                        android:src="@drawable/documents" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="8dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/oragnizationtype"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginLeft="5dp"
+                                            android:fontFamily="@font/coresanscrbold"
+                                            android:text="14. Organization Type"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="14sp"
+
+                                            />
+
+
+                                        <View
+                                            android:layout_width="match_parent"
+                                            android:layout_height="0.6dp"
+                                            android:layout_marginLeft="9dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginRight="20dp"
+                                            android:background="@color/colorPrimary"
+
+                                            />
+
+                                        <LinearLayout
+                                            android:id="@+id/linearspinner8"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginRight="20dp"
+                                            android:background="@drawable/dropdown_shape"
+                                            android:orientation="horizontal">
+
+                                            <Spinner
+
+                                                android:id="@+id/choose_organizationtype"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="0.8"
+                                                android:gravity="start"
+                                                android:popupBackground="@color/white"
+
+                                                />
+                                        </LinearLayout>
+
+
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="7dp"
+                                    android:background="@drawable/edittext_kyc_background"
+                                    android:orientation="horizontal"
+                                    android:padding="10dp">
+
+                                    <ImageView
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_gravity="center_vertical"
+                                        android:src="@drawable/documents" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="8dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/industrytype"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginLeft="5dp"
+                                            android:fontFamily="@font/coresanscrbold"
+                                            android:text="15. Industry Type"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="14sp"
+
+                                            />
+
+
+                                        <View
+                                            android:layout_width="match_parent"
+                                            android:layout_height="0.6dp"
+                                            android:layout_marginLeft="9dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginRight="20dp"
+                                            android:background="@color/colorPrimary"
+
+                                            />
+
+
+                                        <LinearLayout
+                                            android:id="@+id/linearspinner9"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginRight="20dp"
+                                            android:background="@drawable/dropdown_shape"
+                                            android:orientation="horizontal">
+
+                                            <Spinner
+
+                                                android:id="@+id/choose_industrytype"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="0.8"
+                                                android:gravity="start"
+                                                android:popupBackground="@color/white"
+
+                                                />
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+                                </LinearLayout>
+//tractor
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="7dp"
+                                    android:background="@drawable/edittext_kyc_background"
+                                    android:orientation="horizontal"
+                                    android:padding="10dp">
+
+                                    <ImageView
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_gravity="center_vertical"
+                                        android:src="@drawable/documents" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="8dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/tractortype"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginLeft="5dp"
+                                            android:fontFamily="@font/coresanscrbold"
+                                            android:text="16. Do you have a tractor?"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="14sp"
+
+                                            />
+
+
+                                        <View
+                                            android:layout_width="match_parent"
+                                            android:layout_height="0.6dp"
+                                            android:layout_marginLeft="9dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginRight="20dp"
+                                            android:background="@color/colorPrimary"
+
+                                            />
+
+
+                                        <LinearLayout
+                                            android:id="@+id/linearspinnertractor"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginRight="20dp"
+                                            android:background="@drawable/dropdown_shape"
+                                            android:orientation="horizontal">
+
+                                            <Spinner
+
+                                                android:id="@+id/choose_tractor"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="0.8"
+                                                android:gravity="start"
+                                                android:popupBackground="@color/white"
+
+                                                />
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                                //yes tractor
+                                <LinearLayout
+                                    android:id="@+id/finance"
+                                    android:visibility="gone"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="7dp"
+                                    android:background="@drawable/edittext_kyc_background"
+                                    android:orientation="horizontal"
+                                    android:padding="10dp">
+
+                                    <ImageView
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_gravity="center_vertical"
+                                        android:src="@drawable/documents" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="8dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/tractorfinance"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginLeft="5dp"
+                                            android:fontFamily="@font/coresanscrbold"
+                                            android:text="Do you have finance for tractor?"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="14sp"
+
+                                            />
+
+
+                                        <View
+                                            android:layout_width="match_parent"
+                                            android:layout_height="0.6dp"
+                                            android:layout_marginLeft="9dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginRight="20dp"
+                                            android:background="@color/colorPrimary"
+
+                                            />
+
+
+                                        <LinearLayout
+                                            android:id="@+id/linearspinnertractorfinance"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginRight="20dp"
+                                            android:background="@drawable/dropdown_shape"
+                                            android:orientation="horizontal">
+
+                                            <Spinner
+
+                                                android:id="@+id/choose_tractorfinance"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="0.8"
+                                                android:gravity="start"
+                                                android:popupBackground="@color/white"
+
+                                                />
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                                //employeetype
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="7dp"
+                                    android:background="@drawable/edittext_kyc_background"
+                                    android:orientation="horizontal"
+                                    android:padding="10dp">
+
+                                    <ImageView
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_gravity="center_vertical"
+                                        android:src="@drawable/documents" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="8dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/employeementtype"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginLeft="5dp"
+                                            android:fontFamily="@font/coresanscrbold"
+                                            android:text="17. Employent Type"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="14sp"
+
+                                            />
+
+
+                                        <View
+                                            android:layout_width="match_parent"
+                                            android:layout_height="0.6dp"
+                                            android:layout_marginLeft="9dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginRight="20dp"
+                                            android:background="@color/colorPrimary"
+
+                                            />
+
+
+                                        <LinearLayout
+                                            android:id="@+id/linearspinner10"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginRight="20dp"
+                                            android:background="@drawable/dropdown_shape"
+                                            android:orientation="horizontal">
+
+                                            <Spinner
+
+                                                android:id="@+id/choose_employeementtype"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="0.8"
+                                                android:gravity="start"
+                                                android:popupBackground="@color/white"
+
+                                                />
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+                                </LinearLayout>
+                                <!--jhoirgjbordhjrpohjpohktpo-->
+
+
+                                <LinearLayout
+                                    android:id="@+id/officelayout"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:visibility="gone">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="7dp"
+                                        android:background="@drawable/edittext_kyc_background"
+                                        android:orientation="horizontal"
+                                        android:padding="10dp">
+
+                                        <ImageView
+                                            android:layout_width="25dp"
+                                            android:layout_height="25dp"
+                                            android:layout_gravity="center_vertical"
+                                            android:src="@drawable/documents" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="8dp"
+                                            android:layout_marginBottom="10dp"
+                                            android:layout_weight="1"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:id="@+id/officeaddress1"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_vertical"
+                                                android:layout_marginLeft="5dp"
+                                                android:fontFamily="@font/coresanscrbold"
+                                                android:text="18. Office Address"
+                                                android:textColor="@color/colorPrimary"
+                                                android:textSize="14sp"
+
+                                                />
+
+
+                                            <View
+                                                android:layout_width="match_parent"
+                                                android:layout_height="0.6dp"
+                                                android:layout_marginLeft="9dp"
+                                                android:layout_marginTop="5dp"
+                                                android:layout_marginRight="20dp"
+                                                android:background="@color/colorPrimary"
+
+                                                />
+
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="5dp"
+                                                android:layout_marginTop="10dp"
+                                                android:layout_marginRight="20dp"
+                                                android:orientation="vertical">
+
+                                                <EditText
+                                                    android:id="@+id/officefulladdressedittext1"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="80dp"
+                                                    android:background="@drawable/additionakkyc_edittext_background"
+                                                    android:fontFamily="@font/montserrat_medium"
+                                                    android:hint="Enter Your Office Address"
+                                                    android:padding="5dp"
+                                                    android:textColorHint="@color/colorPrimary"
+                                                    android:textSize="12sp" />
+
+
+                                            </LinearLayout>
+                                        </LinearLayout>
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="7dp"
+                                        android:background="@drawable/edittext_kyc_background"
+                                        android:orientation="horizontal"
+                                        android:padding="10dp">
+
+                                        <ImageView
+                                            android:layout_width="25dp"
+                                            android:layout_height="25dp"
+                                            android:layout_gravity="center_vertical"
+                                            android:src="@drawable/documents" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="8dp"
+                                            android:layout_marginBottom="10dp"
+                                            android:layout_weight="1"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:id="@+id/officepincode"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_vertical"
+                                                android:layout_marginLeft="5dp"
+                                                android:fontFamily="@font/coresanscrbold"
+                                                android:text="19. Office Pincode"
+                                                android:textColor="@color/colorPrimary"
+                                                android:textSize="14sp"
+
+                                                />
+
+
+                                            <View
+                                                android:layout_width="match_parent"
+                                                android:layout_height="0.6dp"
+                                                android:layout_marginLeft="9dp"
+                                                android:layout_marginTop="5dp"
+                                                android:layout_marginRight="20dp"
+                                                android:background="@color/colorPrimary"
+
+                                                />
+
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="5dp"
+                                                android:layout_marginTop="10dp"
+                                                android:layout_marginRight="20dp"
+                                                android:orientation="vertical">
+
+                                                <EditText
+                                                    android:id="@+id/pincodeeditttext"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:background="@null"
+                                                    android:fontFamily="@font/montserrat_medium"
+                                                    android:hint="Enter Pincode"
+                                                    android:inputType="number"
+                                                    android:textColorHint="@color/colorPrimary"
+                                                    android:textSize="12sp" />
+
+                                            </LinearLayout>
+                                        </LinearLayout>
+                                    </LinearLayout>
+                                </LinearLayout>
+                                <!--bvrghvueigkjbhpe-->
+
+
+                                <!--gubhhiugjrgoirogioigoi-->
+                                <LinearLayout
+                                    android:id="@+id/self_employed"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:visibility="gone">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="7dp"
+                                        android:background="@drawable/edittext_kyc_background"
+                                        android:orientation="horizontal"
+                                        android:padding="10dp">
+
+
+                                        <ImageView
+                                            android:layout_width="25dp"
+                                            android:layout_height="25dp"
+                                            android:layout_gravity="center_vertical"
+                                            android:src="@drawable/documents" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="8dp"
+                                            android:layout_marginBottom="10dp"
+                                            android:layout_weight="1"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:id="@+id/toatal_exp_bussiness"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_vertical"
+                                                android:layout_marginLeft="5dp"
+                                                android:fontFamily="@font/coresanscrbold"
+                                                android:text="20. Total Exp Bussiness"
+                                                android:textColor="@color/colorPrimary"
+                                                android:textSize="14sp"
+
+                                                />
+
+
+                                            <View
+                                                android:layout_width="match_parent"
+                                                android:layout_height="0.6dp"
+                                                android:layout_marginLeft="9dp"
+                                                android:layout_marginTop="5dp"
+                                                android:layout_marginRight="20dp"
+                                                android:background="@color/colorPrimary"
+
+                                                />
+
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="5dp"
+                                                android:layout_marginTop="10dp"
+                                                android:layout_marginRight="20dp"
+                                                android:orientation="vertical">
+
+                                                <EditText
+                                                    android:id="@+id/expbussinessedittext"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:background="@null"
+                                                    android:fontFamily="@font/montserrat_medium"
+                                                    android:hint="Enter Number in year(s)"
+                                                    android:inputType="number"
+                                                    android:padding="5dp"
+                                                    android:textColorHint="@color/colorPrimary"
+                                                    android:textSize="12sp" />
+
+                                            </LinearLayout>
+                                        </LinearLayout>
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="7dp"
+                                        android:background="@drawable/edittext_kyc_background"
+                                        android:orientation="horizontal"
+                                        android:padding="10dp">
+
+                                        <ImageView
+                                            android:layout_width="25dp"
+                                            android:layout_height="25dp"
+                                            android:layout_gravity="center_vertical"
+                                            android:src="@drawable/documents" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="8dp"
+                                            android:layout_marginBottom="10dp"
+                                            android:layout_weight="1"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:id="@+id/total_turnover"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_vertical"
+                                                android:layout_marginLeft="5dp"
+                                                android:fontFamily="@font/coresanscrbold"
+                                                android:text="21. Total Turnover(per annam)"
+                                                android:textColor="@color/colorPrimary"
+                                                android:textSize="14sp"
+
+                                                />
+
+
+                                            <View
+                                                android:layout_width="match_parent"
+                                                android:layout_height="0.6dp"
+                                                android:layout_marginLeft="9dp"
+                                                android:layout_marginTop="5dp"
+                                                android:layout_marginRight="20dp"
+                                                android:background="@color/colorPrimary"
+
+                                                />
+
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="5dp"
+                                                android:layout_marginTop="10dp"
+                                                android:layout_marginRight="20dp"
+                                                android:orientation="vertical">
+
+                                                <EditText
+                                                    android:id="@+id/totalamountturoveredittext"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:background="@null"
+                                                    android:fontFamily="@font/montserrat_medium"
+                                                    android:hint="Total Amount in INR"
+                                                    android:inputType="number"
+                                                    android:padding="5dp"
+                                                    android:textColorHint="@color/colorPrimary"
+                                                    android:textSize="12sp" />
+
+                                            </LinearLayout>
+
+                                        </LinearLayout>
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="7dp"
+                                        android:background="@drawable/edittext_kyc_background"
+                                        android:orientation="horizontal"
+                                        android:padding="10dp">
+
+                                        <ImageView
+                                            android:layout_width="25dp"
+                                            android:layout_height="25dp"
+                                            android:layout_gravity="center_vertical"
+                                            android:src="@drawable/documents" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="8dp"
+                                            android:layout_marginBottom="10dp"
+                                            android:layout_weight="1"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_vertical"
+                                                android:layout_marginLeft="5dp"
+                                                android:fontFamily="@font/coresanscrbold"
+                                                android:text="22. Annual Income"
+                                                android:textColor="@color/colorPrimary"
+                                                android:textSize="14sp"
+
+                                                />
+
+
+                                            <View
+                                                android:layout_width="match_parent"
+                                                android:layout_height="0.6dp"
+                                                android:layout_marginLeft="9dp"
+                                                android:layout_marginTop="5dp"
+                                                android:layout_marginRight="20dp"
+                                                android:background="@color/colorPrimary"
+
+                                                />
+
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="5dp"
+                                                android:layout_marginTop="10dp"
+                                                android:layout_marginRight="20dp"
+                                                android:orientation="vertical">
+
+                                                <EditText
+                                                    android:id="@+id/annualincomeedittext"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:background="@null"
+                                                    android:fontFamily="@font/montserrat_medium"
+                                                    android:hint="Total Amount in INR"
+                                                    android:inputType="number"
+                                                    android:padding="5dp"
+                                                    android:textColorHint="@color/colorPrimary"
+                                                    android:textSize="12sp" />
+
+                                            </LinearLayout>
+
+                                        </LinearLayout>
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+                                <!--khgofibhjpohjofn fgmnj-->
+                                <LinearLayout
+                                    android:id="@+id/salaried"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:visibility="gone">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="7dp"
+                                        android:background="@drawable/edittext_kyc_background"
+                                        android:orientation="horizontal"
+                                        android:padding="10dp">
+
+                                        <ImageView
+                                            android:layout_width="25dp"
+                                            android:layout_height="25dp"
+                                            android:layout_gravity="center_vertical"
+                                            android:src="@drawable/documents" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="8dp"
+                                            android:layout_marginBottom="10dp"
+                                            android:layout_weight="1"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:id="@+id/companyname"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_vertical"
+                                                android:layout_marginLeft="5dp"
+                                                android:fontFamily="@font/coresanscrbold"
+                                                android:text="20. Company Name"
+                                                android:textColor="@color/colorPrimary"
+                                                android:textSize="14sp"
+
+                                                />
+
+
+                                            <View
+                                                android:layout_width="match_parent"
+                                                android:layout_height="0.6dp"
+                                                android:layout_marginLeft="9dp"
+                                                android:layout_marginTop="5dp"
+                                                android:layout_marginRight="20dp"
+                                                android:background="@color/colorPrimary"
+
+                                                />
+
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="5dp"
+                                                android:layout_marginTop="10dp"
+                                                android:layout_marginRight="20dp"
+                                                android:orientation="vertical">
+
+                                                <EditText
+                                                    android:id="@+id/companynameedittext"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:background="@null"
+                                                    android:fontFamily="@font/montserrat_medium"
+                                                    android:hint="Enter Company Name"
+                                                    android:padding="5dp"
+                                                    android:textColorHint="@color/colorPrimary"
+                                                    android:textSize="12sp" />
+
+                                            </LinearLayout>
+
+                                        </LinearLayout>
+                                    </LinearLayout>
+
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="7dp"
+                                        android:background="@drawable/edittext_kyc_background"
+                                        android:orientation="horizontal"
+                                        android:padding="10dp">
+
+                                        <ImageView
+                                            android:layout_width="25dp"
+                                            android:layout_height="25dp"
+                                            android:layout_gravity="center_vertical"
+                                            android:src="@drawable/documents" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="8dp"
+                                            android:layout_marginBottom="10dp"
+                                            android:layout_weight="1"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:id="@+id/total_workexp"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_vertical"
+                                                android:layout_marginLeft="5dp"
+                                                android:fontFamily="@font/coresanscrbold"
+                                                android:text="21. Total Work Experience"
+                                                android:textColor="@color/colorPrimary"
+                                                android:textSize="14sp"
+
+                                                />
+
+
+                                            <View
+                                                android:layout_width="match_parent"
+                                                android:layout_height="0.6dp"
+                                                android:layout_marginLeft="9dp"
+                                                android:layout_marginTop="5dp"
+                                                android:layout_marginRight="20dp"
+                                                android:background="@color/colorPrimary"
+
+                                                />
+
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="5dp"
+                                                android:layout_marginTop="10dp"
+                                                android:layout_marginRight="20dp"
+                                                android:orientation="vertical">
+
+                                                <EditText
+                                                    android:id="@+id/numberinyearsedittext"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:background="@null"
+                                                    android:fontFamily="@font/montserrat_medium"
+                                                    android:hint="Enter Number in year(s)"
+                                                    android:inputType="number"
+                                                    android:textColorHint="@color/colorPrimary"
+                                                    android:textSize="12sp" />
+
+                                            </LinearLayout>
+                                        </LinearLayout>
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="7dp"
+                                        android:background="@drawable/edittext_kyc_background"
+                                        android:orientation="horizontal"
+                                        android:padding="10dp">
+
+                                        <ImageView
+                                            android:layout_width="25dp"
+                                            android:layout_height="25dp"
+                                            android:layout_gravity="center_vertical"
+                                            android:src="@drawable/documents" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="8dp"
+                                            android:layout_marginBottom="10dp"
+                                            android:layout_weight="1"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:id="@+id/gross_monthly_income"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_vertical"
+                                                android:layout_marginLeft="5dp"
+                                                android:fontFamily="@font/coresanscrbold"
+                                                android:text="22. Gross Monthly Income"
+                                                android:textColor="@color/colorPrimary"
+                                                android:textSize="14sp"
+
+                                                />
+
+
+                                            <View
+                                                android:layout_width="match_parent"
+                                                android:layout_height="0.6dp"
+                                                android:layout_marginLeft="9dp"
+                                                android:layout_marginTop="5dp"
+                                                android:layout_marginRight="20dp"
+                                                android:background="@color/colorPrimary"
+
+                                                />
+
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="5dp"
+                                                android:layout_marginTop="10dp"
+                                                android:layout_marginRight="20dp"
+                                                android:orientation="vertical">
+
+                                                <EditText
+                                                    android:id="@+id/grossmonthlyincomeedittext"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:background="@null"
+                                                    android:fontFamily="@font/montserrat_medium"
+                                                    android:hint="Enter Amount in INR"
+                                                    android:inputType="number"
+                                                    android:padding="5dp"
+                                                    android:textColorHint="@color/colorPrimary"
+                                                    android:textSize="12sp" />
+
+                                            </LinearLayout>
+                                        </LinearLayout>
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+
+
+                    <TextView
+                        android:id="@+id/save"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="30dp"
+                        android:background="@drawable/button_round"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="Save &amp; Submit"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>
+

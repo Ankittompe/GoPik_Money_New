@@ -1,0 +1,2174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/trendingbike"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/logintoolBar"
+            layout="@layout/logintoolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_alignParentTop="true" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/round_login2"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="KYC"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="90dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginRight="25dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/dropdown_shape"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                app:cardBackgroundColor="@color/white"
+                                app:cardCornerRadius="5dp"
+                                app:cardElevation="5dp"
+                                app:cardMaxElevation="8dp"
+                                app:cardPreventCornerOverlap="true"
+                                app:cardUseCompatPadding="true">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:fontFamily="@font/montserrat_semibold"
+                                    android:padding="10dp"
+                                    android:text="Proof Of Identity"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="14dp" />
+
+                                <ImageView
+                                    android:id="@+id/dropdown1"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_gravity="right"
+                                    android:padding="5dp"
+                                    android:src="@drawable/ic_arrow_drop_down_black_24dp"
+                                    android:visibility="visible" />
+
+                                <ImageView
+                                    android:id="@+id/dropup1"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_gravity="right"
+                                    android:padding="5dp"
+                                    android:src="@drawable/ic_arrow_drop_up_black_24dp"
+                                    android:visibility="gone" />
+                            </androidx.cardview.widget.CardView>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/identitylayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <LinearLayout
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="25dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="25dp"
+                                android:orientation="vertical">
+
+                                <Spinner
+                                    android:id="@+id/choose_identity"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="0.9dp"
+                                android:layout_marginLeft="25dp"
+                                android:layout_marginRight="35dp"
+                                android:layout_marginBottom="20dp"
+                                android:background="@color/black" />
+
+
+                            <LinearLayout
+                                android:id="@+id/panlayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="25dp"
+                                android:layout_marginRight="25dp"
+                                android:orientation="vertical"
+                                android:padding="5dp"
+                                android:visibility="gone">
+
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColorHint="@color/colorPrimary"
+                                    android:textSize="12dp"
+                                    android:textStyle="bold"
+                                    android:visibility="visible">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/pannumber"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:hint=" Please Enter Your Pan Number"
+                                        android:inputType="textCapCharacters"
+                                        android:textColor="@color/colorPrimary"
+                                        android:textSize="12dp"
+                                        android:textStyle="bold" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <LinearLayout
+                                    android:visibility="gone"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:gravity="center"
+                                    android:orientation="horizontal">
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+
+                                        <ImageView
+                                            android:id="@+id/panimg"
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:layout_gravity="center"
+                                            android:foregroundGravity="center"
+                                            android:gravity="center"
+                                            android:padding="5dp"
+                                            android:src="@drawable/uploaad"
+                                            android:visibility="visible" />
+                                        <TextView
+                                            android:id="@+id/error6"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:fontFamily="@font/montserrat_semibold"
+                                            android:gravity="center"
+                                            android:padding="5dp"
+                                            android:text=""
+                                            android:textColor="@color/red"
+                                            android:textSize="10dp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:fontFamily="@font/montserrat_semibold"
+                                            android:gravity="center"
+                                            android:padding="5dp"
+                                            android:text="Upload Front Image"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="12dp" />
+
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <!--voter-->
+
+                            <LinearLayout
+                                android:id="@+id/voteridcardlayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="25dp"
+                                android:layout_marginRight="25dp"
+                                android:orientation="vertical"
+                                android:visibility="gone">
+
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColorHint="@color/colorPrimary"
+                                    android:textSize="12dp"
+                                    android:textStyle="bold"
+                                    android:visibility="visible">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/voteridnumber"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:hint=" Please Enter Voter ID Card Number"
+                                        android:inputType="textCapCharacters"
+                                        android:textColor="@color/colorPrimary"
+                                        android:textSize="12dp"
+                                        android:textStyle="bold" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <LinearLayout
+                                    android:visibility="gone"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="10dp"
+                                    android:orientation="horizontal">
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+
+                                        <ImageView
+                                            android:id="@+id/voterfrontimg"
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:layout_gravity="center"
+                                            android:foregroundGravity="center"
+                                            android:padding="5dp"
+                                            android:src="@drawable/uploaad"
+                                            android:visibility="visible" />
+                                        <TextView
+                                            android:id="@+id/error1"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:fontFamily="@font/montserrat_semibold"
+                                            android:gravity="center"
+                                            android:padding="5dp"
+                                            android:text=""
+                                            android:textColor="@color/red"
+                                            android:textSize="10dp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:fontFamily="@font/montserrat_semibold"
+                                            android:gravity="center"
+                                            android:padding="5dp"
+                                            android:text="Upload Front Image"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="12dp" />
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:visibility="gone"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+
+                                        <ImageView
+                                            android:id="@+id/voterbackimg"
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:layout_gravity="center"
+                                            android:foregroundGravity="center"
+                                            android:gravity="center"
+                                            android:padding="5dp"
+                                            android:src="@drawable/uploaad"
+                                            android:visibility="visible" />
+                                        <TextView
+                                            android:id="@+id/error2"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:fontFamily="@font/montserrat_semibold"
+                                            android:gravity="center"
+                                            android:padding="5dp"
+                                            android:text=""
+                                            android:textColor="@color/red"
+                                            android:textSize="10dp" />
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:fontFamily="@font/montserrat_semibold"
+                                            android:gravity="center"
+                                            android:padding="5dp"
+                                            android:text="Upload Back Image"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="12dp" />
+
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <!--dl-->
+                            <LinearLayout
+                                android:id="@+id/dllayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="25dp"
+                                android:layout_marginRight="25dp"
+                                android:orientation="vertical"
+                                android:visibility="gone">
+
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/dlnumberedt"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColorHint="@color/colorPrimary"
+                                    android:textSize="12dp"
+                                    android:textStyle="bold"
+                                    android:visibility="visible">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/dlnumber"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:hint=" Please Enter Driving License Number"
+                                        android:inputType="textCapCharacters"
+                                        android:textColor="@color/colorPrimary"
+                                        android:textSize="12dp"
+                                        android:textStyle="bold" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColorHint="@color/colorPrimary"
+                                    android:textSize="12dp"
+                                    android:textStyle="bold"
+                                    android:visibility="visible">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/dob_dl"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:clickable="false"
+                                        android:cursorVisible="false"
+                                        android:focusable="false"
+                                        android:hint=" Please Enter Your DOB"
+                                        android:inputType="textCapCharacters"
+                                        android:textColor="@color/colorPrimary"
+                                        android:textSize="12dp"
+                                        android:textStyle="bold" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <LinearLayout
+                                    android:visibility="gone"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="10dp"
+                                    android:orientation="horizontal">
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+
+                                        <ImageView
+                                            android:id="@+id/dlimg"
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:layout_gravity="center"
+                                            android:foregroundGravity="center"
+                                            android:padding="5dp"
+                                            android:src="@drawable/uploaad"
+                                            android:visibility="visible" />
+                                        <TextView
+                                            android:id="@+id/error5"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:fontFamily="@font/montserrat_semibold"
+                                            android:gravity="center"
+                                            android:padding="5dp"
+                                            android:text=""
+                                            android:textColor="@color/red"
+                                            android:textSize="10dp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:fontFamily="@font/montserrat_semibold"
+                                            android:gravity="center"
+                                            android:padding="5dp"
+                                            android:text="Upload DL Image"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="12dp" />
+
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <!--passport-->
+
+
+                            <LinearLayout
+                                android:id="@+id/passportlayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="25dp"
+                                android:layout_marginRight="25dp"
+                                android:orientation="vertical"
+                                android:visibility="gone">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColorHint="@color/colorPrimary"
+                                    android:textSize="12dp"
+                                    android:textStyle="bold"
+                                    android:visibility="visible">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/passportname"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:hint=" Please Enter Your Name"
+                                        android:inputType="textCapCharacters"
+                                        android:textColor="@color/colorPrimary"
+                                        android:textSize="12dp"
+                                        android:textStyle="bold" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColorHint="@color/colorPrimary"
+                                    android:textSize="12dp"
+                                    android:textStyle="bold"
+                                    android:visibility="visible">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/passportnumber"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:hint=" Please Enter Passport Number"
+                                        android:inputType="textCapCharacters"
+                                        android:textColor="@color/colorPrimary"
+                                        android:textSize="12dp"
+                                        android:textStyle="bold" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColorHint="@color/colorPrimary"
+                                    android:textSize="12dp"
+                                    android:textStyle="bold"
+                                    android:visibility="visible">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/dobpassport"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:clickable="false"
+                                        android:cursorVisible="false"
+                                        android:focusable="false"
+                                        android:hint=" Please Enter Your DOB"
+                                        android:inputType="textCapCharacters"
+                                        android:textColor="@color/colorPrimary"
+                                        android:textSize="12dp"
+                                        android:textStyle="bold" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColorHint="@color/colorPrimary"
+                                    android:textSize="12dp"
+                                    android:textStyle="bold"
+                                    android:visibility="visible">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/doipassport"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:clickable="false"
+                                        android:cursorVisible="false"
+                                        android:focusable="false"
+                                        android:hint=" Please Enter Date Of Issue"
+                                        android:inputType="textCapCharacters"
+                                        android:textColor="@color/colorPrimary"
+                                        android:textSize="12dp"
+                                        android:textStyle="bold" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <LinearLayout
+                                    android:visibility="gone"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="10dp"
+                                    android:orientation="horizontal">
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+
+                                        <ImageView
+                                            android:id="@+id/passportfrontimg"
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:layout_gravity="center"
+                                            android:foregroundGravity="center"
+                                            android:padding="5dp"
+                                            android:src="@drawable/uploaad"
+                                            android:visibility="visible" />
+                                        <TextView
+                                            android:id="@+id/error3"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:fontFamily="@font/montserrat_semibold"
+                                            android:gravity="center"
+                                            android:padding="5dp"
+                                            android:text=""
+                                            android:textColor="@color/red"
+                                            android:textSize="10dp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:fontFamily="@font/montserrat_semibold"
+                                            android:gravity="center"
+                                            android:padding="5dp"
+                                            android:text="Upload Front Image"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="12dp" />
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:visibility="gone"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+
+                                        <ImageView
+                                            android:id="@+id/passportbackimg"
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:layout_gravity="center"
+                                            android:foregroundGravity="center"
+                                            android:gravity="center"
+                                            android:padding="5dp"
+                                            android:src="@drawable/uploaad"
+                                            android:visibility="visible" />
+
+                                        <TextView
+                                            android:id="@+id/error4"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:fontFamily="@font/montserrat_semibold"
+                                            android:gravity="center"
+                                            android:padding="5dp"
+                                            android:text=""
+                                            android:textColor="@color/red"
+                                            android:textSize="10dp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:fontFamily="@font/montserrat_semibold"
+                                            android:gravity="center"
+                                            android:padding="5dp"
+                                            android:text="Upload Back Image"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="12dp" />
+
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+
+                            <TextView
+                                android:id="@+id/check1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="20dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@drawable/button_round"
+                                android:fontFamily="@font/montserrat_semibold"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="Check"
+                                android:textColor="@color/white"
+                                android:textSize="14sp"
+                                android:visibility="gone" />
+
+                            <TextView
+                                android:id="@+id/check2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="20dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@drawable/button_round"
+                                android:fontFamily="@font/montserrat_semibold"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="Check"
+                                android:textColor="@color/white"
+                                android:textSize="14sp"
+                                android:visibility="gone" />
+
+                            <TextView
+                                android:id="@+id/check3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="20dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@drawable/button_round"
+                                android:fontFamily="@font/montserrat_semibold"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="Check"
+                                android:textColor="@color/white"
+                                android:textSize="14sp"
+                                android:visibility="gone" />
+
+                            <TextView
+                                android:id="@+id/check4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="20dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@drawable/button_round"
+                                android:fontFamily="@font/montserrat_semibold"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="Check"
+                                android:textColor="@color/white"
+                                android:textSize="14sp"
+                                android:visibility="gone" />
+
+                            <TextView
+                                android:id="@+id/save_submit1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="20dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@drawable/button_round"
+                                android:fontFamily="@font/montserrat_semibold"
+                                android:gravity="center"
+                                android:padding="5dp"
+                                android:text="Save"
+                                android:textColor="@color/white"
+                                android:textSize="14sp"
+                                android:visibility="gone" />
+
+
+
+                                <TextView
+                                    android:id="@+id/save_submit2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginRight="20dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/button_round"
+                                    android:fontFamily="@font/montserrat_semibold"
+                                    android:gravity="center"
+                                    android:padding="5dp"
+                                    android:text="Save"
+                                    android:textColor="@color/white"
+                                    android:textSize="14sp"
+                                    android:visibility="gone" />
+
+
+
+
+                            <TextView
+                                android:id="@+id/save_submit3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="20dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@drawable/button_round"
+                                android:fontFamily="@font/montserrat_semibold"
+                                android:gravity="center"
+                                android:padding="5dp"
+                                android:text="Save"
+                                android:textColor="@color/white"
+                                android:textSize="14sp"
+                                android:visibility="gone" />
+
+
+                            <TextView
+                                    android:id="@+id/save_submit4"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginRight="20dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/button_round"
+                                    android:fontFamily="@font/montserrat_semibold"
+                                    android:gravity="center"
+                                    android:padding="5dp"
+                                    android:text="Save"
+                                    android:textColor="@color/white"
+                                    android:textSize="14sp"
+                                    android:visibility="gone" />
+
+
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/edittext"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="25dp"
+                                android:layout_marginRight="25dp"
+                                android:layout_marginBottom="10dp"
+                                android:visibility="gone"
+                                app:cardBackgroundColor="@color/white"
+                                app:cardCornerRadius="20dp"
+                                app:cardElevation="5dp"
+                                app:cardMaxElevation="10dp"
+                                app:cardPreventCornerOverlap="true"
+                                app:cardUseCompatPadding="false"
+
+                                >
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginRight="20dp"
+                                    android:orientation="vertical">
+
+
+                                    <TextView
+                                        android:id="@+id/alldetails"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/coresanscrbold"
+                                        android:gravity="left"
+                                        android:padding="10dp"
+                                        android:text="All Details"
+                                        android:textColor="@color/colorPrimary"
+                                        android:textSize="12sp" />
+
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/correct1"
+                        android:layout_width="30dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="20dp"
+                        android:src="@drawable/correct"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+                <!--addressssssssssssssssssssssssssssssssssssssss-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginRight="25dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/dropdown_shape"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                app:cardBackgroundColor="@color/white"
+                                app:cardCornerRadius="5dp"
+                                app:cardElevation="5dp"
+                                app:cardMaxElevation="8dp"
+                                app:cardPreventCornerOverlap="true"
+                                app:cardUseCompatPadding="true">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:fontFamily="@font/montserrat_semibold"
+                                    android:padding="10dp"
+                                    android:text="Proof Of Address"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="14dp" />
+
+                                <ImageView
+                                    android:id="@+id/dropdown2"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_gravity="right"
+                                    android:padding="5dp"
+                                    android:src="@drawable/ic_arrow_drop_down_black_24dp"
+                                    android:visibility="visible" />
+
+                                <ImageView
+                                    android:id="@+id/dropup2"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_gravity="right"
+                                    android:padding="5dp"
+                                    android:src="@drawable/ic_arrow_drop_up_black_24dp"
+                                    android:visibility="gone" />
+                            </androidx.cardview.widget.CardView>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/addresslayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <LinearLayout
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="25dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="25dp"
+                                android:orientation="vertical">
+
+                                <Spinner
+                                    android:id="@+id/choose_address"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="0.9dp"
+                                android:layout_marginLeft="25dp"
+                                android:layout_marginRight="35dp"
+                                android:layout_marginBottom="20dp"
+                                android:background="@color/black" />
+
+
+                            <LinearLayout
+                                android:id="@+id/voter_address_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="25dp"
+                                android:layout_marginRight="25dp"
+                                android:orientation="vertical"
+                                android:padding="5dp"
+                                android:visibility="gone">
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:gravity="center"
+                                    android:orientation="horizontal">
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+
+                                        <ImageView
+                                            android:id="@+id/voter_front_address"
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:layout_gravity="center"
+                                            android:foregroundGravity="center"
+                                            android:gravity="center"
+                                            android:padding="5dp"
+                                            android:src="@drawable/uploaad"
+                                            android:visibility="visible" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:fontFamily="@font/montserrat_semibold"
+                                            android:gravity="center"
+                                            android:padding="5dp"
+                                            android:text="Upload Front Image"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="12dp" />
+
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+
+                                        <ImageView
+                                            android:id="@+id/voter_back_address"
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:layout_gravity="center"
+                                            android:foregroundGravity="center"
+                                            android:gravity="center"
+                                            android:padding="5dp"
+                                            android:src="@drawable/uploaad"
+                                            android:visibility="visible" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:fontFamily="@font/montserrat_semibold"
+                                            android:gravity="center"
+                                            android:padding="5dp"
+                                            android:text="Upload Front Image"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="12dp" />
+
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+                            <!--aadhar-->
+                            <LinearLayout
+                                android:id="@+id/aadhar_address_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="25dp"
+                                android:layout_marginRight="25dp"
+                                android:orientation="vertical"
+                                android:padding="5dp"
+                                android:visibility="gone">
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:gravity="center"
+                                    android:orientation="horizontal">
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+
+                                        <ImageView
+                                            android:id="@+id/aadhar_front_address"
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:layout_gravity="center"
+                                            android:foregroundGravity="center"
+                                            android:gravity="center"
+                                            android:padding="5dp"
+                                            android:src="@drawable/uploaad"
+                                            android:visibility="visible" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:fontFamily="@font/montserrat_semibold"
+                                            android:gravity="center"
+                                            android:padding="5dp"
+                                            android:text="Upload Front Image"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="12dp" />
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+
+                                        <ImageView
+                                            android:id="@+id/aadhar_back_address"
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:layout_gravity="center"
+                                            android:foregroundGravity="center"
+                                            android:gravity="center"
+                                            android:padding="5dp"
+                                            android:src="@drawable/uploaad"
+                                            android:visibility="visible" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:fontFamily="@font/montserrat_semibold"
+                                            android:gravity="center"
+                                            android:padding="5dp"
+                                            android:text="Upload Front Image"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="12dp" />
+
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+                            <!--dl-->
+                            <LinearLayout
+                                android:id="@+id/dl_address_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="25dp"
+                                android:layout_marginRight="25dp"
+                                android:orientation="vertical"
+                                android:padding="5dp"
+                                android:visibility="gone">
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:gravity="center"
+                                    android:orientation="horizontal">
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+
+                                        <ImageView
+                                            android:id="@+id/dl_front_address"
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:layout_gravity="center"
+                                            android:foregroundGravity="center"
+                                            android:gravity="center"
+                                            android:padding="5dp"
+                                            android:src="@drawable/uploaad"
+                                            android:visibility="visible" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:fontFamily="@font/montserrat_semibold"
+                                            android:gravity="center"
+                                            android:padding="5dp"
+                                            android:text="Upload Front Image"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="12dp" />
+
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+                            <!--passport-->
+                            <LinearLayout
+                                android:id="@+id/passport_address_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="25dp"
+                                android:layout_marginRight="25dp"
+                                android:orientation="vertical"
+                                android:padding="5dp"
+                                android:visibility="gone">
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:gravity="center"
+                                    android:orientation="horizontal">
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+
+                                        <ImageView
+                                            android:id="@+id/passport_front_address"
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:layout_gravity="center"
+                                            android:foregroundGravity="center"
+                                            android:gravity="center"
+                                            android:padding="5dp"
+                                            android:src="@drawable/uploaad"
+                                            android:visibility="visible" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:fontFamily="@font/montserrat_semibold"
+                                            android:gravity="center"
+                                            android:padding="5dp"
+                                            android:text="Upload Front Image"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="12dp" />
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+
+                                        <ImageView
+                                            android:id="@+id/passport_back_address"
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:layout_gravity="center"
+                                            android:foregroundGravity="center"
+                                            android:gravity="center"
+                                            android:padding="5dp"
+                                            android:src="@drawable/uploaad"
+                                            android:visibility="visible" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:fontFamily="@font/montserrat_semibold"
+                                            android:gravity="center"
+                                            android:padding="5dp"
+                                            android:text="Upload Front Image"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="12dp" />
+
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/save1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginRight="20dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/button_round"
+                                    android:fontFamily="@font/montserrat_semibold"
+                                    android:gravity="center"
+                                    android:padding="10dp"
+                                    android:text="Upload"
+                                    android:textColor="@color/white"
+                                    android:textSize="14sp"
+                                    android:visibility="gone" />
+
+                                <TextView
+                                    android:id="@+id/save1_voter_back_address"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginRight="20dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/button_round"
+                                    android:fontFamily="@font/montserrat_semibold"
+                                    android:gravity="center"
+                                    android:padding="10dp"
+                                    android:text="Upload"
+                                    android:textColor="@color/white"
+                                    android:textSize="14sp"
+                                    android:visibility="gone" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/save2"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginRight="20dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/button_round"
+                                    android:fontFamily="@font/montserrat_semibold"
+                                    android:gravity="center"
+                                    android:padding="5dp"
+                                    android:text="Upload"
+                                    android:textColor="@color/white"
+                                    android:textSize="14sp"
+                                    android:visibility="gone" />
+
+                                <TextView
+                                    android:id="@+id/save2_aadhar_back_address"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginRight="20dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/button_round"
+                                    android:fontFamily="@font/montserrat_semibold"
+                                    android:gravity="center"
+                                    android:padding="5dp"
+                                    android:text="Upload"
+                                    android:textColor="@color/white"
+                                    android:textSize="14sp"
+                                    android:visibility="gone" />
+
+
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/save3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="20dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@drawable/button_round"
+                                android:fontFamily="@font/montserrat_semibold"
+                                android:gravity="center"
+                                android:padding="5dp"
+                                android:text="Upload"
+                                android:textColor="@color/white"
+                                android:textSize="14sp"
+                                android:visibility="gone" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/save4"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginRight="20dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:background="@drawable/button_round"
+                                    android:fontFamily="@font/montserrat_semibold"
+                                    android:gravity="center"
+                                    android:padding="5dp"
+                                    android:text="Upload"
+                                    android:textColor="@color/white"
+                                    android:textSize="14sp"
+                                    android:visibility="gone" />
+
+                                <TextView
+                                    android:id="@+id/save4_passport_back_address"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginRight="20dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:background="@drawable/button_round"
+                                    android:fontFamily="@font/montserrat_semibold"
+                                    android:gravity="center"
+                                    android:padding="5dp"
+                                    android:text="Upload"
+                                    android:textColor="@color/white"
+                                    android:textSize="14sp"
+                                    android:visibility="gone" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/correct2"
+                        android:layout_width="30dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="20dp"
+                        android:src="@drawable/correct"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+                <!--incomeeeeeeeeeeeeeeeeeeeeeeeeee-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginRight="25dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/dropdown_shape"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                app:cardBackgroundColor="@color/white"
+                                app:cardCornerRadius="5dp"
+                                app:cardElevation="5dp"
+                                app:cardMaxElevation="8dp"
+                                app:cardPreventCornerOverlap="true"
+                                app:cardUseCompatPadding="true">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:fontFamily="@font/montserrat_semibold"
+                                    android:padding="10dp"
+                                    android:text="Proof Of Income"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="14dp" />
+
+                                <ImageView
+                                    android:id="@+id/dropdown3"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_gravity="right"
+                                    android:padding="5dp"
+                                    android:src="@drawable/ic_arrow_drop_down_black_24dp"
+                                    android:visibility="visible" />
+
+                                <ImageView
+                                    android:id="@+id/dropup3"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_gravity="right"
+                                    android:padding="5dp"
+                                    android:src="@drawable/ic_arrow_drop_up_black_24dp"
+                                    android:visibility="gone" />
+                            </androidx.cardview.widget.CardView>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/incomelayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <LinearLayout
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="25dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="25dp"
+                                android:orientation="vertical">
+
+                                <Spinner
+                                    android:id="@+id/choose_income"
+                                    android:visibility="gone"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+                                <LinearLayout
+                                    android:id="@+id/choose_income_"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+
+                                    <RadioGroup
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal"
+                                        android:gravity="center_horizontal"
+                                        android:orientation="horizontal"
+                                        android:padding="5dp">
+
+
+                                        <RadioButton
+                                            android:id="@+id/selfemployeed"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="2"
+                                            android:padding="5dp"
+                                            android:text="Self Employeed"
+                                            android:textColor="@color/colorPrimary" />
+
+                                        <RadioButton
+                                            android:id="@+id/salaried"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="2"
+                                            android:padding="5dp"
+                                            android:text="Salaried"
+                                            android:textColor="@color/colorPrimary" />
+
+                                    </RadioGroup>
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="0.9dp"
+                                android:layout_marginLeft="25dp"
+                                android:layout_marginRight="35dp"
+                                android:layout_marginBottom="20dp"
+                                android:background="@color/black" />
+
+
+                            <LinearLayout
+                                android:id="@+id/salaried_income_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="25dp"
+                                android:layout_marginRight="25dp"
+                                android:orientation="vertical"
+                                android:padding="5dp"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:fontFamily="@font/montserrat_semibold"
+                                    android:padding="10dp"
+                                    android:text="Salaried"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="14dp" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:fontFamily="@font/montserrat_semibold"
+                                    android:padding="10dp"
+                                    android:text="Do you have a valid income proof(ITR/Salary slip)"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="14dp" />
+
+                                <LinearLayout
+                                    android:id="@+id/income_radiobutton_layout1"
+                                    android:visibility="gone"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+
+                                    <RadioGroup
+                                        android:id="@+id/batting_style1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal"
+                                        android:gravity="center_horizontal"
+                                        android:orientation="horizontal"
+                                        android:padding="5dp">
+
+
+                                        <RadioButton
+                                            android:id="@+id/yes1"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="2"
+                                            android:padding="5dp"
+                                            android:text="Yes"
+                                            android:textColor="@color/colorPrimary" />
+
+                                        <RadioButton
+                                            android:id="@+id/no1"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="2"
+                                            android:padding="5dp"
+                                            android:text="No"
+                                            android:textColor="@color/colorPrimary" />
+
+                                    </RadioGroup>
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:visibility="gone"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:gravity="center"
+                                    android:orientation="horizontal">
+
+                                    <LinearLayout
+                                        android:visibility="gone"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+
+                                        <ImageView
+                                            android:id="@+id/ITER_income_img"
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:layout_gravity="center"
+                                            android:foregroundGravity="center"
+                                            android:gravity="center"
+                                            android:padding="5dp"
+                                            android:src="@drawable/uploaad"
+                                            android:visibility="visible" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:fontFamily="@font/montserrat_semibold"
+                                            android:gravity="center"
+                                            android:padding="5dp"
+                                            android:text="Upload ITR"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="12dp" />
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:visibility="gone"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+
+                                        <ImageView
+                                            android:id="@+id/bank_income_address"
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:layout_gravity="center"
+                                            android:foregroundGravity="center"
+                                            android:gravity="center"
+                                            android:padding="5dp"
+                                            android:src="@drawable/uploaad"
+                                            android:visibility="visible" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:fontFamily="@font/montserrat_semibold"
+                                            android:gravity="center"
+                                            android:padding="5dp"
+                                            android:text="Upload Bank Statement"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="12dp" />
+
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <!--selfemployeed-->
+
+                            <LinearLayout
+                                android:id="@+id/selfemployeed_income_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="25dp"
+                                android:layout_marginRight="25dp"
+                                android:orientation="vertical"
+                                android:padding="5dp"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:fontFamily="@font/montserrat_semibold"
+                                    android:padding="10dp"
+                                    android:text="Self Employeed"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="14dp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:fontFamily="@font/montserrat_semibold"
+                                    android:padding="10dp"
+                                    android:text="Do you have a valid income proof(ITR/Salary slip)"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="14dp" />
+
+                                <LinearLayout
+                                    android:id="@+id/income_radiobutton_layout"
+                                    android:visibility="gone"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+
+                                    <RadioGroup
+                                        android:id="@+id/batting_style"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal"
+                                        android:gravity="center_horizontal"
+                                        android:orientation="horizontal"
+                                        android:padding="5dp">
+
+
+                                        <RadioButton
+                                            android:id="@+id/yes2"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="2"
+                                            android:padding="5dp"
+                                            android:text="Yes"
+                                            android:textColor="@color/colorPrimary" />
+
+                                        <RadioButton
+                                            android:id="@+id/no2"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="2"
+                                            android:padding="5dp"
+                                            android:text="No"
+                                            android:textColor="@color/colorPrimary" />
+
+                                    </RadioGroup>
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:visibility="gone"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:gravity="center"
+                                    android:orientation="horizontal">
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+
+                                        <ImageView
+                                            android:id="@+id/ITER_selfemployeed_img"
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:layout_gravity="center"
+                                            android:foregroundGravity="center"
+                                            android:gravity="center"
+                                            android:padding="5dp"
+                                            android:src="@drawable/uploaad"
+                                            android:visibility="visible" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:fontFamily="@font/montserrat_semibold"
+                                            android:gravity="center"
+                                            android:padding="5dp"
+                                            android:text="Upload ITR"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="12dp" />
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:visibility="gone"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+
+                                        <ImageView
+                                            android:id="@+id/bank_selfemployeed_address"
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:layout_gravity="center"
+                                            android:foregroundGravity="center"
+                                            android:gravity="center"
+                                            android:padding="5dp"
+                                            android:src="@drawable/uploaad"
+                                            android:visibility="visible" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:fontFamily="@font/montserrat_semibold"
+                                            android:gravity="center"
+                                            android:padding="5dp"
+                                            android:text="Upload Bank Statement"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="12dp" />
+
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+
+
+                                <TextView
+                                    android:id="@+id/savedata1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginRight="20dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:background="@drawable/button_round"
+                                    android:fontFamily="@font/montserrat_semibold"
+                                    android:gravity="center"
+                                    android:padding="5dp"
+                                    android:text="Save"
+                                    android:textColor="@color/white"
+                                    android:textSize="14sp"
+                                    android:visibility="gone" />
+
+
+
+                                <TextView
+                                    android:id="@+id/savedata2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginRight="20dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:background="@drawable/button_round"
+                                    android:fontFamily="@font/montserrat_semibold"
+                                    android:gravity="center"
+                                    android:padding="10dp"
+                                    android:text="Save"
+                                    android:textColor="@color/white"
+                                    android:textSize="14sp"
+                                    android:visibility="gone" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/correct3"
+                        android:layout_width="30dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="20dp"
+                        android:src="@drawable/correct"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <!--bank statementttttttttttttttttt-->
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginRight="25dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/dropdown_shape"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                app:cardBackgroundColor="@color/white"
+                                app:cardCornerRadius="5dp"
+                                app:cardElevation="5dp"
+                                app:cardMaxElevation="8dp"
+                                app:cardPreventCornerOverlap="true"
+                                app:cardUseCompatPadding="true">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:fontFamily="@font/montserrat_semibold"
+                                    android:padding="10dp"
+                                    android:text="Bank Statement"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="14dp" />
+
+                                <ImageView
+                                    android:id="@+id/dropdown4"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_gravity="right"
+                                    android:padding="5dp"
+                                    android:src="@drawable/ic_arrow_drop_down_black_24dp"
+                                    android:visibility="visible" />
+
+                                <ImageView
+                                    android:id="@+id/dropup4"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_gravity="right"
+                                    android:padding="5dp"
+                                    android:src="@drawable/ic_arrow_drop_up_black_24dp"
+                                    android:visibility="gone" />
+                            </androidx.cardview.widget.CardView>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/banklayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+
+                                    <ImageView
+                                        android:id="@+id/bank_statement_img"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_gravity="center"
+                                        android:foregroundGravity="center"
+                                        android:gravity="center"
+                                        android:padding="5dp"
+                                        android:src="@drawable/uploaad"
+                                        android:visibility="visible" />
+
+                                    <TextView
+                                        android:id="@+id/error7"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:fontFamily="@font/montserrat_semibold"
+                                        android:gravity="center"
+                                        android:padding="5dp"
+                                        android:text=""
+                                        android:textColor="@color/red"
+                                        android:textSize="10dp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:fontFamily="@font/montserrat_semibold"
+                                        android:gravity="center"
+                                        android:padding="5dp"
+                                        android:text="Upload Bank Statement"
+                                        android:textColor="@color/colorPrimary"
+                                        android:textSize="12dp" />
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/savestatement"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/button_round"
+                            android:fontFamily="@font/montserrat_semibold"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="Save"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            android:visibility="gone" />
+
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/correct4"
+                        android:layout_width="30dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="20dp"
+                        android:src="@drawable/correct"
+                        android:visibility="gone" />
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/errormsg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Please upload all the details!!"
+                    android:textColor="@color/red"
+                    android:textSize="14sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/finalsave"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/button_round"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Save"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:visibility="visible" />
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>

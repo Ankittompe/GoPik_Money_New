@@ -39,4 +39,6 @@ public class QR_DataList_MODEL {
     public void setDatetime(String datetime) {
         this.datetime = datetime;
     }
+
+
 }
