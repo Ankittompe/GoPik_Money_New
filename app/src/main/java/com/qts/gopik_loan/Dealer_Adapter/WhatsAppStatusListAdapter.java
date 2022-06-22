@@ -13,6 +13,9 @@ import android.widget.TextView;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.qts.gopik_loan.Activity.AppConstants;
+import com.qts.gopik_loan.Activity.Home;
+import com.qts.gopik_loan.Activity.SharedPref;
 import com.qts.gopik_loan.Dealer_Activity.MainActivity;
 import com.qts.gopik_loan.Model.QR_DataList_MODEL;
 
@@ -80,7 +83,12 @@ public class WhatsAppStatusListAdapter extends RecyclerView.Adapter<WhatsAppStat
             Bundle bundle = new Bundle();
             bundle.putSerializable("whatsAppData", mList);
             mWhatsAppStatusDetailsBottomSheet.setArguments(bundle);
-            mWhatsAppStatusDetailsBottomSheet.show(((MainActivity) mContext).getSupportFragmentManager(), "");
+            if (SharedPref.getStringFromSharedPref(AppConstants.BRAND, mContext).equals("ML")) {
+                mWhatsAppStatusDetailsBottomSheet.show(((Home) mContext).getSupportFragmentManager(), "");
+            }
+            else{
+                mWhatsAppStatusDetailsBottomSheet.show(((MainActivity) mContext).getSupportFragmentManager(), "");
+            }
         });
     }
 

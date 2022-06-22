@@ -174,4 +174,5 @@ public interface AppConstants {
     String NAME_BROKER ="nammm" ;
     String DEALER_MOBILE_NUMBER = "dealermob";
     String NOTIFICATION_TYPE ="hh" ;
+    String BROKER_NAME ="pop" ;
 }

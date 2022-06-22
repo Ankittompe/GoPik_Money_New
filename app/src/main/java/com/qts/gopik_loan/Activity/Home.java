@@ -14,7 +14,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SubMenu;
@@ -25,13 +24,15 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.Gson;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
+import com.qts.gopik_loan.Dealer_Fragment.Dealer_QR_Code_Fragment;
 import com.qts.gopik_loan.Fragment.Contest;
+import com.qts.gopik_loan.Fragment.Broker_QR_Code_Fragment;
 import com.qts.gopik_loan.Fragment.HomeFragment;
 import com.qts.gopik_loan.Fragment.Notification;
 import com.qts.gopik_loan.Fragment.Profile;
-import com.qts.gopik_loan.Fragment.Profile_Details;
 import com.qts.gopik_loan.Fragment.Reward;
 import com.qts.gopik_loan.Fragment.Tab_Fragment;
 import com.qts.gopik_loan.Model.Dealer_logout_MODEL;
@@ -122,6 +123,9 @@ public class Home extends AppCompatActivity {
                         startActivity(ittt);
 
                         break;
+                    case R.id.dost_qrcode:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frameContainer, new Broker_QR_Code_Fragment()).commit();
+                        break;
                     case R.id.signout:
                         AlertDialog.Builder builder = new AlertDialog.Builder(Home.this);
                         new AlertDialog.Builder(Home.this).setIcon(android.R.drawable.ic_dialog_alert).setTitle("Log Out")
@@ -194,6 +198,18 @@ public class Home extends AppCompatActivity {
 
         });
 */
+
+        getNotificationClickData();
+
+        FirebaseMessaging.getInstance().subscribeToTopic("GoPikType" + SharedPref.getStringFromSharedPref(AppConstants.USER_CODE, getApplicationContext()))
+                .addOnCompleteListener(task -> {
+                    String msg = getString(R.string.msg_subscribed);
+                    if (!task.isSuccessful()) {
+                        msg = getString(R.string.msg_subscribe_failed);
+                    }
+                    Log.d(TAG, msg);
+                    /*  Toast.makeText(SplashActivity.this, msg, Toast.LENGTH_SHORT).show();*/
+                });
     }
 
     private void bottomMenu() {
@@ -292,6 +308,7 @@ public class Home extends AppCompatActivity {
                     Log.e(TAG, "onResponse: " + new Gson().toJson(response.body()));
 
                     if(response.body().getCode().equals("200")) {
+                        FirebaseMessaging.getInstance().unsubscribeFromTopic("GoPikType" + SharedPref.getStringFromSharedPref(AppConstants.USER_CODE, getApplicationContext()));
                         Log.e("Body", "body2");
                         SharedPref.saveBooleanInSharedPref(AppConstants.TOKEN, false, getApplicationContext());
                         SharedPref.saveBooleanInSharedPref(AppConstants.IS_LOGGED_IN, false, getApplicationContext());
@@ -317,7 +334,17 @@ public class Home extends AppCompatActivity {
 
     }
 
-
+    private void getNotificationClickData() {
+        String mNotifyData = SharedPref.getStringFromSharedPref(AppConstants.NOTIFICATION_TYPE, getApplicationContext());
+        Log.e("Notification Details Type ", mNotifyData);
+        if (mNotifyData.equals("0")) {
+//            chipNavigationBar.setItemSelected(R.id.not_dealer, true);
+            getSupportFragmentManager().beginTransaction().replace(R.id.frameContainer_dealer, new Dealer_QR_Code_Fragment()).commit();
+        } else if (mNotifyData.equals("1")) {
+//            chipNavigationBar.setItemSelected(R.id.not_dealer,true);
+        }
+        SharedPref.saveStringInSharedPref(AppConstants.NOTIFICATION_TYPE, "10", getApplicationContext());  // 10 for no notification
+    }
 
 }
 
