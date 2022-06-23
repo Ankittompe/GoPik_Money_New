@@ -175,4 +175,14 @@ public interface AppConstants {
     String DEALER_MOBILE_NUMBER = "dealermob";
     String NOTIFICATION_TYPE ="hh" ;
     String BROKER_NAME ="pop" ;
+    String ML_LOAN_IMAGE ="mlloanimg" ;
+
+    String ML_LOAN_IMAGE2 ="mlloanimg2" ;
+    String SUPPLY_CHAIN_PDF_FILE = "supplypdf";
+    String TOP_FIVE_LIST = "topfivelist";
+    String SPINNER_PO_DATA ="spinnnn" ;
+
+    String HOME_PO_GENARETE_ACTIVITY = "pogenerate";
+    String TOP_FIVE_ACTIVITY = "topfiveactivity";
+    String PO_ALL_LIST_ACTIVITY = "poalllist";
 }

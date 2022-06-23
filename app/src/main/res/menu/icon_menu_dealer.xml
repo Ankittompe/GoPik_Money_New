@@ -20,7 +20,10 @@
             android:title="My Profile"
             />
 
-
+    <item android:id="@+id/mymall"
+        android:icon="@drawable/ic_mall"
+        android:title="My Mall"
+        />
     <!--<item android:id="@+id/profile_dealer"
         android:icon="@drawable/ic_baseline_account_circle_24"
         android:title="My Profile"

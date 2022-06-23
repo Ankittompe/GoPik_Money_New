@@ -32,7 +32,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".Supply_Chain.ProductCatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Supply_Chain.PO_Get_Modified_List"
+            android:exported="false" />
 
+        <activity
+            android:name=".Supply_Chain.PO_Generate_Form_activity"
+            android:exported="false" />
+        <activity
+            android:name=".Supply_Chain.PO_Generate__AllList_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Supply_Chain.PO_TOP_FIVE_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Supply_Chain.Image_Upload_SupplyChain"
+            android:exported="false" />
         <activity
             android:name=".Dealer_Activity.Resend_OTP_CAP_Otp_DEALER_Verify"
             android:exported="false" />

@@ -2,101 +2,7 @@ package com.qts.gopik_loan.Retro;
 
 import android.widget.TextView;
 
-import com.qts.gopik_loan.Model.AADHAR_CONSENT_MODEL;
-import com.qts.gopik_loan.Model.ACCOUNT_NO_MODEL;
-import com.qts.gopik_loan.Model.Aadhaarverification_MODEL;
-import com.qts.gopik_loan.Model.Add_scratchcard_MODEL;
-import com.qts.gopik_loan.Model.Apiget_panid_details_MODEL;
-import com.qts.gopik_loan.Model.Bankacc_verification_MODEL;
-import com.qts.gopik_loan.Model.Banner_list_MODEL;
-import com.qts.gopik_loan.Model.Broker_bank_details_update_MODEL;
-import com.qts.gopik_loan.Model.Broker_profile_details_MODEL;
-import com.qts.gopik_loan.Model.Broker_profile_update_MODEL;
-import com.qts.gopik_loan.Model.Calculation_data_MODEL;
-import com.qts.gopik_loan.Model.Category_brand_wise_MODEL;
-import com.qts.gopik_loan.Model.DL_MODEL;
-import com.qts.gopik_loan.Model.Dealer_QR_MODEL;
-import com.qts.gopik_loan.Model.Dealer_Subuser_action_MODEL;
-import com.qts.gopik_loan.Model.Dealer_Subuser_edit_MODEL;
-import com.qts.gopik_loan.Model.Dealer_Subuser_fetch_MODEL;
-import com.qts.gopik_loan.Model.Dealer_Subuser_insert_MODEL;
-import com.qts.gopik_loan.Model.Dealer_bank_update_MODEL;
-import com.qts.gopik_loan.Model.Dealer_logout_MODEL;
-import com.qts.gopik_loan.Model.Draftview_MODEL;
-import com.qts.gopik_loan.Model.Fetch_application_list_MODEL;
-import com.qts.gopik_loan.Model.Fetch_current_appliation_list_DEALER_MODEL;
-import com.qts.gopik_loan.Model.Fetch_current_loanappliation_list_MODEL;
-import com.qts.gopik_loan.Model.Fetch_customer_data_MODEL;
-import com.qts.gopik_loan.Model.Fetch_loan_application_list_MODEL;
-import com.qts.gopik_loan.Model.GetCatListMODEL;
-import com.qts.gopik_loan.Model.GetCatproductModel;
-import com.qts.gopik_loan.Model.Get_ML_SubCat_List_MODEL;
-import com.qts.gopik_loan.Model.Get_loan_status_MODEL;
-import com.qts.gopik_loan.Model.Get_status_MODEL;
-import com.qts.gopik_loan.Model.Get_voterid_details_MODEL;
-import com.qts.gopik_loan.Model.Get_wallet_details_MODEL;
-import com.qts.gopik_loan.Model.Get_wallet_txn_MODEL;
-import com.qts.gopik_loan.Model.Getcontestresult_MODEL;
-import com.qts.gopik_loan.Model.Getusercontest_MODEL;
-import com.qts.gopik_loan.Model.Loan_calculation_Model;
-import com.qts.gopik_loan.Model.LogInOtpVerifyMODEL;
-import com.qts.gopik_loan.Model.Login_actPOJO;
-import com.qts.gopik_loan.Model.Login_act_MODEL;
-import com.qts.gopik_loan.Model.Login_otp_verify_for_ML_MODEL;
-import com.qts.gopik_loan.Model.LoginsendOtpMODEL;
-import com.qts.gopik_loan.Model.MLAddproof_upload_MODEL;
-import com.qts.gopik_loan.Model.MLBnkproof_upload_MODEL;
-import com.qts.gopik_loan.Model.MLDoc1_upload_MODEL;
-import com.qts.gopik_loan.Model.MLDoc3_upload_MODEL;
-import com.qts.gopik_loan.Model.MLEmpproof_upload_MODEL;
-import com.qts.gopik_loan.Model.MLIDproofBackUpload_MODEL;
-import com.qts.gopik_loan.Model.MLIDproofFrontUpload_MODEL;
-import com.qts.gopik_loan.Model.MLIDproof_upload_MODEL;
-import com.qts.gopik_loan.Model.Notification_MODEL;
-import com.qts.gopik_loan.Model.OtpVerificationMODEL;
-import com.qts.gopik_loan.Model.PAN_MODEL;
-import com.qts.gopik_loan.Model.PASSPORT_MODEL;
-import com.qts.gopik_loan.Model.PINCODE_MODEL;
-import com.qts.gopik_loan.Model.Pincode_list_MODEL;
-import com.qts.gopik_loan.Model.Product_details_Model;
-import com.qts.gopik_loan.Model.ProfileDetailsMODEL;
-import com.qts.gopik_loan.Model.ProfileDetails_DEALER_MODEL;
-import com.qts.gopik_loan.Model.Profile_Update_DEALER_MODEL;
-import com.qts.gopik_loan.Model.Profile_data_MODEL;
-import com.qts.gopik_loan.Model.QR_ScannedList_MODEL;
-import com.qts.gopik_loan.Model.RazorpayOrderResponse;
-import com.qts.gopik_loan.Model.RegisterMODEL;
-import com.qts.gopik_loan.Model.Resend_login_otp_MODEL;
-import com.qts.gopik_loan.Model.Resend_otp_to_user_MODEL;
-import com.qts.gopik_loan.Model.Resend_verify_mobile_number_MODEL;
-import com.qts.gopik_loan.Model.Send_MLData_to_ICICI_MODEL;
-import com.qts.gopik_loan.Model.Send_login_otp_for_ML_MODEL;
-import com.qts.gopik_loan.Model.Send_otp_for_loan_MODEL;
-import com.qts.gopik_loan.Model.Send_otp_to_user_DEALER_MODEL;
-import com.qts.gopik_loan.Model.Send_otp_to_user_MODEL;
-import com.qts.gopik_loan.Model.Store_App_Document_Details_MODEL;
-import com.qts.gopik_loan.Model.Store_Bank_Document_Details_MODEL;
-import com.qts.gopik_loan.Model.Store_Income_Document_Details_MODEL;
-import com.qts.gopik_loan.Model.Store_Land_Document_Details_MODEL;
-import com.qts.gopik_loan.Model.Store_Margin_Document_Details_MODEL;
-import com.qts.gopik_loan.Model.Store_Other_Document_Details_MODEL;
-import com.qts.gopik_loan.Model.Store_Utility_Document_Details_MODEL;
-import com.qts.gopik_loan.Model.Store_data_for_MLloan_MODEL;
-import com.qts.gopik_loan.Model.Store_panid_details_MODEL;
-import com.qts.gopik_loan.Model.Store_voterid_back_details_MODEL;
-import com.qts.gopik_loan.Model.Submit_customer_application_MODEL;
-import com.qts.gopik_loan.Model.Submit_loan_application_MODEL;
-import com.qts.gopik_loan.Model.Update_scratchcard_MODEL;
-import com.qts.gopik_loan.Model.Update_wallet_credit_MODEL;
-import com.qts.gopik_loan.Model.VOTER_MODEL;
-import com.qts.gopik_loan.Model.Verify_mobile_number_MODEL;
-import com.qts.gopik_loan.Model.Verify_mobile_number_forloan_MODEL;
-import com.qts.gopik_loan.Model.View_scratchcard_MODEL;
-import com.qts.gopik_loan.Model.Wallet_balance_MODEL;
-import com.qts.gopik_loan.Model.Wallethistory_MODEL;
-import com.qts.gopik_loan.Model.WhatsAppStatusList_MODEL;
-import com.qts.gopik_loan.Model.bkr_declrtn_MODEL;
-import com.qts.gopik_loan.Model.store_voterid_details_MODEL;
+import com.qts.gopik_loan.Model.*;
 import com.qts.gopik_loan.Pojo.AADHAR_CONSENT_POJO;
 import com.qts.gopik_loan.Pojo.Aadhaarverification_POJO;
 import com.qts.gopik_loan.Pojo.Add_scratchcard_POJO;
@@ -143,6 +49,7 @@ import com.qts.gopik_loan.Pojo.OtpVerificationPOJO;
 import com.qts.gopik_loan.Pojo.PAN_POJO;
 import com.qts.gopik_loan.Pojo.PASSPORT_POJO;
 import com.qts.gopik_loan.Pojo.Pincode_list_POJO;
+import com.qts.gopik_loan.Pojo.Po_add_POJO;
 import com.qts.gopik_loan.Pojo.Product_details_POJO;
 import com.qts.gopik_loan.Pojo.ProfileDetailsPOJO;
 import com.qts.gopik_loan.Pojo.ProfileDetails_DEALER_POJO;
@@ -170,7 +77,9 @@ import com.qts.gopik_loan.Pojo.Verify_mobile_number_forloan_POJO;
 import com.qts.gopik_loan.Pojo.View_scratchcard_POJO;
 import com.qts.gopik_loan.Pojo.Wallet_balance_POJO;
 import com.qts.gopik_loan.Pojo.Wallethistory_POJO;
+import com.qts.gopik_loan.Pojo.all_POs_POJO;
 import com.qts.gopik_loan.Pojo.bkr_declrtn_POJO;
+import com.qts.gopik_loan.Pojo.top_five_POs_POJO;
 
 import java.util.Map;
 
@@ -626,5 +535,34 @@ public interface RestApis {
     Call<WhatsAppStatusList_MODEL> Get_WhatsApp_Status(@Body Dealer_CODE_POJO data);
 
 
+    @Multipart
+    @POST("Dealer_adhar_molldoc")
+    Call<Dealer_adhar_molldoc_MODEL>Dealer_adhar_molldoc(@Part("user_code") RequestBody user_code,
+                                                         @Part MultipartBody.Part adharimage);
+
+    @Multipart
+    @POST("Dealer_pan_molldoc")
+    Call<Dealer_pan_molldoc_MODEL>Dealer_pan_molldoc(@Part("user_code") RequestBody user_code,
+                                                     @Part MultipartBody.Part panimage);
+
+
+    @Multipart
+    @POST("Dealer_bank_molldoc")
+    Call<Dealer_bank_molldoc_MODEL>Dealer_bank_molldoc(@Part("user_code") RequestBody user_code,
+                                                       @Part MultipartBody.Part bankimage);
+    @Multipart
+    @POST("Dealer_bank_molldoc")
+    Call<Bank_Upload_MODEL> Dealer_Bank_File_Upload(@Part("user_code") RequestBody user_code,
+                                                    @Part MultipartBody.Part bankimage);
+
+
+    @POST("all_POs")
+    Call<all_POs_MODEL>all_POs(@Body all_POs_POJO data);
+
+    @POST("top_five_POs")
+    Call<top_five_POs_MODEL>top_five_POs(@Body top_five_POs_POJO data);
+
+    @POST("Po_add")
+    Call<Po_add_MODEL>Po_add(@Body Po_add_POJO data);
 
 }
