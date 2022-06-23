@@ -16,11 +16,13 @@
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="28" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" /> <!-- Include only if your app benefits from precise location access. -->
+    <!-- Include only if your app benefits from precise location access. -->
+
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
+        android:directBootAware="true"
         android:exported="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -29,12 +31,12 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:directBootAware="true"
         android:usesCleartextTraffic="true">
+
         <activity
             android:name=".Dealer_Activity.Resend_OTP_CAP_Otp_DEALER_Verify"
             android:exported="false" />
-        <activity android:name=".Activity.Property_Loan"></activity>
+        <activity android:name=".Activity.Property_Loan" />
         <activity
             android:name=".Dealer_Activity.Edit_delaer_Profile"
             android:screenOrientation="portrait" />
@@ -61,12 +63,10 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".Dealer_Activity.PAN_CARD_Details"
-            android:screenOrientation="portrait">
-
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".Dealer_Activity.Voter_ID_CARD_Details"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Dealer_Activity.TermsCondition_DEALER_Activity"
             android:screenOrientation="portrait" />
@@ -78,7 +78,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".Dealer_Activity.Wallet_Details"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Dealer_Activity.Promocode_Activity"
             android:screenOrientation="portrait" />
@@ -102,7 +102,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.Wallet_Activity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.Contest_Activity"
             android:screenOrientation="portrait" />
@@ -166,13 +166,14 @@
 
             <!-- Any inner elements would go here. -->
         </service>
-   <service
+        <service
             android:name=".Utils.MyFirebase"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
         <meta-data
             android:name="firebase_messaging_auto_init_enabled"
             android:value="false" />
@@ -182,12 +183,13 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/gu" />
-        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
-             notification message. See README(https://goo.gl/6BKBk7) for more. -->
+        <!--
+ Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more.
+        -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
-            android:resource="@color/black" />
-        <!-- [END fcm_default_icon] -->
+            android:resource="@color/black" /> <!-- [END fcm_default_icon] -->
         <!-- [START fcm_default_channel] -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"

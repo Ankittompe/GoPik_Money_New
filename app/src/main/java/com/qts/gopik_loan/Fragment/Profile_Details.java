@@ -297,7 +297,8 @@ public class Profile_Details extends Fragment implements AdapterView.OnItemSelec
 
                     if (response.body().getCode().equals("200")) {
                         SharedPref.saveStringInSharedPref(AppConstants.USER_CODE, response.body().getPayload().getProfile().get(0).getBroker_code(), getContext());
-                        if ((response.body().getPayload().getProfile().get(0).getBroker_name().equals("NA"))) {
+                        if ((response.body().getPayload().getProfile().get(0).getBroker_email().equals("NA"))) {
+                            name1.setText(response.body().getPayload().getProfile().get(0).getBroker_name());
                             custPrograssbar.closePrograssBar();
                         } else {
                             custPrograssbar.closePrograssBar();

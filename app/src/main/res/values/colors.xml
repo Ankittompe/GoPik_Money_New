@@ -35,4 +35,7 @@
 
 
     <color name="coloeAccent_second">#FFE5F8D2</color>
+    <color name="hero_red">#d01f25</color>
+    <color name="hero_green">#7fc242</color>
+    <color name="hero_light_grey">#DFDBDB</color>
 </resources>

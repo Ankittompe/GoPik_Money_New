@@ -13,11 +13,12 @@
     <string name="hyperlink2"><a href="https://policies.gopik.org/privacypolicy.html"> Privacy Policy </a></string>
     <string name="asset_insurance_coverage_of_twelve_months_for_sum_assured_rs_mrp_provided_by_liberty_general_insurance_ltd" />
     <string name="by_clicking_checkbox_you_agree_the_terms_conditions">By clicking checkbox, you agree the terms &amp; conditions of\n<a href="https://www.geeksforgeeks.org/how-to-add-hyperlink-to-textview-in-android/"> GoPikMoney </a></string>
-  <!--  <string name="msg_token_fmt">msg_token_fmt</string>-->
+    <!--  <string name="msg_token_fmt">msg_token_fmt</string>-->
     Hello, %1$s! You have %2$d new messages.
     <string name="default_notification_channel_id">100</string>
     <string name="default_notification_channel_name">notify</string>
     <string name="msg_subscribe_failed">msg failed</string>
     <string name="msg_subscribed">msg subscribed</string>
     <string name="msg_token_fmt">msg_token</string>
+    <string name="generate_qr_code">Generate QR Code</string>
 </resources>

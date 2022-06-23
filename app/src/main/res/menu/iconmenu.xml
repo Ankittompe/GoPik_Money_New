@@ -24,7 +24,10 @@
             android:icon="@drawable/ic_baseline_account_balance_wallet_24"
             android:title="Transaction History"
             />
-
+        <item android:id="@+id/dost_qrcode"
+            android:icon="@drawable/ic_qr_code_scanner"
+            android:title="My QR Code"
+            />
         <item android:id="@+id/menu_login"
             android:icon="@drawable/ic_baseline_power_settings_new_24"
             android:title="Sign In"

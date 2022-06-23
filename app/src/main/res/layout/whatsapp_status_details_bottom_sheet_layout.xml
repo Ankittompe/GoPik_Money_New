@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorgrey1"
+    android:orientation="vertical">
+
+    <com.qts.gopik_loan.Utils.CustomRegularTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/button_click"
+        android:gravity="center"
+        android:lineSpacingExtra="0sp"
+        android:padding="@dimen/_10sdp"
+        android:text="Status Details"
+        android:textColor="@color/white"
+        tools:ignore="MissingConstraints" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_10sdp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_15sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:lineSpacingExtra="0sp"
+                                android:padding="@dimen/_10sdp"
+                                android:text="Customer Code"
+                                android:textStyle="bold" />
+
+                            <com.qts.gopik_loan.Utils.CustomRegularTextView
+                                android:id="@+id/txtDetailsCustCode"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="center_vertical"
+                                android:paddingStart="@dimen/_10sdp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:lineSpacingExtra="0sp"
+                                android:padding="@dimen/_10sdp"
+                                android:text="Customer Name"
+                                android:textAppearance="@style/text_style_one"
+                                android:textStyle="bold"
+
+                                app:layout_constraintHorizontal_bias="0.492"
+                                tools:ignore="MissingConstraints" />
+
+                            <com.qts.gopik_loan.Utils.CustomRegularTextView
+                                android:id="@+id/txtDetailsCustName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="center_vertical"
+                                android:paddingStart="@dimen/_10sdp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/colorGrey" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:lineSpacingExtra="0sp"
+                                android:padding="@dimen/_10sdp"
+                                android:text="Customer Number"
+                                android:textAppearance="@style/text_style_one"
+                                android:textStyle="bold"
+
+                                app:layout_constraintHorizontal_bias="0.492"
+                                tools:ignore="MissingConstraints" />
+
+                            <com.qts.gopik_loan.Utils.CustomRegularTextView
+                                android:id="@+id/txtDetailsCustNo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="center_vertical"
+                                android:paddingStart="@dimen/_10sdp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:lineSpacingExtra="0sp"
+                                android:padding="@dimen/_10sdp"
+                                android:text="Loan Type"
+                                android:textAppearance="@style/text_style_one"
+                                android:textStyle="bold"
+
+                                app:layout_constraintHorizontal_bias="0.492"
+                                tools:ignore="MissingConstraints" />
+
+                            <com.qts.gopik_loan.Utils.CustomRegularTextView
+                                android:id="@+id/txtDetailsLoanType"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="center_vertical"
+                                android:paddingStart="@dimen/_10sdp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/colorGrey" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:lineSpacingExtra="0sp"
+                                android:padding="@dimen/_10sdp"
+                                android:text="Loan Amount"
+                                android:textAppearance="@style/text_style_one"
+                                android:textStyle="bold"
+
+                                app:layout_constraintHorizontal_bias="0.492"
+                                tools:ignore="MissingConstraints" />
+
+                            <com.qts.gopik_loan.Utils.CustomRegularTextView
+                                android:id="@+id/txtDetailsLoanAmount"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="center_vertical"
+                                android:paddingStart="@dimen/_10sdp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:lineSpacingExtra="0sp"
+                                android:padding="@dimen/_10sdp"
+                                android:text="PIN Number"
+                                android:textAppearance="@style/text_style_one"
+                                android:textStyle="bold"
+
+                                app:layout_constraintHorizontal_bias="0.492"
+                                tools:ignore="MissingConstraints" />
+
+                            <com.qts.gopik_loan.Utils.CustomRegularTextView
+                                android:id="@+id/txtDetailsPinNo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="center_vertical"
+                                android:paddingStart="@dimen/_10sdp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_15sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:lineSpacingExtra="0sp"
+                                android:padding="@dimen/_10sdp"
+                                android:text="Dealer Code"
+                                android:textAppearance="@style/text_style_one"
+                                android:textStyle="bold"
+
+                                app:layout_constraintHorizontal_bias="0.492"
+                                tools:ignore="MissingConstraints" />
+
+                            <com.qts.gopik_loan.Utils.CustomRegularTextView
+                                android:id="@+id/txtDetailsDealerCode"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="center_vertical"
+                                android:paddingStart="@dimen/_10sdp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:lineSpacingExtra="0sp"
+                                android:padding="@dimen/_10sdp"
+                                android:text="Financer"
+                                android:textAppearance="@style/text_style_one"
+                                android:textStyle="bold"
+
+                                app:layout_constraintHorizontal_bias="0.492"
+                                tools:ignore="MissingConstraints" />
+
+                            <com.qts.gopik_loan.Utils.CustomRegularTextView
+                                android:id="@+id/txtDetailsFinancer"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="center_vertical"
+                                android:paddingStart="@dimen/_10sdp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/colorGrey"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:lineSpacingExtra="0sp"
+                                android:padding="@dimen/_10sdp"
+                                android:text="Dealer Name"
+                                android:textAppearance="@style/text_style_one"
+                                android:textStyle="bold"
+
+                                app:layout_constraintHorizontal_bias="0.492"
+                                tools:ignore="MissingConstraints" />
+
+                            <com.qts.gopik_loan.Utils.CustomRegularTextView
+                                android:id="@+id/txtDetailsDealerName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="center_vertical"
+                                android:paddingStart="@dimen/_10sdp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:lineSpacingExtra="0sp"
+                                android:padding="@dimen/_10sdp"
+                                android:text="Dealer Brand"
+                                android:textAppearance="@style/text_style_one"
+                                android:textStyle="bold"
+
+                                app:layout_constraintHorizontal_bias="0.492"
+                                tools:ignore="MissingConstraints" />
+
+                            <com.qts.gopik_loan.Utils.CustomRegularTextView
+                                android:id="@+id/txtDetailsDealerBrand"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="center_vertical"
+                                android:paddingStart="@dimen/_10sdp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/colorGrey" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:lineSpacingExtra="0sp"
+                                android:padding="@dimen/_10sdp"
+                                android:text="Application Status"
+                                android:textAppearance="@style/text_style_one"
+                                android:textStyle="bold"
+
+                                app:layout_constraintHorizontal_bias="0.492"
+                                tools:ignore="MissingConstraints" />
+
+                            <com.qts.gopik_loan.Utils.CustomRegularTextView
+                                android:id="@+id/txtDetailsAppStatus"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="center_vertical"
+                                android:paddingStart="@dimen/_10sdp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:lineSpacingExtra="0sp"
+                                android:padding="@dimen/_10sdp"
+                                android:text="Date/Time"
+                                android:textAppearance="@style/text_style_one"
+                                android:textStyle="bold"
+
+                                app:layout_constraintHorizontal_bias="0.492"
+                                tools:ignore="MissingConstraints" />
+
+                            <com.qts.gopik_loan.Utils.CustomRegularTextView
+                                android:id="@+id/txtDetailsTime"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="center_vertical"
+                                android:paddingStart="@dimen/_10sdp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

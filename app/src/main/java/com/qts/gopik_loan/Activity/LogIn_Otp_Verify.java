@@ -66,14 +66,14 @@ import retrofit2.Response;
 
 public class LogIn_Otp_Verify extends AppCompatActivity implements TextWatcher {
     private static final int RESOLVE_HINT = 100;
-    TextView btnresend, etmobileno, resendotp, yes, no;
+    TextView btnresend, etmobileno, resendotp, yes, no,btsendpopup;
     // Set to an unused request code  private static final int SMS_CONSENT_REQUEST = 2;  // Set to an unused request code
     private static final int SMS_CONSENT_REQUEST = 2;
     // Set to an unused request code
     LinearLayout otp, linerotp, lin;
     ImageView backarrow;
     String TAG = "verifyotplogin";
-    EditText ed_otp1, ed_otp2, ed_otp3, ed_otp4;
+    EditText ed_otp1, ed_otp2, ed_otp3, ed_otp4,namepopupet;
     RelativeLayout relverifyotp;
     CustPrograssbar custPrograssbar;
     String otptext;
@@ -398,7 +398,8 @@ public class LogIn_Otp_Verify extends AppCompatActivity implements TextWatcher {
             @Override
             public void onClick(View view) {
                 SharedPref.saveStringInSharedPref(AppConstants.VALUE, "Yes", getApplicationContext());
-                bkr_declrtn();
+                namepopup();
+               /* bkr_declrtn();*/
 
             }
         });
@@ -415,10 +416,30 @@ public class LogIn_Otp_Verify extends AppCompatActivity implements TextWatcher {
 
     }
 
+    private void namepopup() {
+        dialogCondition.setContentView(R.layout.name_layout);
+        btsendpopup = (TextView) dialogCondition.findViewById(R.id.btsendpopup);
+        namepopupet = (EditText) dialogCondition.findViewById(R.id.namepopupet);
+        dialogCondition.getWindow().setBackgroundDrawable(
+                new ColorDrawable(Color.WHITE));
+        dialogCondition.setCancelable(true);
+        dialogCondition.show();
+        btsendpopup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPref.saveStringInSharedPref(AppConstants.BROKER_NAME,namepopupet.getText().toString(),getApplicationContext());
+                bkr_declrtn();
+
+
+            }
+        });
+    }
+
     private void bkr_declrtn() {
         custPrograssbar.prograssCreate(LogIn_Otp_Verify.this);
         bkr_declrtn_POJO pojo = new bkr_declrtn_POJO(SharedPref.getStringFromSharedPref(AppConstants.PHONENUMBER, getApplicationContext()),
                 SharedPref.getStringFromSharedPref(AppConstants.TOKEN, getApplicationContext()),
+                SharedPref.getStringFromSharedPref(AppConstants.BROKER_NAME, getApplicationContext()),
                 SharedPref.getStringFromSharedPref(AppConstants.VALUE, getApplicationContext()));
         RestApis restApis = NetworkHandler.getRetrofit().create(RestApis.class);
         Call<bkr_declrtn_MODEL> call = restApis.bkr_declrtn(pojo);

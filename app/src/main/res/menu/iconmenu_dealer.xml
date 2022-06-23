@@ -21,6 +21,11 @@
             android:title="Add User"
             />
 
+        <item android:id="@+id/dealer_qrcode"
+            android:icon="@drawable/ic_qr_code_scanner"
+            android:title="My QR Code"
+            />
+
         <item android:id="@+id/dealer_menu_login"
             android:icon="@drawable/ic_baseline_power_settings_new_24"
             android:title="Sign In"
