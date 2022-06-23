@@ -2,6 +2,7 @@ package com.qts.gopik_loan.Retro;
 
 import android.widget.TextView;
 
+import com.qts.gopik_loan.Model.*;
 import com.qts.gopik_loan.Model.AADHAR_CONSENT_MODEL;
 import com.qts.gopik_loan.Model.ACCOUNT_NO_MODEL;
 import com.qts.gopik_loan.Model.Aadhaarverification_MODEL;
@@ -102,7 +103,6 @@ import com.qts.gopik_loan.Model.bkr_declrtn_MODEL;
 import com.qts.gopik_loan.Model.store_voterid_details_MODEL;
 import com.qts.gopik_loan.Pojo.AADHAR_CONSENT_POJO;
 import com.qts.gopik_loan.Pojo.Aadhaarverification_POJO;
-import com.qts.gopik_loan.Pojo.Aadhar_OTP_Verify_POJO;
 import com.qts.gopik_loan.Pojo.Add_scratchcard_POJO;
 import com.qts.gopik_loan.Pojo.Apiget_panid_details_POJO;
 import com.qts.gopik_loan.Pojo.Bankacc_verification_POJO;
@@ -150,6 +150,7 @@ import com.qts.gopik_loan.Pojo.OtpVerificationPOJO;
 import com.qts.gopik_loan.Pojo.PAN_POJO;
 import com.qts.gopik_loan.Pojo.PASSPORT_POJO;
 import com.qts.gopik_loan.Pojo.Pincode_list_POJO;
+import com.qts.gopik_loan.Pojo.Po_add_POJO;
 import com.qts.gopik_loan.Pojo.Product_details_POJO;
 import com.qts.gopik_loan.Pojo.ProfileDetailsPOJO;
 import com.qts.gopik_loan.Pojo.ProfileDetails_DEALER_POJO;
@@ -177,7 +178,9 @@ import com.qts.gopik_loan.Pojo.Verify_mobile_number_forloan_POJO;
 import com.qts.gopik_loan.Pojo.View_scratchcard_POJO;
 import com.qts.gopik_loan.Pojo.Wallet_balance_POJO;
 import com.qts.gopik_loan.Pojo.Wallethistory_POJO;
+import com.qts.gopik_loan.Pojo.all_POs_POJO;
 import com.qts.gopik_loan.Pojo.bkr_declrtn_POJO;
+import com.qts.gopik_loan.Pojo.top_five_POs_POJO;
 
 import java.util.Map;
 
@@ -640,6 +643,35 @@ public interface RestApis {
 
     @POST("GoatAadharvalidation")
     Call<GoatAdharvalidationResponseDTO> GoatAadharvalidation(@Body GoatAadharvalidation_POJO data);
+    @Multipart
+    @POST("Dealer_adhar_molldoc")
+    Call<Dealer_adhar_molldoc_MODEL>Dealer_adhar_molldoc(@Part("user_code") RequestBody user_code,
+                                                         @Part MultipartBody.Part adharimage);
+
+    @Multipart
+    @POST("Dealer_pan_molldoc")
+    Call<Dealer_pan_molldoc_MODEL>Dealer_pan_molldoc(@Part("user_code") RequestBody user_code,
+                                                     @Part MultipartBody.Part panimage);
+
+
+    @Multipart
+    @POST("Dealer_bank_molldoc")
+    Call<Dealer_bank_molldoc_MODEL>Dealer_bank_molldoc(@Part("user_code") RequestBody user_code,
+                                                       @Part MultipartBody.Part bankimage);
+    @Multipart
+    @POST("Dealer_bank_molldoc")
+    Call<Bank_Upload_MODEL> Dealer_Bank_File_Upload(@Part("user_code") RequestBody user_code,
+                                                    @Part MultipartBody.Part bankimage);
+
+
+    @POST("all_POs")
+    Call<all_POs_MODEL>all_POs(@Body all_POs_POJO data);
+
+    @POST("top_five_POs")
+    Call<top_five_POs_MODEL>top_five_POs(@Body top_five_POs_POJO data);
+
+    @POST("Po_add")
+    Call<Po_add_MODEL>Po_add(@Body Po_add_POJO data);
 
 
     @POST("GoatAadharvalidation1")

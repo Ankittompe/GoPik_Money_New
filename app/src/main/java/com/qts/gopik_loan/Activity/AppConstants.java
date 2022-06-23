@@ -177,4 +177,14 @@ public interface AppConstants {
     String BROKER_NAME ="pop" ;
     String OTP_AADHAR = "otp";
     String NUMBER_AADHARCARD = "kk";
+    String ML_LOAN_IMAGE ="mlloanimg" ;
+
+    String ML_LOAN_IMAGE2 ="mlloanimg2" ;
+    String SUPPLY_CHAIN_PDF_FILE = "supplypdf";
+    String TOP_FIVE_LIST = "topfivelist";
+    String SPINNER_PO_DATA ="spinnnn" ;
+
+    String HOME_PO_GENARETE_ACTIVITY = "pogenerate";
+    String TOP_FIVE_ACTIVITY = "topfiveactivity";
+    String PO_ALL_LIST_ACTIVITY = "poalllist";
 }
