@@ -5,6 +5,7 @@ import android.widget.TextView;
 import com.qts.gopik_loan.Model.AADHAR_CONSENT_MODEL;
 import com.qts.gopik_loan.Model.ACCOUNT_NO_MODEL;
 import com.qts.gopik_loan.Model.Aadhaarverification_MODEL;
+import com.qts.gopik_loan.Model.Aadhar_OTP_Verify_MODEL;
 import com.qts.gopik_loan.Model.Add_scratchcard_MODEL;
 import com.qts.gopik_loan.Model.Apiget_panid_details_MODEL;
 import com.qts.gopik_loan.Model.Bankacc_verification_MODEL;
@@ -99,6 +100,7 @@ import com.qts.gopik_loan.Model.bkr_declrtn_MODEL;
 import com.qts.gopik_loan.Model.store_voterid_details_MODEL;
 import com.qts.gopik_loan.Pojo.AADHAR_CONSENT_POJO;
 import com.qts.gopik_loan.Pojo.Aadhaarverification_POJO;
+import com.qts.gopik_loan.Pojo.Aadhar_OTP_Verify_POJO;
 import com.qts.gopik_loan.Pojo.Add_scratchcard_POJO;
 import com.qts.gopik_loan.Pojo.Apiget_panid_details_POJO;
 import com.qts.gopik_loan.Pojo.Bankacc_verification_POJO;
@@ -288,8 +290,13 @@ public interface RestApis {
 
     @Headers({"content-type:application/json",
             "x-karza-key:vN5ojXUenlY3QSzX"})
-    @POST("aadhaar-verification")
+    @POST("get-aadhaar-otp")
     Call<Aadhaarverification_MODEL> aadhaarverification(@Body Aadhaarverification_POJO data);
+
+    @Headers({"content-type:application/json",
+            "x-karza-key:vN5ojXUenlY3QSzX"})
+    @POST("get-aadhaar-file")
+    Call<Aadhar_OTP_Verify_MODEL> getadharfile_otp(@Body Aadhar_OTP_Verify_POJO data);
 
     @POST("broker_profile_update")
     Call<Broker_profile_update_MODEL> broker_profile_update(@Body Broker_profile_update_POJO data);
