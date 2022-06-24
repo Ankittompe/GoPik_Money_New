@@ -244,7 +244,7 @@ public interface RestApis {
     Call<Fetch_current_loanappliation_list_MODEL> fetch_current_loanappliation_list(@Body Fetch_current_loanappliation_list_POJO data);
 
     @POST(" fetch_current_appliation_list")
-    Call<Fetch_current_appliation_list_DEALER_MODEL>  fetch_current_appliation_list(@Body Fetch_current_appliation_list_DEALER_POJO data);
+    Call<Fetch_current_appliation_list_DEALER_MODEL> fetch_current_appliation_list(@Body Fetch_current_appliation_list_DEALER_POJO data);
 
     @POST(" fetch_loan_application_list")
     Call<Fetch_loan_application_list_MODEL> fetch_loan_application_list(@Body Fetch_loan_application_list_POJO data);
@@ -375,7 +375,6 @@ public interface RestApis {
                                                     @Part MultipartBody.Part bankproof_file);
 
 
-
     @Multipart
     @POST("MLEmpproof_upload")
     Call<MLEmpproof_upload_MODEL> MLEmpproof_upload(@Part("custcode") RequestBody custcode,
@@ -385,17 +384,15 @@ public interface RestApis {
                                                     @Part MultipartBody.Part itr_file);
 
 
-
-
     @POST("Get_ML_SubCat_List")
     Call<Get_ML_SubCat_List_MODEL> Get_ML_SubCat_List(@Body Get_ML_SubCat_List_POJO data);
 
 
     @POST(" banner_list1")
-    Call<Banner_list_MODEL>  banner_list1(@Body Banner_POJO data);
+    Call<Banner_list_MODEL> banner_list1(@Body Banner_POJO data);
 
     @POST(" category_brand_wise")
-    Call<Category_brand_wise_MODEL>  category_brand_wise(@Body Category_brand_wise_POJO data);
+    Call<Category_brand_wise_MODEL> category_brand_wise(@Body Category_brand_wise_POJO data);
 
 
     @POST("GetCatproduct")
@@ -405,7 +402,7 @@ public interface RestApis {
     Call<Product_details_Model> product_Details(@Body Product_details_POJO data);
 
     @POST(" pincode_list")
-    Call<Pincode_list_MODEL>  pincode_list(@Body Pincode_list_POJO data);
+    Call<Pincode_list_MODEL> pincode_list(@Body Pincode_list_POJO data);
 
     @POST("calculation_data")
     Call<Calculation_data_MODEL> calculation_data(@Body Calculation_data_POJO data);
@@ -427,7 +424,7 @@ public interface RestApis {
 
 
     @POST(" verify_mobile_number")
-    Call<Verify_mobile_number_MODEL>  verify_mobile_number(@Body Verify_mobile_number_POJO data);
+    Call<Verify_mobile_number_MODEL> verify_mobile_number(@Body Verify_mobile_number_POJO data);
 
 
     @POST("get_status")
@@ -435,34 +432,33 @@ public interface RestApis {
 
 
     @POST(" get_voterid_details")
-    Call<Get_voterid_details_MODEL>  get_voterid_details(@Body Get_voterid_details_POJO data);
-
+    Call<Get_voterid_details_MODEL> get_voterid_details(@Body Get_voterid_details_POJO data);
 
 
     @Multipart
     @POST("store_panid_details")
-    Call<Store_panid_details_MODEL>  store_panid_details(@Part("brand") RequestBody brand,
-                                                         @Part("cust_code") RequestBody cust_code,
-                                                         @Part("pan_no") RequestBody pan_no,
-                                                         @Part("pan_name") RequestBody pan_name,
-                                                         @Part MultipartBody.Part panid);
+    Call<Store_panid_details_MODEL> store_panid_details(@Part("brand") RequestBody brand,
+                                                        @Part("cust_code") RequestBody cust_code,
+                                                        @Part("pan_no") RequestBody pan_no,
+                                                        @Part("pan_name") RequestBody pan_name,
+                                                        @Part MultipartBody.Part panid);
 
     @Multipart
     @POST("Store_Other_Document_Details")
-    Call<Store_Other_Document_Details_MODEL>  Store_Other_Document_Details(@Part("brand") RequestBody brand,
-                                                                           @Part("cust_code") RequestBody cust_code,
-                                                                           @Part MultipartBody.Part utility,
-                                                                           @Part MultipartBody.Part appltn,
-                                                                           @Part MultipartBody.Part margin,
-                                                                           @Part MultipartBody.Part income,
-                                                                           @Part MultipartBody.Part bank);
-    @POST(" profile_data")
-    Call<Profile_data_MODEL>  profile_data(@Body Profile_data_POJO data);
+    Call<Store_Other_Document_Details_MODEL> Store_Other_Document_Details(@Part("brand") RequestBody brand,
+                                                                          @Part("cust_code") RequestBody cust_code,
+                                                                          @Part MultipartBody.Part utility,
+                                                                          @Part MultipartBody.Part appltn,
+                                                                          @Part MultipartBody.Part margin,
+                                                                          @Part MultipartBody.Part income,
+                                                                          @Part MultipartBody.Part bank);
 
+    @POST(" profile_data")
+    Call<Profile_data_MODEL> profile_data(@Body Profile_data_POJO data);
 
 
     @POST(" fetch_customer_data")
-    Call<Fetch_customer_data_MODEL>  fetch_customer_data(@Body Fetch_customer_data_POJO data);
+    Call<Fetch_customer_data_MODEL> fetch_customer_data(@Body Fetch_customer_data_POJO data);
 
     @POST("submit_customer_application")
     Call<Submit_customer_application_MODEL> submit_customer_application(@Body Submit_customer_application_POJO data);
@@ -485,96 +481,95 @@ public interface RestApis {
     Call<Get_wallet_txn_MODEL> get_wallet_txn(@Body Get_wallet_txn_POJO data);
 
     @POST(" fetch_application_list")
-    Call<Fetch_application_list_MODEL>  fetch_application_list(@Body Fetch_application_list_POJO data);
+    Call<Fetch_application_list_MODEL> fetch_application_list(@Body Fetch_application_list_POJO data);
 
     @POST(" profile_update")
-    Call<Profile_Update_DEALER_MODEL>  profile_update(@Body Profile_Update_DEALER_POJO data);
+    Call<Profile_Update_DEALER_MODEL> profile_update(@Body Profile_Update_DEALER_POJO data);
 
 
     @Multipart
     @POST("store_voterid_front_details")
-    Call<store_voterid_details_MODEL>  store_voterid_front_details(@Part("brand") RequestBody brand,
-                                                             @Part("cust_code") RequestBody cust_code,
-                                                             @Part("epic_no") RequestBody epic_no,
-                                                             @Part("name") RequestBody name,
-                                                             @Part("name_v1") RequestBody name_v1,
-                                                             @Part("rln_name") RequestBody rln_name,
-                                                             @Part("rln_name_v1") RequestBody rln_name_v1,
-                                                             @Part("rln_type") RequestBody rln_type,
-                                                             @Part("gender") RequestBody gender,
-                                                             @Part("age") RequestBody age,
-                                                             @Part("dob") RequestBody dob,
-                                                             @Part("house_no") RequestBody house_no,
-                                                             @Part("district") RequestBody district,
-                                                             @Part("state") RequestBody state,
-                                                             @Part MultipartBody.Part voterid_front);
-
+    Call<store_voterid_details_MODEL> store_voterid_front_details(@Part("brand") RequestBody brand,
+                                                                  @Part("cust_code") RequestBody cust_code,
+                                                                  @Part("epic_no") RequestBody epic_no,
+                                                                  @Part("name") RequestBody name,
+                                                                  @Part("name_v1") RequestBody name_v1,
+                                                                  @Part("rln_name") RequestBody rln_name,
+                                                                  @Part("rln_name_v1") RequestBody rln_name_v1,
+                                                                  @Part("rln_type") RequestBody rln_type,
+                                                                  @Part("gender") RequestBody gender,
+                                                                  @Part("age") RequestBody age,
+                                                                  @Part("dob") RequestBody dob,
+                                                                  @Part("house_no") RequestBody house_no,
+                                                                  @Part("district") RequestBody district,
+                                                                  @Part("state") RequestBody state,
+                                                                  @Part MultipartBody.Part voterid_front);
 
 
     @Multipart
     @POST("store_voterid_back_details")
-    Call<Store_voterid_back_details_MODEL>  store_voterid_back_details(@Part("cust_code") RequestBody cust_code,
-                                                                       @Part MultipartBody.Part voterid_back,
-                                                                       @Part("brand") RequestBody brand);
+    Call<Store_voterid_back_details_MODEL> store_voterid_back_details(@Part("cust_code") RequestBody cust_code,
+                                                                      @Part MultipartBody.Part voterid_back,
+                                                                      @Part("brand") RequestBody brand);
 
     @Multipart
     @POST("Store_Utility_Document_Details")
-    Call<Store_Utility_Document_Details_MODEL>  Store_Utility_Document_Details(@Part("brand") RequestBody brand,
-                                                                               @Part("cust_code") RequestBody cust_code,
-                                                                               @Part MultipartBody.Part utility );
+    Call<Store_Utility_Document_Details_MODEL> Store_Utility_Document_Details(@Part("brand") RequestBody brand,
+                                                                              @Part("cust_code") RequestBody cust_code,
+                                                                              @Part MultipartBody.Part utility);
 
 
     @Multipart
     @POST("Store_Margin_Document_Details")
-    Call<Store_Margin_Document_Details_MODEL>  Store_Margin_Document_Details(@Part("brand") RequestBody brand,
-                                                                             @Part("cust_code") RequestBody cust_code,
-                                                                             @Part MultipartBody.Part margin );
+    Call<Store_Margin_Document_Details_MODEL> Store_Margin_Document_Details(@Part("brand") RequestBody brand,
+                                                                            @Part("cust_code") RequestBody cust_code,
+                                                                            @Part MultipartBody.Part margin);
 
     @Multipart
     @POST("Store_App_Document_Details")
-    Call<Store_App_Document_Details_MODEL>  Store_App_Document_Details(@Part("brand") RequestBody brand,
-                                                                       @Part("cust_code") RequestBody cust_code,
-                                                                       @Part MultipartBody.Part appltn );
+    Call<Store_App_Document_Details_MODEL> Store_App_Document_Details(@Part("brand") RequestBody brand,
+                                                                      @Part("cust_code") RequestBody cust_code,
+                                                                      @Part MultipartBody.Part appltn);
 
     @Multipart
     @POST("Store_Income_Document_Details")
-    Call<Store_Income_Document_Details_MODEL>  Store_Income_Document_Details(@Part("brand") RequestBody brand,
-                                                                             @Part("cust_code") RequestBody cust_code,
-                                                                             @Part MultipartBody.Part income );
+    Call<Store_Income_Document_Details_MODEL> Store_Income_Document_Details(@Part("brand") RequestBody brand,
+                                                                            @Part("cust_code") RequestBody cust_code,
+                                                                            @Part MultipartBody.Part income);
 
     @Multipart
     @POST("Store_Land_Document_Details")
-    Call<Store_Land_Document_Details_MODEL>  Store_Land_Document_Details(@Part("brand") RequestBody brand,
-                                                                         @Part("cust_code") RequestBody cust_code,
-                                                                         @Part MultipartBody.Part land );
+    Call<Store_Land_Document_Details_MODEL> Store_Land_Document_Details(@Part("brand") RequestBody brand,
+                                                                        @Part("cust_code") RequestBody cust_code,
+                                                                        @Part MultipartBody.Part land);
 
     @Multipart
     @POST("Store_Bank_Document_Details")
-    Call<Store_Bank_Document_Details_MODEL>  Store_Bank_Document_Details(@Part("brand") RequestBody brand,
-                                                                         @Part("cust_code") RequestBody cust_code,
-                                                                         @Part MultipartBody.Part bank );
-
+    Call<Store_Bank_Document_Details_MODEL> Store_Bank_Document_Details(@Part("brand") RequestBody brand,
+                                                                        @Part("cust_code") RequestBody cust_code,
+                                                                        @Part MultipartBody.Part bank);
 
 
     @Multipart
     @POST("MLIDproofFrontUpload")
-    Call<MLIDproofFrontUpload_MODEL>  MLIDproofFrontUpload(@Part("cust_code") RequestBody cust_code,
-                                                           @Part("proof_type") RequestBody proof_type,
-                                                           @Part("idproof_no") RequestBody idproof_no,
-                                                           @Part("name") RequestBody name,
-                                                           @Part("reltn_name") RequestBody reltn_name,
-                                                           @Part("age") RequestBody age,
-                                                           @Part("gender") RequestBody gender,
-                                                           @Part("dob") RequestBody dob,
-                                                           @Part("doi") RequestBody doi,
-                                                           @Part("bloodgrp") RequestBody bloodgrp,
-                                                           @Part("disptchfrmsrc") RequestBody disptchfrmsrc,
-                                                           @Part MultipartBody.Part idproof_file_front);
+    Call<MLIDproofFrontUpload_MODEL> MLIDproofFrontUpload(@Part("cust_code") RequestBody cust_code,
+                                                          @Part("proof_type") RequestBody proof_type,
+                                                          @Part("idproof_no") RequestBody idproof_no,
+                                                          @Part("name") RequestBody name,
+                                                          @Part("reltn_name") RequestBody reltn_name,
+                                                          @Part("age") RequestBody age,
+                                                          @Part("gender") RequestBody gender,
+                                                          @Part("dob") RequestBody dob,
+                                                          @Part("doi") RequestBody doi,
+                                                          @Part("bloodgrp") RequestBody bloodgrp,
+                                                          @Part("disptchfrmsrc") RequestBody disptchfrmsrc,
+                                                          @Part MultipartBody.Part idproof_file_front);
+
     @Multipart
     @POST("MLIDproofBackUpload")
-    Call<MLIDproofBackUpload_MODEL>  MLIDproofBackUpload(@Part("cust_code") RequestBody cust_code,
-                                                         @Part("proof_type") RequestBody proof_type,
-                                                         @Part MultipartBody.Part idproof_file_back);
+    Call<MLIDproofBackUpload_MODEL> MLIDproofBackUpload(@Part("cust_code") RequestBody cust_code,
+                                                        @Part("proof_type") RequestBody proof_type,
+                                                        @Part MultipartBody.Part idproof_file_back);
 
     @POST("getusercontest")
     Call<Getusercontest_MODEL> getusercontest(@Body Getusercontest_POJO data);
@@ -591,41 +586,41 @@ public interface RestApis {
 
 
     @POST("dealer_logout")
-    Call<Dealer_logout_MODEL>dealer_logout(@Body Dealer_logoutPOJO data);
+    Call<Dealer_logout_MODEL> dealer_logout(@Body Dealer_logoutPOJO data);
 
     @POST("login_act")
-    Call<Login_act_MODEL>login_act(@Body Login_actPOJO data);
+    Call<Login_act_MODEL> login_act(@Body Login_actPOJO data);
 
     @Headers({"content-type:application/json",
             "x-karza-key:vN5ojXUenlY3QSzX"})
     @POST("bankacc-verification")
-    Call<Bankacc_verification_MODEL>bankacc_verification(@Body Bankacc_verification_POJO data);
+    Call<Bankacc_verification_MODEL> bankacc_verification(@Body Bankacc_verification_POJO data);
 
     @POST("resend_login_otp")
-    Call<Resend_login_otp_MODEL>resend_login_otp(@Body Resend_login_otp_POJO data);
+    Call<Resend_login_otp_MODEL> resend_login_otp(@Body Resend_login_otp_POJO data);
 
 
     @POST("Resend_otp_to_user")
-    Call<Resend_otp_to_user_MODEL>Resend_otp_to_user(@Body Resend_otp_to_user_POJO data);
+    Call<Resend_otp_to_user_MODEL> Resend_otp_to_user(@Body Resend_otp_to_user_POJO data);
 
 
     @POST("Resend_verify_mobile_number")
-    Call<Resend_verify_mobile_number_MODEL>Resend_verify_mobile_number(@Body Resend_verify_mobile_number_POJO data);
+    Call<Resend_verify_mobile_number_MODEL> Resend_verify_mobile_number(@Body Resend_verify_mobile_number_POJO data);
 
     @POST("broker_bank_details_update")
-    Call<Broker_bank_details_update_MODEL>broker_bank_details_update(@Body Broker_bank_details_update_POJO data);
+    Call<Broker_bank_details_update_MODEL> broker_bank_details_update(@Body Broker_bank_details_update_POJO data);
 
     @Multipart
     @POST("dealerbank_Details_Update")
     Call<Dealer_bank_update_MODEL> dealerbank_Details_Update(@Part("user_code") RequestBody user_code,
-                                                      @Part("acc_no") RequestBody acc_no,
-                                                      @Part("acc_holdr_name") RequestBody acc_holdr_name,
-                                                      @Part("ifsc") RequestBody ifsc,
-                                                      @Part("branch")  RequestBody branch,
-                                                      @Part MultipartBody.Part chackimage);
+                                                             @Part("acc_no") RequestBody acc_no,
+                                                             @Part("acc_holdr_name") RequestBody acc_holdr_name,
+                                                             @Part("ifsc") RequestBody ifsc,
+                                                             @Part("branch") RequestBody branch,
+                                                             @Part MultipartBody.Part chackimage);
 
     @POST("Send_MLData_to_ICICI")
-    Call<Send_MLData_to_ICICI_MODEL>Send_MLData_to_ICICI(@Body Send_MLData_to_ICICI_POJO data);
+    Call<Send_MLData_to_ICICI_MODEL> Send_MLData_to_ICICI(@Body Send_MLData_to_ICICI_POJO data);
 
 
     @POST("getqrstatus")
@@ -645,19 +640,20 @@ public interface RestApis {
     Call<GoatAdharvalidationResponseDTO> GoatAadharvalidation(@Body GoatAadharvalidation_POJO data);
     @Multipart
     @POST("Dealer_adhar_molldoc")
-    Call<Dealer_adhar_molldoc_MODEL>Dealer_adhar_molldoc(@Part("user_code") RequestBody user_code,
-                                                         @Part MultipartBody.Part adharimage);
+    Call<Dealer_adhar_molldoc_MODEL> Dealer_adhar_molldoc(@Part("user_code") RequestBody user_code,
+                                                          @Part MultipartBody.Part adharimage);
 
     @Multipart
     @POST("Dealer_pan_molldoc")
-    Call<Dealer_pan_molldoc_MODEL>Dealer_pan_molldoc(@Part("user_code") RequestBody user_code,
-                                                     @Part MultipartBody.Part panimage);
+    Call<Dealer_pan_molldoc_MODEL> Dealer_pan_molldoc(@Part("user_code") RequestBody user_code,
+                                                      @Part MultipartBody.Part panimage);
 
 
     @Multipart
     @POST("Dealer_bank_molldoc")
-    Call<Dealer_bank_molldoc_MODEL>Dealer_bank_molldoc(@Part("user_code") RequestBody user_code,
-                                                       @Part MultipartBody.Part bankimage);
+    Call<Dealer_bank_molldoc_MODEL> Dealer_bank_molldoc(@Part("user_code") RequestBody user_code,
+                                                        @Part MultipartBody.Part bankimage);
+
     @Multipart
     @POST("Dealer_bank_molldoc")
     Call<Bank_Upload_MODEL> Dealer_Bank_File_Upload(@Part("user_code") RequestBody user_code,
@@ -665,13 +661,78 @@ public interface RestApis {
 
 
     @POST("all_POs")
-    Call<all_POs_MODEL>all_POs(@Body all_POs_POJO data);
+    Call<all_POs_MODEL> all_POs(@Body all_POs_POJO data);
 
     @POST("top_five_POs")
-    Call<top_five_POs_MODEL>top_five_POs(@Body top_five_POs_POJO data);
+    Call<top_five_POs_MODEL> top_five_POs(@Body top_five_POs_POJO data);
 
     @POST("Po_add")
-    Call<Po_add_MODEL>Po_add(@Body Po_add_POJO data);
+    Call<Po_add_MODEL> Po_add(@Body Po_add_POJO data);
+
+    //supplychain
+    @Multipart
+    @POST("DealerSelfieDoc")
+    Call<DealerSelfieDoc_MODEL> DealerSelfieDoc(@Part("user_code") RequestBody user_code,
+                                                    @Part MultipartBody.Part selfie);
+
+
+    @Multipart
+    @POST("DealerAadharFrontDoc")
+    Call<DealerAadharFrontDoc_MODEL> DealerAadharFrontDoc(@Part("user_code") RequestBody user_code,
+                                                @Part MultipartBody.Part adharimage);
+
+
+    @Multipart
+    @POST("DealerAdharBackDoc")
+    Call<DealerAdharBackDoc_MODEL> DealerAdharBackDoc(@Part("user_code") RequestBody user_code,
+                                                          @Part MultipartBody.Part adharimage);
+//
+    @Multipart
+    @POST("DealerPanDoc")
+    Call<DealerPanDoc_MODEL> DealerPanDoc(@Part("user_code") RequestBody user_code,
+                                                      @Part MultipartBody.Part panimage);
+    @Multipart
+    @POST("DealerBUSINESSPROOFDoc")
+    Call<DealerBUSINESSPROOFDoc_MODEL> DealerBUSINESSPROOFDoc(@Part("user_code") RequestBody user_code,
+                                                      @Part MultipartBody.Part BUSINESS_PROOF);
+    @Multipart
+    @POST("DealerUDCDoc")
+    Call<DealerUDCDoc_MODEL> DealerUDCDoc(@Part("user_code") RequestBody user_code,
+                                                      @Part MultipartBody.Part UDC);
+    @Multipart
+    @POST("DealerAGREEMENTDoc")
+    Call<DealerAGREEMENTDoc_MODEL> DealerAGREEMENTDoc(@Part("user_code") RequestBody user_code,
+                                                      @Part MultipartBody.Part AGREEMENT);
+    @Multipart
+    @POST("DealerESCROWDoc")
+    Call<DealerESCROWDoc_MODEL> DealerESCROWDoc(@Part("user_code") RequestBody user_code,
+                                                      @Part MultipartBody.Part ESCROW);
+    @Multipart
+    @POST("DealerDISB_BANKDoc")
+    Call<DealerDISB_BANKDoc_MODEL> DealerDISB_BANKDoc(@Part("user_code") RequestBody user_code,
+                                                      @Part MultipartBody.Part bankimage);
+    @Multipart
+    @POST("DealerLEDGERDoc")
+    Call<DealerLEDGERDoc_MODEL> DealerLEDGERDoc(@Part("user_code") RequestBody user_code,
+                                                      @Part MultipartBody.Part LEDGER);
+    @Multipart
+    @POST("DealerINVOICEDoc")
+    Call<DealerINVOICEDoc_MODEL> DealerINVOICEDoc(@Part("user_code") RequestBody user_code,
+                                                      @Part MultipartBody.Part INVOICE);
+    @Multipart
+    @POST("DealerITRDoc")
+    Call<DealerITRDoc_MODEL> DealerITRDoc(@Part("user_code") RequestBody user_code,
+                                                      @Part MultipartBody.Part ITR);
+    @Multipart
+    @POST("DealerTDSDoc")
+    Call<DealerTDSDoc_MODEL> DealerTDSDoc(@Part("user_code") RequestBody user_code,
+                                                      @Part MultipartBody.Part TDS);
+
+    @Multipart
+    @POST("DealerGSTDoc")
+    Call<DealerGSTDoc_MODEL> DealerGSTDoc(@Part("user_code") RequestBody user_code,
+                                          @Part MultipartBody.Part GST);
+
 
 
     @POST("GoatAadharvalidation1")
