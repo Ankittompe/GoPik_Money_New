@@ -26,6 +26,7 @@ import com.google.android.gms.common.util.IOUtils;
 import com.qts.gopik_loan.Activity.AppConstants;
 import com.qts.gopik_loan.Activity.SharedPref;
 import com.qts.gopik_loan.Dealer_Fragment.My_Mall_Fragment;
+import com.qts.gopik_loan.Model.DealerSelfieDoc_MODEL;
 import com.qts.gopik_loan.Model.Dealer_adhar_molldoc_MODEL;
 import com.qts.gopik_loan.Model.Dealer_bank_molldoc_MODEL;
 import com.qts.gopik_loan.Model.Dealer_pan_molldoc_MODEL;
@@ -74,7 +75,7 @@ public class Image_Upload_SupplyChain extends AppCompatActivity {
     Integer save_success4 = 0;
 
     ImageView arrow;
-    ImageView adhaar_upld_sucss,
+    ImageView adhaar_upld_sucss,upload_selfie,
             bill_upld_sucss, upld_mrgn_succ, income_success_img, land_upld_sccs, upload_bank_succs, upld_application_succss;
     private static final int FILE_CHOOSER=123;
     ImageView upload_adhaar,upload_adhaar_back,upload_pancard_front_button,upld_pan_back_button,upload_bank_statement,upload_salaryslip;
@@ -85,7 +86,7 @@ public class Image_Upload_SupplyChain extends AppCompatActivity {
     TextView unsaved_img_error_massage,unsaved_img_error_massage2,unsaved_img_error_massage3,unsaved_img_error_massage4,unsaved_img_error_massage5;
     TextView
             upld_img_hint, upld_appltn_hint, upld_mrgn_hint, upld_income_proof, upld_bank_stmnt_hint, error1;
-    TextView uploadelectricitybill,pdf_name;
+    TextView uploadelectricitybill,pdf_name,save_selfie;
     ImageView pdf_upload_success;
 
     ImageView dropdown_pan_front,dropup2_pan_front,dropdown1_adhar_front;
@@ -109,7 +110,7 @@ public class Image_Upload_SupplyChain extends AppCompatActivity {
         upload_bank_statement = (ImageView) findViewById(R.id.upload_bank_statement);
         upload_salaryslip = (ImageView) findViewById(R.id.upload_salaryslip);
 
-
+        upload_selfie= (ImageView) findViewById(R.id.upload_selfie);
         uploadelectricitybill = (TextView) findViewById(R.id.uploadelectricitybill);
         pdf_name = (TextView) findViewById(R.id.pdf_name);
         pdf_upload_success = (ImageView) findViewById(R.id.pdf_upload_success);
@@ -118,12 +119,7 @@ public class Image_Upload_SupplyChain extends AppCompatActivity {
 
         dropdown1_adhar_front = findViewById(R.id.dropdown1_adhar_front);
         dropup1_adhar_front = findViewById(R.id.dropup1_adhar_front);
-
-
-
-
         dropup2 = findViewById(R.id.dropup2);
-
         dropup3 = findViewById(R.id.dropup3);
         dropup4 = findViewById(R.id.dropup4);
         //Save Button
@@ -132,6 +128,7 @@ public class Image_Upload_SupplyChain extends AppCompatActivity {
         save2 = (TextView) findViewById(R.id.save2);
         save3 = (TextView) findViewById(R.id.save3);
         save4 = (TextView) findViewById(R.id.save4);
+        save_selfie= (TextView) findViewById(R.id.save_selfie);
         adhaar_upld_sucss = (ImageView) findViewById(R.id.adhaar_upld_sucss);
         upld_mrgn_succ = (ImageView) findViewById(R.id.upld_mrgn_succ);
         income_success_img =
@@ -143,145 +140,28 @@ public class Image_Upload_SupplyChain extends AppCompatActivity {
                 (ImageView) findViewById(R.id.upld_application_succss);
 
         upload_adhaar_front_layout = findViewById(R.id.upload_adhaar_front_layout);
-        application_copy_layout =
-                findViewById(R.id.upload_applctn_copy);
+        application_copy_layout = findViewById(R.id.upload_applctn_copy);
         margin_copy_layout = findViewById(R.id.upload_margin_layout);
         income_proof_layout = findViewById(R.id.upload_income_layout);
-
         arrow = findViewById(R.id.arrow);
-
-
-
-       dropdown_App_photo = findViewById(R.id.dropdown_App_photo);
-
-
-        dropdown_margin_photo =
-                findViewById(R.id.dropdown_margin_photo);
-        dropdown_income_photo =
-                findViewById(R.id.dropdown_income_photo);
+        dropdown_App_photo = findViewById(R.id.dropdown_App_photo);
+        dropdown_margin_photo = findViewById(R.id.dropdown_margin_photo);
+        dropdown_income_photo = findViewById(R.id.dropdown_income_photo);
         dropdown_bank_photo = findViewById(R.id.dropdown_bank_photo);
         dropdown_lanf_photo = findViewById(R.id.dropdown_lanf_photo);
-
         upload_adhaar_front_layout = findViewById(R.id.upload_adhaar_front_layout);
-        application_copy_layout =
-                findViewById(R.id.upload_applctn_copy);
+        application_copy_layout = findViewById(R.id.upload_applctn_copy);
         margin_copy_layout = findViewById(R.id.upload_margin_layout);
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        income_proof_layout = findViewById(R.id.upload_income_layout);
-
-
         upld_img_hint = (TextView) findViewById(R.id.upld_img_hint);
-        upld_appltn_hint =
-                (TextView) findViewById(R.id.upld_appltn_hint);
+        upld_appltn_hint = (TextView) findViewById(R.id.upld_appltn_hint);
         upld_mrgn_hint = (TextView) findViewById(R.id.upld_mrgn_hint);
-        upld_income_proof =
-                (TextView) findViewById(R.id.upld_income_proof);
-        upld_bank_stmnt_hint =
-                (TextView) findViewById(R.id.upld_bank_stmnt_hint);
+        upld_income_proof = (TextView) findViewById(R.id.upld_income_proof);
+        upld_bank_stmnt_hint = (TextView) findViewById(R.id.upld_bank_stmnt_hint);
         error1 = (TextView) findViewById(R.id.error1);
-
         unsaved_img_error_massage = (TextView) findViewById(R.id.unsaved_img_error_massage);
         unsaved_img_error_massage2 = (TextView) findViewById(R.id.unsaved_img_error_massage2);
         unsaved_img_error_massage3= (TextView)findViewById(R.id.unsaved_img_error_massage3);
 
-/*
-        dropdown1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dropup1.setVisibility(View.VISIBLE);
-                upload_adhaar_front_layout.setVisibility(View.VISIBLE);
-                dropdown1.setVisibility(View.GONE);
-            }
-        });
-*/
-
-
-/*
-        dropup1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dropdown1.setVisibility(View.VISIBLE);
-                dropup1.setVisibility(View.GONE);
-                upload_adhaar_front_layout.setVisibility(View.GONE);
-            }
-        });
-*/
-/*
-        dropdown_App_photo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dropup2.setVisibility(View.VISIBLE);
-                dropdown_App_photo.setVisibility(View.GONE);
-                application_copy_layout.setVisibility(View.VISIBLE);
-            }
-        });
-*/
-/*
-        dropup2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dropdown_App_photo.setVisibility(View.VISIBLE);
-                dropup2.setVisibility(View.GONE);
-                application_copy_layout.setVisibility(View.GONE);
-            }
-        });
-*/
-
-/*
-        dropdown_margin_photo.setOnClickListener(new
-                                                         View.OnClickListener() {
-                                                             @Override
-                                                             public void onClick(View v) {
-                                                                 dropup3.setVisibility(View.VISIBLE);
-                                                                 dropdown_margin_photo.setVisibility(View.GONE);
-                                                                 margin_copy_layout.setVisibility(View.VISIBLE);
-                                                             }
-                                                         });
-*/
-/*
-        dropup3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dropup3.setVisibility(View.GONE);
-                dropdown_margin_photo.setVisibility(View.VISIBLE);
-                margin_copy_layout.setVisibility(View.GONE);
-            }
-        });
-*/
-
-/*
-        dropdown_income_photo.setOnClickListener(new
-                                                         View.OnClickListener() {
-                                                             @Override
-                                                             public void onClick(View v) {
-                                                                 dropdown_income_photo.setVisibility(View.GONE);
-                                                                 dropup4.setVisibility(View.VISIBLE);
-                                                                 income_proof_layout.setVisibility(View.VISIBLE);
-                                                             }
-                                                         });
-*/
-/*
-        dropup4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dropdown_income_photo.setVisibility(View.VISIBLE);
-                dropup4.setVisibility(View.GONE);
-                income_proof_layout.setVisibility(View.GONE);
-            }
-        });
-*/
-
-/*
-        dropdown_bank_photo.setOnClickListener(new
-                                                       View.OnClickListener() {
-                                                           @Override
-                                                           public void onClick(View v) {
-                                                               dropdown_bank_photo.setVisibility(View.GONE);
-                                                               dropup5.setVisibility(View.VISIBLE);
-                                                               bank_statement_layout.setVisibility(View.VISIBLE);
-                                                           }
-                                                       });
-*/
         upload_adhaar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -347,99 +227,57 @@ public class Image_Upload_SupplyChain extends AppCompatActivity {
                 }*/
             }
         });
-/*
-        save1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (upload_adhaar_valid == 1 ||
-                        upload_uploadelectricitybillimg_valid == 1) {
-                    upld_img_hint.setVisibility(View.GONE);
-                    Dealer_adhar_molldoc();
-                    Bill_Image_saved_status1=1;
-                    upload_adhaar_front_layout.setVisibility(View.GONE);
-                    Toast.makeText(Image_Upload_SupplyChain.this, "Adhaar Upload Successfully", Toast.LENGTH_SHORT).show();
-                    adhaar_upld_sucss.setVisibility(View.VISIBLE);
-                    unsaved_img_error_massage.setVisibility(View.GONE);
-                } else {
-                    upld_img_hint.setVisibility(View.VISIBLE);
-                }
 
-            }
-        });
-*/
-/*
-        save2.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Log.e("hyfu", "gjhgj" + upload_applcation_valid);
-                if (upload_applcation_valid == 2 ||
-                        upload_applicationphptographimg_valid == 1) {
-                    Log.e("hyfu", "gjhgj");
-                    upld_appltn_hint.setVisibility(View.GONE);
-                    Dealer_pan_molldoc();
-                    Toast.makeText(Image_Upload_SupplyChain.this, "Pan Card Upload Successfully", Toast.LENGTH_SHORT).show();
-                    upld_application_succss.setVisibility(View.VISIBLE);
-                    application_copy_layout.setVisibility(View.GONE);
-                    ApplicationImage_saved_status=1;
-                    unsaved_img_error_massage2.setVisibility(View.GONE);
-                } else {
-                    Log.e("hyfu", "gjhgj");
-                    upld_appltn_hint.setVisibility(View.VISIBLE);
-                }
-
-
-            }
-        });
-*/
-/*
-        save3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (upload_mrgn_valid == 6) {
-                    upld_mrgn_hint.setVisibility(View.GONE);
-                    Dealer_bank_molldoc();
-                    MarginPhoto_saved_status=1;
-                    Toast.makeText(Image_Upload_SupplyChain.this, "Bank Statement Upload Successfully", Toast.LENGTH_SHORT).show();
-                    unsaved_img_error_massage3.setVisibility(View.GONE);
-                    margin_copy_layout.setVisibility(View.GONE);
-                    upld_mrgn_succ.setVisibility(View.VISIBLE);
-                } else {
-                    upld_mrgn_hint.setVisibility(View.VISIBLE);
-
-                }
-
-
-            }
-        });
-*/
-
-/*
-        save4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (upload_income_valid == 3) {
-                    upld_income_proof.setVisibility(View.GONE);
-                   // Store_Income_Document_Details();
-                    Toast.makeText(Image_Upload_SupplyChain.this, "Salary Slip Upload Successfully", Toast.LENGTH_SHORT).show();
-                    unsaved_img_error_massage4.setVisibility(View.GONE);
-                    income_proof_layout.setVisibility(View.GONE);
-                    income_success_img.setVisibility(View.VISIBLE);
-                    Income_saved_status=1;
-                } else {
-                    upld_income_proof.setVisibility(View.VISIBLE);
-                }
-
-            }
-        });
-*/
         arrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Image_Upload_SupplyChain.this, My_Mall_Fragment.class);
             }
         });
+//api call
+        save_selfie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DealerSelfieDoc();
+            }
+        });
+    }
+
+    private void DealerSelfieDoc() {
+        String musercode = "47436";
+        RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), musercode);
+
+        File idFile = new File(SharedPref.getStringFromSharedPref(AppConstants.ML_LOAN_IMAGE, getApplicationContext()));
+        Log.e("testingggg", "testingggg99999" + idFile);
+        RequestBody mFile1;
+        MultipartBody.Part vechileDocUpload2;
+        mFile1 = RequestBody.create(MediaType.parse("multipart/form-data"), idFile);
+        vechileDocUpload2 = MultipartBody.Part.createFormData("selfie", idFile.getName(), mFile1);
+        Log.e("testingggg", "testingggg10000" + vechileDocUpload2);
+        RestApis restApis = NetworkHandler.getRetrofit().create(RestApis.class);
+        Call<DealerSelfieDoc_MODEL> call = restApis.DealerSelfieDoc(user_code, vechileDocUpload2);
+        call.enqueue(new Callback<DealerSelfieDoc_MODEL>() {
+            @Override
+            public void onResponse(Call<DealerSelfieDoc_MODEL> call, Response<DealerSelfieDoc_MODEL> response) {
+                if (response.body() != null) {
+
+                    Log.e("testingggg", "success_pan");
+
+                }
+
+
+
+            }
+
+            @Override
+            public void onFailure(Call<DealerSelfieDoc_MODEL> call, Throwable t) {
+
+
+                Toast.makeText(getApplicationContext(), "Something went wrong!!!", Toast.LENGTH_LONG).show();
+            }
+
+        });
+
     }
 
     private void Dealer_pan_molldoc() {
@@ -483,54 +321,7 @@ public class Image_Upload_SupplyChain extends AppCompatActivity {
     }
 
 
-    /*
-        @Override
-        protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-            super.onActivityResult(requestCode, resultCode, data);
-            try {
-                if (requestCode == FILE_CHOOSER && resultCode == RESULT_OK && data.getData() != null) {
 
-                    Uri fileuri = data.getData();
-
-
-                    Log.e("fileuriii","flUri"+fileuri);
-
-                    // filePath = getStringPdf(fileuri);
-                    Log.e("filePath","filePath2"+filePath);
-
-                    String file_Name = fileuri.toString();
-                    Log.e("file_Name1","file_Name2"+file_Name);
-                    // pdf_name.setText(file_Name);
-
-
-                    Toast.makeText(this, "Selected pdf file "+file_Name, Toast.LENGTH_SHORT).show();
-
-
-
-
-                    String filePathh1 = getFilePathFromURI(Image_Upload_SupplyChain.this, fileuri,unsaved_img_error_massage2);
-
-                    Log.e("filePathh1","filePathh112"+filePathh1);
-
-
-
-                    File file = new File(filePathh1);
-
-
-                    unsaved_img_error_massage2.setText(Html.fromHtml(file_Name));
-
-
-                   // upld_success.setVisibility(View.VISIBLE);
-                    //  file_size1 = Integer.parseInt(String.valueOf(file.length() / 1024));
-
-
-                }
-
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-        }
-    */
     public String getFilePathFromURI(Context context, Uri contentUri, TextView pdf_name) {
 //copy file and send new file path
         String fileName = getFileName(Image_Upload_SupplyChain.this, contentUri);
@@ -920,3 +711,238 @@ public class Image_Upload_SupplyChain extends AppCompatActivity {
     }
 
 }
+
+/*
+        dropdown1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dropup1.setVisibility(View.VISIBLE);
+                upload_adhaar_front_layout.setVisibility(View.VISIBLE);
+                dropdown1.setVisibility(View.GONE);
+            }
+        });
+*/
+
+
+/*
+        dropup1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dropdown1.setVisibility(View.VISIBLE);
+                dropup1.setVisibility(View.GONE);
+                upload_adhaar_front_layout.setVisibility(View.GONE);
+            }
+        });
+*/
+/*
+        dropdown_App_photo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dropup2.setVisibility(View.VISIBLE);
+                dropdown_App_photo.setVisibility(View.GONE);
+                application_copy_layout.setVisibility(View.VISIBLE);
+            }
+        });
+*/
+/*
+        dropup2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dropdown_App_photo.setVisibility(View.VISIBLE);
+                dropup2.setVisibility(View.GONE);
+                application_copy_layout.setVisibility(View.GONE);
+            }
+        });
+*/
+
+/*
+        dropdown_margin_photo.setOnClickListener(new
+                                                         View.OnClickListener() {
+                                                             @Override
+                                                             public void onClick(View v) {
+                                                                 dropup3.setVisibility(View.VISIBLE);
+                                                                 dropdown_margin_photo.setVisibility(View.GONE);
+                                                                 margin_copy_layout.setVisibility(View.VISIBLE);
+                                                             }
+                                                         });
+*/
+/*
+        dropup3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dropup3.setVisibility(View.GONE);
+                dropdown_margin_photo.setVisibility(View.VISIBLE);
+                margin_copy_layout.setVisibility(View.GONE);
+            }
+        });
+*/
+
+/*
+        dropdown_income_photo.setOnClickListener(new
+                                                         View.OnClickListener() {
+                                                             @Override
+                                                             public void onClick(View v) {
+                                                                 dropdown_income_photo.setVisibility(View.GONE);
+                                                                 dropup4.setVisibility(View.VISIBLE);
+                                                                 income_proof_layout.setVisibility(View.VISIBLE);
+                                                             }
+                                                         });
+*/
+/*
+        dropup4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dropdown_income_photo.setVisibility(View.VISIBLE);
+                dropup4.setVisibility(View.GONE);
+                income_proof_layout.setVisibility(View.GONE);
+            }
+        });
+*/
+
+/*
+        dropdown_bank_photo.setOnClickListener(new
+                                                       View.OnClickListener() {
+                                                           @Override
+                                                           public void onClick(View v) {
+                                                               dropdown_bank_photo.setVisibility(View.GONE);
+                                                               dropup5.setVisibility(View.VISIBLE);
+                                                               bank_statement_layout.setVisibility(View.VISIBLE);
+                                                           }
+                                                       });
+*/
+
+/*
+        save1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (upload_adhaar_valid == 1 ||
+                        upload_uploadelectricitybillimg_valid == 1) {
+                    upld_img_hint.setVisibility(View.GONE);
+                    Dealer_adhar_molldoc();
+                    Bill_Image_saved_status1=1;
+                    upload_adhaar_front_layout.setVisibility(View.GONE);
+                    Toast.makeText(Image_Upload_SupplyChain.this, "Adhaar Upload Successfully", Toast.LENGTH_SHORT).show();
+                    adhaar_upld_sucss.setVisibility(View.VISIBLE);
+                    unsaved_img_error_massage.setVisibility(View.GONE);
+                } else {
+                    upld_img_hint.setVisibility(View.VISIBLE);
+                }
+
+            }
+        });
+*/
+/*
+        save2.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Log.e("hyfu", "gjhgj" + upload_applcation_valid);
+                if (upload_applcation_valid == 2 ||
+                        upload_applicationphptographimg_valid == 1) {
+                    Log.e("hyfu", "gjhgj");
+                    upld_appltn_hint.setVisibility(View.GONE);
+                    Dealer_pan_molldoc();
+                    Toast.makeText(Image_Upload_SupplyChain.this, "Pan Card Upload Successfully", Toast.LENGTH_SHORT).show();
+                    upld_application_succss.setVisibility(View.VISIBLE);
+                    application_copy_layout.setVisibility(View.GONE);
+                    ApplicationImage_saved_status=1;
+                    unsaved_img_error_massage2.setVisibility(View.GONE);
+                } else {
+                    Log.e("hyfu", "gjhgj");
+                    upld_appltn_hint.setVisibility(View.VISIBLE);
+                }
+
+
+            }
+        });
+*/
+/*
+        save3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (upload_mrgn_valid == 6) {
+                    upld_mrgn_hint.setVisibility(View.GONE);
+                    Dealer_bank_molldoc();
+                    MarginPhoto_saved_status=1;
+                    Toast.makeText(Image_Upload_SupplyChain.this, "Bank Statement Upload Successfully", Toast.LENGTH_SHORT).show();
+                    unsaved_img_error_massage3.setVisibility(View.GONE);
+                    margin_copy_layout.setVisibility(View.GONE);
+                    upld_mrgn_succ.setVisibility(View.VISIBLE);
+                } else {
+                    upld_mrgn_hint.setVisibility(View.VISIBLE);
+
+                }
+
+
+            }
+        });
+*/
+
+/*
+        save4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (upload_income_valid == 3) {
+                    upld_income_proof.setVisibility(View.GONE);
+                   // Store_Income_Document_Details();
+                    Toast.makeText(Image_Upload_SupplyChain.this, "Salary Slip Upload Successfully", Toast.LENGTH_SHORT).show();
+                    unsaved_img_error_massage4.setVisibility(View.GONE);
+                    income_proof_layout.setVisibility(View.GONE);
+                    income_success_img.setVisibility(View.VISIBLE);
+                    Income_saved_status=1;
+                } else {
+                    upld_income_proof.setVisibility(View.VISIBLE);
+                }
+
+            }
+        });
+*/
+ /*
+        @Override
+        protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+            super.onActivityResult(requestCode, resultCode, data);
+            try {
+                if (requestCode == FILE_CHOOSER && resultCode == RESULT_OK && data.getData() != null) {
+
+                    Uri fileuri = data.getData();
+
+
+                    Log.e("fileuriii","flUri"+fileuri);
+
+                    // filePath = getStringPdf(fileuri);
+                    Log.e("filePath","filePath2"+filePath);
+
+                    String file_Name = fileuri.toString();
+                    Log.e("file_Name1","file_Name2"+file_Name);
+                    // pdf_name.setText(file_Name);
+
+
+                    Toast.makeText(this, "Selected pdf file "+file_Name, Toast.LENGTH_SHORT).show();
+
+
+
+
+                    String filePathh1 = getFilePathFromURI(Image_Upload_SupplyChain.this, fileuri,unsaved_img_error_massage2);
+
+                    Log.e("filePathh1","filePathh112"+filePathh1);
+
+
+
+                    File file = new File(filePathh1);
+
+
+                    unsaved_img_error_massage2.setText(Html.fromHtml(file_Name));
+
+
+                   // upld_success.setVisibility(View.VISIBLE);
+                    //  file_size1 = Integer.parseInt(String.valueOf(file.length() / 1024));
+
+
+                }
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+    */
