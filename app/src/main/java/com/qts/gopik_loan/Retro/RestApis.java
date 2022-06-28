@@ -581,11 +581,11 @@ public interface RestApis {
 //
     @Multipart
     @POST("DealerPanDoc")
-    Call<DealerPanDoc_MODEL> DealerPanDoc(@Part("user_code") RequestBody user_code,
+    Call<DealerPanDoc_MODEL>DealerPanDoc(@Part("user_code") RequestBody user_code,
                                                       @Part MultipartBody.Part panimage);
     @Multipart
     @POST("DealerBUSINESSPROOFDoc")
-    Call<DealerBUSINESSPROOFDoc_MODEL> DealerBUSINESSPROOFDoc(@Part("user_code") RequestBody user_code,
+    Call<DealerBUSINESSPROOFDoc_MODEL>DealerBUSINESSPROOFDoc(@Part("user_code") RequestBody user_code,
                                                       @Part MultipartBody.Part BUSINESS_PROOF);
     @Multipart
     @POST("DealerUDCDoc")

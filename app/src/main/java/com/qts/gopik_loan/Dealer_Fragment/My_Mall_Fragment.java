@@ -295,5 +295,6 @@ public class My_Mall_Fragment extends Fragment implements PickiTCallbacks {
         Log.e("pickiT ", path);
         File mFile = new File(path);
         Upload_Bank_Document_Details(mFile);
+
     }
 }
