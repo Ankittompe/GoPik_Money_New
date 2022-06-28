@@ -225,7 +225,7 @@
                                         android:fontFamily="@font/coresanscrbold"
                                         android:gravity="left"
                                         android:padding="15dp"
-                                        android:text="1. Take a Selfie*"
+                                        android:text="1. Take a Selfie *"
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="14sp"
 
@@ -248,7 +248,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:gravity="center"
-                                        android:text="Please upload an Adhaar Image !"
+                                        android:text="Please upload a Selfie Image !"
                                         android:textColor="@color/red"
                                         android:visibility="gone" />
 
@@ -354,7 +354,7 @@
                                         android:fontFamily="@font/coresanscrbold"
                                         android:gravity="left"
                                         android:padding="15dp"
-                                        android:text="1. Upload Adhaar Card Front *"
+                                        android:text="2. Upload Adhaar Card Front *"
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="14sp"
 
@@ -377,12 +377,12 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:gravity="center"
-                                        android:text="Please upload an Adhaar Image !"
+                                        android:text="Please upload an Adhaar Front !"
                                         android:textColor="@color/red"
                                         android:visibility="gone" />
 
                                     <TextView
-                                        android:id="@+id/save1"
+                                        android:id="@+id/save_adhar_front"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_marginLeft="20dp"
@@ -483,7 +483,7 @@
                                         android:fontFamily="@font/coresanscrbold"
                                         android:gravity="left"
                                         android:padding="15dp"
-                                        android:text="1. Upload Adhaar Card Back *"
+                                        android:text="3. Upload Adhaar Card Back *"
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="14sp"
 
@@ -506,7 +506,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:gravity="center"
-                                        android:text="Please upload an Adhaar Image !"
+                                        android:text="Please upload an Adhaar Back Side !"
                                         android:textColor="@color/red"
                                         android:visibility="gone" />
 
@@ -539,8 +539,6 @@
                                 android:visibility="gone" />
                         </LinearLayout>
 
-                        //second layout
-
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -572,7 +570,7 @@
                                             android:fontFamily="@font/montserrat_semibold"
                                             android:gravity="center"
                                             android:padding="10dp"
-                                            android:text="Pan Card Front"
+                                            android:text="Pan Card"
                                             android:textColor="@color/colorPrimary"
                                             android:textSize="14dp" />
 
@@ -613,7 +611,7 @@
                                         android:fontFamily="@font/coresanscrbold"
                                         android:gravity="left"
                                         android:padding="15dp"
-                                        android:text="2. Upload Pan Card Front *"
+                                        android:text="4. Upload Pan Card *"
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="14sp"
 
@@ -636,7 +634,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:gravity="center"
-                                        android:text="Please save Adhaar image first"
+                                        android:text="Please save Selfie Image first"
                                         android:textColor="@color/red"
                                         android:visibility="gone"
                                         />
@@ -646,13 +644,13 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:gravity="center"
-                                        android:text="Please upload an Pancard image!"
+                                        android:text="Please upload a Pancard Image!"
                                         android:textColor="@color/red"
                                         android:visibility="gone" />
 
 
                                     <TextView
-                                        android:id="@+id/save2_pan_front"
+                                        android:id="@+id/save_pan_front"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_marginLeft="20dp"
@@ -680,6 +678,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:visibility="gone"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
@@ -889,7 +888,7 @@
                                         android:fontFamily="@font/coresanscrbold"
                                         android:gravity="left"
                                         android:padding="15dp"
-                                        android:text="2. Upload a Business Proof *"
+                                        android:text="5. Upload a Business Proof *"
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="14sp"
 
@@ -922,13 +921,13 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:gravity="center"
-                                        android:text="Please upload an Pancard image!"
+                                        android:text="Please upload a Business Proof!"
                                         android:textColor="@color/red"
                                         android:visibility="gone" />
 
 
                                     <TextView
-                                        android:id="@+id/save2_business"
+                                        android:id="@+id/save_business"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_marginLeft="20dp"
@@ -1027,7 +1026,7 @@
                                         android:fontFamily="@font/coresanscrbold"
                                         android:gravity="left"
                                         android:padding="15dp"
-                                        android:text="2. Upload UDC *"
+                                        android:text="6. Upload UDC *"
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="14sp"
 
@@ -1060,7 +1059,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:gravity="center"
-                                        android:text="Please upload an Pancard image!"
+                                        android:text="Please upload an UDC image!"
                                         android:textColor="@color/red"
                                         android:visibility="gone" />
 
@@ -1165,7 +1164,7 @@
                                         android:fontFamily="@font/coresanscrbold"
                                         android:gravity="left"
                                         android:padding="15dp"
-                                        android:text="2. Upload UDC *"
+                                        android:text="7. Upload Agreement *"
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="14sp"
 
@@ -1198,7 +1197,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:gravity="center"
-                                        android:text="Please upload an Pancard image!"
+                                        android:text="Please upload an Agreement !"
                                         android:textColor="@color/red"
                                         android:visibility="gone" />
 
@@ -1304,7 +1303,7 @@
                                         android:fontFamily="@font/coresanscrbold"
                                         android:gravity="left"
                                         android:padding="15dp"
-                                        android:text="2. Upload ESCROW *"
+                                        android:text="8. Upload ESCROW *"
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="14sp"
 
@@ -1337,7 +1336,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:gravity="center"
-                                        android:text="Please upload an Pancard image!"
+                                        android:text="Please upload an ESCROW image!"
                                         android:textColor="@color/red"
                                         android:visibility="gone" />
 
@@ -1442,7 +1441,7 @@
                                         android:fontFamily="@font/coresanscrbold"
                                         android:gravity="left"
                                         android:padding="15dp"
-                                        android:text="2. Upload Disbirse Bank *"
+                                        android:text="9. Upload Disburse Bank *"
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="14sp"
 
@@ -1475,7 +1474,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:gravity="center"
-                                        android:text="Please upload an Pancard image!"
+                                        android:text="Please upload a Disburse bank image!"
                                         android:textColor="@color/red"
                                         android:visibility="gone" />
 
@@ -1581,7 +1580,7 @@
                                         android:fontFamily="@font/coresanscrbold"
                                         android:gravity="left"
                                         android:padding="15dp"
-                                        android:text="2. Upload Ledger Copy*"
+                                        android:text="10. Upload Ledger Copy*"
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="14sp"
 
@@ -1614,7 +1613,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:gravity="center"
-                                        android:text="Please upload an Pancard image!"
+                                        android:text="Please upload a Ledger image!"
                                         android:textColor="@color/red"
                                         android:visibility="gone" />
 
@@ -1720,7 +1719,7 @@
                                         android:fontFamily="@font/coresanscrbold"
                                         android:gravity="left"
                                         android:padding="15dp"
-                                        android:text="2. Upload Invoice Copy*"
+                                        android:text="11. Upload Invoice Copy*"
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="14sp"
 
@@ -1749,17 +1748,17 @@
                                         />
 
                                     <TextView
-                                        android:id="@+id/upld_itr_hint"
+                                        android:id="@+id/upld_invoice_hint"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:gravity="center"
-                                        android:text="Please upload an Pancard image!"
+                                        android:text="Please upload an Invoice  image!"
                                         android:textColor="@color/red"
                                         android:visibility="gone" />
 
 
                                     <TextView
-                                        android:id="@+id/itr_save_button"
+                                        android:id="@+id/invoice_save_button"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_marginLeft="20dp"
@@ -1822,7 +1821,7 @@
                                             android:textSize="14dp" />
 
                                         <ImageView
-                                            android:id="@+id/invoice_itr"
+                                            android:id="@+id/dropdown_itr"
                                             android:layout_width="40dp"
                                             android:layout_height="40dp"
                                             android:layout_marginLeft="5dp"
@@ -1858,7 +1857,7 @@
                                         android:fontFamily="@font/coresanscrbold"
                                         android:gravity="left"
                                         android:padding="15dp"
-                                        android:text="2. Upload ITR Copy*"
+                                        android:text="12. Upload ITR Copy*"
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="14sp"
 
@@ -1887,17 +1886,17 @@
                                         />
 
                                     <TextView
-                                        android:id="@+id/upld_invoice_hint"
+                                        android:id="@+id/upld_ITR_hint"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:gravity="center"
-                                        android:text="Please upload an Pancard image!"
+                                        android:text="Please upload an ITR image!"
                                         android:textColor="@color/red"
                                         android:visibility="gone" />
 
 
                                     <TextView
-                                        android:id="@+id/invoice_save_button"
+                                        android:id="@+id/itr_save_button"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_marginLeft="20dp"
@@ -1961,7 +1960,7 @@
                                             android:textSize="14dp" />
 
                                         <ImageView
-                                            android:id="@+id/invoice_TDS"
+                                            android:id="@+id/Dropdown_TDS"
                                             android:layout_width="40dp"
                                             android:layout_height="40dp"
                                             android:layout_marginLeft="5dp"
@@ -1997,7 +1996,7 @@
                                         android:fontFamily="@font/coresanscrbold"
                                         android:gravity="left"
                                         android:padding="15dp"
-                                        android:text="2. Upload TDS Copy*"
+                                        android:text="13. Upload TDS Copy*"
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="14sp"
 
@@ -2030,7 +2029,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:gravity="center"
-                                        android:text="Please upload an Pancard image!"
+                                        android:text="Please upload a TDS image!"
                                         android:textColor="@color/red"
                                         android:visibility="gone" />
 
@@ -2135,7 +2134,7 @@
                                         android:fontFamily="@font/coresanscrbold"
                                         android:gravity="left"
                                         android:padding="15dp"
-                                        android:text="2. Upload Gst Copy*"
+                                        android:text="14. Upload Gst Copy*"
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="14sp"
 
@@ -2168,7 +2167,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:gravity="center"
-                                        android:text="Please upload an Pancard image!"
+                                        android:text="Please upload a GST image!"
                                         android:textColor="@color/red"
                                         android:visibility="gone" />
 
