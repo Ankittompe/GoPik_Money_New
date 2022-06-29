@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.qts.gopik_loan.Activity.AppConstants;
 import com.qts.gopik_loan.Activity.SharedPref;
+import com.qts.gopik_loan.Goat_Activity.Aadhar_Name_Number_Activity;
 import com.qts.gopik_loan.Model.Get_loan_status_MODEL;
 import com.qts.gopik_loan.Model.Resend_otp_to_user_MODEL;
 import com.qts.gopik_loan.Model.Resend_verify_mobile_number_MODEL;
@@ -170,7 +171,7 @@ public class TermsCondition_DEALER_Activity extends AppCompatActivity {
                             SharedPref.saveStringInSharedPref(AppConstants.STATUS, response.body().getPayload().get(i).getCust_tc_response(), getApplicationContext());
                             Log.e("huiheuir", "hvfueisg" + SharedPref.getStringFromSharedPref(AppConstants.STATUS, getApplicationContext()));
                             if (SharedPref.getStringFromSharedPref(AppConstants.STATUS, getApplicationContext()).equals("Accept")) {
-                                Intent it = new Intent(TermsCondition_DEALER_Activity.this, Voter_ID_CARD_Details.class);
+                                Intent it = new Intent(TermsCondition_DEALER_Activity.this, Aadhar_Name_Number_Activity.class);
                                 startActivity(it);
                             } else if (SharedPref.getStringFromSharedPref(AppConstants.STATUS, getApplicationContext()).equals("Decline")) {
                                 wait.setText("Declined"+ System.getProperty("line.separator") +

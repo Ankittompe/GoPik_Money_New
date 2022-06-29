@@ -175,4 +175,5 @@ public interface AppConstants {
     String DEALER_MOBILE_NUMBER = "dealermob";
     String NOTIFICATION_TYPE ="hh" ;
     String BROKER_NAME ="pop" ;
+    String OTP_AADHAR = "otp";
 }

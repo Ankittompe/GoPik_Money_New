@@ -31,14 +31,13 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".Dealer_Activity.Aadhar_Otp_Verify"
+            android:name=".Goat_Activity.Aadhar_Name_Number_Activity"
             android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
+        <activity
+            android:name=".Dealer_Activity.Aadhar_Otp_Verify"
+            android:exported="true"></activity>
         <activity
             android:name=".Dealer_Activity.Aadhar_Name_Activity"
             android:exported="false" />
@@ -143,7 +142,13 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.SplashActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Activity.Application_Details"
             android:screenOrientation="portrait" />

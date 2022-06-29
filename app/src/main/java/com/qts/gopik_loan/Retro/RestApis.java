@@ -39,6 +39,8 @@ import com.qts.gopik_loan.Model.Get_wallet_details_MODEL;
 import com.qts.gopik_loan.Model.Get_wallet_txn_MODEL;
 import com.qts.gopik_loan.Model.Getcontestresult_MODEL;
 import com.qts.gopik_loan.Model.Getusercontest_MODEL;
+import com.qts.gopik_loan.Model.GoatAadharvalidation1_MODEL;
+import com.qts.gopik_loan.Model.GoatAadharvalidation_MODEL;
 import com.qts.gopik_loan.Model.Loan_calculation_Model;
 import com.qts.gopik_loan.Model.LogInOtpVerifyMODEL;
 import com.qts.gopik_loan.Model.Login_actPOJO;
@@ -133,6 +135,9 @@ import com.qts.gopik_loan.Pojo.Get_voterid_details_POJO;
 import com.qts.gopik_loan.Pojo.Get_wallet_details_POJO;
 import com.qts.gopik_loan.Pojo.Get_wallet_txn_POJO;
 import com.qts.gopik_loan.Pojo.Getusercontest_POJO;
+import com.qts.gopik_loan.Pojo.GoatAadharvalidation1_POJO;
+import com.qts.gopik_loan.Pojo.GoatAadharvalidation_POJO;
+import com.qts.gopik_loan.Pojo.GoatAdharvalidationResponseDTO;
 import com.qts.gopik_loan.Pojo.Loan_calculation_POJO;
 import com.qts.gopik_loan.Pojo.LogInOtpVerifyPOJO;
 import com.qts.gopik_loan.Pojo.Login_otp_verify_for_ML_POJO;
@@ -633,5 +638,10 @@ public interface RestApis {
     Call<WhatsAppStatusList_MODEL> Get_WhatsApp_Status(@Body Dealer_CODE_POJO data);
 
 
+    @POST("GoatAadharvalidation")
+    Call<GoatAdharvalidationResponseDTO> GoatAadharvalidation(@Body GoatAadharvalidation_POJO data);
 
+
+    @POST("GoatAadharvalidation1")
+    Call<GoatAadharvalidation1_MODEL> GoatAadharvalidation1(@Body GoatAadharvalidation1_POJO data);
 }

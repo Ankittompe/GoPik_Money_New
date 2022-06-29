@@ -137,7 +137,8 @@
                     android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
                     <TextView
                         android:id="@+id/second_remaining_tv"
                         android:layout_width="wrap_content"
@@ -166,7 +167,7 @@
                     android:layout_marginRight="20dp"
                     android:elevation="10dp"
                     android:gravity="center"
-                    android:text="Resend OTP"
+                    android:text="SUBMIT"
                     android:textColor="@color/white"
                     android:background="@color/coloeAccent"
                     android:visibility="visible" />
