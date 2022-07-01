@@ -72,7 +72,7 @@ public class Aadhar_Otp_Verify extends AppCompatActivity implements TextWatcher 
         GoatAadharvalidation1_POJO pojo = new GoatAadharvalidation1_POJO(
                 SharedPref.getStringFromSharedPref(AppConstants.BRAND, getApplicationContext()),
                 SharedPref.getStringFromSharedPref(AppConstants.CUTOMER_CODE, getApplicationContext()),
-                "262646068645",
+                SharedPref.getStringFromSharedPref(AppConstants.NUMBER_AADHARCARD, getApplicationContext()),
                 SharedPref.getStringFromSharedPref(AppConstants.ACCESSKEY, getApplicationContext()),
             SharedPref.getStringFromSharedPref(AppConstants.CASEID, getApplicationContext()),
                 otptext);

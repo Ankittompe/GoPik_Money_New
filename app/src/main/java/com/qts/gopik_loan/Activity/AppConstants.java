@@ -176,4 +176,5 @@ public interface AppConstants {
     String NOTIFICATION_TYPE ="hh" ;
     String BROKER_NAME ="pop" ;
     String OTP_AADHAR = "otp";
+    String NUMBER_AADHARCARD = "kk";
 }

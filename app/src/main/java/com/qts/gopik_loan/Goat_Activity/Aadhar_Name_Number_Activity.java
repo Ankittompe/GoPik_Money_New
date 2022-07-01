@@ -55,6 +55,7 @@ public class Aadhar_Name_Number_Activity extends AppCompatActivity {
             @Override
             public void onResponse(Call<GoatAdharvalidationResponseDTO> call, Response<GoatAdharvalidationResponseDTO> response) {
                 if (response.body() != null) {
+                    SharedPref.saveStringInSharedPref(AppConstants.NUMBER_AADHARCARD, numberaadhar.getText().toString(), getApplicationContext());
                     SharedPref.saveStringInSharedPref(AppConstants.NAME_VOTERID, aadharname.getText().toString(), getApplicationContext());
                     Log.e("pp", "onResponse: " + String.valueOf(response.body().getPayload().getId()));
                     Log.e("pp", "onResponse: " + response.body().getPayload().getKey());
