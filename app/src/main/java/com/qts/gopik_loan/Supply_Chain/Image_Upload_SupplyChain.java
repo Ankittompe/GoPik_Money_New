@@ -28,6 +28,7 @@ import com.hbisoft.pickit.PickiT;
 import com.hbisoft.pickit.PickiTCallbacks;
 import com.qts.gopik_loan.Activity.AppConstants;
 import com.qts.gopik_loan.Activity.SharedPref;
+import com.qts.gopik_loan.Dealer_Activity.MainActivity;
 import com.qts.gopik_loan.Dealer_Fragment.My_Mall_Fragment;
 import com.qts.gopik_loan.Model.DealerAGREEMENTDoc_MODEL;
 import com.qts.gopik_loan.Model.DealerAadharFrontDoc_MODEL;
@@ -94,25 +95,28 @@ public class Image_Upload_SupplyChain extends AppCompatActivity implements Picki
     Integer ITR_Valid = 0;
     Integer TDS_Valid = 0;
     Integer GST_Valid = 0;
-    Integer upload_adhaar_valid2 = 0;
-    Integer upload_applcation_valid = 0;
-    Integer upload_income_valid = 0;
-    Integer upload_bank_valid = 0;
-    Integer upload_land_valid = 0;
-    Integer upload_mrgn_valid = 0;
 
-    Integer upload_uploadelectricitybillimg_valid = 0;
-    Integer upload_applicationphptographimg_valid = 0;
     TextView btsend, save1, save2, save3, save4;
-    Integer save_success1 = 0;
-    Integer save_success2 = 0;
-    Integer save_success3 = 0;
+    Integer save_selfie_status = 0;
+    Integer save_adhar_front_status = 0;
+    Integer save_adhar_back_status = 0;
+    Integer save_pan_status = 0;
+    Integer save_business_status = 0;
+    Integer save_udc_status = 0;
+    Integer save_agreemnt_status = 0;
+    Integer save_escrow_status = 0;
+    Integer save_disb_bank_status = 0;
+    Integer save_ledger_status = 0;
+    Integer save_invoice_status = 0;
+    Integer save_itr_status = 0;
+    Integer save_tds_status = 0;
+    Integer save_gst_status = 0;
     Integer upld_selfie = 0;
     Integer upld_selfie_scss = 0;
 
     Integer save_success4 = 0;
 
-    ImageView arrow;
+    ImageView arrow,hometoolbar;
     ImageView adhaar_upld_sucss,upload_selfie,
             bill_upld_sucss, upld_mrgn_succ, income_success_img, land_upld_sccs, upload_bank_succs, upld_application_succss;
     private static final int FILE_CHOOSER=123;
@@ -142,14 +146,63 @@ public class Image_Upload_SupplyChain extends AppCompatActivity implements Picki
     ImageView upld_escrow_buton,upld_disburse_bank_buton,upld_ledger_buton,upld_invoice_buton,upld_itr_buton,upld_tds_buton,upld_Gst_buton;
 
     TextView upld_TDS_hint,upld_Gst_hint;
-
-
+    //Business
+    File mBussinessProofFile = null;
+    int mSelectedBussinessProofStatus = 0;
+    //UDC
+    File mUDCFile = null;
+    int mSelectedUDCStatus = 0;
+    //Agreement
+    File mAgreementFile = null;
+    int mSelectedAgreementStatus = 0;
+    //Escrow
+    File mEscrowFile = null;
+    int mSelectedEscrowStatus = 0;
+    //DisburseBank
+    File mDisburseBankFile = null;
+    int mSelectedDisburseBankStatus = 0;
+    //Ledger
+    File mLedgerFile = null;
+    int  mSelectedLedgerStatus = 0;
+    //Invoice
+    File mInvoiceFile = null;
+    int  mSelectedInvoiceStatus = 0;
+    //ITR
+    File mITRFile = null;
+    int  mSelectedITRStatus = 0;
+    //TDS
+    File mTDSFile = null;
+    int  mSelectedTDSStatus = 0;
+    //GST
+    File mGSTFile = null;
+    int  mSelectedGSTStatus = 0;
+    TextView adhar_front_err_msg,adhar_back_err_msg,pan_front_err_msg,business_err_msg,udc_err_msg,agreement_err_msg,escrow_err_msg,disb_bank_err_msg,ledger_err_msg,invoice_err_msg,itr_err_msg,tds_err_msg,Gst_err_msg;
     private static final String IMAGE_DIRECTORY = "/supplychaingopikmoneyimg";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_upload_supply_chain);
-        pickiT = new PickiT(getApplicationContext(), this, Image_Upload_SupplyChain.this);
+
+
+
+
+        arrow = findViewById(R.id.arrow);
+        hometoolbar = findViewById(R.id.hometoolbar);
+        adhar_front_err_msg = findViewById(R.id.adhar_front_err_msg);
+        adhar_back_err_msg = findViewById(R.id.adhar_back_err_msg);
+        pan_front_err_msg = findViewById(R.id.pan_front_err_msg);
+        business_err_msg = findViewById(R.id.business_err_msg);
+        udc_err_msg = findViewById(R.id.udc_err_msg);
+        agreement_err_msg = findViewById(R.id.agreement_err_msg);
+        escrow_err_msg = findViewById(R.id.escrow_err_msg);
+        disb_bank_err_msg = findViewById(R.id.disb_bank_err_msg);
+        ledger_err_msg = findViewById(R.id.ledger_err_msg);
+        invoice_err_msg = findViewById(R.id.invoice_err_msg);
+        itr_err_msg = findViewById(R.id.itr_err_msg);
+        tds_err_msg = findViewById(R.id.tds_err_msg);
+        Gst_err_msg = findViewById(R.id.Gst_err_msg);
+
+
         upld_TDS_hint = findViewById(R.id.upld_TDS_hint);
         upld_Gst_hint = findViewById(R.id.upld_Gst_hint);
         upld_Gst_succss = findViewById(R.id.upld_Gst_succss);
@@ -334,7 +387,14 @@ public class Image_Upload_SupplyChain extends AppCompatActivity implements Picki
         unsaved_img_error_massage = (TextView) findViewById(R.id.unsaved_img_error_massage);
         unsaved_img_error_massage2 = (TextView) findViewById(R.id.unsaved_img_error_massage2);
         unsaved_img_error_massage3= (TextView)findViewById(R.id.unsaved_img_error_massage3);
-
+        hometoolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(Image_Upload_SupplyChain.this, MainActivity.class);
+                it.putExtra(AppConstants.ACTFRAG_TYPE_KEY, AppConstants.MY_MALL_DEALER_FRAG);
+                startActivity(it);
+            }
+        });
         //upload Selfie
         upload_selfie.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -347,27 +407,42 @@ public class Image_Upload_SupplyChain extends AppCompatActivity implements Picki
         upload_adhaar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SelectPictureDailog();
-                x = 1;
-                y = 1;
+                if (!(save_selfie_status==1)){
+                    adhar_front_err_msg.setVisibility(View.VISIBLE);
+                }else{
+                    SelectPictureDailog();
+                    x = 1;
+                    y = 1;
+                }
+
             }
         });
         //Upload Adhaar back
         upload_adhaar_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SelectPictureDailog();
-                x = 2;
-                y = 2;
+                if (!(save_adhar_front_status==1)){
+                    adhar_back_err_msg.setVisibility(View.VISIBLE);
+                }else{
+                    SelectPictureDailog();
+                    x = 2;
+                    y = 2;
+                }
+
             }
         });
         //Upload Pan Card
         upload_pancard_front_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SelectPictureDailog();
-                x = 3;
-                y = 3;
+                if (!(save_adhar_back_status==1)){
+                    pan_front_err_msg.setVisibility(View.VISIBLE);
+                }else{
+                    SelectPictureDailog();
+                    x = 3;
+                    y = 3;
+                }
+
             }
         });
 
@@ -375,94 +450,154 @@ public class Image_Upload_SupplyChain extends AppCompatActivity implements Picki
         upld_business_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showPictureDialog();
-                x = 5;
-                y = 5;
-                PDF_VALID = 1;
+                if (!(save_pan_status==1)){
+                    business_err_msg.setVisibility(View.VISIBLE);
+                }else{
+                    showPictureDialog();
+                    x = 5;
+                    y = 5;
+                    PDF_VALID = 1;
+                    mSelectedBussinessProofStatus = 1;
+                }
+
             }
         });
         upld_udc_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showPictureDialog();
-                x = 6;
-                y = 6;
-                PDF_VALID = 2;
+                if (!(save_business_status==1)){
+                    udc_err_msg.setVisibility(View.VISIBLE);
+                }else{
+                    showPictureDialog();
+                    x = 6;
+                    y = 6;
+                    PDF_VALID = 2;
+                    mSelectedUDCStatus = 1;
+                }
+
             }
         });
 
         upld_agreement_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showPictureDialog();
-                x = 7;
-                y = 7;
-                PDF_VALID = 3;
+                if (!(save_udc_status==1)){
+                    agreement_err_msg.setVisibility(View.VISIBLE);
+                }else{
+                    showPictureDialog();
+                    x = 7;
+                    y = 7;
+                    PDF_VALID = 3;
+                    mSelectedAgreementStatus = 1;
+                }
+
             }
         });
 
         upld_escrow_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showPictureDialog();
-                x = 8;
-                y = 8;
-                PDF_VALID = 4;
+                if (!(save_agreemnt_status==1)){
+                    escrow_err_msg.setVisibility(View.VISIBLE);
+                }else{
+                    showPictureDialog();
+                    x = 8;
+                    y = 8;
+                    PDF_VALID = 4;
+                    mSelectedEscrowStatus = 1;
+                }
+
             }
         });
         upld_disburse_bank_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showPictureDialog();
-                x = 9;
-                y = 9;
-                PDF_VALID = 5;
+                if (!(save_escrow_status==1)){
+                    disb_bank_err_msg.setVisibility(View.VISIBLE);
+                }else{
+                    showPictureDialog();
+                    x = 9;
+                    y = 9;
+                    PDF_VALID = 5;
+                    mSelectedDisburseBankStatus = 1;
+                }
+
             }
         });
         upld_ledger_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showPictureDialog();
-                x = 10;
-                y = 10;
-                PDF_VALID = 6;
+                if (!(save_disb_bank_status==1)){
+                    ledger_err_msg.setVisibility(View.VISIBLE);
+                }else{
+                    showPictureDialog();
+                    x = 10;
+                    y = 10;
+                    PDF_VALID = 6;
+                    mSelectedLedgerStatus =1;
+                }
+
             }
         });
         upld_invoice_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showPictureDialog();
-                x = 11;
-                y = 11;
-                PDF_VALID = 7;
+                if (!(save_ledger_status==1)){
+                    invoice_err_msg.setVisibility(View.VISIBLE);
+                }else{
+                    showPictureDialog();
+                    x = 11;
+                    y = 11;
+                    PDF_VALID = 7;
+                    mSelectedLedgerStatus = 1;
+                }
+
             }
         });
         upld_itr_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showPictureDialog();
-                x = 12;
-                y = 12;
-                PDF_VALID = 8;
+                if (!(save_invoice_status==1)){
+                    itr_err_msg.setVisibility(View.VISIBLE);
+                }else{
+                    showPictureDialog();
+                    x = 12;
+                    y = 12;
+                    PDF_VALID = 8;
+                    mSelectedITRStatus = 1;
+                }
+
             }
         });
         upld_tds_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showPictureDialog();
-                x = 13;
-                y = 13;
-                PDF_VALID = 9;
+                if (!(save_itr_status==1)){
+                    tds_err_msg.setVisibility(View.VISIBLE);
+                }else{
+                    showPictureDialog();
+                    x = 13;
+                    y = 13;
+                    PDF_VALID = 9;
+                    mSelectedTDSStatus = 1;
+                }
+
             }
         });
 
         upld_Gst_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showPictureDialog();
-                x = 14;
-                y = 14;
-                PDF_VALID = 10;
+                if (!(save_tds_status==1)){
+                    Gst_err_msg.setVisibility(View.VISIBLE);
+                }else{
+                    showPictureDialog();
+                    x = 14;
+                    y = 14;
+                    PDF_VALID = 10;
+                    mSelectedGSTStatus = 1;
+                }
+
             }
         });
         ///Selfie Dropdown/DropUp
@@ -797,7 +932,10 @@ public class Image_Upload_SupplyChain extends AppCompatActivity implements Picki
         arrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Image_Upload_SupplyChain.this, My_Mall_Fragment.class);
+                Intent intent = new Intent(Image_Upload_SupplyChain.this, MainActivity.class);
+
+                intent.putExtra(AppConstants.ACTFRAG_TYPE_KEY, AppConstants.MY_MALL_DEALER_FRAG);
+                startActivity(intent);
             }
         });
 //api call
@@ -867,8 +1005,10 @@ public class Image_Upload_SupplyChain extends AppCompatActivity implements Picki
             @Override
             public void onClick(View v) {
                 if (!(UDC_Valid==1)){
+                    Log.e("yyy","=====");
                     upld_udc_hint.setVisibility(View.VISIBLE);
                 }else{
+                    Log.e("yyy","5555555");
                     DealerUDCDoc();
                 }
 
@@ -895,6 +1035,8 @@ public class Image_Upload_SupplyChain extends AppCompatActivity implements Picki
                     escrow_dropdown.setVisibility(View.VISIBLE);
                     upld_escrow_layout.setVisibility(View.GONE);
                     upld_ecsrow_succss.setVisibility(View.VISIBLE);
+                    disb_bank_err_msg.setVisibility(View.GONE);
+                    save_escrow_status = 1;
                     Toast.makeText(Image_Upload_SupplyChain.this, "Image Upload Sucsessfully!", Toast.LENGTH_SHORT).show();
                    // DealerESCROWDoc();
                 }
@@ -912,6 +1054,8 @@ public class Image_Upload_SupplyChain extends AppCompatActivity implements Picki
                     disb_bank_dropdown.setVisibility(View.VISIBLE);
                     upld_disburse_layout.setVisibility(View.GONE);
                     upld_disb_bank_succss.setVisibility(View.VISIBLE);
+                    save_disb_bank_status = 1;
+                    ledger_err_msg.setVisibility(View.GONE);
                     Toast.makeText(Image_Upload_SupplyChain.this, "Image Upload Sucsessfully!", Toast.LENGTH_SHORT).show();
                   //  DealerDISB_BANKDoc();
                 }
@@ -928,6 +1072,8 @@ public class Image_Upload_SupplyChain extends AppCompatActivity implements Picki
                     ledger_dropdown.setVisibility(View.VISIBLE);
                     upld_ledger_layout.setVisibility(View.GONE);
                     upld_ledger_succss.setVisibility(View.VISIBLE);
+                    invoice_err_msg.setVisibility(View.GONE);
+                    save_ledger_status = 1;
                     Toast.makeText(Image_Upload_SupplyChain.this, "Image Upload Successfully!", Toast.LENGTH_SHORT).show();
                    // DealerLEDGERDoc();
                 }
@@ -984,7 +1130,11 @@ public class Image_Upload_SupplyChain extends AppCompatActivity implements Picki
         btsend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(Image_Upload_SupplyChain.this, "All Document Successfully Uploaded", Toast.LENGTH_SHORT).show();
+                if (!(save_gst_status==1)){
+                    Toast.makeText(Image_Upload_SupplyChain.this, "Please save GST Image !", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(Image_Upload_SupplyChain.this, "All Document Successfully Uploaded", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -1138,53 +1288,60 @@ public class Image_Upload_SupplyChain extends AppCompatActivity implements Picki
                         upld_business_buton.setImageBitmap(bitmap);
                         upld_business_hint.setVisibility(View.GONE);
                         Business_valid = 1;
+                        mSelectedBussinessProofStatus = 0;
 
                     }else if (x == 6) {
                         upld_udc_buton.setImageBitmap(bitmap);
                         upld_udc_hint.setVisibility(View.GONE);
                         UDC_Valid = 1;
+                        mSelectedUDCStatus = 0;
 
                     }else if (x == 7) {
                         upld_agreement_buton.setImageBitmap(bitmap);
                         upld_agreement_hint.setVisibility(View.GONE);
                         Agreement_Valid = 1;
+                        mSelectedAgreementStatus = 0;
 
                     }else if (x == 8) {
                         upld_escrow_buton.setImageBitmap(bitmap);
                         upld_escrow_hint.setVisibility(View.GONE);
                         Escrow_Valid = 1;
+                        mSelectedEscrowStatus = 0;
 
                     }else if (x == 9) {
                         upld_disburse_bank_buton.setImageBitmap(bitmap);
                         upld_disb_bank_hint.setVisibility(View.GONE);
                         Disb_Bank_Valid = 1;
+                        mSelectedDisburseBankStatus = 0;
 
                     }else if (x == 10) {
                         upld_ledger_buton.setImageBitmap(bitmap);
                         upld_ledger_hint.setVisibility(View.GONE);
                         Ledger_Valid = 1;
-
+                        mSelectedLedgerStatus = 0;
                     }else if (x == 11) {
                         upld_invoice_buton.setImageBitmap(bitmap);
                         upld_invoice_hint.setVisibility(View.GONE);
                         Invoice_Valid = 1;
-
+                        mSelectedInvoiceStatus = 0;
                     }else if (x == 12) {
                         upld_itr_buton.setImageBitmap(bitmap);
                         upld_ITR_hint.setVisibility(View.GONE);
                         ITR_Valid = 1;
-
+                        mSelectedITRStatus = 0;
                     }
                     else if (x == 13) {
                         upld_tds_buton.setImageBitmap(bitmap);
                         upld_TDS_hint.setVisibility(View.GONE);
                         TDS_Valid = 1;
+                        mSelectedTDSStatus = 0;
 
                     }
                     else if (x == 14) {
                         upld_Gst_buton.setImageBitmap(bitmap);
                         upld_Gst_hint.setVisibility(View.GONE);
                         GST_Valid = 1;
+                        mSelectedGSTStatus = 0;
 
                     }
                     saveImage(bitmap);
@@ -1225,51 +1382,104 @@ public class Image_Upload_SupplyChain extends AppCompatActivity implements Picki
                 upld_business_buton.setImageBitmap(thumbnail);
                 upld_business_hint.setVisibility(View.GONE);
                 Business_valid = 1;
+                mSelectedBussinessProofStatus = 0;
             }else if (y==6){
                 upld_udc_buton.setImageBitmap(thumbnail);
                 upld_udc_hint.setVisibility(View.GONE);
                 UDC_Valid = 1;
+                mSelectedUDCStatus = 0;
             }else if (y==7){
                 upld_agreement_buton.setImageBitmap(thumbnail);
                 upld_agreement_hint.setVisibility(View.GONE);
                 Agreement_Valid = 1;
+                mSelectedAgreementStatus = 0;
             }else if (y==8){
                 upld_escrow_buton.setImageBitmap(thumbnail);
                 upld_escrow_hint.setVisibility(View.GONE);
                 Escrow_Valid = 1;
+                mSelectedEscrowStatus = 0;
             }else if (y==9){
                 upld_disburse_bank_buton.setImageBitmap(thumbnail);
                 upld_disb_bank_hint.setVisibility(View.GONE);
                 Disb_Bank_Valid = 1;
+                mSelectedDisburseBankStatus = 0;
             }else if (y==10){
                 upld_ledger_buton.setImageBitmap(thumbnail);
                 upld_ledger_hint.setVisibility(View.GONE);
                 Ledger_Valid = 1;
+                mSelectedLedgerStatus = 0;
             }
             else if (y==11){
                 upld_invoice_buton.setImageBitmap(thumbnail);
                 upld_invoice_hint.setVisibility(View.GONE);
                 Invoice_Valid = 1;
+                mSelectedInvoiceStatus = 0;
             }
             else if (y==12){
                 upld_itr_buton.setImageBitmap(thumbnail);
                 upld_ITR_hint.setVisibility(View.GONE);
                 ITR_Valid = 1;
+                mSelectedITRStatus = 0;
             }else if (y==13){
                 upld_tds_buton.setImageBitmap(thumbnail);
                 upld_TDS_hint.setVisibility(View.GONE);
                 TDS_Valid = 1;
+                mSelectedTDSStatus = 0;
             }else if (y==14){
                 upld_Gst_buton.setImageBitmap(thumbnail);
                 upld_Gst_hint.setVisibility(View.GONE);
                 GST_Valid = 1;
+                mSelectedGSTStatus = 0;
             }
 
             saveImage(thumbnail);
             //  Toast.makeText(getActivity(), "Image Saved!",Toast.LENGTH_SHORT).show();
-        }else if (resultCode == PERMISSION_REQUEST_CODE) {
+        }else {
+          //  Toast.makeText(this, "Image Saved!",Toast.LENGTH_SHORT).show();
+            if (mSelectedBussinessProofStatus == 1) {
+                Business_valid = 1;
                 pickiT.getPath(data.getData(), Build.VERSION.SDK_INT);
+                upld_business_hint.setVisibility(View.GONE);
+            } else if (mSelectedUDCStatus == 1) {
+                Log.e("yyy","uuu666");
+                UDC_Valid = 1;
+                pickiT.getPath(data.getData(), Build.VERSION.SDK_INT);
+                Log.e("yyy","0000000000");
+                upld_udc_hint.setVisibility(View.GONE);
+            }else if (mSelectedAgreementStatus == 1) {
+                Agreement_Valid = 1;
+                pickiT.getPath(data.getData(), Build.VERSION.SDK_INT);
+                upld_agreement_hint.setVisibility(View.GONE);
+            }else if (mSelectedEscrowStatus == 1) {
+                Escrow_Valid = 1;
+                pickiT.getPath(data.getData(), Build.VERSION.SDK_INT);
+                upld_escrow_hint.setVisibility(View.GONE);
+            }else if (mSelectedDisburseBankStatus == 1) {
+                Disb_Bank_Valid = 1;
+                pickiT.getPath(data.getData(), Build.VERSION.SDK_INT);
+                upld_disb_bank_hint.setVisibility(View.GONE);
+            }else if (mSelectedLedgerStatus == 1) {
+                Ledger_Valid = 1;
+                pickiT.getPath(data.getData(), Build.VERSION.SDK_INT);
+                upld_ledger_hint.setVisibility(View.GONE);
+            }else if (mSelectedInvoiceStatus == 1) {
+                Invoice_Valid = 1;
+                pickiT.getPath(data.getData(), Build.VERSION.SDK_INT);
+                upld_invoice_hint.setVisibility(View.GONE);
+            }else if (mSelectedITRStatus == 1) {
+                ITR_Valid = 1;
+                pickiT.getPath(data.getData(), Build.VERSION.SDK_INT);
+                upld_ITR_hint.setVisibility(View.GONE);
+            }else if (mSelectedTDSStatus == 1) {
+                TDS_Valid = 1;
+                pickiT.getPath(data.getData(), Build.VERSION.SDK_INT);
+                upld_TDS_hint.setVisibility(View.GONE);
+            }else if (mSelectedGSTStatus == 1) {
+                GST_Valid = 1;
+                pickiT.getPath(data.getData(), Build.VERSION.SDK_INT);
+                upld_Gst_hint.setVisibility(View.GONE);
             }
+        }
             super.onActivityResult(requestCode, resultCode, data);
 
 
@@ -1329,8 +1539,15 @@ public class Image_Upload_SupplyChain extends AppCompatActivity implements Picki
         String musercode = "47436";
         RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), musercode);
 
-        File idFile = new File(SharedPref.getStringFromSharedPref(AppConstants.ML_LOAN_IMAGE, getApplicationContext()));
-        Log.e("testingggg", "testingggg99999" + idFile);
+        File idFile;
+//        Log.e("testingggg", "testingggg99999" + idFile);
+    //    Log.e("UDC FileName ", mGSTFile.toString());
+
+        if (mSelectedGSTStatus == 1) {
+            idFile = mGSTFile;
+        } else {
+            idFile = new File(SharedPref.getStringFromSharedPref(AppConstants.ML_LOAN_IMAGE, getApplicationContext()));
+        }        Log.e("testingggg", "testingggg99999" + idFile);
         RequestBody mFile1;
         MultipartBody.Part vechileDocUpload2;
         mFile1 = RequestBody.create(MediaType.parse("multipart/form-data"), idFile);
@@ -1348,6 +1565,8 @@ public class Image_Upload_SupplyChain extends AppCompatActivity implements Picki
                     GST_DROPDOWN.setVisibility(View.VISIBLE);
                     upld_Gst_layout.setVisibility(View.GONE);
                     upld_Gst_succss.setVisibility(View.VISIBLE);
+                    Gst_err_msg.setVisibility(View.GONE);
+                    save_gst_status = 1;
                     Toast.makeText(Image_Upload_SupplyChain.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
@@ -1371,8 +1590,15 @@ public class Image_Upload_SupplyChain extends AppCompatActivity implements Picki
         String musercode = "47436";
         RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), musercode);
 
-        File idFile = new File(SharedPref.getStringFromSharedPref(AppConstants.ML_LOAN_IMAGE, getApplicationContext()));
-        Log.e("testingggg", "testingggg99999" + idFile);
+        File idFile;
+//        Log.e("testingggg", "testingggg99999" + idFile);
+ //       Log.e("UDC FileName ", mTDSFile.toString());
+
+        if (mSelectedTDSStatus == 1) {
+            idFile = mTDSFile;
+        } else {
+            idFile = new File(SharedPref.getStringFromSharedPref(AppConstants.ML_LOAN_IMAGE, getApplicationContext()));
+        }        Log.e("testingggg", "testingggg99999" + idFile);
         RequestBody mFile1;
         MultipartBody.Part vechileDocUpload2;
         mFile1 = RequestBody.create(MediaType.parse("multipart/form-data"), idFile);
@@ -1390,6 +1616,8 @@ public class Image_Upload_SupplyChain extends AppCompatActivity implements Picki
                     Dropdown_TDS.setVisibility(View.VISIBLE);
                     upld_TDS_layout.setVisibility(View.GONE);
                     upld_tds_succss.setVisibility(View.VISIBLE);
+                    Gst_err_msg.setVisibility(View.GONE);
+                    save_tds_status = 1;
                     Toast.makeText(Image_Upload_SupplyChain.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
@@ -1413,8 +1641,15 @@ public class Image_Upload_SupplyChain extends AppCompatActivity implements Picki
         String musercode = "47436";
         RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), musercode);
 
-        File idFile = new File(SharedPref.getStringFromSharedPref(AppConstants.ML_LOAN_IMAGE, getApplicationContext()));
-        Log.e("testingggg", "testingggg99999" + idFile);
+        File idFile;
+//        Log.e("testingggg", "testingggg99999" + idFile);
+ //       Log.e("UDC FileName ", mITRFile.toString());
+
+        if (mSelectedITRStatus == 1) {
+            idFile = mITRFile;
+        } else {
+            idFile = new File(SharedPref.getStringFromSharedPref(AppConstants.ML_LOAN_IMAGE, getApplicationContext()));
+        }        Log.e("testingggg", "testingggg99999" + idFile);
         RequestBody mFile1;
         MultipartBody.Part vechileDocUpload2;
         mFile1 = RequestBody.create(MediaType.parse("multipart/form-data"), idFile);
@@ -1432,6 +1667,8 @@ public class Image_Upload_SupplyChain extends AppCompatActivity implements Picki
                     dropdown_itr.setVisibility(View.VISIBLE);
                     upld_itr_layout.setVisibility(View.GONE);
                     upld_itr_succss.setVisibility(View.VISIBLE);
+                    itr_err_msg.setVisibility(View.GONE);
+                    save_itr_status = 1;
                     Toast.makeText(Image_Upload_SupplyChain.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
@@ -1457,8 +1694,15 @@ public class Image_Upload_SupplyChain extends AppCompatActivity implements Picki
         String musercode = "47436";
         RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), musercode);
 
-        File idFile = new File(SharedPref.getStringFromSharedPref(AppConstants.ML_LOAN_IMAGE, getApplicationContext()));
-        Log.e("testingggg", "testingggg99999" + idFile);
+        File idFile;
+//        Log.e("testingggg", "testingggg99999" + idFile);
+ //       Log.e("UDC FileName ", mInvoiceFile.toString());
+
+        if (mSelectedInvoiceStatus == 1) {
+            idFile = mInvoiceFile;
+        } else {
+            idFile = new File(SharedPref.getStringFromSharedPref(AppConstants.ML_LOAN_IMAGE, getApplicationContext()));
+        }        Log.e("testingggg", "testingggg99999" + idFile);
         RequestBody mFile1;
         MultipartBody.Part vechileDocUpload2;
         mFile1 = RequestBody.create(MediaType.parse("multipart/form-data"), idFile);
@@ -1476,6 +1720,8 @@ public class Image_Upload_SupplyChain extends AppCompatActivity implements Picki
                     invoice_dropdown.setVisibility(View.VISIBLE);
                     upld_Invoice_layout.setVisibility(View.GONE);
                     upld_invoice_succss.setVisibility(View.VISIBLE);
+                    itr_err_msg.setVisibility(View.GONE);
+                    save_invoice_status = 1;
                     Toast.makeText(Image_Upload_SupplyChain.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
@@ -1498,7 +1744,15 @@ public class Image_Upload_SupplyChain extends AppCompatActivity implements Picki
         String musercode = "47436";
         RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), musercode);
 
-        File idFile = new File(SharedPref.getStringFromSharedPref(AppConstants.ML_LOAN_IMAGE, getApplicationContext()));
+        File idFile;
+//        Log.e("testingggg", "testingggg99999" + idFile);
+//        Log.e("UDC FileName ", mUDCFile.toString());
+
+        if (mSelectedLedgerStatus == 1) {
+            idFile = mLedgerFile;
+        } else {
+            idFile = new File(SharedPref.getStringFromSharedPref(AppConstants.ML_LOAN_IMAGE, getApplicationContext()));
+        }
         Log.e("testingggg", "testingggg99999" + idFile);
         RequestBody mFile1;
         MultipartBody.Part vechileDocUpload2;
@@ -1517,6 +1771,7 @@ public class Image_Upload_SupplyChain extends AppCompatActivity implements Picki
                     ledger_dropdown.setVisibility(View.VISIBLE);
                     upld_ledger_layout.setVisibility(View.GONE);
                     upld_ledger_succss.setVisibility(View.VISIBLE);
+                    save_ledger_status = 1;
                     Toast.makeText(Image_Upload_SupplyChain.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
@@ -1539,7 +1794,15 @@ public class Image_Upload_SupplyChain extends AppCompatActivity implements Picki
         String musercode = "47436";
         RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), musercode);
 
-        File idFile = new File(SharedPref.getStringFromSharedPref(AppConstants.ML_LOAN_IMAGE, getApplicationContext()));
+        File idFile;
+//        Log.e("testingggg", "testingggg99999" + idFile);
+ //       Log.e("UDC FileName ", mDisburseBankFile.toString());
+
+        if (mSelectedDisburseBankStatus == 1) {
+            idFile = mDisburseBankFile;
+        } else {
+            idFile = new File(SharedPref.getStringFromSharedPref(AppConstants.ML_LOAN_IMAGE, getApplicationContext()));
+        }
         Log.e("testingggg", "testingggg99999" + idFile);
         RequestBody mFile1;
         MultipartBody.Part vechileDocUpload2;
@@ -1558,6 +1821,7 @@ public class Image_Upload_SupplyChain extends AppCompatActivity implements Picki
                     disb_bank_dropdown.setVisibility(View.VISIBLE);
                     upld_disburse_layout.setVisibility(View.GONE);
                     upld_disb_bank_succss.setVisibility(View.VISIBLE);
+                    save_disb_bank_status = 1;
                     Toast.makeText(Image_Upload_SupplyChain.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
@@ -1580,7 +1844,15 @@ public class Image_Upload_SupplyChain extends AppCompatActivity implements Picki
         String musercode = "47436";
         RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), musercode);
 
-        File idFile = new File(SharedPref.getStringFromSharedPref(AppConstants.ML_LOAN_IMAGE, getApplicationContext()));
+        File idFile;
+//        Log.e("testingggg", "testingggg99999" + idFile);
+ //       Log.e("UDC FileName ", mEscrowFile.toString());
+
+        if (mSelectedEscrowStatus == 1) {
+            idFile = mEscrowFile;
+        } else {
+            idFile = new File(SharedPref.getStringFromSharedPref(AppConstants.ML_LOAN_IMAGE, getApplicationContext()));
+        }
         Log.e("testingggg", "testingggg99999" + idFile);
         RequestBody mFile1;
         MultipartBody.Part vechileDocUpload2;
@@ -1599,6 +1871,7 @@ public class Image_Upload_SupplyChain extends AppCompatActivity implements Picki
                     escrow_dropdown.setVisibility(View.VISIBLE);
                     upld_escrow_layout.setVisibility(View.GONE);
                     upld_ecsrow_succss.setVisibility(View.VISIBLE);
+                    save_escrow_status = 1;
                     Toast.makeText(Image_Upload_SupplyChain.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
@@ -1621,7 +1894,15 @@ public class Image_Upload_SupplyChain extends AppCompatActivity implements Picki
         String musercode = "47436";
         RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), musercode);
 
-        File idFile = new File(SharedPref.getStringFromSharedPref(AppConstants.ML_LOAN_IMAGE, getApplicationContext()));
+        File idFile;
+//        Log.e("testingggg", "testingggg99999" + idFile);
+//        Log.e("UDC FileName ", mAgreementFile.toString());
+
+        if (mSelectedAgreementStatus == 1) {
+            idFile = mAgreementFile;
+        } else {
+            idFile = new File(SharedPref.getStringFromSharedPref(AppConstants.ML_LOAN_IMAGE, getApplicationContext()));
+        }
         Log.e("testingggg", "testingggg99999" + idFile);
         RequestBody mFile1;
         MultipartBody.Part vechileDocUpload2;
@@ -1641,6 +1922,8 @@ public class Image_Upload_SupplyChain extends AppCompatActivity implements Picki
                     agreement_dropdown.setVisibility(View.VISIBLE);
                     upld_agreement_layout.setVisibility(View.GONE);
                     upld_agreement_succss.setVisibility(View.VISIBLE);
+                    escrow_err_msg.setVisibility(View.GONE);
+                    save_agreemnt_status = 1;
                     Toast.makeText(Image_Upload_SupplyChain.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
@@ -1665,7 +1948,15 @@ public class Image_Upload_SupplyChain extends AppCompatActivity implements Picki
         String musercode = "47436";
         RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), musercode);
 
-        File idFile = new File(SharedPref.getStringFromSharedPref(AppConstants.ML_LOAN_IMAGE, getApplicationContext()));
+        File idFile;
+  //  Log.e("testingggg", "testingggg99999" );
+      //  Log.e("UDC FileName ",""+ mUDCFile.toString());
+
+        if (mSelectedUDCStatus == 1) {
+            idFile = mUDCFile;
+        } else {
+            idFile = new File(SharedPref.getStringFromSharedPref(AppConstants.ML_LOAN_IMAGE, getApplicationContext()));
+        }
         Log.e("testingggg", "testingggg99999" + idFile);
         RequestBody mFile1;
         MultipartBody.Part vechileDocUpload2;
@@ -1684,6 +1975,8 @@ public class Image_Upload_SupplyChain extends AppCompatActivity implements Picki
                     dropdown_udc.setVisibility(View.VISIBLE);
                     upld_udc_layout.setVisibility(View.GONE);
                     upld_udc_succss.setVisibility(View.VISIBLE);
+                    agreement_err_msg.setVisibility(View.GONE);
+                    save_udc_status = 1;
                     Toast.makeText(Image_Upload_SupplyChain.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
@@ -1705,7 +1998,15 @@ public class Image_Upload_SupplyChain extends AppCompatActivity implements Picki
         String musercode = "47436";
         RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), musercode);
 
-        File idFile = new File(SharedPref.getStringFromSharedPref(AppConstants.ML_LOAN_IMAGE, getApplicationContext()));
+        File idFile;
+
+      //  Log.e("UDC FileName ", mBussinessProofFile.toString());
+
+        if (mSelectedBussinessProofStatus == 1) {
+            idFile = mBussinessProofFile;
+        } else {
+            idFile = new File(SharedPref.getStringFromSharedPref(AppConstants.ML_LOAN_IMAGE, getApplicationContext()));
+        }
         Log.e("testingggg", "testingggg99999" + idFile);
         RequestBody mFile1;
         MultipartBody.Part vechileDocUpload2;
@@ -1724,6 +2025,8 @@ public class Image_Upload_SupplyChain extends AppCompatActivity implements Picki
                     dropdown_business_proof.setVisibility(View.VISIBLE);
                     upld_business_layout.setVisibility(View.GONE);
                     upld_busines_succss.setVisibility(View.VISIBLE);
+                    udc_err_msg.setVisibility(View.GONE);
+                    save_business_status = 1;
                     Toast.makeText(Image_Upload_SupplyChain.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
@@ -1765,6 +2068,8 @@ public class Image_Upload_SupplyChain extends AppCompatActivity implements Picki
                     dropdown_pan_front.setVisibility(View.VISIBLE);
                     pan_front_layout.setVisibility(View.GONE);
                     upld_pan_front_success.setVisibility(View.VISIBLE);
+                    business_err_msg.setVisibility(View.GONE);
+                    save_pan_status = 1;
                     Toast.makeText(Image_Upload_SupplyChain.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
@@ -1806,6 +2111,8 @@ public class Image_Upload_SupplyChain extends AppCompatActivity implements Picki
                     dropdown1_adhar_back.setVisibility(View.VISIBLE);
                     adhaar_back_layout.setVisibility(View.GONE);
                     adhaar_upld_back_sucss.setVisibility(View.VISIBLE);
+                    pan_front_err_msg.setVisibility(View.GONE);
+                    save_adhar_back_status = 1;
                     Toast.makeText(Image_Upload_SupplyChain.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
 
 
@@ -1851,6 +2158,8 @@ public class Image_Upload_SupplyChain extends AppCompatActivity implements Picki
                     adhaar_upld_sucss.setVisibility(View.VISIBLE);
                     dropdown1_adhar_front.setVisibility(View.VISIBLE);
                     dropup1_adhar_front.setVisibility(View.GONE);
+                    adhar_back_err_msg.setVisibility(View.GONE);
+                    save_adhar_front_status = 1;
                     Toast.makeText(Image_Upload_SupplyChain.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
 
                 }
@@ -1894,6 +2203,8 @@ public class Image_Upload_SupplyChain extends AppCompatActivity implements Picki
                     upload_selfie_layout.setVisibility(View.GONE);
                     dropdown1_selfie.setVisibility(View.VISIBLE);
                     dropup1_selfie.setVisibility(View.GONE);
+                    adhar_front_err_msg.setVisibility(View.GONE);
+                    save_selfie_status = 1;
                     Toast.makeText(Image_Upload_SupplyChain.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
 
 
@@ -2059,6 +2370,48 @@ public class Image_Upload_SupplyChain extends AppCompatActivity implements Picki
     @Override
     public void PickiTonCompleteListener(String path, boolean wasDriveFile, boolean wasUnknownProvider, boolean wasSuccessful, String Reason) {
         File mFile = new File(path);
+
+        if (mSelectedBussinessProofStatus == 1) {
+            Log.e("BussinessProofStatus ", mFile.toString());
+            mBussinessProofFile = mFile;
+//            mSelectedBussinessProofStatus = 0;
+        } else if (mSelectedUDCStatus == 1) {
+            Log.e("UDCStatus ", mFile.toString());
+            mUDCFile = mFile;
+//            mSelectedUDCStatus = 0;
+        }else if (mSelectedAgreementStatus == 1) {
+            Log.e("UDCStatus ", mFile.toString());
+            mAgreementFile = mFile;
+//            mSelectedUDCStatus = 0;
+        }else if (mSelectedEscrowStatus == 1) {
+            Log.e("UDCStatus ", mFile.toString());
+            mEscrowFile = mFile;
+//            mSelectedUDCStatus = 0;
+        }else if (mSelectedDisburseBankStatus == 1) {
+            Log.e("UDCStatus ", mFile.toString());
+            mDisburseBankFile = mFile;
+//            mSelectedUDCStatus = 0;
+        }else if (mSelectedLedgerStatus == 1) {
+            Log.e("UDCStatus ", mFile.toString());
+            mLedgerFile = mFile;
+//            mSelectedUDCStatus = 0;
+        }else if (mSelectedInvoiceStatus == 1) {
+            Log.e("UDCStatus ", mFile.toString());
+            mInvoiceFile = mFile;
+//            mSelectedUDCStatus = 0;
+        }else if (mSelectedITRStatus == 1) {
+            Log.e("UDCStatus ", mFile.toString());
+            mITRFile = mFile;
+//            mSelectedUDCStatus = 0;
+        }else if (mSelectedTDSStatus == 1) {
+            Log.e("UDCStatus ", mFile.toString());
+            mTDSFile = mFile;
+//            mSelectedUDCStatus = 0;
+        }else if (mSelectedGSTStatus == 1) {
+            Log.e("UDCStatus ", mFile.toString());
+            mGSTFile = mFile;
+//            mSelectedUDCStatus = 0;
+        }
       /*  if (PDF_VALID==1){
 
             dropup2_business_proof.setVisibility(View.GONE);

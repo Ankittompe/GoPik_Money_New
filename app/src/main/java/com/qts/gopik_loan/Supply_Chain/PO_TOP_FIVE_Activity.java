@@ -24,6 +24,7 @@ import com.qts.gopik_loan.Pojo.top_five_POs_POJO;
 import com.qts.gopik_loan.R;
 import com.qts.gopik_loan.Retro.NetworkHandler;
 import com.qts.gopik_loan.Retro.RestApis;
+import com.qts.gopik_loan.Utils.CustPrograssbar;
 
 import java.util.ArrayList;
 
@@ -36,16 +37,24 @@ public class PO_TOP_FIVE_Activity extends AppCompatActivity {
     TextView view_all_button;
     RecyclerView top_five_recyclerview;
     Top_Five_Adapter top_five_adapter;
+    CustPrograssbar custPrograssbar;
     ArrayList<String> Top_five_list = new ArrayList<>();
     ArrayList<String> Top_five_ID = new ArrayList<>();
-    ImageView arrow,hometoolbar;
+    ArrayList<String> Top_Five_PO_ID = new ArrayList<>();
+    ArrayList<String> Top_Five_Date = new ArrayList<>();
+    ArrayList<String> Top_Five_Brand = new ArrayList<>();
+    ArrayList<String> Top_Five_Quantity = new ArrayList<>();
+    ArrayList<String> Top_Five_Amount = new ArrayList<>();
+    ArrayList<String> Status = new ArrayList<>();
+    ImageView arrow, hometoolbar;
     ConstraintLayout add_form_button;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_po_generate);
 
-
+        custPrograssbar = new CustPrograssbar();
         view_all_button = findViewById(R.id.view_all_button);
         add_form_button = findViewById(R.id.add_form_button);
         top_five_recyclerview = findViewById(R.id.top_five_recyclerview);
@@ -75,7 +84,7 @@ public class PO_TOP_FIVE_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent po_all_list = new Intent(PO_TOP_FIVE_Activity.this,PO_Generate__AllList_Activity.class);
+                Intent po_all_list = new Intent(PO_TOP_FIVE_Activity.this, PO_Generate__AllList_Activity.class);
                 startActivity(po_all_list);
 
             }
@@ -84,7 +93,7 @@ public class PO_TOP_FIVE_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent po_all_list = new Intent(PO_TOP_FIVE_Activity.this,PO_Generate_Form_activity.class);
+                Intent po_all_list = new Intent(PO_TOP_FIVE_Activity.this, PO_Generate_Form_activity.class);
                 startActivity(po_all_list);
 
             }
@@ -93,13 +102,12 @@ public class PO_TOP_FIVE_Activity extends AppCompatActivity {
     }
 
     private void GetTopFiveList() {
-
-
+        custPrograssbar.prograssCreate(this);
 
         top_five_POs_POJO pojo = new top_five_POs_POJO("47436");
-        SharedPref.getStringFromSharedPref(AppConstants.USER_CODE,getApplicationContext());
+        SharedPref.getStringFromSharedPref(AppConstants.USER_CODE, getApplicationContext());
 
-        Log.e("checktopfive","response");
+        Log.e("checktopfive", "response");
         RestApis restApis = NetworkHandler.getRetrofit().create(RestApis.class);
         Call<top_five_POs_MODEL> call = restApis.top_five_POs(pojo);
         call.enqueue(new Callback<top_five_POs_MODEL>() {
@@ -108,7 +116,7 @@ public class PO_TOP_FIVE_Activity extends AppCompatActivity {
                 if (response.body() != null) {
 
                     if (response.body().getCode().equals("200")) {
-
+                        custPrograssbar.closePrograssBar();
                         Log.e("Body", "body2");
 
                         if (response.body().getPayload().size() > 0) {
@@ -118,15 +126,21 @@ public class PO_TOP_FIVE_Activity extends AppCompatActivity {
                                 Log.e("Body", "body3");
 
                                 Top_five_list.add(response.body().getPayload().get(i).getProduct());
+                                Top_Five_PO_ID.add(response.body().getPayload().get(i).getPo_id());
+                                Top_Five_Date.add(response.body().getPayload().get(i).getDate());
                                 Top_five_ID.add(response.body().getPayload().get(i).getId());
-
+                                Top_Five_Amount.add(response.body().getPayload().get(i).getTotal_price());
+                                Top_Five_Brand.add(response.body().getPayload().get(i).getBrand());
+                                Top_Five_Quantity.add(response.body().getPayload().get(i).getProdt_quantity());
+                                Status.add(response.body().getPayload().get(i).getStatus());
                                 if (response.body().getPayload().size() - 1 == i) {
                                     LinearLayoutManager layoutManager = new LinearLayoutManager(
                                             PO_TOP_FIVE_Activity.this, LinearLayoutManager.VERTICAL, false
                                     );
 
                                     top_five_recyclerview.setLayoutManager(layoutManager);
-                                    top_five_adapter = new Top_Five_Adapter(getApplicationContext(),Top_five_list,Top_five_ID);
+                                    top_five_adapter = new Top_Five_Adapter(getApplicationContext(), Top_five_list, Top_five_ID, Top_Five_PO_ID, Top_Five_Date,
+                                            Top_Five_Quantity, Top_Five_Brand, Top_Five_Amount,Status);
                                     top_five_recyclerview.setAdapter(top_five_adapter);
 
 
@@ -141,7 +155,6 @@ public class PO_TOP_FIVE_Activity extends AppCompatActivity {
 
 
             }
-
 
 
             @Override

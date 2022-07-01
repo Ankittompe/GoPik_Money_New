@@ -185,4 +185,9 @@ public interface AppConstants {
     String HOME_PO_GENARETE_ACTIVITY = "pogenerate";
     String TOP_FIVE_ACTIVITY = "topfiveactivity";
     String PO_ALL_LIST_ACTIVITY = "poalllist";
+    String SUPPLYCHAIN_APPROVE = "approve";
+    String PO_ID = "poid";
+    String MY_MALL_DEALER_FRAG ="mm" ;
+    String PO_FINANCER_UPLOADIMAGE ="oo" ;
+    String IMAGE_UPLOAD_SUPPLYCHAIN ="imageuploadsupplychain" ;
 }
