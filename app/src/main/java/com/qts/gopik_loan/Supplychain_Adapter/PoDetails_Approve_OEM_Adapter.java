@@ -12,8 +12,11 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.qts.gopik_loan.R;
-
+import com.qts.gopik_loan.Retro.ItemClickListener;
+import com.qts.gopik_loan.Supply_Chain.PO_Generate_Form_activity;
+import com.qts.gopik_loan.Supply_Chain.PO_Product;
 
 import java.util.ArrayList;
 
@@ -78,30 +81,34 @@ public class PoDetails_Approve_OEM_Adapter extends RecyclerView.Adapter<PoDetail
 
     @NonNull
     @Override
-    public PoDetails_Approve_OEM_Adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.po_details_cardview, parent, false);
-        return new PoDetails_Approve_OEM_Adapter.ViewHolder(view);
+        return new ViewHolder(view);
 
 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PoDetails_Approve_OEM_Adapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        holder.id.setText(id.get(position));
-        holder.po_id.setText(po_id.get(position));
-        holder.date.setText(date.get(position));
-        holder.brand.setText(brand.get(position));
-        holder.dealer_id.setText(dealer_id.get(position));
-        holder.dealer_name.setText(dealer_name.get(position));
-        holder.product.setText(product.get(position));
-        holder.product_qty.setText(prodt_quantity.get(position));
-        holder.product_price.setText(prodt_price.get(position));
-        holder.total_price.setText(total_price.get(position));
-        holder.financer.setText(financer.get(position));
-        holder.status.setText(status.get(position));
+        holder.et_id.setText(id.get(position));
+        holder.et_po_id.setText(po_id.get(position));
+        holder.et_date.setText(date.get(position));
+        holder.et_brand.setText(brand.get(position));
+        holder.et_dealer_id.setText(dealer_id.get(position));
+        holder.et_dealer_name.setText(dealer_name.get(position));
+        holder.et_product.setText(product.get(position));
+        holder.et_product_qty.setText(prodt_quantity.get(position));
+        holder.et_product_price.setText(prodt_price.get(position));
+        holder.et_total_price.setText(total_price.get(position));
+        holder.et_financer.setText(financer.get(position));
+        holder.et_status.setText(status.get(position));
 
+      /*  Glide.with(context)
+                .load(invoicefile.get(position))
+                .into(holder.invoiceFile);
 
+        holder.invoiceFile.setScaleType(ImageView.ScaleType.CENTER_CROP);*/
 
     }
 
@@ -117,7 +124,7 @@ public class PoDetails_Approve_OEM_Adapter extends RecyclerView.Adapter<PoDetail
         TextView id, po_id, date, brand, dealer_id, dealer_name,
                 product, product_qty, update_qty, product_price, update_price, total_price, update_total_price, financer, status, et_id, et_po_id, et_date, et_brand, et_dealer_id, et_dealer_name, et_product, et_product_qty, et_update_qty, et_product_price, et_update_price,
                 et_total_price, et_update_total_price, et_financer, et_status;
-
+        ImageView invoiceFile;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -153,7 +160,7 @@ public class PoDetails_Approve_OEM_Adapter extends RecyclerView.Adapter<PoDetail
 
             et_financer = itemView.findViewById(R.id.et_financer);
             et_status = itemView.findViewById(R.id.et_status);
-
+            invoiceFile=itemView.findViewById(R.id.invoicefile);
 
         }
     }

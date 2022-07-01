@@ -29,7 +29,15 @@ public class top_five_POs_DATA {
    @SerializedName("id")
    private String id;
 
-   @Expose
+    public String getPo_id() {
+        return po_id;
+    }
+
+    public void setPo_id(String po_id) {
+        this.po_id = po_id;
+    }
+
+    @Expose
    @SerializedName("po_id")
    private String po_id;
 

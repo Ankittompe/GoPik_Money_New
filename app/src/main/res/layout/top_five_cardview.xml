@@ -33,9 +33,9 @@
 
             <TextView
                 android:id="@+id/serial_tv"
-                android:layout_width="44dp"
+                android:layout_width="wrap_content"
                 android:layout_height="44dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="16dp"
                 android:gravity="center"
                 android:text="1"
                 android:textColor="@color/black"
@@ -55,6 +55,7 @@
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/serial_tv"
+                app:layout_constraintEnd_toStartOf="@+id/next_arrow"
                 app:layout_constraintStart_toEndOf="@+id/serial_tv"
                 app:layout_constraintTop_toTopOf="@+id/serial_tv" />
 
@@ -75,11 +76,13 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/approved_view"
         android:layout_width="wrap_content"
         android:layout_height="24dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="300dp"
         android:layout_marginBottom="44dp"
+        android:visibility="gone"
         android:background="@drawable/status_layout"
         app:layout_constraintBottom_toBottomOf="@+id/cardView_of_item"
         app:layout_constraintEnd_toEndOf="@+id/cardView_of_item"
@@ -91,6 +94,58 @@
             android:layout_margin="4dp"
             android:text="Approved"
             android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/status_background"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="44dp"
+
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView_of_item"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp"
+            android:text="Rejected"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/waiting_view"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="300dp"
+        android:layout_marginBottom="44dp"
+        android:visibility="gone"
+        android:background="@drawable/waiting_layouts"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView_of_item"
+        app:layout_constraintEnd_toEndOf="@+id/cardView_of_item"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp"
+            android:text="Pending"
+            android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:nestedScrollingEnabled="true"
-   >
+    tools:context=".Supply_Chain.PO_TOP_FIVE_Activity">
 
-   <!-- <include
+    <include
         android:id="@+id/logintoolBar"
         layout="@layout/logintoolbar"
         android:layout_width="match_parent"
@@ -26,7 +26,16 @@
 
         app:layout_constraintTop_toBottomOf="@+id/logintoolBar">
 
+        <ScrollView
 
+            android:id="@+id/scrollView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="130dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/alldetails_recylerview"
             android:layout_width="match_parent"
@@ -39,7 +48,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
         </androidx.recyclerview.widget.RecyclerView>
-
+        </ScrollView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -52,7 +61,7 @@
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-       &lt;!&ndash; <TextView
+        <TextView
             android:id="@+id/textView3"
             android:layout_width="180dp"
             android:layout_height="48dp"
@@ -85,8 +94,8 @@
         </TextView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-&ndash;&gt;
--->
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

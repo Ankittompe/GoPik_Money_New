@@ -21,6 +21,7 @@ import com.qts.gopik_loan.Pojo.all_POs_POJO;
 import com.qts.gopik_loan.R;
 import com.qts.gopik_loan.Retro.NetworkHandler;
 import com.qts.gopik_loan.Retro.RestApis;
+import com.qts.gopik_loan.Utils.CustPrograssbar;
 
 import java.util.ArrayList;
 
@@ -33,13 +34,17 @@ public class PO_Generate__AllList_Activity extends AppCompatActivity {
     RecyclerView all_list_recycleview;
     ArrayList<String> All_product_list = new ArrayList<>();
     ArrayList<String> All_product_id = new ArrayList<>();
+    ArrayList<String> All_po_date = new ArrayList<>();
+    ArrayList<String> All_po_id = new ArrayList<>();
+    ArrayList<String> All_po_Status = new ArrayList<>();
     All_product_list_Adapter all_product_list_adapter;
     ImageView arrow,hometoolbar;
+    CustPrograssbar custPrograssbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_po_generate_all_list);
-
+        custPrograssbar = new CustPrograssbar();
         all_list_recycleview = findViewById(R.id.all_list_recycleview);
         arrow = findViewById(R.id.arrow);
         hometoolbar=findViewById(R.id.hometoolbar);
@@ -69,6 +74,7 @@ public class PO_Generate__AllList_Activity extends AppCompatActivity {
     }
 
     private void GetAllProduct_List() {
+        custPrograssbar.prograssCreate(this);
         all_POs_POJO pojo = new all_POs_POJO("47436");
         //SharedPref.getStringFromSharedPref(AppConstants.USER_CODE,getApplicationContext());
 
@@ -81,7 +87,7 @@ public class PO_Generate__AllList_Activity extends AppCompatActivity {
                 if (response.body() != null) {
 
                     if (response.body().getCode().equals("200")) {
-
+                        custPrograssbar.closePrograssBar();
                         Log.e("Body", "body2");
 
                         if (response.body().getPayload().size() > 0) {
@@ -90,8 +96,11 @@ public class PO_Generate__AllList_Activity extends AppCompatActivity {
                             for (int i = 0; i < response.body().getPayload().size(); i++) {
                                 Log.e("Body", "body3");
 
-                                All_product_list.add(response.body().getPayload().get(i).getProduct());
-                                All_product_id.add(response.body().getPayload().get(i).getId());
+                                All_po_date.add(response.body().getPayload().get(i).getDate());
+                                All_po_id.add(response.body().getPayload().get(i).getPo_id());
+                                All_po_Status.add(response.body().getPayload().get(i).getStatus());
+
+
 
                                 if (response.body().getPayload().size() - 1 == i) {
                                     LinearLayoutManager layoutManager = new LinearLayoutManager(
@@ -99,7 +108,7 @@ public class PO_Generate__AllList_Activity extends AppCompatActivity {
                                     );
 
                                     all_list_recycleview.setLayoutManager(layoutManager);
-                                    all_product_list_adapter = new All_product_list_Adapter(getApplicationContext(),All_product_list,All_product_id);
+                                    all_product_list_adapter = new All_product_list_Adapter(getApplicationContext(),All_product_list,All_product_id,All_po_date,All_po_id,All_po_Status);
                                     all_list_recycleview.setAdapter(all_product_list_adapter);
 
 
