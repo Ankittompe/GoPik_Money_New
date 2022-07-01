@@ -156,6 +156,7 @@ public class PoDetails_Approve_Financer_Adapter extends RecyclerView.Adapter<PoD
             et_status = itemView.findViewById(R.id.et_status);
             invoiceFile=itemView.findViewById(R.id.invoicefile);
 
+
         }
     }
 }
