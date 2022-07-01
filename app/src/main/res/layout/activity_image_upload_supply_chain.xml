@@ -371,6 +371,15 @@
                                         android:src="@drawable/camera"
 
                                         />
+                                    <TextView
+                                        android:id="@+id/adhar_front_err_msg"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:text="Please save Selfie Image first"
+                                        android:textColor="@color/red"
+                                        android:visibility="gone"
+                                        />
 
                                     <TextView
                                         android:id="@+id/upld_img_hint"
@@ -499,6 +508,15 @@
                                         android:scaleType="centerInside"
                                         android:src="@drawable/camera"
 
+                                        />
+                                    <TextView
+                                        android:id="@+id/adhar_back_err_msg"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:text="Please save Adhaar front first"
+                                        android:textColor="@color/red"
+                                        android:visibility="gone"
                                         />
 
                                     <TextView
@@ -634,7 +652,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:gravity="center"
-                                        android:text="Please save Selfie Image first"
+                                        android:text="Please save Adhaar back image  first"
                                         android:textColor="@color/red"
                                         android:visibility="gone"
                                         />
@@ -911,7 +929,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:gravity="center"
-                                        android:text="Please save Adhaar image first"
+                                        android:text="Please save Pan image first"
                                         android:textColor="@color/red"
                                         android:visibility="gone"
                                         />
@@ -1049,7 +1067,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:gravity="center"
-                                        android:text="Please save Adhaar image first"
+                                        android:text="Please save Business proof first"
                                         android:textColor="@color/red"
                                         android:visibility="gone"
                                         />
@@ -1187,7 +1205,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:gravity="center"
-                                        android:text="Please save Adhaar image first"
+                                        android:text="Please save UDC image first!"
                                         android:textColor="@color/red"
                                         android:visibility="gone"
                                         />
@@ -1326,7 +1344,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:gravity="center"
-                                        android:text="Please save Adhaar image first"
+                                        android:text="Please save Agreement image first"
                                         android:textColor="@color/red"
                                         android:visibility="gone"
                                         />
@@ -1464,7 +1482,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:gravity="center"
-                                        android:text="Please save Adhaar image first"
+                                        android:text="Please save Escrow image first"
                                         android:textColor="@color/red"
                                         android:visibility="gone"
                                         />
@@ -1603,7 +1621,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:gravity="center"
-                                        android:text="Please save Adhaar image first"
+                                        android:text="Please save Disburse Bank image first"
                                         android:textColor="@color/red"
                                         android:visibility="gone"
                                         />
@@ -1738,11 +1756,11 @@
                                         />
 
                                     <TextView
-                                        android:id="@+id/itr_err_msg"
+                                        android:id="@+id/invoice_err_msg"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:gravity="center"
-                                        android:text="Please save Adhaar image first"
+                                        android:text="Please save Ledger image first"
                                         android:textColor="@color/red"
                                         android:visibility="gone"
                                         />
@@ -1876,11 +1894,11 @@
                                         />
 
                                     <TextView
-                                        android:id="@+id/invoice_err_msg"
+                                        android:id="@+id/itr_err_msg"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:gravity="center"
-                                        android:text="Please save Adhaar image first"
+                                        android:text="Please save Invoice image first"
                                         android:textColor="@color/red"
                                         android:visibility="gone"
                                         />
@@ -2019,7 +2037,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:gravity="center"
-                                        android:text="Please save Adhaar image first"
+                                        android:text="Please save ITR image first"
                                         android:textColor="@color/red"
                                         android:visibility="gone"
                                         />
@@ -2157,7 +2175,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:gravity="center"
-                                        android:text="Please save Adhaar image first"
+                                        android:text="Please save TDS image first"
                                         android:textColor="@color/red"
                                         android:visibility="gone"
                                         />

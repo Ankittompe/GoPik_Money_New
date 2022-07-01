@@ -22,14 +22,15 @@ import java.util.ArrayList;
 public class Po_Get_List_Adapter extends RecyclerView.Adapter<Po_Get_List_Adapter.ViewHolder> {
 
     PO_Generate_Form_activity po_generate_form_activity;
-    ArrayList<PO_Product> mProductArrayList ;
+    ArrayList<PO_Product> mProductArrayList;
     Context context;
     ItemClickListener itemClickListener;
-    int selectedPosition=-1;
-    public Po_Get_List_Adapter(Context context , ArrayList<PO_Product> productList,  ItemClickListener itemClickListener) {
+    int selectedPosition = -1;
+
+    public Po_Get_List_Adapter(Context context, ArrayList<PO_Product> productList, ItemClickListener itemClickListener) {
         this.context = context;
         this.mProductArrayList = productList;
-        this.itemClickListener=itemClickListener;
+        this.itemClickListener = itemClickListener;
 
 
     }
@@ -48,32 +49,38 @@ public class Po_Get_List_Adapter extends RecyclerView.Adapter<Po_Get_List_Adapte
 
         holder.increase_cardview.setBackgroundResource(R.drawable.ic_addition_btn);
         holder.decrease_cardview.setBackgroundResource(R.drawable.ic_substraction);
-        PO_Product dat=mProductArrayList.get(position);
+        PO_Product dat = mProductArrayList.get(position);
         holder.producttv.setText(dat.getName());
 
-        Log.e("gg","hhh"+dat.getQuantity());
-        Log.e("gg","hhh"+dat.getName());
+        Log.e("gg", "hhh" + dat.getQuantity());
+        Log.e("gg", "hhh" + dat.getName());
 
 
-
-       holder.quantity_tv.setText(dat.getQuantity());
+        holder.quantity_tv.setText(dat.getQuantity());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // get adapter position
-                int position=holder.getAdapterPosition();
+                int position = holder.getAdapterPosition();
                 // call listener
-                itemClickListener.onClick(position,mProductArrayList.get(position));
+                itemClickListener.onClick(position, mProductArrayList.get(position));
                 // update position
-                selectedPosition=position;
+                selectedPosition = position;
                 // notify
                 notifyDataSetChanged();
             }
         });
-
+        holder.remove_item.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = holder.getAdapterPosition();
+                mProductArrayList.remove(position);
+                notifyItemChanged(position);
+                notifyItemRangeChanged(position,mProductArrayList.size());
+            }
+        });
         // check conditions
-
 
 
     }
@@ -88,9 +95,9 @@ public class Po_Get_List_Adapter extends RecyclerView.Adapter<Po_Get_List_Adapte
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         CardView add_cardview, decrease_cardview, quantity_cardview, increase_cardview;
-        TextView  quantity_tv;
+        TextView quantity_tv;
         TextView producttv;
-        ImageView add_tv;
+        ImageView add_tv, remove_item;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -102,7 +109,7 @@ public class Po_Get_List_Adapter extends RecyclerView.Adapter<Po_Get_List_Adapte
             add_tv = itemView.findViewById(R.id.remove_item);
             quantity_tv = itemView.findViewById(R.id.quantity_tv);
             producttv = itemView.findViewById(R.id.producttv);
-
+            remove_item = itemView.findViewById(R.id.remove_item);
         }
     }
 }

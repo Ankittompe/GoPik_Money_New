@@ -50,6 +50,7 @@ import com.qts.gopik_loan.Pojo.PAN_POJO;
 import com.qts.gopik_loan.Pojo.PASSPORT_POJO;
 import com.qts.gopik_loan.Pojo.Pincode_list_POJO;
 import com.qts.gopik_loan.Pojo.Po_add_POJO;
+import com.qts.gopik_loan.Pojo.Po_all_details_POJO;
 import com.qts.gopik_loan.Pojo.Product_details_POJO;
 import com.qts.gopik_loan.Pojo.ProfileDetailsPOJO;
 import com.qts.gopik_loan.Pojo.ProfileDetails_DEALER_POJO;
@@ -69,6 +70,7 @@ import com.qts.gopik_loan.Pojo.Store_data_for_MLloan_POJO;
 import com.qts.gopik_loan.Pojo.Store_panid_details_POJO;
 import com.qts.gopik_loan.Pojo.Submit_customer_application_POJO;
 import com.qts.gopik_loan.Pojo.Submit_loan_application_POJO;
+import com.qts.gopik_loan.Pojo.Update_po_status_POJO;
 import com.qts.gopik_loan.Pojo.Update_scratchcard_POJO;
 import com.qts.gopik_loan.Pojo.Update_wallet_credit_POJO;
 import com.qts.gopik_loan.Pojo.VOTER_POJO;
@@ -624,6 +626,15 @@ public interface RestApis {
     @POST("DealerGSTDoc")
     Call<DealerGSTDoc_MODEL> DealerGSTDoc(@Part("user_code") RequestBody user_code,
                                           @Part MultipartBody.Part GST);
+    @POST("po_all_details")
+    Call<Po_all_details_MODEL> po_all_details(@Body Po_all_details_POJO data);
+
+    @POST("update_po_status")
+    Call<Update_po_status_MODEL> update_po_status(@Body Update_po_status_POJO data);
 
 
+    @Multipart
+    @POST("podisverslreportupdate")
+    Call<podisverslreportupdate_MODEL> podisverslreportupdate(@Part("po_id") RequestBody po_id,
+                                          @Part MultipartBody.Part dealer_final_report);
 }

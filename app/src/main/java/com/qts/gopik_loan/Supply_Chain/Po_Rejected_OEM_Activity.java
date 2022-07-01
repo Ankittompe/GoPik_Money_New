@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import com.qts.gopik_loan.Activity.AppConstants;
 import com.qts.gopik_loan.Activity.SharedPref;
+import com.qts.gopik_loan.Dealer_Activity.MainActivity;
 import com.qts.gopik_loan.Model.Po_all_details_MODEL;
 import com.qts.gopik_loan.Model.Update_po_status_MODEL;
 import com.qts.gopik_loan.Pojo.Po_all_details_POJO;
@@ -58,29 +60,26 @@ public class Po_Rejected_OEM_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_po_rejected_oem);
-       /* po_all_details();
+        po_all_details();
+        textView3=(TextView) findViewById(R.id.textView3);
+        reject=(TextView) findViewById(R.id.reject);
+        alldetails_recylerview=(RecyclerView) findViewById(R.id.alldetails_recylerview);
         textView3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPref.saveStringInSharedPref(AppConstants.SUPPLYCHAIN_APPROVE,"Approve",getApplicationContext());
-                update_po_status();
+                Intent it = new Intent(Po_Rejected_OEM_Activity.this, MainActivity.class);
+                it.putExtra(AppConstants.ACTFRAG_TYPE_KEY, AppConstants.MY_MALL_DEALER_FRAG);
+                startActivity(it);
+
             }
         });
-        reject.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                update_po_status();
-                SharedPref.saveStringInSharedPref(AppConstants.SUPPLYCHAIN_APPROVE,"Reject",getApplicationContext());
-                update_po_status();
-            }
-        });*/
+
     }
-/*
     private void po_all_details() {
 
 
 
-        Po_all_details_POJO pojo = new Po_all_details_POJO("47436");
+        Po_all_details_POJO pojo = new Po_all_details_POJO( SharedPref.getStringFromSharedPref(AppConstants.PO_ID,getApplicationContext()));
         Log.e("checktopfive","response");
         RestApis restApis = NetworkHandler.getRetrofit().create(RestApis.class);
         Call<Po_all_details_MODEL> call = restApis.po_all_details(pojo);
@@ -155,13 +154,9 @@ public class Po_Rejected_OEM_Activity extends AppCompatActivity {
 
 
     }
-*/
-/*
     private void update_po_status() {
 
-
-
-        Update_po_status_POJO pojo = new Update_po_status_POJO("47436",
+        Update_po_status_POJO pojo = new Update_po_status_POJO( SharedPref.getStringFromSharedPref(AppConstants.PO_ID,getApplicationContext()),
                 SharedPref.getStringFromSharedPref(AppConstants.SUPPLYCHAIN_APPROVE,getApplicationContext()));
         Log.e("checktopfive","response");
         RestApis restApis = NetworkHandler.getRetrofit().create(RestApis.class);
@@ -174,6 +169,9 @@ public class Po_Rejected_OEM_Activity extends AppCompatActivity {
                     if (response.body().getCode().equals("200")) {
 
                         Log.e("Body", "body2");
+                        Intent it = new Intent(Po_Rejected_OEM_Activity.this, MainActivity.class);
+                        it.putExtra(AppConstants.ACTFRAG_TYPE_KEY, AppConstants.MY_MALL_DEALER_FRAG);
+                        startActivity(it);
 
 
                     } else {
@@ -198,7 +196,6 @@ public class Po_Rejected_OEM_Activity extends AppCompatActivity {
 
 
     }
-*/
 
 
 }

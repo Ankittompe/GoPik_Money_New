@@ -247,6 +247,10 @@ public class MainActivity extends AppCompatActivity {
                 loadFragment(new Dealer_ApplicationList_Fragment());
 
             }
+            else if (getIntent().getStringExtra(AppConstants.ACTFRAG_TYPE_KEY).equals(AppConstants.MY_MALL_DEALER_FRAG)) {
+                loadFragment(new My_Mall_Fragment());
+
+            }
 
 
         }

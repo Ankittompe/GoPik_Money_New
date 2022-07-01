@@ -18,12 +18,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:nestedScrollingEnabled="true"
-        android:paddingBottom="120dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:nestedScrollingEnabled="true"
+        android:paddingBottom="120dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logintoolBar">
@@ -108,8 +109,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
                 android:layout_marginTop="16dp"
-                android:text="47436"
                 android:gravity="center"
+                android:text="47436"
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 android:textStyle="normal"
@@ -122,10 +123,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
                 android:layout_marginStart="16dp"
+                android:gravity="center"
                 android:text="10 JUNE 2022"
                 android:textColor="@color/black"
                 android:textSize="14sp"
-                android:gravity="center"
                 android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="@+id/current_date_tv"
                 app:layout_constraintStart_toEndOf="@+id/current_date_tv"
@@ -291,8 +292,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:layout_margin="15dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/add_product_cardview"
 
             app:layout_constraintEnd_toEndOf="parent"
@@ -322,8 +323,6 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
@@ -339,4 +338,21 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/btnTotalPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="@dimen/_15sdp"
+        android:text="Total Price"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/confirm_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout6"
+        app:layout_constraintVertical_bias="0.781" />
 </androidx.constraintlayout.widget.ConstraintLayout>
