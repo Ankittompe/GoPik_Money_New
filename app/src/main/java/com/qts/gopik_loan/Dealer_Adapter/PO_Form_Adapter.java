@@ -66,12 +66,12 @@ public class PO_Form_Adapter extends RecyclerView.Adapter<PO_Form_Adapter.ViewHo
         holder.decrease_cardview.setBackgroundResource(R.drawable.ic_substraction);
         holder.increase_cardview.setBackgroundResource(R.drawable.ic_addition_btn);
 
-      holder.quantity_tv.setText(String.valueOf(quantity));
+        holder.quantity_tv.setText(String.valueOf(quantity));
 
         holder.increase_cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 quantity = quantity+1;
+                quantity = quantity + 1;
                 holder.quantity_tv.setText(String.valueOf(quantity));
 
 
@@ -80,10 +80,10 @@ public class PO_Form_Adapter extends RecyclerView.Adapter<PO_Form_Adapter.ViewHo
         holder.decrease_cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (String.valueOf(quantity).equals("0")){
+                if (String.valueOf(quantity).equals("0")) {
 
-                }else{
-                    quantity=quantity-1;
+                } else {
+                    quantity = quantity - 1;
                     holder.quantity_tv.setText(String.valueOf(quantity));
                 }
 
@@ -111,9 +111,7 @@ public class PO_Form_Adapter extends RecyclerView.Adapter<PO_Form_Adapter.ViewHo
                                 Log.e("Body", "body3");
 
 
-
                                 category_name.add(response.body().getPayload().get(i).getProd_name());
-
 
 
                                 if (response.body().getPayload().size() - 1 == i) {
@@ -148,7 +146,6 @@ public class PO_Form_Adapter extends RecyclerView.Adapter<PO_Form_Adapter.ViewHo
         });
 
 
-
     }
 
 
@@ -174,7 +171,7 @@ public class PO_Form_Adapter extends RecyclerView.Adapter<PO_Form_Adapter.ViewHo
             increase_cardview = itemView.findViewById(R.id.increase_cardview);
             remove_item = itemView.findViewById(R.id.remove_item);
             quantity_tv = itemView.findViewById(R.id.quantity_tv);
-           // product_spinner = itemView.findViewById(R.id.product_spinner);
+            // product_spinner = itemView.findViewById(R.id.product_spinner);
 
         }
     }

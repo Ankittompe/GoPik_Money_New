@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,7 +7,6 @@
     android:nestedScrollingEnabled="true"
     android:orientation="vertical"
     tools:context=".Supply_Chain.PO_TOP_FIVE_Activity">
-
 
     <include
         android:id="@+id/logintoolBar"
@@ -238,7 +236,7 @@
                         android:id="@+id/total_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Total Price / Modified Price :"
+                        android:text="Total Price :"
                         android:textColor="@color/black"
                         android:textSize="15dp"
                         android:textStyle="bold" />
@@ -259,74 +257,134 @@
 
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/rejected_layouts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="30dp">
+                android:orientation="vertical">
                 <ImageView
-                    android:id="@+id/invoice"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/hong_kong" />
-                <TextView
-                    android:id="@+id/view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="View Invoice"
-                    android:textColor="@color/black"
-                    android:textSize="15dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="30dp"
-                    android:textStyle="bold" />
-
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:src="@drawable/rej"/>
             </LinearLayout>
             <RelativeLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_margin="10dp">
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-                    android:orientation="horizontal">
+                    android:background="@drawable/button_layout"
+                    android:gravity="center"
+                    android:padding="15dp"
+                    android:text="OK"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
 
-                    <TextView
-                        android:id="@+id/textView3"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_weight="0.5"
-                        android:background="@drawable/button_layout"
-                        android:gravity="center"
-                        android:padding="5dp"
-                        android:text="Approve"
-                        android:textColor="@color/white"
-                        android:textSize="20sp"
+                    >
 
-                        />
-
-                    <TextView
-                        android:id="@+id/reject"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_weight="0.5"
-                        android:background="@drawable/button_layout_red"
-                        android:gravity="center"
-                        android:padding="5dp"
-                        android:text="Reject"
-                        android:textColor="@color/white"
-                        android:textSize="20sp"
-
-                        />
-                </LinearLayout>
+                </TextView>
 
             </RelativeLayout>
-
         </LinearLayout>
-
     </ScrollView>
 
 </LinearLayout>
+
+
+<!--
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:nestedScrollingEnabled="true"
+    android:orientation="vertical"
+    tools:context=".Supply_Chain.PO_TOP_FIVE_Activity">
+
+    <include
+        android:id="@+id/logintoolBar"
+        layout="@layout/logintoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/alldetails_recylerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="8dp"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:src="@drawable/rej"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        >
+
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/button_layout"
+            android:padding="15dp"
+            android:text="OK"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+
+            >
+
+        </TextView>
+
+    </RelativeLayout>
+
+
+</LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>-->

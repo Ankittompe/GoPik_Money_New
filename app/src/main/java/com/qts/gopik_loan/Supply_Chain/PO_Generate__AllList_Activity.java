@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.qts.gopik_loan.Activity.AppConstants;
 import com.qts.gopik_loan.Dealer_Activity.MainActivity;
-import com.qts.gopik_loan.Dealer_Adapter.All_product_list_Adapter;
+import com.qts.gopik_loan.Supplychain_Adapter.All_product_list_Adapter;
 import com.qts.gopik_loan.Model.all_POs_MODEL;
 import com.qts.gopik_loan.Pojo.all_POs_POJO;
 import com.qts.gopik_loan.R;

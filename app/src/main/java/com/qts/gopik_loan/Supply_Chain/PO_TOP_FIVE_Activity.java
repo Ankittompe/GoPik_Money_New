@@ -14,11 +14,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.qts.gopik_loan.Activity.AppConstants;
 import com.qts.gopik_loan.Activity.SharedPref;
 import com.qts.gopik_loan.Dealer_Activity.MainActivity;
-import com.qts.gopik_loan.Dealer_Adapter.Top_Five_Adapter;
+import com.qts.gopik_loan.Supplychain_Adapter.Top_Five_Adapter;
 import com.qts.gopik_loan.Model.top_five_POs_MODEL;
 import com.qts.gopik_loan.Pojo.top_five_POs_POJO;
 import com.qts.gopik_loan.R;
@@ -48,7 +49,7 @@ public class PO_TOP_FIVE_Activity extends AppCompatActivity {
     ArrayList<String> Status = new ArrayList<>();
     ImageView arrow, hometoolbar;
     ConstraintLayout add_form_button;
-
+    SwipeRefreshLayout mSwipeRefreshLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +61,15 @@ public class PO_TOP_FIVE_Activity extends AppCompatActivity {
         top_five_recyclerview = findViewById(R.id.top_five_recyclerview);
         arrow = findViewById(R.id.arrow);
         hometoolbar = findViewById(R.id.hometoolbar);
-
+  /*      mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swiperefreshlayout);
+*/
+      /*  mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                get_status();
+                mSwipeRefreshLayout.setRefreshing(false);
+            }
+        });*/
         arrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,9 +123,9 @@ public class PO_TOP_FIVE_Activity extends AppCompatActivity {
             @Override
             public void onResponse(Call<top_five_POs_MODEL> call, Response<top_five_POs_MODEL> response) {
                 if (response.body() != null) {
+                    custPrograssbar.closePrograssBar();
+                    if (response.body().getCode()==200) {
 
-                    if (response.body().getCode().equals("200")) {
-                        custPrograssbar.closePrograssBar();
                         Log.e("Body", "body2");
 
                         if (response.body().getPayload().size() > 0) {
@@ -147,9 +156,19 @@ public class PO_TOP_FIVE_Activity extends AppCompatActivity {
                                 }
                             }
                         }
-                    } else {
+                    }
+                   else  if (response.body().getCode()==400) {
+                        custPrograssbar.closePrograssBar();
+                    }
+                    else {
+                        custPrograssbar.closePrograssBar();
                         Toast.makeText(PO_TOP_FIVE_Activity.this, "Something went wrong!234!", Toast.LENGTH_LONG).show();
                     }
+
+                }
+                else{
+                    custPrograssbar.closePrograssBar();
+                    Toast.makeText(PO_TOP_FIVE_Activity.this, "No data available", Toast.LENGTH_LONG).show();
 
                 }
 
@@ -159,7 +178,7 @@ public class PO_TOP_FIVE_Activity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<top_five_POs_MODEL> call, Throwable t) {
-
+                custPrograssbar.closePrograssBar();
 
                 Toast.makeText(PO_TOP_FIVE_Activity.this, "Something went wrong!", Toast.LENGTH_LONG).show();
             }

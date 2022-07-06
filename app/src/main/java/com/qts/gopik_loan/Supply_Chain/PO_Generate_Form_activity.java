@@ -34,6 +34,7 @@ import com.qts.gopik_loan.Retro.RestApis;
 import com.qts.gopik_loan.Supplychain_Adapter.Po_Get_List_Adapter;
 import com.qts.gopik_loan.Utils.CustPrograssbar;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -63,7 +64,7 @@ public class PO_Generate_Form_activity extends AppCompatActivity implements Adap
 
     String mSpinnerName = "";
     String mSpinnerPrice = "0";
-
+    String format;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,14 +82,16 @@ public class PO_Generate_Form_activity extends AppCompatActivity implements Adap
         arrow = findViewById(R.id.arrow);
         hometoolbar = findViewById(R.id.hometoolbar);
         mBtnTotalPrice = findViewById(R.id.btnTotalPrice);
-
-
+        Long tsLong = System.currentTimeMillis()/1000;
+        String ts = tsLong.toString();
+        SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        format = s.format(new Date());
         current_date = findViewById(R.id.current_date);
-
+        Log.e("Selected ", format);
         currentDateTimeString = java.text.DateFormat.getDateInstance().format(new Date());
 
 
-        current_date.setText(currentDateTimeString);
+        current_date.setText(format);
 
         arrow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -166,6 +169,11 @@ public class PO_Generate_Form_activity extends AppCompatActivity implements Adap
                 if (!String.valueOf(quantity_count).equals("0")) {
                     po_form_recyclerview.setVisibility(View.VISIBLE);
                     addpoform();
+                    getSpinnerData();
+                    quantity_count=0;
+                    quantity_number.setText(String.valueOf(quantity_count));
+
+
                 } else {
                     Toast.makeText(PO_Generate_Form_activity.this, "Please add product quantity", Toast.LENGTH_SHORT).show();
                 }
@@ -192,13 +200,18 @@ public class PO_Generate_Form_activity extends AppCompatActivity implements Adap
 
         mSelectedProductArrayList.add(new PO_Product(mSpinnerName, mSpinnerPrice, quantity_number.getText().toString()));
 
-        SharedPref.saveArrayListInSharedPref("poData", p, getApplicationContext());
+        for(int i=0;i<mSelectedProductArrayList.size();i++){
+
+            Log.e("mSelectedProductArrayList",""+mSelectedProductArrayList.get(i).getPrice());
+
+        }
+        SharedPref.saveArrayListInSharedPref("poData", mSelectedProductArrayList, getApplicationContext());
         LinearLayoutManager layoutManager = new LinearLayoutManager(
                 PO_Generate_Form_activity.this, LinearLayoutManager.VERTICAL, false
         );
         po_form_recyclerview.setLayoutManager(layoutManager);
 
-        po_get_list_adapter.notifyItemInserted(p.size());
+        po_get_list_adapter.notifyItemInserted(mSelectedProductArrayList.size());
         po_form_recyclerview.setAdapter(po_get_list_adapter);
         getrecylerviewpodata();
     }
@@ -296,7 +309,7 @@ public class PO_Generate_Form_activity extends AppCompatActivity implements Adap
 
         int mTotalPrice = 0;
         int mPrice = 0;
-        String price_prod="null";
+
 
         for (int i = 0; i < mSelectedProductArrayList.size(); i++) {
             Log.e("Added *************", mSelectedProductArrayList.get(i).getName() + "=" + mSelectedProductArrayList.get(i).getPrice() + "=" + mSelectedProductArrayList.get(i).getQuantity());
@@ -305,12 +318,12 @@ public class PO_Generate_Form_activity extends AppCompatActivity implements Adap
             ;
 
             mTotalPrice = mTotalPrice + mPrice;
-price_prod= String.valueOf(mTotalPrice);
+
 
         }
         Log.e("mTotalPrice *************", String.valueOf(mTotalPrice));
         mBtnTotalPrice.setText("Total Price is :- "+"₹"+ mTotalPrice);
-        Po_add_POJO pojo = new Po_add_POJO("47436", "sai", "Hero", currentDateTimeString, p, String.valueOf(mTotalPrice));
+        Po_add_POJO pojo = new Po_add_POJO("47436", "sai", "Hero", format, mSelectedProductArrayList, String.valueOf(mTotalPrice));
         SharedPref.getStringFromSharedPref(AppConstants.USER_CODE, getApplicationContext());
 
 

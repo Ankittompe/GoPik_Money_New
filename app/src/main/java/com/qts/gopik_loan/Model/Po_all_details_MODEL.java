@@ -13,6 +13,19 @@ public class Po_all_details_MODEL {
     @SerializedName("message")
     private String message;
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    @Expose
+    @SerializedName("image")
+    private String image;
+
+
     public String getCode() {
         return code;
     }

@@ -25,6 +25,7 @@ import com.qts.gopik_loan.Retro.NetworkHandler;
 import com.qts.gopik_loan.Retro.RestApis;
 import com.qts.gopik_loan.Supplychain_Adapter.PoDetails_Approve_OEM_Adapter;
 import com.qts.gopik_loan.Supplychain_Adapter.PoDetails_Rejected_OEM_Adapter;
+import com.qts.gopik_loan.Utils.CustPrograssbar;
 
 import java.util.ArrayList;
 
@@ -52,18 +53,27 @@ public class Po_Rejected_OEM_Activity extends AppCompatActivity {
     ArrayList<String> invoicefile = new ArrayList<>();
 
 
-
+    CustPrograssbar custPrograssbar;
     RecyclerView alldetails_recylerview;
     PoDetails_Rejected_OEM_Adapter poDetails_rejected_oem_adapter;
-    TextView textView3,reject;
+    TextView textView3, reject,et_po_id,et_date,et_dealer_name,et_status,et_total_qty,et_total_price;
+    Integer temp=0;
+    Integer tempp=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_po_rejected_oem);
+        custPrograssbar = new CustPrograssbar();
+        et_po_id = (TextView) findViewById(R.id.et_po_id);
+        et_date = (TextView) findViewById(R.id.et_date);
+        et_dealer_name = (TextView) findViewById(R.id.et_dealer_name);
+        et_status = (TextView) findViewById(R.id.et_status);
+        et_total_qty = (TextView) findViewById(R.id.et_total_qty);
+        et_total_price = (TextView) findViewById(R.id.et_total_price);
         po_all_details();
         textView3=(TextView) findViewById(R.id.textView3);
-        reject=(TextView) findViewById(R.id.reject);
-        alldetails_recylerview=(RecyclerView) findViewById(R.id.alldetails_recylerview);
+        alldetails_recylerview=(RecyclerView) findViewById(R.id.rclview);
         textView3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,7 +86,7 @@ public class Po_Rejected_OEM_Activity extends AppCompatActivity {
 
     }
     private void po_all_details() {
-
+        custPrograssbar.prograssCreate(this);
 
 
         Po_all_details_POJO pojo = new Po_all_details_POJO( SharedPref.getStringFromSharedPref(AppConstants.PO_ID,getApplicationContext()));
@@ -87,7 +97,7 @@ public class Po_Rejected_OEM_Activity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Po_all_details_MODEL> call, Response<Po_all_details_MODEL> response) {
                 if (response.body() != null) {
-
+                    custPrograssbar.closePrograssBar();
                     if (response.body().getCode().equals("200")) {
 
                         Log.e("Body", "body2");
@@ -114,7 +124,15 @@ public class Po_Rejected_OEM_Activity extends AppCompatActivity {
                                 financer.add(response.body().getPayload().get(i).getFinancer());
                                 status.add(response.body().getPayload().get(i).getStatus());
                                 invoicefile.add(response.body().getPayload().get(i).getInvoice_file());
-
+                                tempp = temp + Integer.valueOf(response.body().getPayload().get(i).getProdt_quantity());
+                                temp = tempp;
+                                Log.e("Body", "body3"+temp);
+                                et_po_id.setText(response.body().getPayload().get(i).getPo_id());
+                                et_date.setText(response.body().getPayload().get(i).getDate());
+                                et_dealer_name.setText(response.body().getPayload().get(i).getDealer_name());
+                                et_status.setText(response.body().getPayload().get(i).getStatus());
+                                et_total_qty.setText(String.valueOf(temp));
+                                et_total_price.setText(response.body().getPayload().get(i).getTotal_price());
 
                                 if (response.body().getPayload().size() - 1 == i) {
                                     LinearLayoutManager layoutManager = new LinearLayoutManager(

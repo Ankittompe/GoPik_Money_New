@@ -66,8 +66,7 @@ public class PoRequest_Adapter extends RecyclerView.Adapter<PoRequest_Adapter.Vi
         this.financer = financer;
         this.status = status;
         this.invoicefile = invoicefile;
-        this.po_list = po_list;
-        this.contest_id = contest_id;
+
     }
 
     @NonNull
@@ -82,13 +81,23 @@ public class PoRequest_Adapter extends RecyclerView.Adapter<PoRequest_Adapter.Vi
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
        // holder.item_count_tv.setText(Integer.toString(contest_id.get(position)));
-       // holder.item_count_tv.setText();
-        holder.modified_product_name.setText(product.get(position));
-        holder.initial_qty_count.setText(prodt_quantity.get(position));
-        holder.modified_qty_count.setText(update_quantity.get(position));
-        holder.initial_price_tv.setText(prodt_price.get(position));
-        holder.modified_price_tv.setText(update_price.get(position));
-
+    /*   // holder.item_count_tv.setText();
+        holder.et_id.setText(id.get(position));
+        holder.et_po_id.setText(po_id.get(position));
+        holder.et_date.setText(date.get(position));
+        holder.et_brand.setText(brand.get(position));
+        holder.et_dealer_id.setText(dealer_id.get(position));
+        holder.et_dealer_name.setText(dealer_name.get(position));*/
+        holder.et_product_price.setText(prodt_price.get(position)+"/"+update_price.get(position));
+     holder.et_product_qty.setText(prodt_quantity.get(position)+"/"+update_quantity.get(position));
+      /*  holder.et_product_price.setText(prodt_price.get(position));*/
+      /*  holder.et_total_price.setText(total_price.get(position)+"/"+update_totl_prc.get(position));*/
+    /*    holder.et_financer.setText(financer.get(position));
+        holder.et_status.setText(status.get(position));
+        holder.et_modified_product_price.setText(update_price.get(position));
+        holder.et_modified_total_price.setText(update_totl_prc.get(position));
+        holder.et_modified_product_quantity.setText(update_quantity.get(position));*/
+        holder.et_product.setText(product.get(position));
 
     }
 
@@ -99,16 +108,50 @@ public class PoRequest_Adapter extends RecyclerView.Adapter<PoRequest_Adapter.Vi
     }
 
     public  class ViewHolder extends RecyclerView.ViewHolder {
-        TextView item_count_tv,modified_product_name,initial_qty_count,modified_qty_count,initial_price_tv,modified_price_tv;
+        TextView id, po_id, date, brand, dealer_id, dealer_name,
+                product, product_qty, update_qty, product_price,
+                update_price, total_price, update_total_price,
+                financer, status, et_id, et_po_id, et_date, et_brand,
+                et_dealer_id, et_dealer_name, et_product, et_product_qty, et_update_qty,
+                et_product_price, et_update_price,
+                et_total_price, et_update_total_price, et_financer, et_status,
+                et_modified_product_price,et_modified_product_quantity,et_modified_total_price;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            item_count_tv = itemView.findViewById(R.id.item_count_tv);
-            modified_product_name = itemView.findViewById(R.id.modified_product_name);
-            initial_qty_count = itemView.findViewById(R.id.initial_qty_count);
-            modified_qty_count = itemView.findViewById(R.id.modified_qty_count);
-            initial_price_tv = itemView.findViewById(R.id.initial_price_tv);
-            modified_price_tv = itemView.findViewById(R.id.modified_price_tv);
+            id = itemView.findViewById(R.id.id);
+            po_id = itemView.findViewById(R.id.po_id);
+            date = itemView.findViewById(R.id.date);
+            brand = itemView.findViewById(R.id.brand);
+            dealer_id = itemView.findViewById(R.id.dealer_id);
+            dealer_name = itemView.findViewById(R.id.dealer_name);
+            product = itemView.findViewById(R.id.product);
+            product_qty = itemView.findViewById(R.id.product_qty);
 
+            product_price = itemView.findViewById(R.id.product_price);
+
+            total_price = itemView.findViewById(R.id.total_price);
+
+            financer = itemView.findViewById(R.id.financer);
+            status = itemView.findViewById(R.id.status);
+
+            et_id = itemView.findViewById(R.id.et_id);
+            et_po_id = itemView.findViewById(R.id.et_po_id);
+            et_date = itemView.findViewById(R.id.et_date);
+            et_brand = itemView.findViewById(R.id.et_brand);
+            et_dealer_id = itemView.findViewById(R.id.et_dealer_id);
+            et_dealer_name = itemView.findViewById(R.id.et_dealer_name);
+            et_product = itemView.findViewById(R.id.tv1);
+            et_product_qty = itemView.findViewById(R.id.tv2);
+
+            et_product_price = itemView.findViewById(R.id.tv3);
+
+            et_total_price = itemView.findViewById(R.id.et_total_price);
+
+            et_financer = itemView.findViewById(R.id.et_financer);
+            et_status = itemView.findViewById(R.id.et_status);
+          /*  et_modified_product_price=itemView.findViewById(R.id.et_modified_product_price);
+                    et_modified_total_price=itemView.findViewById(R.id.et_modified_total_price);
+            et_modified_product_quantity=itemView.findViewById(R.id.et_modified_product_quantity);*/
         }
     }
 }

@@ -84,19 +84,19 @@ public class PoDetails_Pending_OEM_Adapter extends RecyclerView.Adapter<PoDetail
 
     @Override
     public void onBindViewHolder(@NonNull PoDetails_Pending_OEM_Adapter.ViewHolder holder, int position) {
-
-        holder.et_id.setText(id.get(position));
+        holder.et_product.setText(product.get(position));
+        holder.et_product_qty.setText(prodt_quantity.get(position));
+        holder.et_product_price.setText(prodt_price.get(position));
+   /*     holder.et_id.setText(id.get(position));
         holder.et_po_id.setText(po_id.get(position));
         holder.et_date.setText(date.get(position));
         holder.et_brand.setText(brand.get(position));
         holder.et_dealer_id.setText(dealer_id.get(position));
-        holder.et_dealer_name.setText(dealer_name.get(position));
-        holder.et_product.setText(product.get(position));
-        holder.et_product_qty.setText(prodt_quantity.get(position));
-        holder.et_product_price.setText(prodt_price.get(position));
-        holder.et_total_price.setText(total_price.get(position));
+        holder.et_dealer_name.setText(dealer_name.get(position));*/
+
+     /*   holder.et_total_price.setText(total_price.get(position));
         holder.et_financer.setText(financer.get(position));
-        holder.et_status.setText(status.get(position));
+        holder.et_status.setText(status.get(position));*/
 
       /*  Glide.with(context)
                 .load(invoicefile.get(position))
@@ -145,10 +145,10 @@ public class PoDetails_Pending_OEM_Adapter extends RecyclerView.Adapter<PoDetail
             et_brand = itemView.findViewById(R.id.et_brand);
             et_dealer_id = itemView.findViewById(R.id.et_dealer_id);
             et_dealer_name = itemView.findViewById(R.id.et_dealer_name);
-            et_product = itemView.findViewById(R.id.et_product);
-            et_product_qty = itemView.findViewById(R.id.et_product_qty);
+            et_product = itemView.findViewById(R.id.tv1);
+            et_product_qty = itemView.findViewById(R.id.tv2);
 
-            et_product_price = itemView.findViewById(R.id.et_product_price);
+            et_product_price = itemView.findViewById(R.id.tv3);
 
             et_total_price = itemView.findViewById(R.id.et_total_price);
 

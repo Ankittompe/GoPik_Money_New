@@ -91,7 +91,7 @@ public class Application_status_DEALER_Adapter extends RecyclerView.Adapter<Appl
             holder. txt_stuts.setBackgroundResource(R.drawable.approve);
         }
         else if( appstatus.get(position).equals("Rejected")){
-            holder.txt_stuts.setBackgroundResource(R.drawable.rejected);
+            holder.txt_stuts.setBackgroundResource(R.drawable.rejecteded);
         }
 
         else if( appstatus.get(position).equals("Approved")){
