@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.qts.gopik_loan.Activity.AppConstants;
 import com.qts.gopik_loan.Activity.SharedPref;
 import com.qts.gopik_loan.Dealer_Activity.MainActivity;
@@ -26,6 +27,7 @@ import com.qts.gopik_loan.Retro.NetworkHandler;
 import com.qts.gopik_loan.Retro.RestApis;
 import com.qts.gopik_loan.Supplychain_Adapter.PoDetails_Approve_OEM_Adapter;
 import com.qts.gopik_loan.Supplychain_Adapter.PoRequest_Adapter;
+import com.qts.gopik_loan.Utils.CustPrograssbar;
 
 import java.util.ArrayList;
 
@@ -50,7 +52,6 @@ public class PO_Get_Modified_List extends AppCompatActivity {
     ArrayList<String> financer = new ArrayList<>();
     ArrayList<String> status = new ArrayList<>();
     ArrayList<String> invoicefile = new ArrayList<>();
-    TextView textView3,reject;
     RecyclerView po_list_recyclerview;
     PoRequest_Adapter poRequest_adapter;
     ArrayList<String>po_list= new ArrayList<>();
@@ -60,14 +61,27 @@ public class PO_Get_Modified_List extends AppCompatActivity {
     public ArrayList<Integer> contest_id = new ArrayList<>();
     Integer counter = 1;
     ImageView arrow,prod_image,hometoolbar;
+    ImageView invoice;
+    CustPrograssbar custPrograssbar;
+    String image ;
+    Integer temp=0;
+    Integer tempp=0;
+    TextView textView3, reject,et_po_id,et_date,et_dealer_name,et_status,et_total_qty,et_total_price;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_po_get_list);
-        textView3=(TextView) findViewById(R.id.approved_button);
-        reject=(TextView) findViewById(R.id.reject_button);
-        po_list_recyclerview = findViewById(R.id.po_list_recyclerview);
-
+        textView3=(TextView) findViewById(R.id.textView3);
+        reject=(TextView) findViewById(R.id.reject);
+        et_po_id = (TextView) findViewById(R.id.et_po_id);
+        et_date = (TextView) findViewById(R.id.et_date);
+        et_dealer_name = (TextView) findViewById(R.id.et_dealer_name);
+        et_status = (TextView) findViewById(R.id.et_status);
+        et_total_qty = (TextView) findViewById(R.id.et_total_qty);
+        et_total_price = (TextView) findViewById(R.id.et_total_price);
+        po_list_recyclerview = findViewById(R.id.rclview);
+        invoice=(ImageView) findViewById(R.id.invoice);
+        custPrograssbar = new CustPrograssbar();
         arrow = findViewById(R.id.arrow);
         hometoolbar = findViewById(R.id.hometoolbar);
         po_all_details();
@@ -90,17 +104,17 @@ public class PO_Get_Modified_List extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                update_po_status();
                 SharedPref.saveStringInSharedPref(AppConstants.SUPPLYCHAIN_APPROVE,"Approved By Dealer",getApplicationContext());
+                update_po_status();
 
             }
         });
         reject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                update_po_status();
-                SharedPref.saveStringInSharedPref(AppConstants.SUPPLYCHAIN_APPROVE,"Rejected By Dealer",getApplicationContext());
 
+                SharedPref.saveStringInSharedPref(AppConstants.SUPPLYCHAIN_APPROVE,"Rejected By Dealer",getApplicationContext());
+                update_po_status();
             }
         });
         ShowList();
@@ -109,7 +123,7 @@ public class PO_Get_Modified_List extends AppCompatActivity {
 
     private void po_all_details() {
 
-
+        custPrograssbar.prograssCreate(this);
 
         Po_all_details_POJO pojo = new Po_all_details_POJO( SharedPref.getStringFromSharedPref(AppConstants.PO_ID,getApplicationContext()));
         Log.e("checktopfive","response");
@@ -119,7 +133,7 @@ public class PO_Get_Modified_List extends AppCompatActivity {
             @Override
             public void onResponse(Call<Po_all_details_MODEL> call, Response<Po_all_details_MODEL> response) {
                 if (response.body() != null) {
-
+                    custPrograssbar.closePrograssBar();
                     if (response.body().getCode().equals("200")) {
 
                         Log.e("Body", "body2");
@@ -146,6 +160,22 @@ public class PO_Get_Modified_List extends AppCompatActivity {
                                 financer.add(response.body().getPayload().get(i).getFinancer());
                                 status.add(response.body().getPayload().get(i).getStatus());
                                 invoicefile.add(response.body().getPayload().get(i).getInvoice_file());
+                                image=response.body().getImage();
+                                tempp = temp + Integer.valueOf(response.body().getPayload().get(i).getUpdate_quantity());
+                                temp = tempp;
+                                Log.e("Body", "body3"+temp);
+                                Log.e("Body", "body3"+image);
+                                Glide.with(getApplicationContext())
+                                        .load(image)
+                                        .into(invoice);
+                                et_po_id.setText(response.body().getPayload().get(i).getPo_id());
+                                et_date.setText(response.body().getPayload().get(i).getDate());
+                                et_dealer_name.setText(response.body().getPayload().get(i).getDealer_name());
+                                et_status.setText(response.body().getPayload().get(i).getStatus());
+                                et_total_qty.setText(String.valueOf(temp));
+                                et_total_price.setText(response.body().getPayload().get(i).getTotal_price()+"/"+
+                                        response.body().getPayload().get(i).getUpdate_totl_prc());
+
 
                                 if (response.body().getPayload().size() - 1 == i) {
                                     LinearLayoutManager layoutManager = new LinearLayoutManager(
@@ -164,6 +194,7 @@ public class PO_Get_Modified_List extends AppCompatActivity {
                             }
                         }
                     } else {
+                        custPrograssbar.closePrograssBar();
                         Toast.makeText(PO_Get_Modified_List.this, "Something went wrong!!", Toast.LENGTH_LONG).show();
                     }
 
@@ -187,7 +218,7 @@ public class PO_Get_Modified_List extends AppCompatActivity {
     }
     private void update_po_status() {
 
-
+        custPrograssbar.prograssCreate(this);
 
         Update_po_status_POJO pojo = new Update_po_status_POJO(SharedPref.getStringFromSharedPref(AppConstants.PO_ID,getApplicationContext()),
                 SharedPref.getStringFromSharedPref(AppConstants.SUPPLYCHAIN_APPROVE,getApplicationContext()));
@@ -200,7 +231,7 @@ public class PO_Get_Modified_List extends AppCompatActivity {
                 if (response.body() != null) {
 
                     if (response.body().getCode().equals("200")) {
-
+                        custPrograssbar.closePrograssBar();
                         Log.e("Body", "body2");
                         Intent it = new Intent(PO_Get_Modified_List.this, MainActivity.class);
                         it.putExtra(AppConstants.ACTFRAG_TYPE_KEY, AppConstants.MY_MALL_DEALER_FRAG);

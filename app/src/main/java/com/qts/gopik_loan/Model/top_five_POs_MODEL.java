@@ -21,17 +21,17 @@ public class top_five_POs_MODEL {
     private ArrayList<top_five_POs_DATA> payload;
 
 
-    public String getCode() {
+    public Integer getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(Integer code) {
         this.code = code;
     }
 
     @Expose
     @SerializedName("code")
-    private String code;
+    private Integer code;
 
     public String getMessage() {
         return message;

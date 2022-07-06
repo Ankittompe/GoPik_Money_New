@@ -53,7 +53,7 @@
                 android:gravity="center"
                 android:text="Amit kumar"
                 android:textColor="@color/black"
-                android:textSize="18sp"
+                android:textSize="12dp"
                 app:layout_constraintBottom_toBottomOf="@+id/serial_tv"
                 app:layout_constraintEnd_toStartOf="@+id/next_arrow"
                 app:layout_constraintStart_toEndOf="@+id/serial_tv"

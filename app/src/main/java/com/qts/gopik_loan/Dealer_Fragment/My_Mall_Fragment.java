@@ -38,6 +38,7 @@ import com.qts.gopik_loan.Retro.RestApis;
 import com.qts.gopik_loan.Supply_Chain.Image_Upload_SupplyChain;
 import com.qts.gopik_loan.Supply_Chain.PO_Get_Modified_List;
 import com.qts.gopik_loan.Supply_Chain.PO_TOP_FIVE_Activity;
+import com.qts.gopik_loan.Supply_Chain.PersonalDetails_Activity;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -135,7 +136,7 @@ public class My_Mall_Fragment extends Fragment implements PickiTCallbacks {
    upload_document.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent doc_upload = new Intent(getActivity(), Image_Upload_SupplyChain.class);
+                Intent doc_upload = new Intent(getActivity(), PersonalDetails_Activity.class);
                 startActivity(doc_upload);
             }
         });

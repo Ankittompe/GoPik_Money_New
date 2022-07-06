@@ -52,7 +52,7 @@
                 android:gravity="center"
                 android:text="Amit kumar"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="12dp"
                 app:layout_constraintBottom_toBottomOf="@+id/po_id_tv"
                 app:layout_constraintStart_toEndOf="@+id/po_id_tv"
                 app:layout_constraintTop_toTopOf="@+id/po_id_tv" />

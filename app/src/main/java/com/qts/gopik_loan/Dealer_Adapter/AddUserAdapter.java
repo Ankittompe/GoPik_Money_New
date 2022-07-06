@@ -77,7 +77,7 @@ public class AddUserAdapter  extends RecyclerView.Adapter<AddUserAdapter.ViewHol
         holder.nameuser.setText(sub_user.get(position));
         if(holder.statususer.getText().equals("Active")){
             holder.actionuser.setText("Inactive");
-            holder.actionuser.setBackgroundResource(R.drawable.rejected);
+            holder.actionuser.setBackgroundResource(R.drawable.rejecteded);
         }
         else {
             holder.actionuser.setText("Active");

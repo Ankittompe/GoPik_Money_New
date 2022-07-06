@@ -31,6 +31,24 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Supply_Chain.PersonalDetails_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Supply_Chain.BusinessDetails_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Supply_Chain.TransactionDetails_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Supply_Chain.PoDetail_Rejected_Dealer_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Supply_Chain.PoDetail_Approve_Dealer_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Supply_Chain.Po_Generate_Rejected_By_Financer_Activity"
+            android:exported="false" />
+        <activity
             android:name=".Supply_Chain.Po_Generate_Approved_By_Financer_Activity"
             android:exported="false" />
         <activity
