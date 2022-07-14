@@ -67,5 +67,11 @@
          android:layout_gravity="center_vertical"
          android:layout_marginRight="5dp"
          />-->
-
+    <ImageView
+        android:id="@+id/imgScanner"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/_15sdp"
+        android:src="@drawable/ic_qr_code_scanner_white" />
 </LinearLayout>

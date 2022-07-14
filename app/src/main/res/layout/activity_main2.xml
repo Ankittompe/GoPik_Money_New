@@ -29,7 +29,6 @@
             android:id="@+id/navigationview_dealer"
             app:menu="@menu/iconmenu_dealer"
             app:itemIconTint="@color/coloeAccent"
-            app:headerLayout="@layout/menuui_dealer"
             android:layout_gravity="start"/>
 
     </RelativeLayout>

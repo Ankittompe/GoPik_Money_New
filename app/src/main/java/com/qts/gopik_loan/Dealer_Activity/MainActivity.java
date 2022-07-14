@@ -6,20 +6,29 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SubMenu;
 import android.view.View;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -42,14 +51,21 @@ import com.qts.gopik_loan.Dealer_Fragment.Dealer_Contest_Fragment;
 import com.qts.gopik_loan.Dealer_Fragment.Dealer_Notificarion_Fragment;
 import com.qts.gopik_loan.Dealer_Fragment.Dealer_Wallet_Fragment;
 import com.qts.gopik_loan.Model.Dealer_logout_MODEL;
+import com.qts.gopik_loan.Model.ProfileDetails_DEALER_MODEL;
 import com.qts.gopik_loan.Pojo.Dealer_logoutPOJO;
+import com.qts.gopik_loan.Pojo.ProfileDetails_DEALER_POJO;
 import com.qts.gopik_loan.R;
 import com.qts.gopik_loan.Retro.NetworkHandler;
 import com.qts.gopik_loan.Retro.RestApis;
 
+import java.io.ByteArrayOutputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.Url;
 
 public class MainActivity extends AppCompatActivity {
     NavigationView nav;
@@ -60,7 +76,9 @@ public class MainActivity extends AppCompatActivity {
     FragmentManager fragmentManagerdealer;
     DrawerLayout drawerLayout;
     ChipNavigationBar chipNavigationBar;
-
+    private WebView mWebVw;
+    TextView mTxtUserName;
+    ImageView mImgShare,mImgScanner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -180,6 +198,87 @@ public class MainActivity extends AppCompatActivity {
                     Log.d(TAG, msg);
                     /*  Toast.makeText(SplashActivity.this, msg, Toast.LENGTH_SHORT).show();*/
                 });
+
+        View headerView = nav.inflateHeaderView(R.layout.menuui_dealer);
+        mWebVw = headerView.findViewById(R.id.webVw);
+        mTxtUserName = headerView.findViewById(R.id.txtUserName);
+        mImgShare = headerView.findViewById(R.id.imgShare);
+        mImgScanner = (ImageView) findViewById(R.id.imgScanner);
+        mImgScanner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mImgScanner.setVisibility(View.GONE);
+                getSupportFragmentManager().beginTransaction().replace(R.id.frameContainer_dealer, new Dealer_QR_Code_Fragment()).commit();
+            }
+        });
+        generateQRCode();
+        profile_details();
+        mImgShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                URL url = null;
+                try {
+                    url = new URL("https://filesamples.com/samples/document/pdf/sample2.pdf");
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(String.valueOf(url))));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+              /*  Bitmap b = BitmapFactory.decodeResource(getResources(),R.drawable.scanone);
+                Intent share = new Intent(Intent.ACTION_SEND);
+                share.setType("image/jpeg");
+                ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+                b.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+                String path = MediaStore.Images.Media.insertImage(getContentResolver(), b, "Title", null);
+                Uri imageUri =  Uri.parse(path);
+                share.putExtra(Intent.EXTRA_STREAM, imageUri);
+                startActivity(Intent.createChooser(share, "Select"));*/
+            }
+        });
+
+    }
+    public void openDrawer(Activity mActivityName){
+        drawerLayout = (DrawerLayout) mActivityName.findViewById(R.id.drwer_dealer);
+        drawerLayout.openDrawer(GravityCompat.START);
+    }
+    @SuppressLint("SetJavaScriptEnabled")
+    private void generateQRCode() {
+        String mUserCode = SharedPref.getStringFromSharedPref(AppConstants.USER_CODE, getApplicationContext());
+        String wedData = "https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=https://gopikmoney.com/public/QRScan?source_id=" + mUserCode + "&chco=000000";
+        mWebVw.setWebViewClient(new MyBrowser());
+        mWebVw.getSettings().setLoadsImagesAutomatically(true);
+        mWebVw.getSettings().setJavaScriptEnabled(true);
+        mWebVw.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+        mWebVw.loadUrl(wedData);
+    }
+    private static class MyBrowser extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            view.loadUrl(url);
+            return true;
+        }
+    }
+    private void profile_details() {
+        ProfileDetails_DEALER_POJO pojo = new ProfileDetails_DEALER_POJO(SharedPref.getStringFromSharedPref(AppConstants.PHONENUMBER, getApplicationContext()), SharedPref.getStringFromSharedPref(AppConstants.TOKEN, getApplicationContext()));
+        RestApis restApis = NetworkHandler.getRetrofit().create(RestApis.class);
+        Call<ProfileDetails_DEALER_MODEL> call = restApis.profile_details(pojo);
+        call.enqueue(new Callback<ProfileDetails_DEALER_MODEL>() {
+            @Override
+            public void onResponse(Call<ProfileDetails_DEALER_MODEL> call, Response<ProfileDetails_DEALER_MODEL> response) {
+                if (response.body() != null) {
+                    if (response.body().getCode()==200) {
+                        mTxtUserName.setText(response.body().getPayload().getProfile().get(0).getName());
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Something went wrong!234!", Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+            @Override
+            public void onFailure(Call<ProfileDetails_DEALER_MODEL> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "Something went wrong!", Toast.LENGTH_LONG).show();
+            }
+
+        });
     }
 
     private void bottomMenudealer() {
