@@ -7,7 +7,7 @@
     android:background="@color/colorgrey1"
     android:orientation="vertical">
 
-    <com.qts.gopik_loan.Utils.CustomRegularTextView
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
@@ -60,7 +60,7 @@
                                 android:text="Customer Code"
                                 android:textStyle="bold" />
 
-                            <com.qts.gopik_loan.Utils.CustomRegularTextView
+                            <TextView
                                 android:id="@+id/txtDetailsCustCode"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -89,7 +89,7 @@
                                 app:layout_constraintHorizontal_bias="0.492"
                                 tools:ignore="MissingConstraints" />
 
-                            <com.qts.gopik_loan.Utils.CustomRegularTextView
+                            <TextView
                                 android:id="@+id/txtDetailsCustName"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -130,7 +130,7 @@
                                 app:layout_constraintHorizontal_bias="0.492"
                                 tools:ignore="MissingConstraints" />
 
-                            <com.qts.gopik_loan.Utils.CustomRegularTextView
+                            <TextView
                                 android:id="@+id/txtDetailsCustNo"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -159,7 +159,7 @@
                                 app:layout_constraintHorizontal_bias="0.492"
                                 tools:ignore="MissingConstraints" />
 
-                            <com.qts.gopik_loan.Utils.CustomRegularTextView
+                            <TextView
                                 android:id="@+id/txtDetailsLoanType"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -200,7 +200,7 @@
                                 app:layout_constraintHorizontal_bias="0.492"
                                 tools:ignore="MissingConstraints" />
 
-                            <com.qts.gopik_loan.Utils.CustomRegularTextView
+                            <TextView
                                 android:id="@+id/txtDetailsLoanAmount"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -229,7 +229,7 @@
                                 app:layout_constraintHorizontal_bias="0.492"
                                 tools:ignore="MissingConstraints" />
 
-                            <com.qts.gopik_loan.Utils.CustomRegularTextView
+                            <TextView
                                 android:id="@+id/txtDetailsPinNo"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -280,7 +280,7 @@
                                 app:layout_constraintHorizontal_bias="0.492"
                                 tools:ignore="MissingConstraints" />
 
-                            <com.qts.gopik_loan.Utils.CustomRegularTextView
+                            <TextView
                                 android:id="@+id/txtDetailsDealerCode"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -309,7 +309,7 @@
                                 app:layout_constraintHorizontal_bias="0.492"
                                 tools:ignore="MissingConstraints" />
 
-                            <com.qts.gopik_loan.Utils.CustomRegularTextView
+                            <TextView
                                 android:id="@+id/txtDetailsFinancer"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -352,7 +352,7 @@
                                 app:layout_constraintHorizontal_bias="0.492"
                                 tools:ignore="MissingConstraints" />
 
-                            <com.qts.gopik_loan.Utils.CustomRegularTextView
+                            <TextView
                                 android:id="@+id/txtDetailsDealerName"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -381,7 +381,7 @@
                                 app:layout_constraintHorizontal_bias="0.492"
                                 tools:ignore="MissingConstraints" />
 
-                            <com.qts.gopik_loan.Utils.CustomRegularTextView
+                            <TextView
                                 android:id="@+id/txtDetailsDealerBrand"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -422,7 +422,7 @@
                                 app:layout_constraintHorizontal_bias="0.492"
                                 tools:ignore="MissingConstraints" />
 
-                            <com.qts.gopik_loan.Utils.CustomRegularTextView
+                            <TextView
                                 android:id="@+id/txtDetailsAppStatus"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -451,7 +451,7 @@
                                 app:layout_constraintHorizontal_bias="0.492"
                                 tools:ignore="MissingConstraints" />
 
-                            <com.qts.gopik_loan.Utils.CustomRegularTextView
+                            <TextView
                                 android:id="@+id/txtDetailsTime"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"

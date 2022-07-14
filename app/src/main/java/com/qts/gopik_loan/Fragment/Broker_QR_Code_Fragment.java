@@ -1,6 +1,8 @@
 package com.qts.gopik_loan.Fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,26 +17,34 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.qts.gopik_loan.Activity.AppConstants;
+import com.qts.gopik_loan.Activity.Home;
 import com.qts.gopik_loan.Activity.SharedPref;
+import com.qts.gopik_loan.Dealer_Activity.MainActivity;
 import com.qts.gopik_loan.Dealer_Adapter.ScannedQRListAdapter;
 import com.qts.gopik_loan.Dealer_Adapter.WhatsAppStatusListAdapter;
 import com.qts.gopik_loan.Dealer_Fragment.Dealer_QR_Code_Fragment;
+import com.qts.gopik_loan.Model.Broker_profile_details_MODEL;
 import com.qts.gopik_loan.Model.Dealer_QR_MODEL;
+import com.qts.gopik_loan.Model.ProfileDetails_DEALER_MODEL;
 import com.qts.gopik_loan.Model.QR_DataList_MODEL;
 import com.qts.gopik_loan.Model.QR_ScannedList_MODEL;
 import com.qts.gopik_loan.Model.WhatsAppStatusList_MODEL;
+import com.qts.gopik_loan.Pojo.Broker_profile_details_POJO;
 import com.qts.gopik_loan.Pojo.Dealer_CODE_POJO;
 import com.qts.gopik_loan.Pojo.Dealer_WhatsApp_POJO;
+import com.qts.gopik_loan.Pojo.ProfileDetails_DEALER_POJO;
 import com.qts.gopik_loan.Pojo.QR_CODE_POJO;
 import com.qts.gopik_loan.R;
 import com.qts.gopik_loan.Retro.NetworkHandler;
 import com.qts.gopik_loan.Retro.RestApis;
 import com.qts.gopik_loan.Utils.CustPrograssbar;
 
+import java.net.URL;
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -47,8 +57,13 @@ import retrofit2.Response;
  * create an instance of this fragment.
  */
 public class Broker_QR_Code_Fragment extends Fragment {
-    private TextView mTxtGenerateQRCode, mTxtShowScannedList, mTxtShowWhatsAppStatus;
-    private WebView mWebVw;
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+    private String mParam1;
+    private String mParam2;
+    private TextView mTxtGenerateQRCode, mTxtShowScannedList, mTxtShowWhatsAppStatus, mTxtName,mTxtUserName;
+    ImageView mImgOpenQR,mImgShare;
+    WebView mWebVw;
     CustPrograssbar custPrograssbar;
     private ArrayList<QR_DataList_MODEL> mQRScannedList;
     private ArrayList<Dealer_WhatsApp_POJO> mWAppListModelArrayList;
@@ -56,14 +71,10 @@ public class Broker_QR_Code_Fragment extends Fragment {
     RecyclerView mRecVwScannedList, mRecVwStatusList;
     ScannedQRListAdapter mMyListAdapter;
     WhatsAppStatusListAdapter mWhatsAppStatusListAdapter;
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+
 
     public Broker_QR_Code_Fragment() {
         // Required empty public constructor
@@ -109,23 +120,30 @@ public class Broker_QR_Code_Fragment extends Fragment {
     }
 
     private void initData(View view) {
+        mImgOpenQR = view.findViewById(R.id.imgOpenQR);
+        mWebVw = view.findViewById(R.id.webVw);
         mTxtGenerateQRCode = view.findViewById(R.id.txtGenQRCode);
         mTxtShowScannedList = view.findViewById(R.id.txtScannedList);
         mTxtShowWhatsAppStatus = view.findViewById(R.id.txtTitleWhatsAppList);
         mRecVwScannedList = view.findViewById(R.id.recVwScannedList);
         mRecVwStatusList = view.findViewById(R.id.recVwStatusList);
-        mWebVw = view.findViewById(R.id.webVw);
-
+        mTxtName = view.findViewById(R.id.txtOne);
+        mTxtUserName = view.findViewById(R.id.txtUserName);
+        mImgShare = view.findViewById(R.id.imgShare);
         custPrograssbar = new CustPrograssbar();
         mTxtGenerateQRCode.setOnClickListener(view1 -> {
             setQRStatus();
-            generateQRCode();
         });
         setQRStatus();
-        generateQRCode();
+        broker_profile_details();
+
 //        getQRStatus();
-        getQRCount();
-        mTxtShowWhatsAppStatus.setBackground(getResources().getDrawable(R.drawable.button_click_grey, null));
+//        getQRCount();
+        mTxtShowWhatsAppStatus.setBackground(getResources().getDrawable(R.drawable.button_click, null));
+        mTxtShowScannedList.setBackground(getResources().getDrawable(R.drawable.button_click_grey, null));
+        mRecVwScannedList.setVisibility(View.GONE);
+        mRecVwStatusList.setVisibility(View.VISIBLE);
+        getWhatsAppStatusList();
 
         mTxtShowScannedList.setOnClickListener(view12 -> {
             getQRCount();
@@ -141,6 +159,53 @@ public class Broker_QR_Code_Fragment extends Fragment {
             mTxtShowScannedList.setBackground(getResources().getDrawable(R.drawable.button_click_grey, null));
             mTxtShowWhatsAppStatus.setBackground(getResources().getDrawable(R.drawable.button_click, null));
         });
+        mImgOpenQR.setOnClickListener(view14 -> {
+            Home home = new Home();
+            home.openDrawer(getActivity());
+        });
+        generateQRCode();
+        mImgShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                URL url = null;
+                try {
+                    url = new URL("https://filesamples.com/samples/document/pdf/sample2.pdf");
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(String.valueOf(url))));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+              /*  Bitmap b = BitmapFactory.decodeResource(getResources(),R.drawable.scanone);
+                Intent share = new Intent(Intent.ACTION_SEND);
+                share.setType("image/jpeg");
+                ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+                b.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+                String path = MediaStore.Images.Media.insertImage(getContentResolver(), b, "Title", null);
+                Uri imageUri =  Uri.parse(path);
+                share.putExtra(Intent.EXTRA_STREAM, imageUri);
+                startActivity(Intent.createChooser(share, "Select"));*/
+            }
+        });
+    }
+
+
+    @SuppressLint("SetJavaScriptEnabled")
+    private void generateQRCode() {
+        String mUserCode = SharedPref.getStringFromSharedPref(AppConstants.USER_CODE, getActivity());
+        String wedData = "https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=https://gopikmoney.com/public/QRScan?source_id=" + mUserCode + "&chco=000000";
+        mWebVw.setWebViewClient(new MyBrowser());
+        mWebVw.getSettings().setLoadsImagesAutomatically(true);
+        mWebVw.getSettings().setJavaScriptEnabled(true);
+        mWebVw.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+        mWebVw.loadUrl(wedData);
+    }
+
+    private static class MyBrowser extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            view.loadUrl(url);
+            return true;
+        }
     }
 
     private void getWhatsAppStatusList() {
@@ -176,24 +241,27 @@ public class Broker_QR_Code_Fragment extends Fragment {
         });
     }
 
-    @SuppressLint("SetJavaScriptEnabled")
-    private void generateQRCode() {
-        String mUserCode = SharedPref.getStringFromSharedPref(AppConstants.USER_CODE, getContext());
-        String wedData = "https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=https://gopikmoney.com/public/QRScan?source_id=" + mUserCode + "&chco=41dd3f";
-        mWebVw.setWebViewClient(new Broker_QR_Code_Fragment.MyBrowser());
-        mWebVw.getSettings().setLoadsImagesAutomatically(true);
-        mWebVw.getSettings().setJavaScriptEnabled(true);
-        mWebVw.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-        mWebVw.loadUrl(wedData);
-    }
+    private void broker_profile_details() {
+        Broker_profile_details_POJO pojo = new Broker_profile_details_POJO(SharedPref.getStringFromSharedPref(AppConstants.PHONENUMBER, getContext()), SharedPref.getStringFromSharedPref(AppConstants.TOKEN, getContext()));
+        RestApis restApis = NetworkHandler.getRetrofit().create(RestApis.class);
+        Call<Broker_profile_details_MODEL> call = restApis.broker_profile_details(pojo);
+        call.enqueue(new Callback<Broker_profile_details_MODEL>() {
+            @Override
+            public void onResponse(Call<Broker_profile_details_MODEL> call, Response<Broker_profile_details_MODEL> response) {
+                if (response.body() != null) {
+                    if (response.body().getCode().equals("200")) {
+                        mTxtUserName.setText(response.body().getPayload().getProfile().get(0).getBroker_name());
+                    } else {
+                        Toast.makeText(getContext(), "Something went wrong!234!", Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+            @Override
+            public void onFailure(Call<Broker_profile_details_MODEL> call, Throwable t) {
+                Toast.makeText(getContext(), "Something went wrong!", Toast.LENGTH_LONG).show();
+            }
 
-    private static class MyBrowser extends WebViewClient {
-        @Override
-        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            view.loadUrl(url);
-            return true;
-        }
-
+        });
     }
 
     private void setQRStatus() {
@@ -231,7 +299,6 @@ public class Broker_QR_Code_Fragment extends Fragment {
                     mTxtGenerateQRCode.setVisibility(View.VISIBLE);
                 } else {
                     mTxtGenerateQRCode.setVisibility(View.INVISIBLE);
-                    generateQRCode();
                 }
             }
 

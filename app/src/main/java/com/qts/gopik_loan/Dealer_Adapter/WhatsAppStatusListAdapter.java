@@ -13,12 +13,9 @@ import android.widget.TextView;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.qts.gopik_loan.Activity.AppConstants;
-import com.qts.gopik_loan.Activity.Home;
-import com.qts.gopik_loan.Activity.SharedPref;
 import com.qts.gopik_loan.Dealer_Activity.MainActivity;
 import com.qts.gopik_loan.Model.QR_DataList_MODEL;
-
+import com.qts.gopik_loan.Model.WhatsAppStatusList_MODEL;
 import com.qts.gopik_loan.Pojo.Dealer_WhatsApp_POJO;
 import com.qts.gopik_loan.R;
 import com.qts.gopik_loan.Utils.WhatsAppStatusDetailsBottomSheet;
@@ -61,6 +58,16 @@ public class WhatsAppStatusListAdapter extends RecyclerView.Adapter<WhatsAppStat
         holder.mTxtLoanPriority.setText(mList.getLoanPriority());
         holder.mTxtApplicationStatus.setText(mList.getApplicationStatus());
 
+        if (mList.getApplicationStatus().equals("Approved")) {
+            holder.mTxtApplicationStatus.setTextColor(mContext.getResources().getColor(R.color.green));
+        } else if (mList.getApplicationStatus().equals("Submitted")) {
+            holder.mTxtApplicationStatus.setTextColor(mContext.getResources().getColor(R.color.blue));
+        } else if (mList.getApplicationStatus().equals("Declined")) {
+            holder.mTxtApplicationStatus.setTextColor(mContext.getResources().getColor(R.color.red));
+        } else if (mList.getApplicationStatus().equals("Pending")) {
+            holder.mTxtApplicationStatus.setTextColor(mContext.getResources().getColor(android.R.color.holo_orange_dark));
+        }
+
 //        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
 //            ZonedDateTime dateTime;
 //            dateTime = ZonedDateTime.parse(mList.getCreatedAt());
@@ -83,12 +90,12 @@ public class WhatsAppStatusListAdapter extends RecyclerView.Adapter<WhatsAppStat
             Bundle bundle = new Bundle();
             bundle.putSerializable("whatsAppData", mList);
             mWhatsAppStatusDetailsBottomSheet.setArguments(bundle);
-            if (SharedPref.getStringFromSharedPref(AppConstants.BRAND, mContext).equals("ML")) {
-                mWhatsAppStatusDetailsBottomSheet.show(((Home) mContext).getSupportFragmentManager(), "");
-            }
-            else{
-                mWhatsAppStatusDetailsBottomSheet.show(((MainActivity) mContext).getSupportFragmentManager(), "");
-            }
+            mWhatsAppStatusDetailsBottomSheet.show(((MainActivity) mContext).getSupportFragmentManager(), "");
+
+//            Intent mIntent = new Intent(mContext,TestActivity.class);
+//            mIntent.putExtra("whatsAppData",mList);
+//            mContext.startActivity(mIntent);
+
         });
     }
 

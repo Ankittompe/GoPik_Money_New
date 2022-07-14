@@ -23,7 +23,7 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <com.qts.gopik_loan.Utils.CustomRegularTextView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
@@ -31,7 +31,7 @@
                 android:text="Customer Code"
                 android:textColor="@color/hero_green" />
 
-            <com.qts.gopik_loan.Utils.CustomRegularTextView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
@@ -39,7 +39,7 @@
                 android:text="Customer Name"
                 android:textColor="@color/hero_green" />
 
-            <com.qts.gopik_loan.Utils.CustomRegularTextView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
@@ -47,7 +47,7 @@
                 android:text="Customer Number"
                 android:textColor="@color/hero_green" />
 
-            <com.qts.gopik_loan.Utils.CustomRegularTextView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -56,7 +56,7 @@
                 android:textColor="@color/hero_green"
                 android:visibility="gone" />
 
-            <com.qts.gopik_loan.Utils.CustomRegularTextView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
@@ -64,7 +64,7 @@
                 android:text="Loan Amount"
                 android:textColor="@color/hero_green" />
 
-            <com.qts.gopik_loan.Utils.CustomRegularTextView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -73,7 +73,7 @@
                 android:textColor="@color/hero_green"
                 android:visibility="gone" />
 
-            <com.qts.gopik_loan.Utils.CustomRegularTextView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -82,7 +82,7 @@
                 android:textColor="@color/hero_green"
                 android:visibility="gone" />
 
-            <com.qts.gopik_loan.Utils.CustomRegularTextView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
@@ -91,7 +91,7 @@
                 android:textColor="@color/hero_green"
                 android:visibility="gone" />
 
-            <com.qts.gopik_loan.Utils.CustomRegularTextView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -99,7 +99,7 @@
                 android:textColor="@color/hero_green"
                 android:visibility="gone" />
 
-            <com.qts.gopik_loan.Utils.CustomRegularTextView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -107,14 +107,14 @@
                 android:textColor="@color/hero_green"
                 android:visibility="gone" />
 
-            <com.qts.gopik_loan.Utils.CustomRegularTextView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:text="Application Status"
                 android:textColor="@color/hero_green" />
 
-            <com.qts.gopik_loan.Utils.CustomRegularTextView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -122,7 +122,7 @@
                 android:textColor="@color/hero_green"
                 android:visibility="gone" />
 
-            <com.qts.gopik_loan.Utils.CustomRegularTextView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -130,7 +130,7 @@
                 android:textColor="@color/hero_green"
                 android:visibility="gone" />
 
-            <com.qts.gopik_loan.Utils.CustomRegularTextView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -146,28 +146,28 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <com.qts.gopik_loan.Utils.CustomRegularTextView
+            <TextView
                 android:id="@+id/txtCustomerCode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:text="Customer Code:" />
 
-            <com.qts.gopik_loan.Utils.CustomRegularTextView
+            <TextView
                 android:id="@+id/txtCustomerName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:text="Customer Name:" />
 
-            <com.qts.gopik_loan.Utils.CustomRegularTextView
+            <TextView
                 android:id="@+id/txtCustomerNo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:text="Customer Number:" />
 
-            <com.qts.gopik_loan.Utils.CustomRegularTextView
+            <TextView
                 android:id="@+id/txtLoanType"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -175,14 +175,14 @@
                 android:text="Loan Type:"
                 android:visibility="gone" />
 
-            <com.qts.gopik_loan.Utils.CustomRegularTextView
+            <TextView
                 android:id="@+id/txtLoanAmount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:text="Loan Amount:" />
 
-            <com.qts.gopik_loan.Utils.CustomRegularTextView
+            <TextView
                 android:id="@+id/txtPinNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -190,7 +190,7 @@
                 android:text="PIN Number:"
                 android:visibility="gone" />
 
-            <com.qts.gopik_loan.Utils.CustomRegularTextView
+            <TextView
                 android:id="@+id/txtDealerCode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -198,7 +198,7 @@
                 android:text="Dealer Code"
                 android:visibility="gone" />
 
-            <com.qts.gopik_loan.Utils.CustomRegularTextView
+            <TextView
                 android:id="@+id/txtDealerBrand"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -206,7 +206,7 @@
                 android:text="Dealer Brand"
                 android:visibility="gone" />
 
-            <com.qts.gopik_loan.Utils.CustomRegularTextView
+            <TextView
                 android:id="@+id/txtDealerName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -214,7 +214,7 @@
                 android:text="Dealer Name"
                 android:visibility="gone" />
 
-            <com.qts.gopik_loan.Utils.CustomRegularTextView
+            <TextView
                 android:id="@+id/txtLoanPriority"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -222,14 +222,14 @@
                 android:text="Loan Priority"
                 android:visibility="gone" />
 
-            <com.qts.gopik_loan.Utils.CustomRegularTextView
+            <TextView
                 android:id="@+id/txtApplicationStatus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:text="Application Status" />
 
-            <com.qts.gopik_loan.Utils.CustomRegularTextView
+            <TextView
                 android:id="@+id/txtCreatedAt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -237,7 +237,7 @@
                 android:text="Created At"
                 android:visibility="gone" />
 
-            <com.qts.gopik_loan.Utils.CustomRegularTextView
+            <TextView
                 android:id="@+id/txtUpdatedAt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -245,7 +245,7 @@
                 android:text="Updated At"
                 android:visibility="gone" />
 
-            <com.qts.gopik_loan.Utils.CustomRegularTextView
+            <TextView
                 android:id="@+id/txtMessage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

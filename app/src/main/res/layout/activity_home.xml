@@ -29,7 +29,6 @@
             android:id="@+id/navigationview"
             app:menu="@menu/iconmenu"
             app:itemIconTint="@color/coloeAccent"
-            app:headerLayout="@layout/menuui"
             android:layout_gravity="start"/>
 
     </RelativeLayout>

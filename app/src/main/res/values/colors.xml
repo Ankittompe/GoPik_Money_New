@@ -38,4 +38,6 @@
     <color name="hero_red">#d01f25</color>
     <color name="hero_green">#7fc242</color>
     <color name="hero_light_grey">#DFDBDB</color>
+    <color name="hero_light_green">#4e9134</color>
+    <color name="hero_light_blue">#1c3474</color>
 </resources>

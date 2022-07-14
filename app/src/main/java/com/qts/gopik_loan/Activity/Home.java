@@ -6,20 +6,26 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SubMenu;
 import android.view.View;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -27,6 +33,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.Gson;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
+import com.qts.gopik_loan.Dealer_Activity.MainActivity;
 import com.qts.gopik_loan.Dealer_Fragment.Dealer_QR_Code_Fragment;
 import com.qts.gopik_loan.Fragment.Contest;
 import com.qts.gopik_loan.Fragment.Broker_QR_Code_Fragment;
@@ -35,11 +42,17 @@ import com.qts.gopik_loan.Fragment.Notification;
 import com.qts.gopik_loan.Fragment.Profile;
 import com.qts.gopik_loan.Fragment.Reward;
 import com.qts.gopik_loan.Fragment.Tab_Fragment;
+import com.qts.gopik_loan.Model.Broker_profile_details_MODEL;
 import com.qts.gopik_loan.Model.Dealer_logout_MODEL;
+import com.qts.gopik_loan.Model.ProfileDetails_DEALER_MODEL;
+import com.qts.gopik_loan.Pojo.Broker_profile_details_POJO;
 import com.qts.gopik_loan.Pojo.Dealer_logoutPOJO;
+import com.qts.gopik_loan.Pojo.ProfileDetails_DEALER_POJO;
 import com.qts.gopik_loan.R;
 import com.qts.gopik_loan.Retro.NetworkHandler;
 import com.qts.gopik_loan.Retro.RestApis;
+
+import java.net.URL;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -56,7 +69,9 @@ public class Home extends AppCompatActivity {
     FragmentManager fragmentManager;
     DrawerLayout drawerLayout;
     ChipNavigationBar chipNavigationBar;
-
+    private WebView mWebVw;
+    TextView mTxtUserName;
+    ImageView mImgShare,mImgScanner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -174,30 +189,6 @@ public class Home extends AppCompatActivity {
             navMenuLogIn.findItem(R.id.signout).setVisible(true);
             navMenuLogIn.findItem(R.id.menu_login).setVisible(false);
         }
-        /*logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(Home.this);
-                new AlertDialog.Builder(Home.this).setIcon(android.R.drawable.ic_dialog_alert).setTitle("Log Out")
-                        .setMessage("Are you sure, you want to logout?")
-                        .setPositiveButton("yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Intent it = new Intent(Home.this, LogIn.class);
-                                startActivity(it);
-                                *//* dealer_logout();*//*
-                                SharedPref.saveBooleanInSharedPref(AppConstants.IS_LOGGED_IN, false, getApplicationContext());
-                            }
-
-                        }).setNegativeButton("no", null).show();
-
-
-
-            }
-
-        });
-*/
 
         getNotificationClickData();
 
@@ -210,8 +201,88 @@ public class Home extends AppCompatActivity {
                     Log.d(TAG, msg);
                     /*  Toast.makeText(SplashActivity.this, msg, Toast.LENGTH_SHORT).show();*/
                 });
-    }
 
+        View headerView = nav.inflateHeaderView(R.layout.menuui_dealer);
+        mWebVw = headerView.findViewById(R.id.webVw);
+        mTxtUserName = headerView.findViewById(R.id.txtUserName);
+        mImgShare = headerView.findViewById(R.id.imgShare);
+        mImgScanner = (ImageView) findViewById(R.id.imgScanner);
+        mImgScanner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mImgScanner.setVisibility(View.GONE);
+                getSupportFragmentManager().beginTransaction().replace(R.id.frameContainer, new Broker_QR_Code_Fragment()).commit();
+            }
+        });
+        generateQRCode();
+        broker_profile_details();
+        mImgShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                URL url = null;
+                try {
+                    url = new URL("https://filesamples.com/samples/document/pdf/sample2.pdf");
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(String.valueOf(url))));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+              /*  Bitmap b = BitmapFactory.decodeResource(getResources(),R.drawable.scanone);
+                Intent share = new Intent(Intent.ACTION_SEND);
+                share.setType("image/jpeg");
+                ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+                b.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+                String path = MediaStore.Images.Media.insertImage(getContentResolver(), b, "Title", null);
+                Uri imageUri =  Uri.parse(path);
+                share.putExtra(Intent.EXTRA_STREAM, imageUri);
+                startActivity(Intent.createChooser(share, "Select"));*/
+            }
+        });
+
+    }
+    public void openDrawer(Activity mActivityName){
+        drawerLayout = (DrawerLayout) mActivityName.findViewById(R.id.drwer);
+        drawerLayout.openDrawer(GravityCompat.START);
+    }
+    @SuppressLint("SetJavaScriptEnabled")
+    private void generateQRCode() {
+        String mUserCode = SharedPref.getStringFromSharedPref(AppConstants.USER_CODE, getApplicationContext());
+        String wedData = "https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=https://gopikmoney.com/public/QRScan?source_id=" + mUserCode + "&chco=000000";
+        mWebVw.setWebViewClient(new MyBrowser());
+        mWebVw.getSettings().setLoadsImagesAutomatically(true);
+        mWebVw.getSettings().setJavaScriptEnabled(true);
+        mWebVw.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+        mWebVw.loadUrl(wedData);
+    }
+    private static class MyBrowser extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            view.loadUrl(url);
+            return true;
+        }
+    }
+    private void broker_profile_details() {
+        Broker_profile_details_POJO pojo = new Broker_profile_details_POJO(SharedPref.getStringFromSharedPref(AppConstants.PHONENUMBER, getApplicationContext()), SharedPref.getStringFromSharedPref(AppConstants.TOKEN, getApplicationContext()));
+        RestApis restApis = NetworkHandler.getRetrofit().create(RestApis.class);
+        Call<Broker_profile_details_MODEL> call = restApis.broker_profile_details(pojo);
+        call.enqueue(new Callback<Broker_profile_details_MODEL>() {
+            @Override
+            public void onResponse(Call<Broker_profile_details_MODEL> call, Response<Broker_profile_details_MODEL> response) {
+                if (response.body() != null) {
+                    if (response.body().getCode().equals("200")) {
+                        mTxtUserName.setText(response.body().getPayload().getProfile().get(0).getBroker_name());
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Something went wrong!234!", Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+            @Override
+            public void onFailure(Call<Broker_profile_details_MODEL> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "Something went wrong!", Toast.LENGTH_LONG).show();
+            }
+
+        });
+    }
     private void bottomMenu() {
         chipNavigationBar.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
             @Override
