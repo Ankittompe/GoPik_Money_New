@@ -512,6 +512,7 @@ public class Profile_Details_Dealer extends Fragment implements AdapterView.OnIt
 
                     if (response.body().getCode()==200) {
                         name1.setText(response.body().getPayload().getProfile().get(0).getName());
+                        SharedPref.saveStringInSharedPref(AppConstants.DEALER_NAME, response.body().getPayload().getProfile().get(0).getName(), getContext());
                         SharedPref.saveStringInSharedPref(AppConstants.USER_CODE, response.body().getPayload().getProfile().get(0).getUser_code(), getContext());
                         if ((response.body().getPayload().getProfile().get(0).getGst_no().equals("NA"))) {
                             custPrograssbar.closePrograssBar();

@@ -17,6 +17,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SubMenu;
@@ -35,6 +36,7 @@ import com.google.gson.Gson;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 import com.qts.gopik_loan.Dealer_Activity.MainActivity;
 import com.qts.gopik_loan.Dealer_Fragment.Dealer_QR_Code_Fragment;
+import com.qts.gopik_loan.Dealer_Fragment.Home_Dealer_Fragment;
 import com.qts.gopik_loan.Fragment.Contest;
 import com.qts.gopik_loan.Fragment.Broker_QR_Code_Fragment;
 import com.qts.gopik_loan.Fragment.HomeFragment;
@@ -221,7 +223,8 @@ public class Home extends AppCompatActivity {
             public void onClick(View view) {
                 URL url = null;
                 try {
-                    url = new URL("https://filesamples.com/samples/document/pdf/sample2.pdf");
+                 /*   url = new URL("https://filesamples.com/samples/document/pdf/sample2.pdf");*/
+                    url = new URL("https://gopikmoney.com/public/getPDFlink?user_id="+SharedPref.getStringFromSharedPref(AppConstants.USER_CODE, getApplicationContext()));
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(String.valueOf(url))));
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -416,7 +419,15 @@ public class Home extends AppCompatActivity {
         }
         SharedPref.saveStringInSharedPref(AppConstants.NOTIFICATION_TYPE, "10", getApplicationContext());  // 10 for no notification
     }
-
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK)
+            Toast.makeText(getApplicationContext(), "App restricts,back button not allowed on this screen!!", Toast.LENGTH_LONG).show();
+        mImgScanner.setVisibility(View.VISIBLE);
+        getSupportFragmentManager().beginTransaction().replace(R.id.frameContainer, new HomeFragment()).commit();
+        return false;
+        // Disable back button..............
+    }
 }
 
 

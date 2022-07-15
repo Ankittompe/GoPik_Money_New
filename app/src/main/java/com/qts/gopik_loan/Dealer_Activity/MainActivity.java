@@ -41,6 +41,7 @@ import com.qts.gopik_loan.Activity.LogIn;
 import com.qts.gopik_loan.Activity.SharedPref;
 import com.qts.gopik_loan.Dealer_Fragment.Dealer_Profile_Fragment;
 import com.qts.gopik_loan.Dealer_Fragment.Dealer_QR_Code_Fragment;
+import com.qts.gopik_loan.Dealer_Fragment.My_Mall_Fragment;
 import com.qts.gopik_loan.Dealer_Fragment.Tab_Fragment_Dealer;
 import com.qts.gopik_loan.Fragment.HomeFragment;
 import com.qts.gopik_loan.Dealer_Fragment.Home_Dealer_Fragment;
@@ -210,7 +211,9 @@ public class MainActivity extends AppCompatActivity {
                 mImgScanner.setVisibility(View.GONE);
                 getSupportFragmentManager().beginTransaction().replace(R.id.frameContainer_dealer, new Dealer_QR_Code_Fragment()).commit();
             }
-        });
+        });      /*  mImgScanner.setVisibility(View.VISIBLE);
+        getSupportFragmentManager().beginTransaction().replace(R.id.frameContainer_dealer, new Home_Dealer_Fragment()).commit();
+        */
         generateQRCode();
         profile_details();
         mImgShare.setOnClickListener(new View.OnClickListener() {
@@ -218,7 +221,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 URL url = null;
                 try {
-                    url = new URL("https://filesamples.com/samples/document/pdf/sample2.pdf");
+                 /*   url = new URL("https://filesamples.com/samples/document/pdf/sample2.pdf");*/
+                    url = new URL("https://gopikmoney.com/public/getPDFlink?user_id="+SharedPref.getStringFromSharedPref(AppConstants.USER_CODE, getApplicationContext()));
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(String.valueOf(url))));
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -302,6 +306,10 @@ public class MainActivity extends AppCompatActivity {
                         Log.e("HomeClass", "Inside profile");
                         fragment = new Tab_Fragment_Dealer();
                         break;
+                    case R.id.mymall:
+                        Log.e("HomeClass", "Inside profile");
+                        fragment = new My_Mall_Fragment();
+                        break;
                     case R.id.contest_dealer:
                         Log.e("HomeClass", "Inside profile");
                         fragment = new Dealer_Contest_Fragment();
@@ -341,16 +349,20 @@ public class MainActivity extends AppCompatActivity {
                 loadFragment(new Dealer_ApplicationList_Fragment());
 
             }
+            else if (getIntent().getStringExtra(AppConstants.ACTFRAG_TYPE_KEY).equals(AppConstants.MY_MALL_DEALER_FRAG)) {
+                loadFragment(new My_Mall_Fragment());
+
+            }
 
 
         }
     }
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if(keyCode== KeyEvent.KEYCODE_BACK)
-            Toast.makeText(getApplicationContext(), "App restricts,back button not allowed on this screen!!",
-                    Toast.LENGTH_LONG).show();
-
+        if (keyCode == KeyEvent.KEYCODE_BACK)
+            Toast.makeText(getApplicationContext(), "App restricts,back button not allowed on this screen!!", Toast.LENGTH_LONG).show();
+        mImgScanner.setVisibility(View.VISIBLE);
+        getSupportFragmentManager().beginTransaction().replace(R.id.frameContainer_dealer, new Home_Dealer_Fragment()).commit();
         return false;
         // Disable back button..............
     }
@@ -413,7 +425,7 @@ public class MainActivity extends AppCompatActivity {
 //            chipNavigationBar.setItemSelected(R.id.not_dealer, true);
             getSupportFragmentManager().beginTransaction().replace(R.id.frameContainer_dealer, new Dealer_QR_Code_Fragment()).commit();
         } else if (mNotifyData.equals("1")) {
-//            chipNavigationBar.setItemSelected(R.id.not_dealer,true);
+            getSupportFragmentManager().beginTransaction().replace(R.id.frameContainer_dealer, new My_Mall_Fragment()).commit();
         }
         SharedPref.saveStringInSharedPref(AppConstants.NOTIFICATION_TYPE, "10", getApplicationContext());  // 10 for no notification
     }
