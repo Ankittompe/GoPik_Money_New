@@ -195,7 +195,8 @@ public interface AppConstants {
     String IMAGE_UPLOAD_SUPPLYCHAIN ="imageuploadsupplychain" ;
     String MODIFYQUANTITY_PO = "modifypo";
     String MODIFYTOTALPRICE_PO ="modifypricepo";
-    String ML_LOAN_IMAGE ="mlloanimg" ;
+    String DEALER_NAME = "dn";
+ /*   String ML_LOAN_IMAGE ="mlloanimg" ;
 
     String ML_LOAN_IMAGE2 ="mlloanimg2" ;
     String SUPPLY_CHAIN_PDF_FILE = "supplypdf";
@@ -211,5 +212,5 @@ public interface AppConstants {
     String PO_FINANCER_UPLOADIMAGE ="oo" ;
     String IMAGE_UPLOAD_SUPPLYCHAIN ="imageuploadsupplychain" ;
     String MODIFYQUANTITY_PO = "modifypo";
-    String MODIFYTOTALPRICE_PO ="modifypricepo";
+    String MODIFYTOTALPRICE_PO ="modifypricepo";*/
 }

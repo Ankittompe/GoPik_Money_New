@@ -45,6 +45,7 @@ public class LoanStatus extends AppCompatActivity {
     ArrayList<String> loan_id = new ArrayList<>();
     ArrayList<String> disb_date = new ArrayList<>();
     ImageView arrow,hometoolbar;
+    String rupee_symbol = "₹";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

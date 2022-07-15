@@ -2,6 +2,7 @@ package com.qts.gopik_loan.Supplychain_Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,13 +60,15 @@ public class LoanStatusAdapter extends RecyclerView.Adapter<LoanStatusAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         //Used for Comma
-        /*String number1 = disb_amount.get(position);
+
+        String number1 = disb_amount.get(position);
         double amount = Double.parseDouble(number1);
         DecimalFormat formatter = new DecimalFormat("##,##,###");
-        String formatted = formatter.format(amount);*/
+        String formatted = formatter.format(amount);
+
 
         holder.po_id_tv.setText(po_id.get(position));
-        holder.disb_amount_tv.setText("₹"+" "+disb_amount.get(position));
+        holder.disb_amount_tv.setText("₹"+formatted);
         holder.disb_date_tv.setText(disb_date.get(position));
         holder.date_of_closer_tv.setText(date_of_closer.get(position));
         holder.loan_id_tv.setText(loan_id.get(position));

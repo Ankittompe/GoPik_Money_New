@@ -28,6 +28,7 @@ import com.qts.gopik_loan.Supplychain_Adapter.PoDetails_Approve_OEM_Adapter;
 import com.qts.gopik_loan.Supplychain_Adapter.PoDetails_Rejected_OEM_Adapter;
 import com.qts.gopik_loan.Utils.CustPrograssbar;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -152,7 +153,16 @@ public class Po_Rejected_OEM_Activity extends AppCompatActivity {
                                 et_dealer_name.setText(response.body().getPayload().get(i).getDealer_name());
                                 et_status.setText(response.body().getPayload().get(i).getStatus());
                                 et_total_qty.setText(String.valueOf(temp));
-                                et_total_price.setText(rupee_symbol+response.body().getPayload().get(i).getTotal_price());
+
+                                String number2 = response.body().getPayload().get(i).getTotal_price();
+                                Log.e("number1","number1--->>"+number2);
+                                double amount2 = Double.parseDouble(number2);
+                                Log.e("amount","amount--->>"+amount2);
+                                DecimalFormat formatter2 = new DecimalFormat("##,##,###");
+                                Log.e("formatter","formatter--->>"+formatter2);
+                                String formatted2 = formatter2.format(amount2);
+                                Log.e("formatted","formatted--->>"+formatted2);
+                                et_total_price.setText(rupee_symbol+formatted2);
 
                                 if (response.body().getPayload().size() - 1 == i) {
                                     LinearLayoutManager layoutManager = new LinearLayoutManager(

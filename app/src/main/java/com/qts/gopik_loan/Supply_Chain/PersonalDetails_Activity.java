@@ -534,9 +534,10 @@ public class PersonalDetails_Activity extends AppCompatActivity {
         return "";
     }
     private void DealerSelfieDoc() {
+        Log.e("Method_Call","calling--->");
         String musercode = "47436";
         RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), SharedPref.getStringFromSharedPref(AppConstants.USER_CODE,getApplicationContext()));
-
+        Log.e("Method_Call","calling--->2");
         File idFile = new File(SharedPref.getStringFromSharedPref(AppConstants.ML_LOAN_IMAGE, getApplicationContext()));
         Log.e("testingggg", "testingggg99999" + idFile);
         RequestBody mFile1;
@@ -545,12 +546,16 @@ public class PersonalDetails_Activity extends AppCompatActivity {
         vechileDocUpload2 = MultipartBody.Part.createFormData("selfie", idFile.getName(), mFile1);
         Log.e("testingggg", "testingggg10000" + vechileDocUpload2);
         RestApis restApis = NetworkHandler.getRetrofit().create(RestApis.class);
+        Log.e("testingggg", "network-->>");
         Call<DealerSelfieDoc_MODEL> call = restApis.DealerSelfieDoc(user_code, vechileDocUpload2);
+        Log.e("testingggg", "Call_network-->>");
         call.enqueue(new Callback<DealerSelfieDoc_MODEL>() {
+
             @Override
             public void onResponse(Call<DealerSelfieDoc_MODEL> call, Response<DealerSelfieDoc_MODEL> response) {
+                Log.e("testingggg", "Response-->>");
                 if (response.body() != null) {
-                    custPrograssbar.closePrograssBar();
+
                     Log.e("testingggg", "success_pan");
                     custPrograssbar.closePrograssBar();
                     selfie_upld_sucss.setVisibility(View.VISIBLE);
@@ -570,6 +575,7 @@ public class PersonalDetails_Activity extends AppCompatActivity {
             public void onFailure(Call<DealerSelfieDoc_MODEL> call, Throwable t) {
 
                 Toast.makeText(getApplicationContext(), "Something went wrong!!!", Toast.LENGTH_LONG).show();
+                Log.e("Amit","Fail--->>"+t);
             }
 
         });
@@ -588,10 +594,15 @@ public class PersonalDetails_Activity extends AppCompatActivity {
         vechileDocUpload2 = MultipartBody.Part.createFormData("adharimage", idFile.getName(), mFile1);
         Log.e("testingggg", "testingggg10000" + vechileDocUpload2);
         RestApis restApis = NetworkHandler.getRetrofit().create(RestApis.class);
+        Log.e("testingggg", "network-->>");
         Call<DealerAadharFrontDoc_MODEL> call = restApis.DealerAadharFrontDoc(user_code, vechileDocUpload2);
+        Log.e("testingggg", "Call_network-->>");
+
         call.enqueue(new Callback<DealerAadharFrontDoc_MODEL>() {
+
             @Override
             public void onResponse(Call<DealerAadharFrontDoc_MODEL> call, Response<DealerAadharFrontDoc_MODEL> response) {
+                Log.e("testingggg", "responseCalll-->>");
                 if (response.body() != null) {
                     custPrograssbar.closePrograssBar();
                     Log.e("testingggg", "success_pan");
@@ -614,6 +625,7 @@ public class PersonalDetails_Activity extends AppCompatActivity {
 
 
                 Toast.makeText(getApplicationContext(), "Something went wrong!!!", Toast.LENGTH_LONG).show();
+                Log.e("Amit","Fail--->>");
             }
 
         });

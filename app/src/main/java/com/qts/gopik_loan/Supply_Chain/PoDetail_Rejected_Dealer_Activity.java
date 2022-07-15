@@ -25,6 +25,7 @@ import com.qts.gopik_loan.Retro.RestApis;
 import com.qts.gopik_loan.Supplychain_Adapter.PoDetail_Approve_Dealer_Adapter;
 import com.qts.gopik_loan.Utils.CustPrograssbar;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -153,7 +154,15 @@ public class PoDetail_Rejected_Dealer_Activity extends AppCompatActivity {
                                 et_status.setText(response.body().getPayload().get(i).getStatus());
                                 if(response.body().getPayload().get(i).getUpdate_price().equals("NA")){
                                     et_total_qty.setText(String.valueOf(temp));
-                                    et_total_price.setText(rupee_symbol+response.body().getPayload().get(i).getTotal_price());
+                                    String number1 =response.body().getPayload().get(i).getTotal_price();
+                                    Log.e("number1","number1--->>"+number1);
+                                    double amount = Double.parseDouble(number1);
+                                    Log.e("amount","amount--->>"+amount);
+                                    DecimalFormat formatter = new DecimalFormat("##,##,###");
+                                    Log.e("formatter","formatter--->>"+formatter);
+                                    String formatted = formatter.format(amount);
+                                    Log.e("formatted","formatted--->>"+formatted);
+                                    et_total_price.setText(rupee_symbol +formatted);
                                 }
 
                                 else{
@@ -163,7 +172,16 @@ public class PoDetail_Rejected_Dealer_Activity extends AppCompatActivity {
                                     tempmodifypricee=tempmodifyprice+Integer.valueOf(response.body().getPayload().get(i).getUpdate_totl_prc());
                                     tempmodifyprice=tempmodifypricee;
                                     et_total_qty.setText(String.valueOf(tempmod));
-                                    et_total_price.setText(rupee_symbol+String.valueOf(tempmodifyprice));
+
+                                    String number2 = String.valueOf(tempmodifyprice);
+                                    Log.e("number1","number1--->>"+number2);
+                                    double amount2 = Double.parseDouble(number2);
+                                    Log.e("amount","amount--->>"+amount2);
+                                    DecimalFormat formatter2 = new DecimalFormat("##,##,###");
+                                    Log.e("formatter","formatter--->>"+formatter2);
+                                    String formatted2 = formatter2.format(amount2);
+                                    Log.e("formatted","formatted--->>"+formatted2);
+                                    et_total_price.setText(rupee_symbol+formatted2);
 
 
                                 }

@@ -32,6 +32,7 @@ import com.qts.gopik_loan.Supplychain_Adapter.PoDetails_Approve_OEM_Adapter;
 import com.qts.gopik_loan.Supplychain_Adapter.PoRequest_Adapter;
 import com.qts.gopik_loan.Utils.CustPrograssbar;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -236,10 +237,26 @@ public class PO_Get_Modified_List extends AppCompatActivity {
                                 et_total_qty.setText(String.valueOf(temp));
                                 et_total_qty2.setText(String.valueOf(tempmod));
                                 SharedPref.saveStringInSharedPref(AppConstants.MODIFYQUANTITY_PO,String.valueOf(tempmod),getApplicationContext());
-                                et_total_price.setText(rupee_symbol+response.body().getPayload().get(i).getTotal_price());
+                                String number1 = response.body().getPayload().get(i).getTotal_price();
+                                Log.e("number1","number1--->>"+number1);
+                                double amount = Double.parseDouble(number1);
+                                Log.e("amount","amount--->>"+amount);
+                                DecimalFormat formatter = new DecimalFormat("##,##,###");
+                                Log.e("formatter","formatter--->>"+formatter);
+                                String formatted = formatter.format(amount);
+                                Log.e("formatted","formatted--->>"+formatted);
+                                et_total_price.setText(rupee_symbol+formatted);
                                 Serial_number.add(counter++);
 
-                                modified_total_price.setText(rupee_symbol+String.valueOf(tempmodifyprice));
+                                String number2 = String.valueOf(tempmodifyprice);
+                                Log.e("number1","number1--->>"+number2);
+                                double amount2 = Double.parseDouble(number2);
+                                Log.e("amount","amount--->>"+amount2);
+                                DecimalFormat formatter2 = new DecimalFormat("##,##,###");
+                                Log.e("formatter","formatter--->>"+formatter);
+                                String formatted2 = formatter2.format(amount2);
+                                Log.e("formatted","formatted--->>"+formatted);
+                                modified_total_price.setText(rupee_symbol+formatted2);
                                 SharedPref.saveStringInSharedPref(AppConstants.MODIFYTOTALPRICE_PO,String.valueOf(tempmodifyprice),getApplicationContext());
 
                                 if (response.body().getPayload().size() - 1 == i) {

@@ -22,6 +22,7 @@ import com.qts.gopik_loan.Pojo.Dealer_Subuser_edit_POJO;
 import com.qts.gopik_loan.Pojo.Dealer_Subuser_fetch_POJO;
 import com.qts.gopik_loan.Pojo.Dealer_Subuser_insert_POJO;
 import com.qts.gopik_loan.Pojo.Dealer_bank_update_POJO;
+import com.qts.gopik_loan.Pojo.Dealer_doc_confirm_POJO;
 import com.qts.gopik_loan.Pojo.Dealer_logoutPOJO;
 import com.qts.gopik_loan.Pojo.Draftview_POJO;
 import com.qts.gopik_loan.Pojo.Fetch_application_list_POJO;
@@ -589,7 +590,7 @@ public interface RestApis {
     Call<DealerAdharBackDoc_MODEL> DealerAdharBackDoc(@Part("user_code") RequestBody user_code,
                                                           @Part MultipartBody.Part adharimage);
 //
-    @Multipart
+  /*  @Multipart
     @POST("DealerPanDoc")
     Call<DealerPanDoc_MODEL>DealerPanDoc(@Part("user_code") RequestBody user_code,
                                                       @Part MultipartBody.Part panimage);
@@ -633,8 +634,8 @@ public interface RestApis {
     @Multipart
     @POST("DealerGSTDoc")
     Call<DealerGSTDoc_MODEL> DealerGSTDoc(@Part("user_code") RequestBody user_code,
-                                          @Part MultipartBody.Part GST);
-    @POST("po_all_details")
+                                          @Part MultipartBody.Part GST);*/
+ /*   @POST("po_all_details")
     Call<Po_all_details_MODEL> po_all_details(@Body Po_all_details_POJO data);
 
     @POST("update_po_status")
@@ -667,7 +668,7 @@ public interface RestApis {
     @Multipart
     @POST("DealerAdharBackDoc")
     Call<DealerAdharBackDoc_MODEL> DealerAdharBackDoc(@Part("user_code") RequestBody user_code,
-                                                          @Part MultipartBody.Part adharimage);
+                                                          @Part MultipartBody.Part adharimage);*/
 //
     @Multipart
     @POST("DealerPanDoc")

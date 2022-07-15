@@ -203,9 +203,7 @@ public class PO_TOP_FIVE_Activity extends AppCompatActivity {
                     no_po_tv.setVisibility(View.VISIBLE);
                 }
 
-
             }
-
 
             @Override
             public void onFailure(Call<top_five_POs_MODEL> call, Throwable t) {

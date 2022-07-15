@@ -171,7 +171,7 @@ public class TermsCondition_DEALER_Activity extends AppCompatActivity {
                             SharedPref.saveStringInSharedPref(AppConstants.STATUS, response.body().getPayload().get(i).getCust_tc_response(), getApplicationContext());
                             Log.e("huiheuir", "hvfueisg" + SharedPref.getStringFromSharedPref(AppConstants.STATUS, getApplicationContext()));
                             if (SharedPref.getStringFromSharedPref(AppConstants.STATUS, getApplicationContext()).equals("Accept")) {
-                                Intent it = new Intent(TermsCondition_DEALER_Activity.this, Aadhar_Name_Number_Activity.class);
+                                Intent it = new Intent(TermsCondition_DEALER_Activity.this, Voter_ID_CARD_Details.class);
                                 startActivity(it);
                             } else if (SharedPref.getStringFromSharedPref(AppConstants.STATUS, getApplicationContext()).equals("Decline")) {
                                 wait.setText("Declined"+ System.getProperty("line.separator") +

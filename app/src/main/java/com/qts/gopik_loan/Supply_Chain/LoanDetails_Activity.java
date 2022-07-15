@@ -32,6 +32,7 @@ import com.qts.gopik_loan.Supplychain_Adapter.LoanStatusAdapter;
 import com.qts.gopik_loan.Supplychain_Adapter.PoDetail_Approve_Dealer_Adapter;
 import com.qts.gopik_loan.Utils.CustPrograssbar;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -52,6 +53,7 @@ public class LoanDetails_Activity extends AppCompatActivity {
     RecyclerView product_recyclerview;
     TextView et_total_qty,et_total_price,ok_button;
     ImageView arrow,hometoolbar;
+    String rupee_symbol = "₹";
     ArrayList<String> id = new ArrayList<>();
     ArrayList<String> po_id = new ArrayList<>();
     ArrayList<String> date = new ArrayList<>();
@@ -128,7 +130,20 @@ public class LoanDetails_Activity extends AppCompatActivity {
                     if (response.body().getCode()==200) {
                         po_id_tv.setText(response.body().getPo_id());
                         loan_id_tv.setText(response.body().getLoan_id());
-                        disb_amount_tv.setText("₹"+response.body().getDisbursal_amount());
+                        if (response.body().getDisbursal_amount().equals("NA")){
+                            disb_amount_tv.setText("₹"+response.body().getDisbursal_amount());
+                        }else{
+                            String number1 = response.body().getDisbursal_amount();
+                            Log.e("number1","number1--->>"+number1);
+                            double amount = Double.parseDouble(number1);
+                            Log.e("amount","amount--->>"+amount);
+                            DecimalFormat formatter = new DecimalFormat("##,##,###");
+                            Log.e("formatter","formatter--->>"+formatter);
+                            String formatted = formatter.format(amount);
+                            Log.e("formatted","formatted--->>"+formatted);
+                            disb_amount_tv.setText("₹"+formatted);
+                        }
+
 
                         disb_date_tv.setText(response.body().getDate_of_disbursal());
                         date_of_closer_tv.setText(response.body().getDate_of_closure());
@@ -165,7 +180,15 @@ public class LoanDetails_Activity extends AppCompatActivity {
 
                                 if(response.body().getPayload().get(i).getUpdate_price().equals("NA")){
                                     et_total_qty.setText(String.valueOf(temp));
-                                    et_total_price.setText(response.body().getPayload().get(i).getTotal_price());
+                                    String number1 = response.body().getPayload().get(i).getTotal_price();
+                                    Log.e("number1","number1--->>"+number1);
+                                    double amount = Double.parseDouble(number1);
+                                    Log.e("amount","amount--->>"+amount);
+                                    DecimalFormat formatter = new DecimalFormat("##,##,###");
+                                    Log.e("formatter","formatter--->>"+formatter);
+                                    String formatted = formatter.format(amount);
+                                    Log.e("formatted","formatted--->>"+formatted);
+                                    et_total_price.setText(rupee_symbol+formatted);
                                 }
 
                                 else{
@@ -176,7 +199,16 @@ public class LoanDetails_Activity extends AppCompatActivity {
                                     tempmodifyprice=tempmodifypricee;
 
                                     et_total_qty.setText(String.valueOf(tempmod));
-                                    et_total_price.setText(String.valueOf(tempmodifyprice));
+
+                                    String number1 = String.valueOf(tempmodifyprice);
+                                    Log.e("number1","number1--->>"+number1);
+                                    double amount = Double.parseDouble(number1);
+                                    Log.e("amount","amount--->>"+amount);
+                                    DecimalFormat formatter = new DecimalFormat("##,##,###");
+                                    Log.e("formatter","formatter--->>"+formatter);
+                                    String formatted = formatter.format(amount);
+                                    Log.e("formatted","formatted--->>"+formatted);
+                                    et_total_price.setText(rupee_symbol+formatted);
 
 
                                 }

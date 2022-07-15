@@ -42,12 +42,12 @@ public class Aadhar_Name_Number_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-       GoatAadharvalidation();
+     //  GoatAadharvalidation();
             }
         });
     }
 
-    private void GoatAadharvalidation() {
+    /*private void GoatAadharvalidation() {
         GoatAadharvalidation_POJO pojo = new GoatAadharvalidation_POJO(aadharname.getText().toString(),numberaadhar.getText().toString() );
         RestApis restApis = NetworkHandler.getRetrofit().create(RestApis.class);
         Call<GoatAdharvalidationResponseDTO> call = restApis.GoatAadharvalidation(pojo);
@@ -77,5 +77,5 @@ public class Aadhar_Name_Number_Activity extends AppCompatActivity {
             }
 
         });
-    }
+    }*/
 }

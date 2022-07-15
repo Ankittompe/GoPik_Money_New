@@ -41,6 +41,7 @@ import com.qts.gopik_loan.Retro.RestApis;
 import com.qts.gopik_loan.Supplychain_Adapter.Po_Get_List_Adapter;
 import com.qts.gopik_loan.Utils.CustPrograssbar;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -389,10 +390,19 @@ public class PO_Generate_Form_activity extends AppCompatActivity implements Adap
 
         }
         Log.e("mTotalPrice *************", String.valueOf(mTotalPrice));
-        mBtnTotalPrice.setText("Estimated Price :- "+"₹"+ mTotalPrice);
+        String number1 = String.valueOf(mTotalPrice);
+        Log.e("number1","number1--->>"+number1);
+        double amount = Double.parseDouble(number1);
+        Log.e("amount","amount--->>"+amount);
+        DecimalFormat formatter = new DecimalFormat("##,##,###");
+        Log.e("formatter","formatter--->>"+formatter);
+        String formatted = formatter.format(amount);
+        Log.e("formatted","formatted--->>"+formatted);
+        mBtnTotalPrice.setText("Estimated Price :- "+"₹"+ formatted);
         Po_add_POJO pojo = new Po_add_POJO(
                 SharedPref.getStringFromSharedPref(AppConstants.USER_CODE,getApplicationContext())
-                , "sai", SharedPref.getStringFromSharedPref(AppConstants.BRAND,getApplicationContext()),
+                , SharedPref.getStringFromSharedPref(AppConstants.DEALER_NAME,getApplicationContext()),
+                SharedPref.getStringFromSharedPref(AppConstants.BRAND,getApplicationContext()),
                 format, mSelectedProductArrayList, String.valueOf(mTotalPrice));
         SharedPref.getStringFromSharedPref(AppConstants.USER_CODE, getApplicationContext());
 

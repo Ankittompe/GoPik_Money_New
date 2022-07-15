@@ -31,7 +31,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".View_Invoice_Activity"
+            android:name=".Supply_Chain.View_Invoice_Activity"
             android:exported="false" />
         <activity
             android:name=".Supply_Chain.LoanDetails_Activity"
@@ -109,8 +109,8 @@
             android:exported="true">
 
         </activity>
-        <activity
-            android:name=".View_Invoice_Activity"
+     <!--   <activity
+            android:name=".Supply_Chain.View_Invoice_Activity"
             android:exported="false" />
         <activity
             android:name=".Supply_Chain.LoanDetails_Activity"
@@ -171,7 +171,7 @@
             android:exported="false" />
         <activity
             android:name=".Supply_Chain.Image_Upload_SupplyChain"
-            android:exported="false" />
+            android:exported="false" />-->
         <activity
             android:name=".Dealer_Activity.Resend_OTP_CAP_Otp_DEALER_Verify"
             android:exported="false" />

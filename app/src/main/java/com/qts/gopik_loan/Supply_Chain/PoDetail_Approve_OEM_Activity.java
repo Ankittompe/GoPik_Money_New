@@ -33,6 +33,7 @@ import com.qts.gopik_loan.Retro.RestApis;
 import com.qts.gopik_loan.Supplychain_Adapter.PoDetails_Approve_OEM_Adapter;
 import com.qts.gopik_loan.Utils.CustPrograssbar;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -69,6 +70,10 @@ public class PoDetail_Approve_OEM_Activity extends AppCompatActivity {
     Integer tempp=0;
     ImageView arrow, hometoolbar,invoice;
     String rupee_symbol = "₹";
+    Integer tempmod=0;
+    Integer tempmodd=0;
+    Integer tempmodifyprice=0;
+    Integer tempmodifypricee=0;
     TextView view;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -213,16 +218,58 @@ public class PoDetail_Approve_OEM_Activity extends AppCompatActivity {
                                 et_dealer_name.setText(response.body().getPayload().get(i).getDealer_name());
                                 et_status.setText(response.body().getPayload().get(i).getStatus());
                                 et_total_qty.setText(String.valueOf(temp));
-                                et_total_price.setText(rupee_symbol+response.body().getPayload().get(i).getTotal_price());
-                               image=response.body().getImage();
 
+
+                                String number2 = response.body().getPayload().get(i).getTotal_price();
+                                Log.e("number1","number1--->>"+number2);
+                                double amount2 = Double.parseDouble(number2);
+                                Log.e("amount","amount--->>"+amount2);
+                                DecimalFormat formatter2 = new DecimalFormat("##,##,###");
+                                Log.e("formatter","formatter--->>"+formatter2);
+                                String formatted2 = formatter2.format(amount2);
+                                Log.e("formatted","formatted--->>"+formatted2);
+                                et_total_price.setText(rupee_symbol+formatted2);
+                                image=response.body().getImage();
+                                tempp = temp + Integer.valueOf(response.body().getPayload().get(i).getProdt_quantity());
+                                temp = tempp;
 
 
                                Log.e("Body", "body3"+image);
                                 Glide.with(getApplicationContext())
                                         .load(image)
                                         .into(invoice);
+                                if(response.body().getPayload().get(i).getUpdate_price().equals("NA")){
+                                    et_total_qty.setText(String.valueOf(temp));
+                                    String number1 =response.body().getPayload().get(i).getTotal_price();
+                                    Log.e("number1","number1--->>"+number1);
+                                    double amount = Double.parseDouble(number1);
+                                    Log.e("amount","amount--->>"+amount);
+                                    DecimalFormat formatter = new DecimalFormat("##,##,###");
+                                    Log.e("formatter","formatter--->>"+formatter);
+                                    String formatted = formatter.format(amount);
+                                    Log.e("formatted","formatted--->>"+formatted);
+                                    et_total_price.setText(rupee_symbol +formatted);
+                                }
 
+                                else{
+                                    tempmodd=tempmod+Integer.valueOf(response.body().getPayload().get(i).getUpdate_quantity());
+                                    tempmod=tempmodd;
+
+                                    tempmodifypricee=tempmodifyprice+Integer.valueOf(response.body().getPayload().get(i).getUpdate_totl_prc());
+                                    tempmodifyprice=tempmodifypricee;
+                                    et_total_qty.setText(String.valueOf(tempmod));
+                                    String number1 = String.valueOf(tempmodifyprice);
+                                    Log.e("number1","number1--->>"+number1);
+                                    double amount = Double.parseDouble(number1);
+                                    Log.e("amount","amount--->>"+amount);
+                                    DecimalFormat formatter = new DecimalFormat("##,##,###");
+                                    Log.e("formatter","formatter--->>"+formatter);
+                                    String formatted = formatter.format(amount);
+                                    Log.e("formatted","formatted--->>"+formatted);
+                                    et_total_price.setText(rupee_symbol+formatted);
+
+
+                                }
                                 if (response.body().getPayload().size() - 1 == i) {
                                     LinearLayoutManager layoutManager = new LinearLayoutManager(
                                             PoDetail_Approve_OEM_Activity.this, LinearLayoutManager.VERTICAL, false
