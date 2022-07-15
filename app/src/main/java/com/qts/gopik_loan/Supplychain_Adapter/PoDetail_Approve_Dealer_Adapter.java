@@ -86,8 +86,12 @@ public class PoDetail_Approve_Dealer_Adapter  extends RecyclerView.Adapter<PoDet
     @Override
     public void onBindViewHolder(@NonNull PoDetail_Approve_Dealer_Adapter.ViewHolder holder, int position) {
         holder.et_product.setText(product.get(position));
-        holder.et_product_qty.setText(prodt_quantity.get(position));
-        holder.et_product_price.setText(prodt_price.get(position));
+        if(update_price.get(position).equals("NA")) {
+            holder.et_product_qty.setText(prodt_quantity.get(position));
+        }
+        else{
+            holder.et_product_qty.setText(update_quantity.get(position));
+        }
      /*   holder.et_id.setText(id.get(position));
         holder.et_po_id.setText(po_id.get(position));
         holder.et_date.setText(date.get(position));
@@ -120,7 +124,7 @@ public class PoDetail_Approve_Dealer_Adapter  extends RecyclerView.Adapter<PoDet
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView id, po_id, date, brand, dealer_id, dealer_name,
-                product, product_qty, update_qty, product_price, update_price, total_price, update_total_price, financer, status, et_id, et_po_id, et_date, et_brand, et_dealer_id, et_dealer_name, et_product, et_product_qty, et_update_qty, et_product_price, et_update_price,
+                product, product_qty, update_qty,  update_price, total_price, update_total_price, financer, status, et_id, et_po_id, et_date, et_brand, et_dealer_id, et_dealer_name, et_product, et_product_qty, et_update_qty, et_product_price, et_update_price,
                 et_total_price, et_update_total_price, et_financer, et_status;
         ImageView invoiceFile;
 
@@ -136,7 +140,7 @@ public class PoDetail_Approve_Dealer_Adapter  extends RecyclerView.Adapter<PoDet
             product = itemView.findViewById(R.id.product);
             product_qty = itemView.findViewById(R.id.product_qty);
 
-            product_price = itemView.findViewById(R.id.product_price);
+
 
             total_price = itemView.findViewById(R.id.total_price);
 
@@ -152,7 +156,7 @@ public class PoDetail_Approve_Dealer_Adapter  extends RecyclerView.Adapter<PoDet
             et_product = itemView.findViewById(R.id.tv1);
             et_product_qty = itemView.findViewById(R.id.tv2);
 
-            et_product_price = itemView.findViewById(R.id.tv3);
+
 
             et_total_price = itemView.findViewById(R.id.et_total_price);
 

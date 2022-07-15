@@ -211,7 +211,7 @@ public class Home_Dealer_Fragment extends Fragment implements ToolTipsManager.Ti
             public void onFailure(Call<Category_brand_wise_MODEL> call, Throwable t) {
 
 
-                Toast.makeText(getActivity(), "Something went wrong!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Something went wrong!", Toast.LENGTH_LONG).show();
             }
 
         });

@@ -59,6 +59,7 @@ public class Po_Generate_Approved_By_Financer_Activity extends AppCompatActivity
     PoDetails_Approve_Financer_Adapter poDetails_approve_financer_adapter;
     TextView textView3, reject,et_po_id,et_date,et_dealer_name,et_status,et_total_qty,et_total_price;
     private int GALLERY = 1, CAMERA = 2;
+    public int x = 0, y = 0;
     PickiT pickiT;
     private static final String IMAGE_DIRECTORY = "/financer";
     CustPrograssbar custPrograssbar;
@@ -81,7 +82,11 @@ public class Po_Generate_Approved_By_Financer_Activity extends AppCompatActivity
     ImageView arrow, hometoolbar,upld_receipt_button;
     Integer temp=0;
     Integer tempp=0;
-
+    Integer tempmod=0;
+    Integer tempmodd=0;
+    Integer tempmodifyprice=0;
+    Integer tempmodifypricee=0;
+    String rupee_symbol = "₹";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,6 +100,8 @@ public class Po_Generate_Approved_By_Financer_Activity extends AppCompatActivity
         et_total_qty = (TextView) findViewById(R.id.et_total_qty);
         et_total_price = (TextView) findViewById(R.id.et_total_price);
 
+
+
         pickiT = new PickiT(getApplicationContext(), this, Po_Generate_Approved_By_Financer_Activity.this);
         alldetails_recylerview=(RecyclerView) findViewById(R.id.rclview);
         textView3=(TextView) findViewById(R.id.textView3);
@@ -102,6 +109,21 @@ public class Po_Generate_Approved_By_Financer_Activity extends AppCompatActivity
         arrow=(ImageView) findViewById(R.id.arrow);
         hometoolbar=(ImageView) findViewById(R.id.hometoolbar);
         upld_receipt_button=(ImageView) findViewById(R.id.invoicefile);
+        arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(Po_Generate_Approved_By_Financer_Activity.this,PO_TOP_FIVE_Activity.class);
+                startActivity(in);
+            }
+        });
+        hometoolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(Po_Generate_Approved_By_Financer_Activity.this, MainActivity.class);
+                it.putExtra(AppConstants.ACTFRAG_TYPE_KEY, AppConstants.MY_MALL_DEALER_FRAG);
+                startActivity(it);
+            }
+        });
         upld_receipt_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,8 +133,13 @@ public class Po_Generate_Approved_By_Financer_Activity extends AppCompatActivity
         textView3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                custPrograssbar.prograssCreate(Po_Generate_Approved_By_Financer_Activity.this);
-                podisverslreportupdate();
+                if (!(x==1||y==1)){
+                    Toast.makeText(Po_Generate_Approved_By_Financer_Activity.this, "Please Upload Delivery Order", Toast.LENGTH_SHORT).show();
+                }else{
+                    custPrograssbar.prograssCreate(Po_Generate_Approved_By_Financer_Activity.this);
+                    podisverslreportupdate();
+                }
+
             }
         });
 
@@ -196,6 +223,7 @@ public class Po_Generate_Approved_By_Financer_Activity extends AppCompatActivity
                             MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(),
                                     contentURI);
                     upld_receipt_button.setImageBitmap(bitmap);
+                    x=1;
                     saveImage(bitmap);
 
                 } catch (IOException e) {
@@ -210,9 +238,9 @@ public class Po_Generate_Approved_By_Financer_Activity extends AppCompatActivity
         } else if (requestCode == CAMERA) {
             Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
 
-
             upld_receipt_button.setImageBitmap(thumbnail);
 
+             y=1;
            saveImage(thumbnail);
             //  Toast.makeText(getActivity(), "Image Saved!",Toast.LENGTH_SHORT).show();
         }else {
@@ -317,14 +345,29 @@ public class Po_Generate_Approved_By_Financer_Activity extends AppCompatActivity
                                 invoicefile.add(response.body().getPayload().get(i).getInvoice_file());
                                 tempp = temp + Integer.valueOf(response.body().getPayload().get(i).getProdt_quantity());
                                 temp = tempp;
+
                                 Log.e("Body", "body3"+temp);
                                 et_po_id.setText(response.body().getPayload().get(i).getPo_id());
                                 et_date.setText(response.body().getPayload().get(i).getDate());
                                 et_dealer_name.setText(response.body().getPayload().get(i).getDealer_name());
                                 et_status.setText(response.body().getPayload().get(i).getStatus());
-                                et_total_qty.setText(String.valueOf(temp));
-                                et_total_price.setText(response.body().getPayload().get(i).getTotal_price());
+                                if(response.body().getPayload().get(i).getUpdate_price().equals("NA")){
+                                    et_total_qty.setText(String.valueOf(temp));
+                                    et_total_price.setText(rupee_symbol+response.body().getPayload().get(i).getTotal_price());
+                                }
 
+                                else{
+                                    tempmodd=tempmod+Integer.valueOf(response.body().getPayload().get(i).getUpdate_quantity());
+                                    tempmod=tempmodd;
+
+                                    tempmodifypricee=tempmodifyprice+Integer.valueOf(response.body().getPayload().get(i).getUpdate_totl_prc());
+                                    tempmodifyprice=tempmodifypricee;
+
+                                    et_total_qty.setText(String.valueOf(tempmod));
+                                    et_total_price.setText(rupee_symbol+String.valueOf(tempmodifyprice));
+
+
+                                }
                                 if (response.body().getPayload().size() - 1 == i) {
                                     LinearLayoutManager layoutManager = new LinearLayoutManager(
                                             Po_Generate_Approved_By_Financer_Activity.this, LinearLayoutManager.VERTICAL, false
@@ -415,7 +458,7 @@ public class Po_Generate_Approved_By_Financer_Activity extends AppCompatActivity
             public void onResponse(Call<podisverslreportupdate_MODEL> call, Response<podisverslreportupdate_MODEL> response) {
                 if (response.body() != null) {
                     custPrograssbar.closePrograssBar();
-                    Intent it = new Intent(Po_Generate_Approved_By_Financer_Activity.this, MainActivity.class);
+                    Intent it = new Intent(Po_Generate_Approved_By_Financer_Activity.this, PO_TOP_FIVE_Activity.class);
                     it.putExtra(AppConstants.ACTFRAG_TYPE_KEY, AppConstants.MY_MALL_DEALER_FRAG);
                     startActivity(it);
 

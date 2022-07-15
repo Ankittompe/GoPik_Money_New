@@ -94,7 +94,7 @@ public class PoDetail_Rejected_Dealer_Adapter extends RecyclerView.Adapter<PoDet
         holder.et_dealer_name.setText(dealer_name.get(position));
         holder.et_product.setText(product.get(position));
         holder.et_product_qty.setText(prodt_quantity.get(position));
-        holder.et_product_price.setText(prodt_price.get(position));
+     //   holder.et_product_price.setText(prodt_price.get(position));
         holder.et_total_price.setText(total_price.get(position));
         holder.et_financer.setText(financer.get(position));
         holder.et_status.setText(status.get(position));

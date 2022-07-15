@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.RectF;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.graphics.pdf.PdfDocument;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
@@ -66,6 +67,14 @@ public class BusinessDetails_Activity extends AppCompatActivity implements Picki
     Integer GST_Valid = 0;
     PickiT pickiT;
     String Pdf_Name;
+    Integer upload_business_success = 0;
+    Integer upload_udc_success = 0;
+    Integer upload_agreement_success = 0;
+    Integer upload_escrow_success = 0;
+    Integer upload_gst_success = 0;
+    Integer upload_disb_bank_success = 0;
+
+
     TextView escrow_save_button,disburse_bank_save_button,Gst_save_button,agreement_save_button,save_business,udc_save_button;
 
     ImageView dropup2_business_proof, dropup2_udc, agreement_dropup2, Gst_dropup2, escrow_dropup2, disb_bank_dropup2;
@@ -492,16 +501,31 @@ public class BusinessDetails_Activity extends AppCompatActivity implements Picki
         btsend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(BusinessDetails_Activity.this, "All Documents Submitted Successfully", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(BusinessDetails_Activity.this,TransactionDetails_Activity.class);
-                startActivity(intent);
+
+                if (!(upload_business_success==1)){
+                    Toast.makeText(BusinessDetails_Activity.this, "Please upload a  Business Document!", Toast.LENGTH_SHORT).show();
+                }else if (!(upload_udc_success==1)){
+                    Toast.makeText(BusinessDetails_Activity.this, "Please Upload an UDC Document!", Toast.LENGTH_SHORT).show();
+                } else if (!(upload_agreement_success==1)){
+                    Toast.makeText(BusinessDetails_Activity.this, "Please Upload an Agreement Document!", Toast.LENGTH_SHORT).show();
+                } else if (!(upload_escrow_success==1)){
+                    Toast.makeText(BusinessDetails_Activity.this, "Please Upload an Escrow Document !", Toast.LENGTH_SHORT).show();
+                } else if (!(upload_disb_bank_success==1)){
+                    Toast.makeText(BusinessDetails_Activity.this, "Please Upload a Disbursal bank Document !", Toast.LENGTH_SHORT).show();
+                }else if (!(upload_gst_success==1)){
+                    Toast.makeText(BusinessDetails_Activity.this, "Please Upload a Gst Document !", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(BusinessDetails_Activity.this, "All Documents Submitted Successfully", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(BusinessDetails_Activity.this, TransactionDetails_Activity.class);
+                    startActivity(intent);
+                }
             }
         });
     }
 
     private void DealerESCROWDoc() {
         String musercode = "47436";
-        RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), musercode);
+        RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), SharedPref.getStringFromSharedPref(AppConstants.USER_CODE,getApplicationContext()));
 
         File idFile;
 //        Log.e("testingggg", "testingggg99999" + idFile);
@@ -532,6 +556,7 @@ public class BusinessDetails_Activity extends AppCompatActivity implements Picki
                     upld_ecsrow_succss.setVisibility(View.VISIBLE);
                     escrow_save_button.setText("Update");
                     mSelectedEscrowStatus = 0;
+                    upload_escrow_success = 1;
                     Toast.makeText(BusinessDetails_Activity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
@@ -552,7 +577,7 @@ public class BusinessDetails_Activity extends AppCompatActivity implements Picki
 
     private void DealerAGREEMENTDoc() {
         String musercode = "47436";
-        RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), musercode);
+        RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), SharedPref.getStringFromSharedPref(AppConstants.USER_CODE,getApplicationContext()));
 
         File idFile;
 //        Log.e("testingggg", "testingggg99999" + idFile);
@@ -585,6 +610,7 @@ public class BusinessDetails_Activity extends AppCompatActivity implements Picki
                     agreement_save_button.setText("Update");
 
                     mSelectedAgreementStatus = 0;
+                    upload_agreement_success = 1;
                     Toast.makeText(BusinessDetails_Activity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
@@ -607,7 +633,7 @@ public class BusinessDetails_Activity extends AppCompatActivity implements Picki
 
 
         String musercode = "47436";
-        RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), musercode);
+        RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), SharedPref.getStringFromSharedPref(AppConstants.USER_CODE,getApplicationContext()));
 
         File idFile;
         //  Log.e("testingggg", "testingggg99999" );
@@ -638,6 +664,7 @@ public class BusinessDetails_Activity extends AppCompatActivity implements Picki
                     upld_udc_succss.setVisibility(View.VISIBLE);
                     udc_save_button.setText("Update");
                     mSelectedUDCStatus = 0;
+                    upload_udc_success = 1;
                     Toast.makeText(BusinessDetails_Activity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
@@ -657,7 +684,7 @@ public class BusinessDetails_Activity extends AppCompatActivity implements Picki
 
     private void DealerBUSINESSPROOFDoc() {
         String musercode = "47436";
-        RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), musercode);
+        RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), SharedPref.getStringFromSharedPref(AppConstants.USER_CODE,getApplicationContext()));
 
         File idFile;
 
@@ -688,6 +715,8 @@ public class BusinessDetails_Activity extends AppCompatActivity implements Picki
                     upld_busines_succss.setVisibility(View.VISIBLE);
                     save_business.setText("Update");
                     mSelectedBussinessProofStatus = 0;
+                    upload_business_success = 1;
+
                     Toast.makeText(BusinessDetails_Activity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
@@ -706,7 +735,7 @@ public class BusinessDetails_Activity extends AppCompatActivity implements Picki
     }
     private void DealerDISB_BANKDoc() {
         String musercode = "47436";
-        RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), musercode);
+        RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), SharedPref.getStringFromSharedPref(AppConstants.USER_CODE,getApplicationContext()));
 
         File idFile;
 //        Log.e("testingggg", "testingggg99999" + idFile);
@@ -737,6 +766,7 @@ public class BusinessDetails_Activity extends AppCompatActivity implements Picki
                     upld_disb_bank_succss.setVisibility(View.VISIBLE);
                     disburse_bank_save_button.setText("Update");
                     mSelectedDisburseBankStatus = 0;
+                    upload_disb_bank_success = 1;
                     Toast.makeText(BusinessDetails_Activity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
@@ -758,7 +788,7 @@ public class BusinessDetails_Activity extends AppCompatActivity implements Picki
     private void DealerGSTDoc() {
         String musercode = "47436";
 
-        RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), musercode);
+        RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), SharedPref.getStringFromSharedPref(AppConstants.USER_CODE,getApplicationContext()));
 
         File idFile;
 //        Log.e("testingggg", "testingggg99999" + idFile);
@@ -788,6 +818,7 @@ public class BusinessDetails_Activity extends AppCompatActivity implements Picki
                     upld_Gst_succss.setVisibility(View.VISIBLE);
                    Gst_save_button.setText("Update");
                    mSelectedGSTStatus = 0;
+                   upload_gst_success = 1;
                     Toast.makeText(BusinessDetails_Activity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
@@ -883,6 +914,7 @@ public class BusinessDetails_Activity extends AppCompatActivity implements Picki
                      if (x == 5) {
                         upld_business_buton.setImageBitmap(bitmap);
                         upld_business_hint.setVisibility(View.GONE);
+                         business_name.setVisibility(View.GONE);
                          upld_business_buton.getLayoutParams().height = 300;
                          upld_business_buton.getLayoutParams().width = 300;
                          upld_business_buton.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -892,6 +924,7 @@ public class BusinessDetails_Activity extends AppCompatActivity implements Picki
                     }else if (x == 6) {
                         upld_udc_buton.setImageBitmap(bitmap);
                         upld_udc_hint.setVisibility(View.GONE);
+                        udc_name.setVisibility(View.GONE);
                          upld_udc_buton.getLayoutParams().height = 300;
                          upld_udc_buton.getLayoutParams().width = 300;
                          upld_udc_buton.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -901,6 +934,7 @@ public class BusinessDetails_Activity extends AppCompatActivity implements Picki
                     }else if (x == 7) {
                         upld_agreement_buton.setImageBitmap(bitmap);
                         upld_agreement_hint.setVisibility(View.GONE);
+                        agreement_name.setVisibility(View.GONE);
                          upld_agreement_buton.getLayoutParams().height = 300;
                          upld_agreement_buton.getLayoutParams().width = 300;
                          upld_agreement_buton.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -910,6 +944,7 @@ public class BusinessDetails_Activity extends AppCompatActivity implements Picki
                     }else if (x == 8) {
                         upld_escrow_buton.setImageBitmap(bitmap);
                         upld_escrow_hint.setVisibility(View.GONE);
+                        escrow_name.setVisibility(View.GONE);
                          upld_escrow_buton.getLayoutParams().height = 300;
                          upld_escrow_buton.getLayoutParams().width = 300;
                          upld_escrow_buton.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -919,6 +954,7 @@ public class BusinessDetails_Activity extends AppCompatActivity implements Picki
                     }else if (x == 9) {
                         upld_disburse_bank_buton.setImageBitmap(bitmap);
                         upld_disb_bank_hint.setVisibility(View.GONE);
+                        disb_bank_name.setVisibility(View.GONE);
                          upld_disburse_bank_buton.getLayoutParams().height = 300;
                          upld_disburse_bank_buton.getLayoutParams().width = 300;
                          upld_disburse_bank_buton.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -929,6 +965,7 @@ public class BusinessDetails_Activity extends AppCompatActivity implements Picki
                     else if (x == 14) {
                         upld_Gst_buton.setImageBitmap(bitmap);
                         upld_Gst_hint.setVisibility(View.GONE);
+                        Gst_name.setVisibility(View.GONE);
                          upld_Gst_buton.getLayoutParams().height = 300;
                          upld_Gst_buton.getLayoutParams().width = 300;
                          upld_Gst_buton.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -954,6 +991,7 @@ public class BusinessDetails_Activity extends AppCompatActivity implements Picki
             if (y==5){
                 upld_business_buton.setImageBitmap(thumbnail);
                 upld_business_hint.setVisibility(View.GONE);
+                business_name.setVisibility(View.GONE);
                 upld_business_buton.getLayoutParams().height = 300;
                 upld_business_buton.getLayoutParams().width = 300;
                 upld_business_buton.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -962,6 +1000,7 @@ public class BusinessDetails_Activity extends AppCompatActivity implements Picki
             }else if (y==6){
                 upld_udc_buton.setImageBitmap(thumbnail);
                 upld_udc_hint.setVisibility(View.GONE);
+                udc_name.setVisibility(View.GONE);
                 upld_udc_buton.getLayoutParams().height = 300;
                 upld_udc_buton.getLayoutParams().width = 300;
                 upld_udc_buton.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -970,6 +1009,7 @@ public class BusinessDetails_Activity extends AppCompatActivity implements Picki
             }else if (y==7){
                 upld_agreement_buton.setImageBitmap(thumbnail);
                 upld_agreement_hint.setVisibility(View.GONE);
+                agreement_name.setVisibility(View.GONE);
                 upld_agreement_buton.getLayoutParams().height = 300;
                 upld_agreement_buton.getLayoutParams().width = 300;
                 upld_agreement_buton.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -978,6 +1018,7 @@ public class BusinessDetails_Activity extends AppCompatActivity implements Picki
             }else if (y==8){
                 upld_escrow_buton.setImageBitmap(thumbnail);
                 upld_escrow_hint.setVisibility(View.GONE);
+                escrow_name.setVisibility(View.GONE);
                 upld_escrow_buton.getLayoutParams().height = 300;
                 upld_escrow_buton.getLayoutParams().width = 300;
                 upld_escrow_buton.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -986,6 +1027,7 @@ public class BusinessDetails_Activity extends AppCompatActivity implements Picki
             }else if (y==9){
                 upld_disburse_bank_buton.setImageBitmap(thumbnail);
                 upld_disb_bank_hint.setVisibility(View.GONE);
+                disb_bank_name.setVisibility(View.GONE);
                 upld_disburse_bank_buton.getLayoutParams().height = 300;
                 upld_disburse_bank_buton.getLayoutParams().width = 300;
                 upld_disburse_bank_buton.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -994,6 +1036,7 @@ public class BusinessDetails_Activity extends AppCompatActivity implements Picki
             }else if (y==14){
                 upld_Gst_buton.setImageBitmap(thumbnail);
                 upld_Gst_hint.setVisibility(View.GONE);
+                Gst_name.setVisibility(View.GONE);
                 upld_Gst_buton.getLayoutParams().height = 300;
                 upld_Gst_buton.getLayoutParams().width = 300;
                 upld_Gst_buton.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -1116,38 +1159,65 @@ public class BusinessDetails_Activity extends AppCompatActivity implements Picki
             mBussinessProofFile = mFile;
             business_name.setText(Pdf_Name);
             business_name.setVisibility(View.VISIBLE);
-
-
+            upld_business_buton.setImageResource(R.drawable.c3);
+            upld_business_buton.getLayoutParams().height = 150;
+            upld_business_buton.getLayoutParams().width = 150;
+            upld_business_buton.setScaleType(ImageView.ScaleType.FIT_XY);
 //            mSelectedBussinessProofStatus = 0;
         } else if (mSelectedUDCStatus == 1) {
             Log.e("UDCStatus ", mFile.toString());
             mUDCFile = mFile;
             udc_name.setText(Pdf_Name);
             udc_name.setVisibility(View.VISIBLE);
+            upld_udc_buton.setImageResource(R.drawable.c3);
+            upld_udc_buton.getLayoutParams().height = 150;
+            upld_udc_buton.getLayoutParams().width = 150;
+            upld_udc_buton.setScaleType(ImageView.ScaleType.FIT_XY);
 //            mSelectedUDCStatus = 0;
         }else if (mSelectedAgreementStatus == 1) {
             Log.e("UDCStatus ", mFile.toString());
             mAgreementFile = mFile;
             agreement_name.setText(Pdf_Name);
             agreement_name.setVisibility(View.VISIBLE);
+            upld_agreement_buton.setImageResource(R.drawable.c3);
+            upld_agreement_buton.getLayoutParams().height = 150;
+            upld_agreement_buton.getLayoutParams().width = 150;
+            upld_agreement_buton.setScaleType(ImageView.ScaleType.FIT_XY);
 //            mSelectedUDCStatus = 0;
         }else if (mSelectedEscrowStatus == 1) {
             Log.e("UDCStatus ", mFile.toString());
             mEscrowFile = mFile;
             escrow_name.setText(Pdf_Name);
             escrow_name.setVisibility(View.VISIBLE);
+            upld_escrow_buton.setImageResource(R.drawable.c3);
+
+            upld_escrow_buton.getLayoutParams().height = 150;
+            upld_escrow_buton.getLayoutParams().width = 150;
+            upld_escrow_buton.setScaleType(ImageView.ScaleType.FIT_XY);
 //            mSelectedUDCStatus = 0;
         }else if (mSelectedDisburseBankStatus == 1) {
             Log.e("UDCStatus ", mFile.toString());
             mDisburseBankFile = mFile;
+
             disb_bank_name.setText(Pdf_Name);
             disb_bank_name.setVisibility(View.VISIBLE);
+
+            upld_disburse_bank_buton.setImageResource(R.drawable.c3);
+
+            upld_disburse_bank_buton.getLayoutParams().height = 150;
+            upld_disburse_bank_buton.getLayoutParams().width = 150;
+            upld_disburse_bank_buton.setScaleType(ImageView.ScaleType.FIT_XY);
+
 //            mSelectedUDCStatus = 0;
         }else if (mSelectedGSTStatus == 1) {
             Log.e("UDCStatus ", mFile.toString());
             mGSTFile = mFile;
             Gst_name.setText(Pdf_Name);
             Gst_name.setVisibility(View.VISIBLE);
+            upld_Gst_buton.setImageResource(R.drawable.c3);
+            upld_Gst_buton.getLayoutParams().height = 150;
+            upld_Gst_buton.getLayoutParams().width = 150;
+            upld_Gst_buton.setScaleType(ImageView.ScaleType.FIT_XY);
 //            mSelectedUDCStatus = 0;
         }
     }

@@ -535,7 +535,7 @@ public class PersonalDetails_Activity extends AppCompatActivity {
     }
     private void DealerSelfieDoc() {
         String musercode = "47436";
-        RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), musercode);
+        RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), SharedPref.getStringFromSharedPref(AppConstants.USER_CODE,getApplicationContext()));
 
         File idFile = new File(SharedPref.getStringFromSharedPref(AppConstants.ML_LOAN_IMAGE, getApplicationContext()));
         Log.e("testingggg", "testingggg99999" + idFile);
@@ -578,7 +578,7 @@ public class PersonalDetails_Activity extends AppCompatActivity {
     private void DealerAadharFrontDoc() {
 
         String musercode = "47436";
-        RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), musercode);
+        RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), SharedPref.getStringFromSharedPref(AppConstants.USER_CODE,getApplicationContext()));
 
         File idFile = new File(SharedPref.getStringFromSharedPref(AppConstants.ML_LOAN_IMAGE, getApplicationContext()));
         Log.e("testingggg", "testingggg99999" + idFile);
@@ -621,7 +621,7 @@ public class PersonalDetails_Activity extends AppCompatActivity {
     }
     private void DealerAdharBackDoc() {
         String musercode = "47436";
-        RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), musercode);
+        RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), SharedPref.getStringFromSharedPref(AppConstants.USER_CODE,getApplicationContext()));
 
         File idFile = new File(SharedPref.getStringFromSharedPref(AppConstants.ML_LOAN_IMAGE, getApplicationContext()));
         Log.e("testingggg", "testingggg99999" + idFile);
@@ -669,7 +669,7 @@ public class PersonalDetails_Activity extends AppCompatActivity {
     private void DealerPanDoc() {
 
         String musercode = "47436";
-        RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), musercode);
+        RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), SharedPref.getStringFromSharedPref(AppConstants.USER_CODE,getApplicationContext()));
 
         File idFile = new File(SharedPref.getStringFromSharedPref(AppConstants.ML_LOAN_IMAGE, getApplicationContext()));
         Log.e("testingggg", "testingggg99999" + idFile);

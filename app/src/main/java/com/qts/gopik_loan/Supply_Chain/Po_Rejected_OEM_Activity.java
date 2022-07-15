@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,15 +52,15 @@ public class Po_Rejected_OEM_Activity extends AppCompatActivity {
     ArrayList<String> financer = new ArrayList<>();
     ArrayList<String> status = new ArrayList<>();
     ArrayList<String> invoicefile = new ArrayList<>();
-
+    ImageView arrow, hometoolbar;
 
     CustPrograssbar custPrograssbar;
     RecyclerView alldetails_recylerview;
-    PoDetails_Rejected_OEM_Adapter poDetails_rejected_oem_adapter;
+    PoDetails_Approve_OEM_Adapter poDetails_approve_oem_adapter;
     TextView textView3, reject,et_po_id,et_date,et_dealer_name,et_status,et_total_qty,et_total_price;
     Integer temp=0;
     Integer tempp=0;
-
+    String rupee_symbol = "₹";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,14 +72,33 @@ public class Po_Rejected_OEM_Activity extends AppCompatActivity {
         et_status = (TextView) findViewById(R.id.et_status);
         et_total_qty = (TextView) findViewById(R.id.et_total_qty);
         et_total_price = (TextView) findViewById(R.id.et_total_price);
+        arrow=(ImageView) findViewById(R.id.arrow);
+        hometoolbar=(ImageView) findViewById(R.id.hometoolbar);
         po_all_details();
         textView3=(TextView) findViewById(R.id.textView3);
         alldetails_recylerview=(RecyclerView) findViewById(R.id.rclview);
-        textView3.setOnClickListener(new View.OnClickListener() {
+
+        arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(Po_Rejected_OEM_Activity.this, PO_TOP_FIVE_Activity.class);
+                startActivity(it);
+            }
+        });
+
+        hometoolbar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent it = new Intent(Po_Rejected_OEM_Activity.this, MainActivity.class);
                 it.putExtra(AppConstants.ACTFRAG_TYPE_KEY, AppConstants.MY_MALL_DEALER_FRAG);
+                startActivity(it);
+            }
+        });
+        textView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(Po_Rejected_OEM_Activity.this, PO_TOP_FIVE_Activity.class);
+
                 startActivity(it);
 
             }
@@ -132,7 +152,7 @@ public class Po_Rejected_OEM_Activity extends AppCompatActivity {
                                 et_dealer_name.setText(response.body().getPayload().get(i).getDealer_name());
                                 et_status.setText(response.body().getPayload().get(i).getStatus());
                                 et_total_qty.setText(String.valueOf(temp));
-                                et_total_price.setText(response.body().getPayload().get(i).getTotal_price());
+                                et_total_price.setText(rupee_symbol+response.body().getPayload().get(i).getTotal_price());
 
                                 if (response.body().getPayload().size() - 1 == i) {
                                     LinearLayoutManager layoutManager = new LinearLayoutManager(
@@ -140,11 +160,11 @@ public class Po_Rejected_OEM_Activity extends AppCompatActivity {
                                     );
 
                                     alldetails_recylerview.setLayoutManager(layoutManager);
-                                    poDetails_rejected_oem_adapter = new PoDetails_Rejected_OEM_Adapter(getApplicationContext(),
+                                    poDetails_approve_oem_adapter = new PoDetails_Approve_OEM_Adapter(getApplicationContext(),
                                             id,po_id,date,brand,dealer_id,dealer_name,product,prodt_quantity,
                                             update_quantity,prodt_price,update_price,total_price,
                                             update_totl_prc,financer,status,invoicefile);
-                                    alldetails_recylerview.setAdapter(poDetails_rejected_oem_adapter);
+                                    alldetails_recylerview.setAdapter(poDetails_approve_oem_adapter);
 
 
                                 }

@@ -37,10 +37,12 @@ import com.qts.gopik_loan.Pojo.Get_voterid_details_POJO;
 import com.qts.gopik_loan.Pojo.Get_wallet_details_POJO;
 import com.qts.gopik_loan.Pojo.Get_wallet_txn_POJO;
 import com.qts.gopik_loan.Pojo.Getusercontest_POJO;
+import com.qts.gopik_loan.Pojo.LoanPoAllDetails_POJO;
 import com.qts.gopik_loan.Pojo.GoatAadharvalidation1_POJO;
 import com.qts.gopik_loan.Pojo.GoatAadharvalidation_POJO;
 import com.qts.gopik_loan.Pojo.GoatAdharvalidationResponseDTO;
 import com.qts.gopik_loan.Pojo.Loan_calculation_POJO;
+import com.qts.gopik_loan.Pojo.Loanlimitdetails_POJO;
 import com.qts.gopik_loan.Pojo.LogInOtpVerifyPOJO;
 import com.qts.gopik_loan.Pojo.Login_otp_verify_for_ML_POJO;
 import com.qts.gopik_loan.Pojo.LoginsendOtpPOJO;
@@ -639,6 +641,18 @@ public interface RestApis {
     @POST("podisverslreportupdate")
     Call<podisverslreportupdate_MODEL> podisverslreportupdate(@Part("po_id") RequestBody po_id,
                                           @Part MultipartBody.Part dealer_final_report);
+
+    @POST("dealer_doc_confirm")
+    Call<dealer_doc_confirm_MODEL> dealer_doc_confirm(@Body Dealer_doc_confirm_POJO data);
+
+    @POST("loanlimitdetails")
+    Call<LoanLimit_Details_MODEL> loanlimitdetails(@Body Loanlimitdetails_POJO data);
+
+    @POST("dealerpoloans")
+    Call<DealerPoLoans_Model> dealerpoloans(@Body DealerPoLoans_POJO data);
+
+    @POST("loanpoalldetails")
+    Call<LoanPoAllDetails_MODEL> loanpoalldetails(@Body LoanPoAllDetails_POJO data);
 
     @POST("GoatAadharvalidation1")
     Call<GoatAadharvalidation1_MODEL> GoatAadharvalidation1(@Body GoatAadharvalidation1_POJO data);

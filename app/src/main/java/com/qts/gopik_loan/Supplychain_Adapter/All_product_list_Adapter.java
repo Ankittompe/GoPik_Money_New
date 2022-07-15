@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.qts.gopik_loan.Activity.AppConstants;
 import com.qts.gopik_loan.Activity.SharedPref;
 import com.qts.gopik_loan.R;
+import com.qts.gopik_loan.Supply_Chain.AwaitingDisbursal;
+import com.qts.gopik_loan.Supply_Chain.Disbursed;
 import com.qts.gopik_loan.Supply_Chain.PO_Generate_Pending_OEM_Activity;
 import com.qts.gopik_loan.Supply_Chain.PO_Get_Modified_List;
 import com.qts.gopik_loan.Supply_Chain.PoDetail_Approve_Dealer_Activity;
@@ -83,6 +85,9 @@ public class All_product_list_Adapter extends RecyclerView.Adapter<All_product_l
         else if( All_po_Status.get(position).equals("Rejected by financer")){
             holder.all_status_layout.setBackgroundResource(R.drawable.rejecteded);
         }
+        else if( All_po_Status.get(position).equals("Disbursed by financer")){
+            holder.all_status_layout.setBackgroundResource(R.drawable.approved_layout);
+        }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -130,6 +135,18 @@ public class All_product_list_Adapter extends RecyclerView.Adapter<All_product_l
                 }
                 else if(All_po_Status.get(position).equals("Rejected By Dealer")){
                     Intent intent = new Intent(context, PoDetail_Rejected_Dealer_Activity.class);
+                    SharedPref.saveStringInSharedPref(AppConstants.PO_ID, All_po_id.get(position), v.getContext());
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }
+                else if(All_po_Status.get(position).equals("Disbursed by financer")){
+                    Intent intent = new Intent(context, Disbursed.class);
+                    SharedPref.saveStringInSharedPref(AppConstants.PO_ID, All_po_id.get(position), v.getContext());
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }
+                else if(All_po_Status.get(position).equals("Awaiting Disbursal")){
+                    Intent intent = new Intent(context, AwaitingDisbursal.class);
                     SharedPref.saveStringInSharedPref(AppConstants.PO_ID, All_po_id.get(position), v.getContext());
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
@@ -188,7 +205,19 @@ public class All_product_list_Adapter extends RecyclerView.Adapter<All_product_l
                     SharedPref.saveStringInSharedPref(AppConstants.PO_ID, All_po_id.get(position), v.getContext());
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
+                } else if(All_po_Status.get(position).equals("Disbursed by financer")){
+                    Intent intent = new Intent(context, Disbursed.class);
+                    SharedPref.saveStringInSharedPref(AppConstants.PO_ID, All_po_id.get(position), v.getContext());
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
                 }
+                else if(All_po_Status.get(position).equals("Awaiting Disbursal")){
+                    Intent intent = new Intent(context, AwaitingDisbursal.class);
+                    SharedPref.saveStringInSharedPref(AppConstants.PO_ID, All_po_id.get(position), v.getContext());
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }
+
             }
         });
 

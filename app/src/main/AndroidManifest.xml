@@ -31,6 +31,21 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".View_Invoice_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Supply_Chain.LoanDetails_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Supply_Chain.LoanStatus"
+            android:exported="false" />
+        <activity
+            android:name=".Supply_Chain.Disbursed"
+            android:exported="false" />
+        <activity
+            android:name=".Supply_Chain.AwaitingDisbursal"
+            android:exported="false" />
+        <activity
             android:name=".Supply_Chain.PersonalDetails_Activity"
             android:exported="false" />
         <activity

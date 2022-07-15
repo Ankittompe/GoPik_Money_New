@@ -93,7 +93,7 @@ public class PoDetails_Rejected_OEM_Adapter extends RecyclerView.Adapter<PoDetai
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.et_product.setText(product.get(position));
         holder.et_product_qty.setText(prodt_quantity.get(position));
-        holder.et_product_price.setText(prodt_price.get(position));
+
     /*    holder.et_id.setText(id.get(position));
         holder.et_po_id.setText(po_id.get(position));
         holder.et_date.setText(date.get(position));
@@ -153,7 +153,7 @@ public class PoDetails_Rejected_OEM_Adapter extends RecyclerView.Adapter<PoDetai
             et_product = itemView.findViewById(R.id.tv1);
             et_product_qty = itemView.findViewById(R.id.tv2);
 
-            et_product_price = itemView.findViewById(R.id.tv3);
+
             et_total_price = itemView.findViewById(R.id.et_total_price);
 
             et_financer = itemView.findViewById(R.id.et_financer);

@@ -26,6 +26,7 @@ import com.qts.gopik_loan.Supplychain_Adapter.PoDetails_Approve_OEM_Adapter;
 import com.qts.gopik_loan.Supplychain_Adapter.PoDetails_Pending_OEM_Adapter;
 import com.qts.gopik_loan.Utils.CustPrograssbar;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -56,6 +57,7 @@ public class PO_Generate_Pending_OEM_Activity extends AppCompatActivity {
     CustPrograssbar custPrograssbar;
     Integer temp=0;
     Integer tempp=0;
+    String rupee_symbol = "₹";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +65,7 @@ public class PO_Generate_Pending_OEM_Activity extends AppCompatActivity {
         alldetails_recylerview = (RecyclerView) findViewById(R.id.rclview);
         custPrograssbar = new CustPrograssbar();
         textView3 = (TextView) findViewById(R.id.textView3);
-        reject = (TextView) findViewById(R.id.reject);
+
         arrow = (ImageView) findViewById(R.id.arrow);
 
 
@@ -86,15 +88,15 @@ public class PO_Generate_Pending_OEM_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent it = new Intent(PO_Generate_Pending_OEM_Activity.this, MainActivity.class);
-                it.putExtra(AppConstants.ACTFRAG_TYPE_KEY, AppConstants.MY_MALL_DEALER_FRAG);
+                it.putExtra(AppConstants.ACTFRAG_TYPE_KEY, AppConstants.HOME__DELAER_FRAGMENT);
                 startActivity(it);
             }
         });
         textView3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(PO_Generate_Pending_OEM_Activity.this, MainActivity.class);
-                it.putExtra(AppConstants.ACTFRAG_TYPE_KEY, AppConstants.MY_MALL_DEALER_FRAG);
+                Intent it = new Intent(PO_Generate_Pending_OEM_Activity.this, PO_TOP_FIVE_Activity.class);
+
                 startActivity(it);
             }
         });
@@ -148,7 +150,17 @@ public class PO_Generate_Pending_OEM_Activity extends AppCompatActivity {
                                 et_dealer_name.setText(response.body().getPayload().get(i).getDealer_name());
                                 et_status.setText(response.body().getPayload().get(i).getStatus());
                                 et_total_qty.setText(String.valueOf(temp));
-                                et_total_price.setText(response.body().getPayload().get(i).getTotal_price());
+
+                                String number1 = response.body().getPayload().get(i).getTotal_price();
+                                Log.e("number1","number1--->>"+number1);
+                                double amount = Double.parseDouble(number1);
+                                Log.e("amount","amount--->>"+amount);
+                                DecimalFormat formatter = new DecimalFormat("##,##,###");
+                                Log.e("formatter","formatter--->>"+formatter);
+                                String formatted = formatter.format(amount);
+                                Log.e("formatted","formatted--->>"+formatted);
+                                et_total_price.setText(rupee_symbol+formatted);
+
 
 
                                 if (response.body().getPayload().size() - 1 == i) {

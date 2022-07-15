@@ -6,9 +6,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorgrey1"
-
+    tools:context=".Supply_Chain.LoanStatus"
  >
-    <!--<include
+    <include
         android:id="@+id/logintoolBar"
         layout="@layout/logintoolbar"
         android:layout_width="match_parent"
@@ -72,6 +72,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
                         android:layout_weight="0.5"
+                        android:background="@drawable/button_layout"
                         android:gravity="center"
                         android:padding="5dp"
                         android:text="Approve"
@@ -86,6 +87,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
                         android:layout_weight="0.5"
+                        android:background="@drawable/button_layout_red"
                         android:gravity="center"
                         android:padding="5dp"
                         android:text="Reject"
@@ -96,6 +98,6 @@
                 </LinearLayout>
             </RelativeLayout>
         </LinearLayout>
-    </ScrollView>-->
+    </ScrollView>
 
 </LinearLayout>

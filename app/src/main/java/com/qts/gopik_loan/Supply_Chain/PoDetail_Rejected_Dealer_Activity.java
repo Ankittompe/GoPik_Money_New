@@ -55,6 +55,11 @@ public class PoDetail_Rejected_Dealer_Activity extends AppCompatActivity {
     ImageView arrow, hometoolbar;
     Integer temp=0;
     Integer tempp=0;
+    Integer tempmod=0;
+    Integer tempmodd=0;
+    Integer tempmodifyprice=0;
+    Integer tempmodifypricee=0;
+    String rupee_symbol = "₹";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,11 +77,28 @@ public class PoDetail_Rejected_Dealer_Activity extends AppCompatActivity {
         textView3=(TextView) findViewById(R.id.textView3);
         arrow=(ImageView) findViewById(R.id.arrow);
         hometoolbar=(ImageView) findViewById(R.id.hometoolbar);
-        textView3.setOnClickListener(new View.OnClickListener() {
+        hometoolbar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent it = new Intent(PoDetail_Rejected_Dealer_Activity.this, MainActivity.class);
                 it.putExtra(AppConstants.ACTFRAG_TYPE_KEY, AppConstants.MY_MALL_DEALER_FRAG);
+                startActivity(it);
+            }
+        });
+
+        arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(PoDetail_Rejected_Dealer_Activity.this, PO_TOP_FIVE_Activity.class);
+
+                startActivity(it);
+            }
+        });
+        textView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(PoDetail_Rejected_Dealer_Activity.this, PO_TOP_FIVE_Activity.class);
+
                 startActivity(it);
 
             }
@@ -124,13 +146,27 @@ public class PoDetail_Rejected_Dealer_Activity extends AppCompatActivity {
                                 invoicefile.add(response.body().getPayload().get(i).getInvoice_file());
                                 tempp= temp+Integer.valueOf(response.body().getPayload().get(i).getProdt_quantity());
                                 temp=tempp;
+
                                 et_po_id.setText(response.body().getPayload().get(i).getPo_id());
                                 et_date.setText(response.body().getPayload().get(i).getDate());
                                 et_dealer_name.setText(response.body().getPayload().get(i).getDealer_name());
                                 et_status.setText(response.body().getPayload().get(i).getStatus());
-                                et_total_qty.setText(String.valueOf(temp));
-                                et_total_price.setText(response.body().getPayload().get(i).getTotal_price());
+                                if(response.body().getPayload().get(i).getUpdate_price().equals("NA")){
+                                    et_total_qty.setText(String.valueOf(temp));
+                                    et_total_price.setText(rupee_symbol+response.body().getPayload().get(i).getTotal_price());
+                                }
 
+                                else{
+                                    tempmodd=tempmod+Integer.valueOf(response.body().getPayload().get(i).getUpdate_quantity());
+                                    tempmod=tempmodd;
+
+                                    tempmodifypricee=tempmodifyprice+Integer.valueOf(response.body().getPayload().get(i).getUpdate_totl_prc());
+                                    tempmodifyprice=tempmodifypricee;
+                                    et_total_qty.setText(String.valueOf(tempmod));
+                                    et_total_price.setText(rupee_symbol+String.valueOf(tempmodifyprice));
+
+
+                                }
 
                                 if (response.body().getPayload().size() - 1 == i) {
                                     LinearLayoutManager layoutManager = new LinearLayoutManager(
