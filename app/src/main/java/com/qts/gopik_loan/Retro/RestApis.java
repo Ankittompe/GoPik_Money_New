@@ -15,6 +15,7 @@ import com.qts.gopik_loan.Pojo.Broker_profile_update_POJO;
 import com.qts.gopik_loan.Pojo.Calculation_data_POJO;
 import com.qts.gopik_loan.Pojo.Category_brand_wise_POJO;
 import com.qts.gopik_loan.Pojo.DL_POJO;
+import com.qts.gopik_loan.Pojo.DealerPoLoans_POJO;
 import com.qts.gopik_loan.Pojo.Dealer_CODE_POJO;
 import com.qts.gopik_loan.Pojo.Dealer_Subuser_action_POJO;
 import com.qts.gopik_loan.Pojo.Dealer_Subuser_edit_POJO;
@@ -41,6 +42,7 @@ import com.qts.gopik_loan.Pojo.LoanPoAllDetails_POJO;
 import com.qts.gopik_loan.Pojo.GoatAadharvalidation1_POJO;
 import com.qts.gopik_loan.Pojo.GoatAadharvalidation_POJO;
 import com.qts.gopik_loan.Pojo.GoatAdharvalidationResponseDTO;
+import com.qts.gopik_loan.Pojo.LoanPoAllDetails_POJO;
 import com.qts.gopik_loan.Pojo.Loan_calculation_POJO;
 import com.qts.gopik_loan.Pojo.Loanlimitdetails_POJO;
 import com.qts.gopik_loan.Pojo.LogInOtpVerifyPOJO;
@@ -54,6 +56,8 @@ import com.qts.gopik_loan.Pojo.OtpVerificationPOJO;
 import com.qts.gopik_loan.Pojo.PAN_POJO;
 import com.qts.gopik_loan.Pojo.PASSPORT_POJO;
 import com.qts.gopik_loan.Pojo.Pincode_list_POJO;
+import com.qts.gopik_loan.Pojo.Po_add_POJO;
+import com.qts.gopik_loan.Pojo.Po_all_details_POJO;
 import com.qts.gopik_loan.Pojo.Po_add_POJO;
 import com.qts.gopik_loan.Pojo.Product_details_POJO;
 import com.qts.gopik_loan.Pojo.ProfileDetailsPOJO;
@@ -556,6 +560,86 @@ public interface RestApis {
     @POST("Dealer_bank_molldoc")
     Call<Bank_Upload_MODEL> Dealer_Bank_File_Upload(@Part("user_code") RequestBody user_code,
                                                     @Part MultipartBody.Part bankimage);
+
+
+    @POST("all_POs")
+    Call<all_POs_MODEL> all_POs(@Body all_POs_POJO data);
+
+    @POST("top_five_POs")
+    Call<top_five_POs_MODEL> top_five_POs(@Body top_five_POs_POJO data);
+
+    @POST("Po_add")
+    Call<Po_add_MODEL> Po_add(@Body Po_add_POJO data);
+
+    //supplychain
+    @Multipart
+    @POST("DealerSelfieDoc")
+    Call<DealerSelfieDoc_MODEL> DealerSelfieDoc(@Part("user_code") RequestBody user_code,
+                                                    @Part MultipartBody.Part selfie);
+
+
+    @Multipart
+    @POST("DealerAadharFrontDoc")
+    Call<DealerAadharFrontDoc_MODEL> DealerAadharFrontDoc(@Part("user_code") RequestBody user_code,
+                                                @Part MultipartBody.Part adharimage);
+
+
+    @Multipart
+    @POST("DealerAdharBackDoc")
+    Call<DealerAdharBackDoc_MODEL> DealerAdharBackDoc(@Part("user_code") RequestBody user_code,
+                                                          @Part MultipartBody.Part adharimage);
+//
+    @Multipart
+    @POST("DealerPanDoc")
+    Call<DealerPanDoc_MODEL>DealerPanDoc(@Part("user_code") RequestBody user_code,
+                                                      @Part MultipartBody.Part panimage);
+    @Multipart
+    @POST("DealerBUSINESSPROOFDoc")
+    Call<DealerBUSINESSPROOFDoc_MODEL>DealerBUSINESSPROOFDoc(@Part("user_code") RequestBody user_code,
+                                                      @Part MultipartBody.Part BUSINESS_PROOF);
+    @Multipart
+    @POST("DealerUDCDoc")
+    Call<DealerUDCDoc_MODEL> DealerUDCDoc(@Part("user_code") RequestBody user_code,
+                                                      @Part MultipartBody.Part UDC);
+    @Multipart
+    @POST("DealerAGREEMENTDoc")
+    Call<DealerAGREEMENTDoc_MODEL> DealerAGREEMENTDoc(@Part("user_code") RequestBody user_code,
+                                                      @Part MultipartBody.Part AGREEMENT);
+    @Multipart
+    @POST("DealerESCROWDoc")
+    Call<DealerESCROWDoc_MODEL> DealerESCROWDoc(@Part("user_code") RequestBody user_code,
+                                                      @Part MultipartBody.Part ESCROW);
+    @Multipart
+    @POST("DealerDISB_BANKDoc")
+    Call<DealerDISB_BANKDoc_MODEL> DealerDISB_BANKDoc(@Part("user_code") RequestBody user_code,
+                                                      @Part MultipartBody.Part bankimage);
+    @Multipart
+    @POST("DealerLEDGERDoc")
+    Call<DealerLEDGERDoc_MODEL> DealerLEDGERDoc(@Part("user_code") RequestBody user_code,
+                                                      @Part MultipartBody.Part LEDGER);
+    @Multipart
+    @POST("DealerINVOICEDoc")
+    Call<DealerINVOICEDoc_MODEL> DealerINVOICEDoc(@Part("user_code") RequestBody user_code,
+                                                      @Part MultipartBody.Part INVOICE);
+    @Multipart
+    @POST("DealerITRDoc")
+    Call<DealerITRDoc_MODEL> DealerITRDoc(@Part("user_code") RequestBody user_code,
+                                                      @Part MultipartBody.Part ITR);
+    @Multipart
+    @POST("DealerTDSDoc")
+    Call<DealerTDSDoc_MODEL> DealerTDSDoc(@Part("user_code") RequestBody user_code,
+                                                      @Part MultipartBody.Part TDS);
+
+    @Multipart
+    @POST("DealerGSTDoc")
+    Call<DealerGSTDoc_MODEL> DealerGSTDoc(@Part("user_code") RequestBody user_code,
+                                          @Part MultipartBody.Part GST);
+    @POST("po_all_details")
+    Call<Po_all_details_MODEL> po_all_details(@Body Po_all_details_POJO data);
+
+    @POST("update_po_status")
+    Call<Update_po_status_MODEL> update_po_status(@Body Update_po_status_POJO data);
+
 
 
     @POST("all_POs")

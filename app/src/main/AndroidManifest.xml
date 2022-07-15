@@ -110,6 +110,69 @@
 
         </activity>
         <activity
+            android:name=".View_Invoice_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Supply_Chain.LoanDetails_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Supply_Chain.LoanStatus"
+            android:exported="false" />
+        <activity
+            android:name=".Supply_Chain.Disbursed"
+            android:exported="false" />
+        <activity
+            android:name=".Supply_Chain.AwaitingDisbursal"
+            android:exported="false" />
+        <activity
+            android:name=".Supply_Chain.PersonalDetails_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Supply_Chain.BusinessDetails_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Supply_Chain.TransactionDetails_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Supply_Chain.PoDetail_Rejected_Dealer_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Supply_Chain.PoDetail_Approve_Dealer_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Supply_Chain.Po_Generate_Rejected_By_Financer_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Supply_Chain.Po_Generate_Approved_By_Financer_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Supply_Chain.PO_Generate_Pending_OEM_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Supply_Chain.Po_Rejected_OEM_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Supply_Chain.PoDetail_Approve_OEM_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Supply_Chain.ProductCatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Supply_Chain.PO_Get_Modified_List"
+            android:exported="false" />
+        <activity
+            android:name=".Supply_Chain.PO_Generate_Form_activity"
+            android:exported="false" />
+        <activity
+            android:name=".Supply_Chain.PO_Generate__AllList_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Supply_Chain.PO_TOP_FIVE_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Supply_Chain.Image_Upload_SupplyChain"
+            android:exported="false" />
+        <activity
             android:name=".Dealer_Activity.Resend_OTP_CAP_Otp_DEALER_Verify"
             android:exported="false" />
         <activity android:name=".Activity.Property_Loan" />
