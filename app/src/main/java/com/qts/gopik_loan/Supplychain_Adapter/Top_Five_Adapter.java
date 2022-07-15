@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.qts.gopik_loan.Activity.AppConstants;
 import com.qts.gopik_loan.Activity.SharedPref;
 import com.qts.gopik_loan.R;
+import com.qts.gopik_loan.Supply_Chain.AwaitingDisbursal;
+import com.qts.gopik_loan.Supply_Chain.Disbursed;
 import com.qts.gopik_loan.Supply_Chain.PO_Generate_Pending_OEM_Activity;
 import com.qts.gopik_loan.Supply_Chain.PO_Get_Modified_List;
 import com.qts.gopik_loan.Supply_Chain.PoDetail_Approve_Dealer_Activity;
@@ -62,7 +64,10 @@ public class Top_Five_Adapter extends RecyclerView.Adapter<Top_Five_Adapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
+
        holder.name_tv.setText(Top_Five_Date.get(position));
+
        holder.serial_tv.setText(Top_Five_PO_ID.get(position));
        holder.status.setText(Status.get(position));
        Log.e("bdhbhc","bdbh"+Status.get(position));
@@ -99,6 +104,9 @@ public class Top_Five_Adapter extends RecyclerView.Adapter<Top_Five_Adapter.View
         }
         else if( Status.get(position).equals("Rejected by financer")){
             holder.status_background.setBackgroundResource(R.drawable.rejecteded);
+        }
+        else if( Status.get(position).equals("Disbursed by financer")){
+            holder.status_background.setBackgroundResource(R.drawable.approved_layout);
         }
 
        holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -148,6 +156,18 @@ public class Top_Five_Adapter extends RecyclerView.Adapter<Top_Five_Adapter.View
                }
                else if(Status.get(position).equals("Rejected By Dealer")){
                    Intent intent = new Intent(applicationContext, PoDetail_Rejected_Dealer_Activity.class);
+                   SharedPref.saveStringInSharedPref(AppConstants.PO_ID, Top_Five_PO_ID.get(position), v.getContext());
+                   intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                   applicationContext.startActivity(intent);
+               }
+               else if(Status.get(position).equals("Awaiting Disbursal")){
+                   Intent intent = new Intent(applicationContext, AwaitingDisbursal.class);
+                   SharedPref.saveStringInSharedPref(AppConstants.PO_ID, Top_Five_PO_ID.get(position), v.getContext());
+                   intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                   applicationContext.startActivity(intent);
+               }
+               else if(Status.get(position).equals("Disbursed by financer")){
+                   Intent intent = new Intent(applicationContext, Disbursed.class);
                    SharedPref.saveStringInSharedPref(AppConstants.PO_ID, Top_Five_PO_ID.get(position), v.getContext());
                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                    applicationContext.startActivity(intent);
@@ -208,7 +228,24 @@ public class Top_Five_Adapter extends RecyclerView.Adapter<Top_Five_Adapter.View
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     applicationContext.startActivity(intent);
                 }
-
+                else if(Status.get(position).equals("Disbursed by financer")){
+                    Intent intent = new Intent(applicationContext, Disbursed.class);
+                    SharedPref.saveStringInSharedPref(AppConstants.PO_ID, Top_Five_PO_ID.get(position), v.getContext());
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    applicationContext.startActivity(intent);
+                }
+                else if(Status.get(position).equals("Disbursed by financer")){
+                    Intent intent = new Intent(applicationContext, Disbursed.class);
+                    SharedPref.saveStringInSharedPref(AppConstants.PO_ID, Top_Five_PO_ID.get(position), v.getContext());
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    applicationContext.startActivity(intent);
+                }
+                else if(Status.get(position).equals("Awaiting Disbursal")){
+                    Intent intent = new Intent(applicationContext, AwaitingDisbursal.class);
+                    SharedPref.saveStringInSharedPref(AppConstants.PO_ID, Top_Five_PO_ID.get(position), v.getContext());
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    applicationContext.startActivity(intent);
+                }
                 //GotoPODetails(po_id,product_name);
 
             }

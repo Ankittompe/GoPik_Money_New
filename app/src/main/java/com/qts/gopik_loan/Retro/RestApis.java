@@ -15,12 +15,14 @@ import com.qts.gopik_loan.Pojo.Broker_profile_update_POJO;
 import com.qts.gopik_loan.Pojo.Calculation_data_POJO;
 import com.qts.gopik_loan.Pojo.Category_brand_wise_POJO;
 import com.qts.gopik_loan.Pojo.DL_POJO;
+import com.qts.gopik_loan.Pojo.DealerPoLoans_POJO;
 import com.qts.gopik_loan.Pojo.Dealer_CODE_POJO;
 import com.qts.gopik_loan.Pojo.Dealer_Subuser_action_POJO;
 import com.qts.gopik_loan.Pojo.Dealer_Subuser_edit_POJO;
 import com.qts.gopik_loan.Pojo.Dealer_Subuser_fetch_POJO;
 import com.qts.gopik_loan.Pojo.Dealer_Subuser_insert_POJO;
 import com.qts.gopik_loan.Pojo.Dealer_bank_update_POJO;
+import com.qts.gopik_loan.Pojo.Dealer_doc_confirm_POJO;
 import com.qts.gopik_loan.Pojo.Dealer_logoutPOJO;
 import com.qts.gopik_loan.Pojo.Draftview_POJO;
 import com.qts.gopik_loan.Pojo.Fetch_application_list_POJO;
@@ -37,7 +39,9 @@ import com.qts.gopik_loan.Pojo.Get_voterid_details_POJO;
 import com.qts.gopik_loan.Pojo.Get_wallet_details_POJO;
 import com.qts.gopik_loan.Pojo.Get_wallet_txn_POJO;
 import com.qts.gopik_loan.Pojo.Getusercontest_POJO;
+import com.qts.gopik_loan.Pojo.LoanPoAllDetails_POJO;
 import com.qts.gopik_loan.Pojo.Loan_calculation_POJO;
+import com.qts.gopik_loan.Pojo.Loanlimitdetails_POJO;
 import com.qts.gopik_loan.Pojo.LogInOtpVerifyPOJO;
 import com.qts.gopik_loan.Pojo.Login_otp_verify_for_ML_POJO;
 import com.qts.gopik_loan.Pojo.LoginsendOtpPOJO;
@@ -637,4 +641,16 @@ public interface RestApis {
     @POST("podisverslreportupdate")
     Call<podisverslreportupdate_MODEL> podisverslreportupdate(@Part("po_id") RequestBody po_id,
                                           @Part MultipartBody.Part dealer_final_report);
+
+    @POST("dealer_doc_confirm")
+    Call<dealer_doc_confirm_MODEL> dealer_doc_confirm(@Body Dealer_doc_confirm_POJO data);
+
+    @POST("loanlimitdetails")
+    Call<LoanLimit_Details_MODEL> loanlimitdetails(@Body Loanlimitdetails_POJO data);
+
+    @POST("dealerpoloans")
+    Call<DealerPoLoans_Model> dealerpoloans(@Body DealerPoLoans_POJO data);
+
+    @POST("loanpoalldetails")
+    Call<LoanPoAllDetails_MODEL> loanpoalldetails(@Body LoanPoAllDetails_POJO data);
 }

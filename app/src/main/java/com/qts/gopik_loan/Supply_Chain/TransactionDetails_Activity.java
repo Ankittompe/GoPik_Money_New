@@ -20,15 +20,23 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.hbisoft.pickit.PickiT;
 import com.hbisoft.pickit.PickiTCallbacks;
 import com.qts.gopik_loan.Activity.AppConstants;
+import com.qts.gopik_loan.Activity.ResendOTPVerify;
 import com.qts.gopik_loan.Activity.SharedPref;
 import com.qts.gopik_loan.Dealer_Activity.MainActivity;
 import com.qts.gopik_loan.Model.DealerINVOICEDoc_MODEL;
 import com.qts.gopik_loan.Model.DealerITRDoc_MODEL;
 import com.qts.gopik_loan.Model.DealerLEDGERDoc_MODEL;
 import com.qts.gopik_loan.Model.DealerTDSDoc_MODEL;
+import com.qts.gopik_loan.Model.Resend_login_otp_MODEL;
+
+import com.qts.gopik_loan.Model.dealer_doc_confirm_MODEL;
+import com.qts.gopik_loan.Pojo.Dealer_doc_confirm_POJO;
+import com.qts.gopik_loan.Pojo.Resend_login_otp_POJO;
+
 import com.qts.gopik_loan.R;
 import com.qts.gopik_loan.Retro.NetworkHandler;
 import com.qts.gopik_loan.Retro.RestApis;
@@ -65,7 +73,10 @@ public class TransactionDetails_Activity extends AppCompatActivity implements Pi
     Integer GST_Valid = 0;
     private Dialog dialogCondition;
     TextView btsend, save1, save2, save3, save4;
-
+    Integer upload_ledger_success = 0;
+    Integer upload_invoice_success = 0;
+    Integer upload_itr_success = 0;
+    Integer upload_tds_success = 0;
     ImageView arrow,hometoolbar;
 
     String Pdf_Name;
@@ -167,6 +178,13 @@ public class TransactionDetails_Activity extends AppCompatActivity implements Pi
         upld_itr_layout = findViewById(R.id.upld_itr_layout);
         upld_TDS_layout = findViewById(R.id.upld_TDS_layout);
 
+        arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TransactionDetails_Activity.this,BusinessDetails_Activity.class);
+                startActivity(intent);
+            }
+        });
         ////Ledger Dropdown/Dropup
         ledger_dropdown.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -389,10 +407,25 @@ public class TransactionDetails_Activity extends AppCompatActivity implements Pi
         btsend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(TransactionDetails_Activity.this, "All Document Submitted Successfully", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(TransactionDetails_Activity.this, MainActivity.class);
-                intent.putExtra(AppConstants.ACTFRAG_TYPE_KEY, AppConstants.MY_MALL_DEALER_FRAG);
-                startActivity(intent);
+                Log.e("SaveButton","Clicked---->>>");
+                if (!(upload_ledger_success==1)){
+                    Toast.makeText(TransactionDetails_Activity.this, "Please upload a  Ledger Document!", Toast.LENGTH_SHORT).show();
+                    Log.e("SaveButton2","Clicked2---->>>");
+                }else if (!(upload_invoice_success==1)){
+                    Toast.makeText(TransactionDetails_Activity.this, "Please Upload an Invoice Document!", Toast.LENGTH_SHORT).show();
+                    Log.e("SaveButton3","Clicked3---->>>");
+                } else if (!(upload_itr_success==1)){
+                    Toast.makeText(TransactionDetails_Activity.this, "Please Upload an ITR Document!", Toast.LENGTH_SHORT).show();
+                    Log.e("SaveButton4","Clicked4---->>>");
+                } else if (!(upload_tds_success==1)){
+                    Toast.makeText(TransactionDetails_Activity.this, "Please Upload a TDS Document !", Toast.LENGTH_SHORT).show();
+                    Log.e("SaveButton5","Clicked6---->>>");
+                }else{
+
+                    dealer_doc_confirm();
+                    Log.e("API_CALL","Clicked6---->>>");
+                }
+
             }
         });
 
@@ -407,6 +440,43 @@ public class TransactionDetails_Activity extends AppCompatActivity implements Pi
         });
 
     }
+
+    private void dealer_doc_confirm() {
+
+        Dealer_doc_confirm_POJO pojo = new Dealer_doc_confirm_POJO(SharedPref.getStringFromSharedPref(AppConstants.USER_CODE, getApplicationContext()));
+        RestApis restApis = NetworkHandler.getRetrofit().create(RestApis.class);
+        Call<dealer_doc_confirm_MODEL> call = restApis.dealer_doc_confirm(pojo);
+        call.enqueue(new Callback<dealer_doc_confirm_MODEL>() {
+            @Override
+            public void onResponse(Call<dealer_doc_confirm_MODEL> call, Response<dealer_doc_confirm_MODEL> response) {
+                if (response.body() != null) {
+
+                    if (response.body().getCode()==200) {
+                        Log.e("API","SUCCESS-->>");
+                        Toast.makeText(TransactionDetails_Activity.this, "All Document Submitted Successfully", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(TransactionDetails_Activity.this, MainActivity.class);
+                        intent.putExtra(AppConstants.ACTFRAG_TYPE_KEY, AppConstants.MY_MALL_DEALER_FRAG);
+                        startActivity(intent);
+
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Something went wrong!!!!", Toast.LENGTH_LONG).show();
+                    }
+
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<dealer_doc_confirm_MODEL> call, Throwable t) {
+
+
+                Toast.makeText(getApplicationContext(), "Something went wrong!", Toast.LENGTH_LONG).show();
+            }
+
+        });
+    }
+
     private void takePhotoFromCamera() {
         Intent intent = new
                 Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -448,6 +518,7 @@ public class TransactionDetails_Activity extends AppCompatActivity implements Pi
                      if (x == 10) {
                         upld_ledger_buton.setImageBitmap(bitmap);
                         upld_ledger_hint.setVisibility(View.GONE);
+                        ledger_name.setVisibility(View.GONE);
                          upld_ledger_buton.getLayoutParams().height = 300;
                          upld_ledger_buton.getLayoutParams().width = 300;
                          upld_ledger_buton.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -456,6 +527,7 @@ public class TransactionDetails_Activity extends AppCompatActivity implements Pi
                     }else if (x == 11) {
                         upld_invoice_buton.setImageBitmap(bitmap);
                         upld_invoice_hint.setVisibility(View.GONE);
+                        invoice_name.setVisibility(View.GONE);
                          upld_invoice_buton.getLayoutParams().height = 300;
                          upld_invoice_buton.getLayoutParams().width = 300;
                          upld_invoice_buton.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -464,6 +536,7 @@ public class TransactionDetails_Activity extends AppCompatActivity implements Pi
                     }else if (x == 12) {
                         upld_itr_buton.setImageBitmap(bitmap);
                         upld_ITR_hint.setVisibility(View.GONE);
+                        itr_name.setVisibility(View.GONE);
                          upld_itr_buton.getLayoutParams().height = 300;
                          upld_itr_buton.getLayoutParams().width = 300;
                          upld_itr_buton.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -473,6 +546,7 @@ public class TransactionDetails_Activity extends AppCompatActivity implements Pi
                     else if (x == 13) {
                         upld_tds_buton.setImageBitmap(bitmap);
                         upld_TDS_hint.setVisibility(View.GONE);
+                        tds_name.setVisibility(View.GONE);
                          upld_tds_buton.getLayoutParams().height = 300;
                          upld_tds_buton.getLayoutParams().width = 300;
                          upld_tds_buton.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -499,6 +573,7 @@ public class TransactionDetails_Activity extends AppCompatActivity implements Pi
             if (y==10){
                 upld_ledger_buton.setImageBitmap(thumbnail);
                 upld_ledger_hint.setVisibility(View.GONE);
+                ledger_name.setVisibility(View.GONE);
                 upld_ledger_buton.getLayoutParams().height = 300;
                 upld_ledger_buton.getLayoutParams().width = 300;
                 upld_ledger_buton.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -508,6 +583,7 @@ public class TransactionDetails_Activity extends AppCompatActivity implements Pi
             else if (y==11){
                 upld_invoice_buton.setImageBitmap(thumbnail);
                 upld_invoice_hint.setVisibility(View.GONE);
+                invoice_name.setVisibility(View.GONE);
                 upld_invoice_buton.getLayoutParams().height = 300;
                 upld_invoice_buton.getLayoutParams().width = 300;
                 upld_invoice_buton.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -517,6 +593,7 @@ public class TransactionDetails_Activity extends AppCompatActivity implements Pi
             else if (y==12){
                 upld_itr_buton.setImageBitmap(thumbnail);
                 upld_ITR_hint.setVisibility(View.GONE);
+                itr_name.setVisibility(View.GONE);
                 upld_itr_buton.getLayoutParams().height = 300;
                 upld_itr_buton.getLayoutParams().width = 300;
                 upld_itr_buton.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -525,6 +602,7 @@ public class TransactionDetails_Activity extends AppCompatActivity implements Pi
             }else if (y==13){
                 upld_tds_buton.setImageBitmap(thumbnail);
                 upld_TDS_hint.setVisibility(View.GONE);
+                tds_name.setVisibility(View.GONE);
                 upld_tds_buton.getLayoutParams().height = 300;
                 upld_tds_buton.getLayoutParams().width = 300;
                 upld_tds_buton.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -636,25 +714,41 @@ public class TransactionDetails_Activity extends AppCompatActivity implements Pi
             Log.e("LedgerStatus---->>", mFile.toString());
             mLedgerFile = mFile;
             ledger_name.setText(Pdf_Name);
+            upld_ledger_buton.setImageResource(R.drawable.c3);
             ledger_name.setVisibility(View.VISIBLE);
+            upld_ledger_buton.getLayoutParams().height = 150;
+            upld_ledger_buton.getLayoutParams().width = 150;
+            upld_ledger_buton.setScaleType(ImageView.ScaleType.FIT_XY);
 //            mSelectedUDCStatus = 0;
         }else if (mSelectedInvoiceStatus == 1) {
             Log.e("Invoice---->>> ", mFile.toString());
             mInvoiceFile = mFile;
             invoice_name.setText(Pdf_Name);
+            upld_invoice_buton.setImageResource(R.drawable.c3);
             invoice_name.setVisibility(View.VISIBLE);
+            upld_invoice_buton.getLayoutParams().height = 150;
+            upld_invoice_buton.getLayoutParams().width = 150;
+            upld_invoice_buton.setScaleType(ImageView.ScaleType.FIT_XY);
 //            mSelectedUDCStatus = 0;
         }else if (mSelectedITRStatus == 1) {
             Log.e("ITR--->>> ", mFile.toString());
             mITRFile = mFile;
             itr_name.setText(Pdf_Name);
+            upld_itr_buton.setImageResource(R.drawable.c3);
             itr_name.setVisibility(View.VISIBLE);
+            upld_itr_buton.getLayoutParams().height = 150;
+            upld_itr_buton.getLayoutParams().width = 150;
+            upld_itr_buton.setScaleType(ImageView.ScaleType.FIT_XY);
 //            mSelectedUDCStatus = 0;
         }else if (mSelectedTDSStatus == 1) {
             Log.e("TDS---->>>", mFile.toString());
             mTDSFile = mFile;
             tds_name.setText(Pdf_Name);
+            upld_tds_buton.setImageResource(R.drawable.c3);
             tds_name.setVisibility(View.VISIBLE);
+            upld_tds_buton.getLayoutParams().height = 150;
+            upld_tds_buton.getLayoutParams().width = 150;
+            upld_tds_buton.setScaleType(ImageView.ScaleType.FIT_XY);
 //            mSelectedUDCStatus = 0;
         }
 
@@ -668,7 +762,9 @@ public class TransactionDetails_Activity extends AppCompatActivity implements Pi
 
     private void DealerLEDGERDoc() {
         String musercode = "47436";
-        RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), musercode);
+
+
+        RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), SharedPref.getStringFromSharedPref(AppConstants.USER_CODE,getApplicationContext()));
 
         File idFile;
 //        Log.e("testingggg", "testingggg99999" + idFile);
@@ -699,6 +795,7 @@ public class TransactionDetails_Activity extends AppCompatActivity implements Pi
                     upld_ledger_succss.setVisibility(View.VISIBLE);
                     ledger_save_button.setText("Update");
                     mSelectedLedgerStatus = 0;
+                    upload_ledger_success = 1;
                     Toast.makeText(TransactionDetails_Activity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
@@ -720,7 +817,7 @@ public class TransactionDetails_Activity extends AppCompatActivity implements Pi
     private void DealerTDSDoc() {
 
         String musercode = "47436";
-        RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), musercode);
+        RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), SharedPref.getStringFromSharedPref(AppConstants.USER_CODE,getApplicationContext()));
 
         File idFile;
 //        Log.e("testingggg", "testingggg99999" + idFile);
@@ -750,6 +847,7 @@ public class TransactionDetails_Activity extends AppCompatActivity implements Pi
                     upld_tds_succss.setVisibility(View.VISIBLE);
                     TDS_save_button.setText("Update");
                     mSelectedTDSStatus = 0;
+                    upload_tds_success = 1;
                     Toast.makeText(TransactionDetails_Activity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
@@ -771,7 +869,7 @@ public class TransactionDetails_Activity extends AppCompatActivity implements Pi
 
 
         String musercode = "47436";
-        RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), musercode);
+        RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), SharedPref.getStringFromSharedPref(AppConstants.USER_CODE,getApplicationContext()));
 
         File idFile;
 //        Log.e("testingggg", "testingggg99999" + idFile);
@@ -801,6 +899,7 @@ public class TransactionDetails_Activity extends AppCompatActivity implements Pi
                     upld_invoice_succss.setVisibility(View.VISIBLE);
                     invoice_save_button.setText("Update");
                     mSelectedInvoiceStatus = 0;
+                    upload_invoice_success = 1;
                     Toast.makeText(TransactionDetails_Activity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
@@ -822,7 +921,7 @@ public class TransactionDetails_Activity extends AppCompatActivity implements Pi
     private void DealerITRDoc() {
 
         String musercode = "47436";
-        RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), musercode);
+        RequestBody user_code = RequestBody.create(MediaType.parse("multipart/form-data"), SharedPref.getStringFromSharedPref(AppConstants.USER_CODE,getApplicationContext()));
 
         File idFile;
 //        Log.e("testingggg", "testingggg99999" + idFile);
@@ -853,6 +952,7 @@ public class TransactionDetails_Activity extends AppCompatActivity implements Pi
                     upld_itr_succss.setVisibility(View.VISIBLE);
                     itr_save_button.setText("Update");
                     mSelectedITRStatus = 0;
+                    upload_itr_success = 1;
                     Toast.makeText(TransactionDetails_Activity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
 

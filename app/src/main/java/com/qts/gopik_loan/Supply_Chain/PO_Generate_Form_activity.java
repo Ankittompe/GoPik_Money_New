@@ -2,9 +2,14 @@ package com.qts.gopik_loan.Supply_Chain;
 
 import static android.content.ContentValues.TAG;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -25,6 +30,8 @@ import com.qts.gopik_loan.Dealer_Activity.MainActivity;
 import com.qts.gopik_loan.Dealer_Adapter.PO_Form_Adapter;
 import com.qts.gopik_loan.Model.GetCatproductModel;
 import com.qts.gopik_loan.Model.Po_add_MODEL;
+import com.qts.gopik_loan.Model.dealer_doc_confirm_MODEL;
+import com.qts.gopik_loan.Pojo.Dealer_doc_confirm_POJO;
 import com.qts.gopik_loan.Pojo.GetCatproductPojo;
 import com.qts.gopik_loan.Pojo.Po_add_POJO;
 import com.qts.gopik_loan.R;
@@ -55,7 +62,7 @@ public class PO_Generate_Form_activity extends AppCompatActivity implements Adap
     PO_Product po_product;
     ArrayList<PO_Product> p = new ArrayList<PO_Product>();
     ArrayList<String> PO_List = new ArrayList<>();
-    TextView quantity_number, add_bttn, current_date2, current_date, confirm_button, mBtnTotalPrice;
+    TextView quantity_number, add_bttn, current_date2, current_date, confirm_button, mBtnTotalPrice,Ok_button;
     ImageView qty_decrease_button, qty_increase_button;
 
     ImageView arrow, hometoolbar;
@@ -65,10 +72,15 @@ public class PO_Generate_Form_activity extends AppCompatActivity implements Adap
     String mSpinnerName = "";
     String mSpinnerPrice = "0";
     String format;
+    private Dialog dialogCondition;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_po_generate_form);
+
+
+        dialogCondition = new Dialog(PO_Generate_Form_activity.this);
+
 
         custPrograssbar = new CustPrograssbar();
         po_form_recyclerview = findViewById(R.id.po_form_recyclerview);
@@ -91,7 +103,9 @@ public class PO_Generate_Form_activity extends AppCompatActivity implements Adap
         currentDateTimeString = java.text.DateFormat.getDateInstance().format(new Date());
 
 
+
         current_date.setText(format);
+        current_date2.setText(SharedPref.getStringFromSharedPref(AppConstants.USER_CODE,getApplicationContext()));
 
         arrow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -185,6 +199,59 @@ public class PO_Generate_Form_activity extends AppCompatActivity implements Adap
             @Override
             public void onClick(View v) {
                 Po_add();
+            }
+        });
+
+        dealer_doc_confirm();
+    }
+    private void dealer_doc_confirm() {
+
+        Dealer_doc_confirm_POJO pojo = new Dealer_doc_confirm_POJO(SharedPref.getStringFromSharedPref(AppConstants.USER_CODE, getApplicationContext()));
+        RestApis restApis = NetworkHandler.getRetrofit().create(RestApis.class);
+        Call<dealer_doc_confirm_MODEL> call = restApis.dealer_doc_confirm(pojo);
+        call.enqueue(new Callback<dealer_doc_confirm_MODEL>() {
+            @Override
+            public void onResponse(Call<dealer_doc_confirm_MODEL> call, Response<dealer_doc_confirm_MODEL> response) {
+                if (response.body() != null) {
+
+                    if (response.body().getCode()==200) {
+
+                       if(response.body().getPayload().getDealer_doc().equals("0")){
+                           CheckDocUploadStatus();
+                       }
+                    } else {
+
+                    }
+                    
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<dealer_doc_confirm_MODEL> call, Throwable t) {
+
+
+                Toast.makeText(getApplicationContext(), "Something went wrong!", Toast.LENGTH_LONG).show();
+            }
+
+        });
+    }
+
+    private void CheckDocUploadStatus() {
+
+        dialogCondition.setContentView(R.layout.po_dailog_for_doc_upload);
+        Ok_button = (TextView) dialogCondition.findViewById(R.id.Ok_button);
+
+        dialogCondition.getWindow().setBackgroundDrawable(
+                new ColorDrawable(Color.WHITE));
+        dialogCondition.setCancelable(true);
+        dialogCondition.show();
+        Ok_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(PO_Generate_Form_activity.this,PersonalDetails_Activity.class);
+                startActivity(intent);
             }
         });
 
@@ -322,8 +389,11 @@ public class PO_Generate_Form_activity extends AppCompatActivity implements Adap
 
         }
         Log.e("mTotalPrice *************", String.valueOf(mTotalPrice));
-        mBtnTotalPrice.setText("Total Price is :- "+"₹"+ mTotalPrice);
-        Po_add_POJO pojo = new Po_add_POJO("47436", "sai", "Hero", format, mSelectedProductArrayList, String.valueOf(mTotalPrice));
+        mBtnTotalPrice.setText("Estimated Price :- "+"₹"+ mTotalPrice);
+        Po_add_POJO pojo = new Po_add_POJO(
+                SharedPref.getStringFromSharedPref(AppConstants.USER_CODE,getApplicationContext())
+                , "sai", SharedPref.getStringFromSharedPref(AppConstants.BRAND,getApplicationContext()),
+                format, mSelectedProductArrayList, String.valueOf(mTotalPrice));
         SharedPref.getStringFromSharedPref(AppConstants.USER_CODE, getApplicationContext());
 
 

@@ -3,6 +3,7 @@ package com.qts.gopik_loan.Dealer_Fragment;
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static android.app.Activity.RESULT_OK;
+import static android.content.ContentValues.TAG;
 import static android.os.Build.VERSION.SDK_INT;
 
 import android.Manifest;
@@ -15,32 +16,45 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.Settings;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.hbisoft.pickit.PickiT;
 import com.hbisoft.pickit.PickiTCallbacks;
 import com.qts.gopik_loan.Activity.AppConstants;
 import com.qts.gopik_loan.Activity.SharedPref;
 import com.qts.gopik_loan.Model.Bank_Upload_MODEL;
+import com.qts.gopik_loan.Model.LoanLimit_Details_MODEL;
+import com.qts.gopik_loan.Model.Po_all_details_MODEL;
+import com.qts.gopik_loan.Pojo.Loanlimitdetails_POJO;
+import com.qts.gopik_loan.Pojo.Po_all_details_POJO;
 import com.qts.gopik_loan.R;
 import com.qts.gopik_loan.Retro.NetworkHandler;
 import com.qts.gopik_loan.Retro.RestApis;
+import com.qts.gopik_loan.Supply_Chain.BusinessDetails_Activity;
 import com.qts.gopik_loan.Supply_Chain.Image_Upload_SupplyChain;
+import com.qts.gopik_loan.Supply_Chain.LoanStatus;
 import com.qts.gopik_loan.Supply_Chain.PO_Get_Modified_List;
 import com.qts.gopik_loan.Supply_Chain.PO_TOP_FIVE_Activity;
 import com.qts.gopik_loan.Supply_Chain.PersonalDetails_Activity;
+import com.qts.gopik_loan.Supplychain_Adapter.PoRequest_Adapter;
+import com.qts.gopik_loan.Utils.CustPrograssbar;
 
 import java.io.File;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import okhttp3.MediaType;
@@ -59,11 +73,12 @@ public class My_Mall_Fragment extends Fragment implements PickiTCallbacks {
 
     ImageView upload_document;
     private final int PERMISSION_REQUEST_CODE = 1000;
-
+    CustPrograssbar custPrograssbar;
     ImageView po_button;
-    ConstraintLayout po_layout;
-
+    ConstraintLayout po_layout,doc_upload;
+    String rupee_symbol = "₹";
     PickiT pickiT;
+    TextView loan_status_tv,total_credit_limit_tv,total_loan_limit_tv,viewloans;
     private static final int REQUEST = 112;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -113,9 +128,30 @@ public class My_Mall_Fragment extends Fragment implements PickiTCallbacks {
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_my__mall_, container, false);
         View v = inflater.inflate(R.layout.fragment_my__mall_, container, false);
+
+        custPrograssbar = new CustPrograssbar();
         upload_document= (ImageView)v.findViewById(R.id.upload_document);
         po_button= (ImageView)v.findViewById(R.id.po_button);
         po_layout= (ConstraintLayout) v.findViewById(R.id.po_layout);
+        doc_upload= (ConstraintLayout) v.findViewById(R.id.doc_upload);
+        viewloans= (TextView) v.findViewById(R.id.viewloans);
+
+
+
+        loan_status_tv= (TextView) v.findViewById(R.id.loan_status_tv);
+        total_credit_limit_tv= (TextView) v.findViewById(R.id.total_credit_limit_tv);
+        total_loan_limit_tv= (TextView) v.findViewById(R.id.total_loan_limit_tv);
+
+
+        viewloans.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), LoanStatus.class);
+                startActivity(intent);
+            }
+        });
+
+        GetLoanLimitDetails();
 
         po_layout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,7 +160,26 @@ public class My_Mall_Fragment extends Fragment implements PickiTCallbacks {
                 startActivity(po_intent);
             }
         });
-
+        doc_upload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent po_intent = new Intent(getActivity(), PersonalDetails_Activity.class);
+                startActivity(po_intent);
+            }
+        });
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // If we're running on Honeycomb or newer, then we can use the Theme's
+            // selectableItemBackground to ensure that the View has a pressed state
+            TypedValue outValue = new TypedValue();
+            getActivity().getTheme().resolveAttribute(android.R.attr.selectableItemBackground, outValue, true);
+            po_layout.setBackgroundResource(outValue.resourceId);
+        } if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // If we're running on Honeycomb or newer, then we can use the Theme's
+            // selectableItemBackground to ensure that the View has a pressed state
+            TypedValue outValue = new TypedValue();
+            getActivity().getTheme().resolveAttribute(android.R.attr.selectableItemBackground, outValue, true);
+            doc_upload.setBackgroundResource(outValue.resourceId);
+        }
         po_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -157,6 +212,64 @@ public class My_Mall_Fragment extends Fragment implements PickiTCallbacks {
         }*/
         return v;
     }
+
+    private void GetLoanLimitDetails() {
+        custPrograssbar.prograssCreate(getContext());
+        Loanlimitdetails_POJO pojo = new Loanlimitdetails_POJO(SharedPref.getStringFromSharedPref(AppConstants.USER_CODE,getContext()));
+        Log.e("checktopfive","response");
+        RestApis restApis = NetworkHandler.getRetrofit().create(RestApis.class);
+
+        Call<LoanLimit_Details_MODEL> call = restApis.loanlimitdetails(pojo);
+        call.enqueue(new Callback<LoanLimit_Details_MODEL>() {
+            @Override
+            public void onResponse(Call<LoanLimit_Details_MODEL> call, Response<LoanLimit_Details_MODEL> response) {
+                if (response.body() != null) {
+
+                    if (response.body().getCode()==200) {
+                        custPrograssbar.closePrograssBar();
+
+                        String number1 = response.body().getPayload().getAvailable_limit();
+                        double amount = Double.parseDouble(number1);
+                        DecimalFormat formatter = new DecimalFormat("##,##,###");
+                        String formatted = formatter.format(amount);
+                        total_loan_limit_tv.setText(rupee_symbol+formatted);
+                        Log.e("Format","number---->>>"+formatted);
+
+                        loan_status_tv.setText(response.body().getPayload().getStatus());
+
+                        String number2 = response.body().getPayload().getTotal_credit_limit();
+                        double amount2 = Double.parseDouble(number2);
+                        DecimalFormat formatter2 = new DecimalFormat("##,##,###");
+                        String formatted2 = formatter2.format(amount2);
+
+                        total_credit_limit_tv.setText(rupee_symbol+formatted2);
+
+                       // Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+
+                        Toast.makeText(getContext(), "Something went wrong!!", Toast.LENGTH_LONG).show();
+                    }
+
+                }
+
+
+
+
+
+
+            @Override
+            public void onFailure(Call<LoanLimit_Details_MODEL> call, Throwable t) {
+
+                Toast.makeText(getContext(), "Something went wrong!", Toast.LENGTH_LONG).show();
+            }
+
+        });
+
+
+    }
+
+
     private void openPDFSelector() {
         Intent intent = new Intent();
         intent.setType("application/pdf");

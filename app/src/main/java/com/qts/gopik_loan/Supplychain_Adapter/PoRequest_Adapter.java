@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class PoRequest_Adapter extends RecyclerView.Adapter<PoRequest_Adapter.ViewHolder> {
     Context context;
     ArrayList<String>po_list= new ArrayList<>();
-    public ArrayList<Integer> contest_id = new ArrayList<>();
+    public ArrayList<Integer> Serial_number = new ArrayList<>();
     ArrayList<String> id = new ArrayList<>();
     ArrayList<String> po_id = new ArrayList<>();
     ArrayList<String> date = new ArrayList<>();
@@ -48,7 +48,7 @@ public class PoRequest_Adapter extends RecyclerView.Adapter<PoRequest_Adapter.Vi
                              ArrayList<String> update_totl_prc,
                              ArrayList<String> financer,
                              ArrayList<String> status,
-                             ArrayList<String> invoicefile) {
+                             ArrayList<String> invoicefile, ArrayList<Integer> serial_number) {
         this.context = context;
         this.id = id;
         this.po_id = po_id;
@@ -66,6 +66,7 @@ public class PoRequest_Adapter extends RecyclerView.Adapter<PoRequest_Adapter.Vi
         this.financer = financer;
         this.status = status;
         this.invoicefile = invoicefile;
+        this.Serial_number = serial_number;
 
     }
 
@@ -88,8 +89,11 @@ public class PoRequest_Adapter extends RecyclerView.Adapter<PoRequest_Adapter.Vi
         holder.et_brand.setText(brand.get(position));
         holder.et_dealer_id.setText(dealer_id.get(position));
         holder.et_dealer_name.setText(dealer_name.get(position));*/
-        holder.et_product_price.setText(prodt_price.get(position)+"/"+update_price.get(position));
-     holder.et_product_qty.setText(prodt_quantity.get(position)+"/"+update_quantity.get(position));
+
+       holder.serial_tv.setText((Integer.toString(Serial_number.get(position))));
+
+     holder.et_product_qty.setText(prodt_quantity.get(position));
+     holder.update_qty.setText(update_quantity.get(position));
       /*  holder.et_product_price.setText(prodt_price.get(position));*/
       /*  holder.et_total_price.setText(total_price.get(position)+"/"+update_totl_prc.get(position));*/
     /*    holder.et_financer.setText(financer.get(position));
@@ -104,7 +108,9 @@ public class PoRequest_Adapter extends RecyclerView.Adapter<PoRequest_Adapter.Vi
 
     @Override
     public int getItemCount() {
+
         return id.size();
+
     }
 
     public  class ViewHolder extends RecyclerView.ViewHolder {
@@ -114,7 +120,7 @@ public class PoRequest_Adapter extends RecyclerView.Adapter<PoRequest_Adapter.Vi
                 financer, status, et_id, et_po_id, et_date, et_brand,
                 et_dealer_id, et_dealer_name, et_product, et_product_qty, et_update_qty,
                 et_product_price, et_update_price,
-                et_total_price, et_update_total_price, et_financer, et_status,
+                et_total_price, et_update_total_price, et_financer, et_status,serial_tv,
                 et_modified_product_price,et_modified_product_quantity,et_modified_total_price;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -142,8 +148,10 @@ public class PoRequest_Adapter extends RecyclerView.Adapter<PoRequest_Adapter.Vi
             et_dealer_name = itemView.findViewById(R.id.et_dealer_name);
             et_product = itemView.findViewById(R.id.tv1);
             et_product_qty = itemView.findViewById(R.id.tv2);
+            update_qty = itemView.findViewById(R.id.tv3);
+            serial_tv = itemView.findViewById(R.id.serial_tv);
 
-            et_product_price = itemView.findViewById(R.id.tv3);
+
 
             et_total_price = itemView.findViewById(R.id.et_total_price);
 

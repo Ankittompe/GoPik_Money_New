@@ -30,10 +30,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Purchase Order"
-                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/blue"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
-                android:textSize="15dp"
+                android:textSize="18dp"
                 android:textStyle="bold" />
             <LinearLayout
                 android:layout_width="match_parent"
@@ -54,7 +55,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_weight="1.5"
+                        android:layout_weight="1"
                         android:gravity="left"
                         android:text="PO ID :"
                         android:textColor="@color/black"
@@ -80,6 +81,7 @@
                         android:layout_weight="1.2"
                         android:gravity="left"
                         android:text="Date :"
+                        android:layout_marginLeft="24dp"
                         android:textColor="@color/black"
                         android:textSize="15dp"
                         android:textStyle="bold" />
@@ -147,25 +149,56 @@
                         android:id="@+id/et_status"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
+                        android:layout_gravity="center_vertical"
                         android:layout_weight="2"
                         android:gravity="left"
                         android:text=""
-                        android:textColor="@color/black"
-                        android:textSize="15dp"
-                        android:textStyle="normal" />
+                        android:layout_marginTop="2dp"
+                        android:textColor="@color/blue"
+                        android:textSize="12dp"
+                        android:textStyle="bold" />
 
 
                 </LinearLayout>
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/product_heading"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="Product name"
+                    android:textStyle="bold"
+                    android:textSize="14dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/quantity_heading"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:textSize="14dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:text="Product quantity"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.9dp"
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="2dp"
                 android:background="#C0C0C0" />
+
 
 
             <androidx.recyclerview.widget.RecyclerView
@@ -236,7 +269,7 @@
                         android:id="@+id/total_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Total Price :"
+                        android:text="Estimated Price :"
                         android:textColor="@color/black"
                         android:textSize="15dp"
                         android:textStyle="bold" />
@@ -257,31 +290,31 @@
 
             </LinearLayout>
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="20dp">
-
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:background="@drawable/button_layout"
-                    android:gravity="center"
-                    android:padding="15dp"
-                    android:text="OK"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-
-                    >
-
-                </TextView>
-
-            </RelativeLayout>
         </LinearLayout>
     </ScrollView>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp">
+
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/button_layout"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="OK"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+
+            >
+
+        </TextView>
+
+    </RelativeLayout>
 
 </LinearLayout>

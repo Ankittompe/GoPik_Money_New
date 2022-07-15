@@ -12,8 +12,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.qts.gopik_loan.Activity.AppConstants;
+import com.qts.gopik_loan.Activity.SharedPref;
 import com.qts.gopik_loan.Dealer_Activity.MainActivity;
 import com.qts.gopik_loan.Supplychain_Adapter.All_product_list_Adapter;
 import com.qts.gopik_loan.Model.all_POs_MODEL;
@@ -40,7 +42,9 @@ public class PO_Generate__AllList_Activity extends AppCompatActivity {
     All_product_list_Adapter all_product_list_adapter;
     ImageView arrow,hometoolbar;
     CustPrograssbar custPrograssbar;
+    SwipeRefreshLayout mSwipeRefreshLayout;
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_po_generate_all_list);
@@ -48,6 +52,7 @@ public class PO_Generate__AllList_Activity extends AppCompatActivity {
         all_list_recycleview = findViewById(R.id.all_list_recycleview);
         arrow = findViewById(R.id.arrow);
         hometoolbar=findViewById(R.id.hometoolbar);
+        mSwipeRefreshLayout=findViewById(R.id.swiperefreshlayout);
 
         arrow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +72,16 @@ public class PO_Generate__AllList_Activity extends AppCompatActivity {
 
             }
         });
+
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+
+            @Override
+            public void onRefresh() {
+
+                mSwipeRefreshLayout.setRefreshing(false);
+                GetAllProduct_List();
+            }
+        });
         GetAllProduct_List();
 
 
@@ -74,9 +89,13 @@ public class PO_Generate__AllList_Activity extends AppCompatActivity {
     }
 
     private void GetAllProduct_List() {
+
+        All_po_id.clear();
+        All_po_date.clear();
+        All_po_Status.clear();
         custPrograssbar.prograssCreate(this);
-        all_POs_POJO pojo = new all_POs_POJO("47436");
-        //SharedPref.getStringFromSharedPref(AppConstants.USER_CODE,getApplicationContext());
+        all_POs_POJO pojo = new all_POs_POJO(SharedPref.getStringFromSharedPref(AppConstants.USER_CODE,getApplicationContext()));
+        SharedPref.getStringFromSharedPref(AppConstants.USER_CODE,getApplicationContext());
 
         Log.e("checktopfive","response");
         RestApis restApis = NetworkHandler.getRetrofit().create(RestApis.class);
@@ -99,6 +118,9 @@ public class PO_Generate__AllList_Activity extends AppCompatActivity {
                                 All_po_date.add(response.body().getPayload().get(i).getDate());
                                 All_po_id.add(response.body().getPayload().get(i).getPo_id());
                                 All_po_Status.add(response.body().getPayload().get(i).getStatus());
+                                All_product_list.add(response.body().getPayload().get(i).getProduct());
+
+
 
 
 

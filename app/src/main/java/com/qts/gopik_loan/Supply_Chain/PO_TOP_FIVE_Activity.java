@@ -28,6 +28,9 @@ import com.qts.gopik_loan.Retro.RestApis;
 import com.qts.gopik_loan.Utils.CustPrograssbar;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Random;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,10 +38,14 @@ import retrofit2.Response;
 
 public class PO_TOP_FIVE_Activity extends AppCompatActivity {
 
-    TextView view_all_button;
+    TextView view_all_button,no_po_tv;
     RecyclerView top_five_recyclerview;
     Top_Five_Adapter top_five_adapter;
     CustPrograssbar custPrograssbar;
+
+
+
+
     ArrayList<String> Top_five_list = new ArrayList<>();
     ArrayList<String> Top_five_ID = new ArrayList<>();
     ArrayList<String> Top_Five_PO_ID = new ArrayList<>();
@@ -59,8 +66,10 @@ public class PO_TOP_FIVE_Activity extends AppCompatActivity {
         view_all_button = findViewById(R.id.view_all_button);
         add_form_button = findViewById(R.id.add_form_button);
         top_five_recyclerview = findViewById(R.id.top_five_recyclerview);
+       mSwipeRefreshLayout = findViewById(R.id.swiperefreshlayout);
         arrow = findViewById(R.id.arrow);
         hometoolbar = findViewById(R.id.hometoolbar);
+        no_po_tv = findViewById(R.id.no_po_tv);
   /*      mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swiperefreshlayout);
 */
       /*  mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -74,7 +83,7 @@ public class PO_TOP_FIVE_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent it = new Intent(PO_TOP_FIVE_Activity.this, MainActivity.class);
-                it.putExtra(AppConstants.ACTFRAG_TYPE_KEY, AppConstants.TOP_FIVE_ACTIVITY);
+                it.putExtra(AppConstants.ACTFRAG_TYPE_KEY, AppConstants.MY_MALL_DEALER_FRAG);
                 startActivity(it);
             }
         });
@@ -87,14 +96,24 @@ public class PO_TOP_FIVE_Activity extends AppCompatActivity {
 
             }
         });
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
 
-        GetTopFiveList();
+            @Override
+            public void onRefresh() {
+
+                mSwipeRefreshLayout.setRefreshing(false);
+                GetTopFiveList();
+            }
+        });
+
         view_all_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent po_all_list = new Intent(PO_TOP_FIVE_Activity.this, PO_Generate__AllList_Activity.class);
                 startActivity(po_all_list);
+
+
 
             }
         });
@@ -107,13 +126,18 @@ public class PO_TOP_FIVE_Activity extends AppCompatActivity {
 
             }
         });
+       GetTopFiveList();
 
     }
 
     private void GetTopFiveList() {
+
+        Top_five_ID.clear();
+        Top_Five_Date.clear();
+        Status.clear();
         custPrograssbar.prograssCreate(this);
 
-        top_five_POs_POJO pojo = new top_five_POs_POJO("47436");
+        top_five_POs_POJO pojo = new top_five_POs_POJO(SharedPref.getStringFromSharedPref(AppConstants.USER_CODE,getApplicationContext()));
         SharedPref.getStringFromSharedPref(AppConstants.USER_CODE, getApplicationContext());
 
         Log.e("checktopfive", "response");
@@ -122,7 +146,10 @@ public class PO_TOP_FIVE_Activity extends AppCompatActivity {
         call.enqueue(new Callback<top_five_POs_MODEL>() {
             @Override
             public void onResponse(Call<top_five_POs_MODEL> call, Response<top_five_POs_MODEL> response) {
+
                 if (response.body() != null) {
+
+
                     custPrograssbar.closePrograssBar();
                     if (response.body().getCode()==200) {
 
@@ -143,6 +170,7 @@ public class PO_TOP_FIVE_Activity extends AppCompatActivity {
                                 Top_Five_Quantity.add(response.body().getPayload().get(i).getProdt_quantity());
                                 Status.add(response.body().getPayload().get(i).getStatus());
                                 if (response.body().getPayload().size() - 1 == i) {
+
                                     LinearLayoutManager layoutManager = new LinearLayoutManager(
                                             PO_TOP_FIVE_Activity.this, LinearLayoutManager.VERTICAL, false
                                     );
@@ -155,6 +183,9 @@ public class PO_TOP_FIVE_Activity extends AppCompatActivity {
 
                                 }
                             }
+                        }else if (response.body().getPayload().size()==0){
+                            no_po_tv.setVisibility(View.VISIBLE);
+
                         }
                     }
                    else  if (response.body().getCode()==400) {
@@ -169,7 +200,7 @@ public class PO_TOP_FIVE_Activity extends AppCompatActivity {
                 else{
                     custPrograssbar.closePrograssBar();
                     Toast.makeText(PO_TOP_FIVE_Activity.this, "No data available", Toast.LENGTH_LONG).show();
-
+                    no_po_tv.setVisibility(View.VISIBLE);
                 }
 
 

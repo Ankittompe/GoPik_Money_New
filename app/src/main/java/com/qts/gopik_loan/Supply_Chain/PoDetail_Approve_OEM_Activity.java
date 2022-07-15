@@ -7,7 +7,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -41,6 +44,9 @@ public class PoDetail_Approve_OEM_Activity extends AppCompatActivity {
     PoDetails_Approve_OEM_Adapter poDetails_ApproveOEM_adapter;
     TextView textView3, reject,et_po_id,et_date,et_dealer_name,et_status,et_total_qty,et_total_price;
     CustPrograssbar custPrograssbar;
+    private Dialog dialogCondition;
+    TextView Ok_button;
+    ImageView camera_button;
     ArrayList<String> id = new ArrayList<>();
     ArrayList<String> po_id = new ArrayList<>();
     ArrayList<String> date = new ArrayList<>();
@@ -58,17 +64,21 @@ public class PoDetail_Approve_OEM_Activity extends AppCompatActivity {
     ArrayList<String> status = new ArrayList<>();
     ArrayList<String> invoicefile = new ArrayList<>();
     String image ;
+    String invoice_image;
     Integer temp=0;
     Integer tempp=0;
     ImageView arrow, hometoolbar,invoice;
-
+    String rupee_symbol = "₹";
+    TextView view;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_po_detail);
 
-        et_po_id = (TextView) findViewById(R.id.et_po_id);
-        et_date = (TextView) findViewById(R.id.et_date);
+        dialogCondition = new Dialog(PoDetail_Approve_OEM_Activity.this);
+        view  = (TextView) findViewById(R.id.view);
+        et_po_id  = (TextView) findViewById(R.id.et_po_id);
+        et_date  = (TextView) findViewById(R.id.et_date);
         et_dealer_name = (TextView) findViewById(R.id.et_dealer_name);
         et_status = (TextView) findViewById(R.id.et_status);
         et_total_qty = (TextView) findViewById(R.id.et_total_qty);
@@ -81,9 +91,30 @@ public class PoDetail_Approve_OEM_Activity extends AppCompatActivity {
         arrow=(ImageView) findViewById(R.id.arrow);
         hometoolbar=(ImageView) findViewById(R.id.hometoolbar);
 
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+               InvoiceDailog();
+            }
+        });
+        hometoolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(PoDetail_Approve_OEM_Activity.this, MainActivity.class);
+                it.putExtra(AppConstants.ACTFRAG_TYPE_KEY, AppConstants.MY_MALL_DEALER_FRAG);
+                startActivity(it);
+            }
+        });
         po_all_details();
+        arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(PoDetail_Approve_OEM_Activity.this, PO_TOP_FIVE_Activity.class);
 
+                startActivity(it);
+            }
+        });
         textView3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,6 +135,35 @@ public class PoDetail_Approve_OEM_Activity extends AppCompatActivity {
             }
         });
     }
+
+    private void InvoiceDailog() {
+
+
+        dialogCondition.setContentView(R.layout.invoice_dailog);
+         Ok_button = (TextView) dialogCondition.findViewById(R.id.Ok_button);
+        camera_button = (ImageView) dialogCondition.findViewById(R.id.camera_button);
+
+        Log.e("Body", "body3"+image);
+        Glide.with(getApplicationContext())
+                .load(image)
+                .into(camera_button);
+        dialogCondition.getWindow().setBackgroundDrawable(
+                new ColorDrawable(Color.WHITE));
+        dialogCondition.setCancelable(true);
+
+        dialogCondition.show();
+
+
+        Ok_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogCondition.dismiss();
+            }
+        });
+
+
+    }
+
     private void po_all_details() {
         custPrograssbar.prograssCreate(this);
         Po_all_details_POJO pojo = new Po_all_details_POJO( SharedPref.getStringFromSharedPref(AppConstants.PO_ID,getApplicationContext()));
@@ -153,8 +213,10 @@ public class PoDetail_Approve_OEM_Activity extends AppCompatActivity {
                                 et_dealer_name.setText(response.body().getPayload().get(i).getDealer_name());
                                 et_status.setText(response.body().getPayload().get(i).getStatus());
                                 et_total_qty.setText(String.valueOf(temp));
-                                et_total_price.setText(response.body().getPayload().get(i).getTotal_price());
+                                et_total_price.setText(rupee_symbol+response.body().getPayload().get(i).getTotal_price());
                                image=response.body().getImage();
+
+
 
                                Log.e("Body", "body3"+image);
                                 Glide.with(getApplicationContext())
@@ -199,7 +261,6 @@ public class PoDetail_Approve_OEM_Activity extends AppCompatActivity {
 
         });
 
-
     }
     private void update_po_status() {
         custPrograssbar.prograssCreate(this);
@@ -217,30 +278,21 @@ public class PoDetail_Approve_OEM_Activity extends AppCompatActivity {
                         custPrograssbar.closePrograssBar();
 
                         Log.e("Body", "body2");
-                        Intent it = new Intent(PoDetail_Approve_OEM_Activity.this, MainActivity.class);
+                        Intent it = new Intent(PoDetail_Approve_OEM_Activity.this, PO_TOP_FIVE_Activity.class);
                         it.putExtra(AppConstants.ACTFRAG_TYPE_KEY, AppConstants.MY_MALL_DEALER_FRAG);
                         startActivity(it);
-
                     } else {
                         Toast.makeText(PoDetail_Approve_OEM_Activity.this, "Something went wrong!!", Toast.LENGTH_LONG).show();
                     }
-
                 }
-
-
             }
-
-
-
             @Override
             public void onFailure(Call<Update_po_status_MODEL> call, Throwable t) {
-
 
                 Toast.makeText(PoDetail_Approve_OEM_Activity.this, "Something went wrong!", Toast.LENGTH_LONG).show();
             }
 
         });
-
 
     }
 

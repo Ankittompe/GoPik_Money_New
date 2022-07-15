@@ -6,7 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.qts.gopik_loan.Activity.AppConstants;
 import com.qts.gopik_loan.Activity.SharedPref;
 import com.qts.gopik_loan.Dealer_Activity.MainActivity;
@@ -55,15 +59,27 @@ public class PoDetail_Approve_Dealer_Activity extends AppCompatActivity {
     ArrayList<String> financer = new ArrayList<>();
     ArrayList<String> status = new ArrayList<>();
     ArrayList<String> invoicefile = new ArrayList<>();
-    ImageView arrow, hometoolbar;
+    ImageView arrow, hometoolbar,invoice;
     Integer temp=0;
     Integer tempp=0;
+    Integer tempmod=0;
+    Integer tempmodd=0;
+    Integer tempmodifyprice=0;
+    Integer tempmodifypricee=0;
+    String image ;
+    String rupee_symbol = "₹";
+    private Dialog dialogCondition;
+    TextView Ok_button,view;
+    ImageView camera_button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_po_detail_approve_dealer);
+
+        dialogCondition = new Dialog(PoDetail_Approve_Dealer_Activity.this);
         custPrograssbar = new CustPrograssbar();
         et_po_id = (TextView) findViewById(R.id.et_po_id);
+        invoice=(ImageView) findViewById(R.id.invoice);
         et_date = (TextView) findViewById(R.id.et_date);
         et_dealer_name = (TextView) findViewById(R.id.et_dealer_name);
         et_status = (TextView) findViewById(R.id.et_status);
@@ -73,11 +89,35 @@ public class PoDetail_Approve_Dealer_Activity extends AppCompatActivity {
         textView3=(TextView) findViewById(R.id.textView3);
         arrow=(ImageView) findViewById(R.id.arrow);
         hometoolbar=(ImageView) findViewById(R.id.hometoolbar);
-        textView3.setOnClickListener(new View.OnClickListener() {
+        view = (TextView) findViewById(R.id.view);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                InvoiceDailog();
+            }
+        });
+
+        hometoolbar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent it = new Intent(PoDetail_Approve_Dealer_Activity.this, MainActivity.class);
-                it.putExtra(AppConstants.ACTFRAG_TYPE_KEY, AppConstants.MY_MALL_DEALER_FRAG);
+                it.putExtra(AppConstants.ACTFRAG_TYPE_KEY, AppConstants.HOME__DELAER_FRAGMENT);
+                startActivity(it);
+            }
+        });
+        arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(PoDetail_Approve_Dealer_Activity.this, PO_TOP_FIVE_Activity.class);
+
+                startActivity(it);
+            }
+        });
+        textView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(PoDetail_Approve_Dealer_Activity.this, PO_TOP_FIVE_Activity.class);
+
                 startActivity(it);
 
             }
@@ -86,6 +126,32 @@ public class PoDetail_Approve_Dealer_Activity extends AppCompatActivity {
         po_all_details();
 
     }
+    private void InvoiceDailog() {
+        dialogCondition.setContentView(R.layout.invoice_dailog);
+        Ok_button = (TextView) dialogCondition.findViewById(R.id.Ok_button);
+        camera_button = (ImageView) dialogCondition.findViewById(R.id.camera_button);
+
+        Log.e("Body", "body3"+image);
+        Glide.with(getApplicationContext())
+                .load(image)
+                .into(camera_button);
+        dialogCondition.getWindow().setBackgroundDrawable(
+                new ColorDrawable(Color.WHITE));
+        dialogCondition.setCancelable(true);
+
+        dialogCondition.show();
+
+
+        Ok_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogCondition.dismiss();
+            }
+        });
+
+
+    }
+
     private void po_all_details() {
         custPrograssbar.prograssCreate(this);
         Po_all_details_POJO pojo = new Po_all_details_POJO( SharedPref.getStringFromSharedPref(AppConstants.PO_ID,getApplicationContext()));
@@ -125,14 +191,38 @@ public class PoDetail_Approve_Dealer_Activity extends AppCompatActivity {
                                 invoicefile.add(response.body().getPayload().get(i).getInvoice_file());
                                 tempp = temp + Integer.valueOf(response.body().getPayload().get(i).getProdt_quantity());
                                 temp = tempp;
-                                Log.e("Body", "body3"+temp);
 
+
+
+                                Log.e("Body", "body3"+temp);
+                                image=response.body().getImage();
+
+                                Log.e("Body", "body3"+image);
+                                Glide.with(getApplicationContext())
+                                        .load(image)
+                                        .into(invoice);
                                 et_po_id.setText(response.body().getPayload().get(i).getPo_id());
                                 et_date.setText(response.body().getPayload().get(i).getDate());
                                 et_dealer_name.setText(response.body().getPayload().get(i).getDealer_name());
                                 et_status.setText(response.body().getPayload().get(i).getStatus());
-                                et_total_qty.setText(String.valueOf(temp));
-                                et_total_price.setText(response.body().getPayload().get(i).getTotal_price());
+                                if(response.body().getPayload().get(i).getUpdate_price().equals("NA")){
+                                    et_total_qty.setText(String.valueOf(temp));
+                                    et_total_price.setText(rupee_symbol+response.body().getPayload().get(i).getTotal_price());
+                                }
+
+                                else{
+                                    tempmodd=tempmod+Integer.valueOf(response.body().getPayload().get(i).getUpdate_quantity());
+                                    tempmod=tempmodd;
+
+                                    tempmodifypricee=tempmodifyprice+Integer.valueOf(response.body().getPayload().get(i).getUpdate_totl_prc());
+                                    tempmodifyprice=tempmodifypricee;
+
+                                    et_total_qty.setText(String.valueOf(tempmod));
+                                    et_total_price.setText(rupee_symbol+String.valueOf(tempmodifyprice));
+
+
+                                }
+
 
 
                                 if (response.body().getPayload().size() - 1 == i) {

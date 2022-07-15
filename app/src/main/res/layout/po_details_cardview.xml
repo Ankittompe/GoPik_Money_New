@@ -18,8 +18,10 @@
             android:text="jkbjgf"
             android:layout_height="wrap_content"
             android:id="@+id/tv1"
-            android:textSize="15dp"
+            android:textSize="13dp"
             android:textStyle="bold"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:textColor="@color/black"/>
 
         <TextView
@@ -28,19 +30,13 @@
             android:text="jkbjgf"
             android:layout_height="wrap_content"
             android:id="@+id/tv2"
-            android:textSize="15dp"
+            android:textSize="13dp"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:textStyle="bold"
             android:textColor="@color/black"/>
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:text="jkbjgf"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv3"
-            android:textSize="15dp"
-            android:textStyle="bold"
-            android:textColor="@color/black"/>
+
 
     </LinearLayout>
 

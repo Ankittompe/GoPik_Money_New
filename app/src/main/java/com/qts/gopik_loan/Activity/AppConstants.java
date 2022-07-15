@@ -128,6 +128,7 @@ public interface AppConstants {
     String BOOLEANVALUE ="Bool" ;
     String NAME_SUBUSER = "nam";
     String DEALER_EMAIL = "dealer";
+    String DEALER_CODE = "dealercode";
     String MY_WALLET ="mywaleet" ;
     String SUBUSER_FRAGMENT = "subuser";
     String HOME__DELAER_FRAGMENT = "de";
@@ -190,4 +191,6 @@ public interface AppConstants {
     String MY_MALL_DEALER_FRAG ="mm" ;
     String PO_FINANCER_UPLOADIMAGE ="oo" ;
     String IMAGE_UPLOAD_SUPPLYCHAIN ="imageuploadsupplychain" ;
+    String MODIFYQUANTITY_PO = "modifypo";
+    String MODIFYTOTALPRICE_PO ="modifypricepo";
 }

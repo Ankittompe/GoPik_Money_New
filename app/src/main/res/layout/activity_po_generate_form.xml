@@ -118,15 +118,14 @@
                     android:id="@+id/current_date2"
                     android:layout_width="wrap_content"
                     android:layout_height="25dp"
-                    android:layout_marginTop="16dp"
                     android:gravity="center"
                     android:text="47436"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:textStyle="normal"
-                    app:layout_constraintEnd_toEndOf="@+id/current_date"
+                    app:layout_constraintBottom_toBottomOf="@+id/user_id_tv"
                     app:layout_constraintStart_toStartOf="@+id/current_date"
-                    app:layout_constraintTop_toBottomOf="@+id/current_date" />
+                    app:layout_constraintTop_toTopOf="@+id/user_id_tv" />
 
                 <TextView
                     android:id="@+id/current_date"
@@ -147,7 +146,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="25dp"
                     android:layout_marginTop="16dp"
-                    android:text="Dealer Name :"
+                    android:text="Dealer Id        :"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -364,7 +363,7 @@
         android:layout_marginLeft="20dp"
         android:gravity="center_vertical"
         android:padding="@dimen/_15sdp"
-        android:text="Total Price"
+        android:text="Estimated Price : ₹0"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
