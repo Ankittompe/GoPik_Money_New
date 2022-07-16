@@ -222,8 +222,8 @@ public class PO_Get_Modified_List extends AppCompatActivity {
                                 tempmodd=tempmod+Integer.valueOf(response.body().getPayload().get(i).getUpdate_quantity());
                                 tempmod=tempmodd;
 
-                                tempmodifypricee=tempmodifyprice+Integer.valueOf(response.body().getPayload().get(i).getUpdate_totl_prc());
-                                tempmodifyprice=tempmodifypricee;
+                              /*  tempmodifypricee=tempmodifyprice+Integer.valueOf(response.body().getPayload().get(i).getUpdate_totl_prc());
+                                tempmodifyprice=tempmodifypricee;*/
 
 
 
@@ -236,6 +236,7 @@ public class PO_Get_Modified_List extends AppCompatActivity {
                                 et_status.setText(response.body().getPayload().get(i).getStatus());
                                 et_total_qty.setText(String.valueOf(temp));
                                 et_total_qty2.setText(String.valueOf(tempmod));
+
                                 SharedPref.saveStringInSharedPref(AppConstants.MODIFYQUANTITY_PO,String.valueOf(tempmod),getApplicationContext());
                                 String number1 = response.body().getPayload().get(i).getTotal_price();
                                 Log.e("number1","number1--->>"+number1);
@@ -248,7 +249,7 @@ public class PO_Get_Modified_List extends AppCompatActivity {
                                 et_total_price.setText(rupee_symbol+formatted);
                                 Serial_number.add(counter++);
 
-                                String number2 = String.valueOf(tempmodifyprice);
+                                String number2 = response.body().getPayload().get(i).getUpdate_totl_prc();
                                 Log.e("number1","number1--->>"+number2);
                                 double amount2 = Double.parseDouble(number2);
                                 Log.e("amount","amount--->>"+amount2);

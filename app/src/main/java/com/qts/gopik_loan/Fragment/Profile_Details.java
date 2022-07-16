@@ -198,13 +198,28 @@ public class Profile_Details extends Fragment implements AdapterView.OnItemSelec
         pr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+            /*    z = 1;
+                y = 1;
+                showPictureDialog();*/
+
+                Log.e("ii", "uu");
                 if (!checkPermission()) {
+
+                    Log.e("Check", "permission1--->>");
+
+                    requestPermission();
+                    Log.e("ii", "vvvv");
+
+                } else if (!checkPermission_version()) {
+
+                    Log.e("Check", "permission2--->>");
                     requestPermission();
                 }
-                if (!checkPermission_version()) {
-                    requestPermission();
-                } else {
+               else {
+                    Log.e("Check", "permission3--->>");
                     showPictureDialog();
+                    Log.e("Check", "permission4--->>");
                     z = 1;
                     y = 1;
                 }
@@ -538,6 +553,7 @@ public class Profile_Details extends Fragment implements AdapterView.OnItemSelec
                 startActivityForResult(intent, 2296);
             }*/
             try {
+                Log.e("Check", "Settings");
                 Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
                         Uri.fromParts("package", getActivity().getPackageName(), null));
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

@@ -169,7 +169,8 @@ public class Broker_QR_Code_Fragment extends Fragment {
             public void onClick(View view) {
                 URL url = null;
                 try {
-                    url = new URL("https://filesamples.com/samples/document/pdf/sample2.pdf");
+                    /*   url = new URL("https://filesamples.com/samples/document/pdf/sample2.pdf");*/
+                    url = new URL("https://gopikmoney.com/public/getPDFlink?user_id="+SharedPref.getStringFromSharedPref(AppConstants.USER_CODE, getContext()));
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(String.valueOf(url))));
                 } catch (Exception e) {
                     e.printStackTrace();

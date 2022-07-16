@@ -1,9 +1,18 @@
 package com.qts.gopik_loan.Supply_Chain;
 
-import androidx.appcompat.app.AppCompatActivity;
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+import static android.os.Build.VERSION.SDK_INT;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
+import android.Manifest;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -13,6 +22,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -24,6 +34,7 @@ import com.qts.gopik_loan.Activity.AppConstants;
 import com.qts.gopik_loan.Activity.LogIn_Otp_Verify;
 import com.qts.gopik_loan.Activity.SharedPref;
 import com.qts.gopik_loan.Dealer_Activity.MainActivity;
+import com.qts.gopik_loan.Dealer_Activity.Voter_ID_CARD_Details;
 import com.qts.gopik_loan.Model.DealerAadharFrontDoc_MODEL;
 import com.qts.gopik_loan.Model.DealerAdharBackDoc_MODEL;
 import com.qts.gopik_loan.Model.DealerPanDoc_MODEL;
@@ -46,7 +57,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class PersonalDetails_Activity extends AppCompatActivity {
-
+    private final int PERMISSION_REQUEST_CODE = 1000;
     ImageView selfie_upld_sucss,adhaar_upld_back_sucss,upld_pan_front_success,adhaar_upld_sucss;
 
     LinearLayout upload_selfie_layout,upload_adhaar_front_layout,adhaar_back_layout,pan_front_layout;
@@ -76,7 +87,7 @@ public class PersonalDetails_Activity extends AppCompatActivity {
     TextView save_selfie,save_adhar_front,save1_adhaar_back,save_pan_front;
 
     TextView upld_adhar_front_hint,upld_selfie_hint,adhaar_back_hint,upld_pan_front_hint;
-
+    private Context mContext = PersonalDetails_Activity.this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -336,7 +347,89 @@ public class PersonalDetails_Activity extends AppCompatActivity {
 
             }
         });
+        if (!checkPermission()) {
+            requestPermission();
+        }
+        if (!checkPermission_version()) {
+            requestPermission();
+        }
+    }
+    private boolean checkPermission() {
 
+        int read_external_storage_permission = ContextCompat.checkSelfPermission(PersonalDetails_Activity.this, READ_EXTERNAL_STORAGE);
+        int write_external_storage_permission = ContextCompat.checkSelfPermission(PersonalDetails_Activity.this, WRITE_EXTERNAL_STORAGE);
+        int camera_permission = ContextCompat.checkSelfPermission(PersonalDetails_Activity.this, Manifest.permission.CAMERA);
+
+        if (SDK_INT >= Build.VERSION_CODES.R) {
+            return Environment.isExternalStorageManager() && camera_permission == PackageManager.PERMISSION_GRANTED;
+        }  else {
+            return read_external_storage_permission == PackageManager.PERMISSION_GRANTED
+                    && write_external_storage_permission == PackageManager.PERMISSION_GRANTED
+                    && camera_permission == PackageManager.PERMISSION_GRANTED;
+
+        }
+
+
+    }
+    private boolean checkPermission_version() {
+        Log.e("jcdbc","ccnds");
+        int read_external_storage_permission = ContextCompat.checkSelfPermission(PersonalDetails_Activity.this, READ_EXTERNAL_STORAGE);
+        int write_external_storage_permission = ContextCompat.checkSelfPermission(PersonalDetails_Activity.this, WRITE_EXTERNAL_STORAGE);
+        int camera_permission = ContextCompat.checkSelfPermission(PersonalDetails_Activity.this, Manifest.permission.CAMERA);
+
+        String[] PERMISSIONS = {android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        if (Build.VERSION.SDK_INT >= 23) {
+            Log.e("jcdbc","hfthth");
+            if (!hasPermissions(mContext, PERMISSIONS)) {
+                ActivityCompat.requestPermissions(PersonalDetails_Activity.this, new String[]{WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
+            }
+
+
+        }
+        return read_external_storage_permission == PackageManager.PERMISSION_GRANTED
+                && write_external_storage_permission == PackageManager.PERMISSION_GRANTED
+                && camera_permission == PackageManager.PERMISSION_GRANTED;
+    }
+
+    private static boolean hasPermissions(Context context, String... permissions) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && context != null && permissions != null) {
+            for (String permission : permissions) {
+                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    private void requestPermission() {
+        if (SDK_INT >= Build.VERSION_CODES.R) {
+            Log.e("jcdbc","bbbbbb");
+            /*try {
+                Intent intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
+                intent.addCategory("android.intent.category.DEFAULT");
+                intent.setData(Uri.parse(String.format("package:%s",getApplicationContext().getPackageName())));
+                startActivityForResult(intent, 2296);
+            } catch (Exception e) {
+                Intent intent = new Intent();
+                intent.setAction(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
+                startActivityForResult(intent, 2296);
+            }*/
+            try {
+                Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                        Uri.fromParts("package", this.getPackageName(), null));
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                startActivityForResult(intent, PERMISSION_REQUEST_CODE);
+            } catch (Exception e) {
+                Intent intent = new Intent();
+                intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                startActivityForResult(intent, PERMISSION_REQUEST_CODE);
+            }
+        } else {
+            //below android 11
+            ActivityCompat.requestPermissions(PersonalDetails_Activity.this, new String[]{WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
+        }
     }
 
     private void SelectImageDailog() {

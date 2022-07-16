@@ -1,5 +1,6 @@
 package com.qts.gopik_loan.Dealer_Fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -24,6 +25,7 @@ import com.qts.gopik_loan.Pojo.Notification_POJO;
 import com.qts.gopik_loan.R;
 import com.qts.gopik_loan.Retro.NetworkHandler;
 import com.qts.gopik_loan.Retro.RestApis;
+import com.qts.gopik_loan.Supply_Chain.PersonalDetails_Activity;
 import com.qts.gopik_loan.Utils.CustPrograssbar;
 
 import java.util.ArrayList;
@@ -36,8 +38,9 @@ import static android.content.ContentValues.TAG;
 
 
 public class Dealer_Notificarion_Fragment extends Fragment {
-    TextView tv_tooltipdata;
+    TextView tv_tooltipdata, tv;
     CustPrograssbar custPrograssbar;
+    private Dealer_Notificarion_Fragment mContext = Dealer_Notificarion_Fragment.this;
     ArrayList<String> message = new ArrayList<>();
     ArrayList<String> timestamp = new ArrayList<>();
     ArrayList<String> logo = new ArrayList<>();
@@ -66,13 +69,15 @@ public class Dealer_Notificarion_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v= inflater.inflate(R.layout.fragment_kirloskar__notificarion_, container, false);
+        View v = inflater.inflate(R.layout.fragment_kirloskar__notificarion_, container, false);
         custPrograssbar = new CustPrograssbar();
+        tv = (TextView) v.findViewById(R.id.tv);
         noti = (RecyclerView) v.findViewById(R.id.notify);
         notification();
-        SharedPref.saveStringInSharedPref(AppConstants.NOTIFICATIONPOPUP,"3",getContext());
-        return  v;
+        SharedPref.saveStringInSharedPref(AppConstants.NOTIFICATIONPOPUP, "3", getContext());
+        return v;
     }
+
     private void notification() {
 
         RestApis restApis = NetworkHandler.getRetrofit().create(RestApis.class);
@@ -104,7 +109,7 @@ public class Dealer_Notificarion_Fragment extends Fragment {
                                     );
                                     noti.setLayoutManager(layoutManager);
                                     noti.setItemAnimator(new DefaultItemAnimator());
-                                    notificationFragmentAdapter = new NotificationFragmentAdapter(getContext(),message , timestamp, logo );
+                                    notificationFragmentAdapter = new NotificationFragmentAdapter(getContext(), message, timestamp, logo);
                                     noti.setAdapter(notificationFragmentAdapter);
 
                                 }
@@ -112,10 +117,11 @@ public class Dealer_Notificarion_Fragment extends Fragment {
 
                             }
                         }
-                    } else {
-
-                            Toast.makeText(getActivity(), "No notification!!", Toast.LENGTH_SHORT).show();
-
+                    }
+                    else {
+                        Log.e("Body", "bbbbbbbbbbbbb");
+                        /* Toast.makeText(mContext.getContext(), "No notification available!!!", Toast.LENGTH_SHORT).show();*/
+                        tv.setVisibility(View.VISIBLE);
 
                     }
 
@@ -124,7 +130,6 @@ public class Dealer_Notificarion_Fragment extends Fragment {
 
             @Override
             public void onFailure(Call<Notification_MODEL> call, Throwable t) {
-
 
 
             }
