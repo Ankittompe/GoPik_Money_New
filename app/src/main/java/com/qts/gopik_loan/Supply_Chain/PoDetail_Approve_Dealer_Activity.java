@@ -204,7 +204,7 @@ public class PoDetail_Approve_Dealer_Activity extends AppCompatActivity {
                                         .into(invoice);
                                 et_po_id.setText(response.body().getPayload().get(i).getPo_id());
                                 et_date.setText(response.body().getPayload().get(i).getDate());
-                                et_dealer_name.setText(response.body().getPayload().get(i).getDealer_name());
+                                et_dealer_name.setText(SharedPref.getStringFromSharedPref(AppConstants.DEALER_NAME,getApplicationContext()));
                                 et_status.setText(response.body().getPayload().get(i).getStatus());
                                 if(response.body().getPayload().get(i).getUpdate_price().equals("NA")){
                                     et_total_qty.setText(String.valueOf(temp));

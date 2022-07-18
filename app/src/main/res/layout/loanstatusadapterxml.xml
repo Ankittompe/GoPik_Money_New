@@ -127,7 +127,7 @@
                     android:layout_weight="1"
                     android:layout_marginLeft="8dp"
 
-                    android:text="Date of closure"
+                    android:text="Due Date"
 
                     android:textColor="@color/black"
                     android:textSize="12dp" />

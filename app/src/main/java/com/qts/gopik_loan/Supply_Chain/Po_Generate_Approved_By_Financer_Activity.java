@@ -350,7 +350,7 @@ public class Po_Generate_Approved_By_Financer_Activity extends AppCompatActivity
                                 Log.e("Body", "body3"+temp);
                                 et_po_id.setText(response.body().getPayload().get(i).getPo_id());
                                 et_date.setText(response.body().getPayload().get(i).getDate());
-                                et_dealer_name.setText(response.body().getPayload().get(i).getDealer_name());
+                                et_dealer_name.setText(SharedPref.getStringFromSharedPref(AppConstants.DEALER_NAME,getApplicationContext()));
                                 et_status.setText(response.body().getPayload().get(i).getStatus());
                                 if(response.body().getPayload().get(i).getUpdate_price().equals("NA")){
                                     et_total_qty.setText(String.valueOf(temp));
@@ -382,7 +382,7 @@ public class Po_Generate_Approved_By_Financer_Activity extends AppCompatActivity
                                     Log.e("formatter","formatter--->>"+formatter);
                                     String formatted = formatter.format(amount);
                                     Log.e("formatted","formatted--->>"+formatted);
-                                    et_total_price.setText(rupee_symbol+String.valueOf(tempmodifyprice));
+                                    et_total_price.setText(rupee_symbol+formatted);
 
 
                                 }

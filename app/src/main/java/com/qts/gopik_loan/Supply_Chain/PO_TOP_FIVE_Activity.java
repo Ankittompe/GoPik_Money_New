@@ -43,9 +43,6 @@ public class PO_TOP_FIVE_Activity extends AppCompatActivity {
     Top_Five_Adapter top_five_adapter;
     CustPrograssbar custPrograssbar;
 
-
-
-
     ArrayList<String> Top_five_list = new ArrayList<>();
     ArrayList<String> Top_five_ID = new ArrayList<>();
     ArrayList<String> Top_Five_PO_ID = new ArrayList<>();

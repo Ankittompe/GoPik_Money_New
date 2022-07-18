@@ -425,7 +425,9 @@ public class MainActivity extends AppCompatActivity {
 //            chipNavigationBar.setItemSelected(R.id.not_dealer, true);
             getSupportFragmentManager().beginTransaction().replace(R.id.frameContainer_dealer, new Dealer_QR_Code_Fragment()).commit();
         } else if (mNotifyData.equals("1")) {
+
             getSupportFragmentManager().beginTransaction().replace(R.id.frameContainer_dealer, new My_Mall_Fragment()).commit();
+
         }
         SharedPref.saveStringInSharedPref(AppConstants.NOTIFICATION_TYPE, "10", getApplicationContext());  // 10 for no notification
     }
