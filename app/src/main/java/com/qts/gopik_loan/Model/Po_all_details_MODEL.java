@@ -54,4 +54,40 @@ public class Po_all_details_MODEL {
     @Expose
     @SerializedName("payload")
     private ArrayList<ALL_PO_PAYLOAD_MODEL> payload;
+
+    public String getTenure() {
+        return tenure;
+    }
+
+    public void setTenure(String tenure) {
+        this.tenure = tenure;
+    }
+
+    public String getRoi() {
+        return roi;
+    }
+
+    public void setRoi(String roi) {
+        this.roi = roi;
+    }
+
+    public String getReason_of_rejection() {
+        return reason_of_rejection;
+    }
+
+    public void setReason_of_rejection(String reason_of_rejection) {
+        this.reason_of_rejection = reason_of_rejection;
+    }
+
+    @Expose
+    @SerializedName("tenure")
+    private String tenure;
+
+    @Expose
+    @SerializedName("roi")
+    private String roi;
+
+    @Expose
+    @SerializedName("reason_of_rejection")
+    private String reason_of_rejection;
 }

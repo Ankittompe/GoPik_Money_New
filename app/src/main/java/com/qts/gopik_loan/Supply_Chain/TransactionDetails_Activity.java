@@ -65,7 +65,7 @@ public class TransactionDetails_Activity extends AppCompatActivity implements Pi
     PickiT pickiT;
     private int GALLERY = 1, CAMERA = 2;
     ImageView CameraButton,GalleryButton,PdfButton;
-
+    TextView Ok_button;
     Integer Ledger_Valid = 0;
     Integer Invoice_Valid = 0;
     Integer ITR_Valid = 0;
@@ -110,6 +110,7 @@ public class TransactionDetails_Activity extends AppCompatActivity implements Pi
 
     CustPrograssbar custPrograssbar;
 
+    ImageView ledger_info_button,itr_info_button,tds_info_button;
     TextView ledger_name,tds_name,itr_name,invoice_name;
     private static final String IMAGE_DIRECTORY = "/supplychaingopikmoneyimg";
     @Override
@@ -118,12 +119,18 @@ public class TransactionDetails_Activity extends AppCompatActivity implements Pi
         setContentView(R.layout.activity_transaction_details);
 
 
+
+        ledger_info_button = findViewById(R.id.ledger_info_button);
+        itr_info_button = findViewById(R.id.itr_info_button);
+        tds_info_button = findViewById(R.id.tds_info_button);
+        Log.e("Success","upload_ledger_success--->>>"+upload_ledger_success);
         //Pdf name
         ledger_name = findViewById(R.id.ledger_name);
         tds_name = findViewById(R.id.tds_name);
         itr_name = findViewById(R.id.itr_name);
         invoice_name = findViewById(R.id.invoice_name);
-        btsend = findViewById(R.id.btsend);
+        btsend = findViewById(R.id.btsend1);
+
 
 
         pickiT = new PickiT(TransactionDetails_Activity.this, this, TransactionDetails_Activity.this);
@@ -178,6 +185,24 @@ public class TransactionDetails_Activity extends AppCompatActivity implements Pi
         upld_itr_layout = findViewById(R.id.upld_itr_layout);
         upld_TDS_layout = findViewById(R.id.upld_TDS_layout);
 
+        ledger_info_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LedgerInfoDailog();
+            }
+        });
+        itr_info_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ITRInfoDailog();
+            }
+        });
+        tds_info_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TDSInfoDailog();
+            }
+        });
         arrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -370,8 +395,93 @@ public class TransactionDetails_Activity extends AppCompatActivity implements Pi
             }
         });
 
+        btsend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("SaveButton","Clicked---->>>");
+                if (!(upload_ledger_success==1)){
+                    Toast.makeText(TransactionDetails_Activity.this, "Please upload a  Ledger Document!", Toast.LENGTH_SHORT).show();
+                    Log.e("SaveButton2","Clicked2---->>>");
+                }else{
+                    dealer_doc_confirm();
+                    Log.e("API_CALL","Clicked6---->>>");
+                }
+
+            }
+        });
+        hometoolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent it = new Intent(TransactionDetails_Activity.this, MainActivity.class);
+                it.putExtra(AppConstants.ACTFRAG_TYPE_KEY, AppConstants.HOME__DELAER_FRAGMENT);
+                startActivity(it);
+            }
+        });
 
     }
+
+    private void TDSInfoDailog() {
+
+        dialogCondition.setContentView(R.layout.tds_info_dialog);
+        Ok_button = (TextView) dialogCondition.findViewById(R.id.Ok_button);
+
+        dialogCondition.getWindow().setBackgroundDrawable(
+                new ColorDrawable(Color.WHITE));
+        dialogCondition.setCancelable(true);
+
+        dialogCondition.show();
+
+        Ok_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogCondition.dismiss();
+            }
+        });
+    }
+
+    private void ITRInfoDailog() {
+
+        dialogCondition.setContentView(R.layout.itr_info_dialog);
+        Ok_button = (TextView) dialogCondition.findViewById(R.id.Ok_button);
+
+        dialogCondition.getWindow().setBackgroundDrawable(
+                new ColorDrawable(Color.WHITE));
+        dialogCondition.setCancelable(true);
+
+        dialogCondition.show();
+
+        Ok_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogCondition.dismiss();
+            }
+        });
+
+    }
+
+    private void LedgerInfoDailog() {
+
+
+        dialogCondition.setContentView(R.layout.ledger_info_dialog);
+        Ok_button = (TextView) dialogCondition.findViewById(R.id.Ok_button);
+
+        dialogCondition.getWindow().setBackgroundDrawable(
+                new ColorDrawable(Color.WHITE));
+        dialogCondition.setCancelable(true);
+
+        dialogCondition.show();
+
+        Ok_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogCondition.dismiss();
+            }
+        });
+
+
+    }
+
     private void SelectImageDailog() {
 
         dialogCondition.setContentView(R.layout.business_dailog);
@@ -404,40 +514,18 @@ public class TransactionDetails_Activity extends AppCompatActivity implements Pi
             }
         });
 
-        btsend.setOnClickListener(new View.OnClickListener() {
+       /* btsend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e("SaveButton","Clicked---->>>");
-                if (!(upload_ledger_success==1)){
-                    Toast.makeText(TransactionDetails_Activity.this, "Please upload a  Ledger Document!", Toast.LENGTH_SHORT).show();
-                    Log.e("SaveButton2","Clicked2---->>>");
-                }else if (!(upload_invoice_success==1)){
-                    Toast.makeText(TransactionDetails_Activity.this, "Please Upload an Invoice Document!", Toast.LENGTH_SHORT).show();
-                    Log.e("SaveButton3","Clicked3---->>>");
-                } else if (!(upload_itr_success==1)){
-                    Toast.makeText(TransactionDetails_Activity.this, "Please Upload an ITR Document!", Toast.LENGTH_SHORT).show();
-                    Log.e("SaveButton4","Clicked4---->>>");
-                } else if (!(upload_tds_success==1)){
-                    Toast.makeText(TransactionDetails_Activity.this, "Please Upload a TDS Document !", Toast.LENGTH_SHORT).show();
-                    Log.e("SaveButton5","Clicked6---->>>");
-                }else{
-
+                if (upload_ledger_success==1){
                     dealer_doc_confirm();
-                    Log.e("API_CALL","Clicked6---->>>");
+                } else {
+                    Toast.makeText(TransactionDetails_Activity.this, "Please upload a  Ledger Document!", Toast.LENGTH_SHORT).show();
+
                 }
-
             }
-        });
+        });*/
 
-        hometoolbar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent it = new Intent(TransactionDetails_Activity.this, MainActivity.class);
-                it.putExtra(AppConstants.ACTFRAG_TYPE_KEY, AppConstants.HOME__DELAER_FRAGMENT);
-                startActivity(it);
-            }
-        });
 
     }
 

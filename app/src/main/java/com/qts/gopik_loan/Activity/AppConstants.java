@@ -196,6 +196,13 @@ public interface AppConstants {
     String MODIFYQUANTITY_PO = "modifypo";
     String MODIFYTOTALPRICE_PO ="modifypricepo";
     String DEALER_NAME = "dn";
+    String PO_GENERATE_UPLOAD_IMG = "pogenerateupldimg";
+    String PO_ID_GENERATE = "pogenerate";
+    String FIRST_NAME = "hh";
+    String MIDDILE_NAME = "pp";
+    String LAST_NAME ="oo" ;
+    String CUSTOMER_MOBILENO ="ii" ;
+    String LOAN_AMOUNT ="er5t" ;
  /*   String ML_LOAN_IMAGE ="mlloanimg" ;
 
     String ML_LOAN_IMAGE2 ="mlloanimg2" ;

@@ -109,7 +109,7 @@ public class Property_Loan extends AppCompatActivity implements TextWatcher {
         firstname = (EditText) findViewById(R.id.firstname);
         middlename = (EditText) findViewById(R.id.middilename);
         middlename.addTextChangedListener(this);
-        lastname = (EditText) findViewById(R.id.lastname);
+        lastname = (EditText) findViewById(R.id.lastnamee);
         lastname.addTextChangedListener(this);
         firstname.addTextChangedListener(this);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -423,6 +423,11 @@ public class Property_Loan extends AppCompatActivity implements TextWatcher {
                     Log.e(TAG, "onResponse: " + new Gson().toJson(response.body()));
                     custPrograssbar.closePrograssBar();
                     if (response.body().getCode().equals("200")) {
+                    SharedPref.saveStringInSharedPref(AppConstants.FIRST_NAME, firstname.getText().toString(), getApplicationContext());
+                        SharedPref.saveStringInSharedPref(AppConstants.MIDDILE_NAME, middlename.getText().toString(), getApplicationContext());
+                        SharedPref.saveStringInSharedPref(AppConstants.LAST_NAME, lastname.getText().toString(), getApplicationContext());
+                        SharedPref.saveStringInSharedPref(AppConstants.CUSTOMER_MOBILENO,  moblog.getText().toString(), getApplicationContext());
+                        SharedPref.saveStringInSharedPref(AppConstants.LOAN_AMOUNT,  loanamounthouse.getText().toString(), getApplicationContext());
                         Log.e("Body", "body2");
                         SharedPref.saveStringInSharedPref(AppConstants.CUTOMER_CODE_HOME_LOAN, response.body().getPayload().getCustomer_code(), getApplicationContext());
                         Intent it = new Intent(getApplicationContext(), Success.class);

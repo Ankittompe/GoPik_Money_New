@@ -110,7 +110,12 @@ TextView btn_proceed,applicationnumber,applicationstatus;
     private void Send_MLData_to_ICICI() {
         custPrograssbar.prograssCreate(Success.this);
         Send_MLData_to_ICICI_POJO pojo = new Send_MLData_to_ICICI_POJO(SharedPref.getStringFromSharedPref(AppConstants.USER_CODE,getApplicationContext()),
-                SharedPref.getStringFromSharedPref(AppConstants.CUTOMER_CODE_HOME_LOAN,getApplicationContext()));
+                SharedPref.getStringFromSharedPref(AppConstants.CUTOMER_CODE_HOME_LOAN,getApplicationContext()),
+                SharedPref.getStringFromSharedPref(AppConstants.FIRST_NAME,getApplicationContext()),
+                SharedPref.getStringFromSharedPref(AppConstants.MIDDILE_NAME,getApplicationContext()),
+                SharedPref.getStringFromSharedPref(AppConstants.LAST_NAME,getApplicationContext()),
+                SharedPref.getStringFromSharedPref(AppConstants.CUSTOMER_MOBILENO,getApplicationContext()),
+                SharedPref.getStringFromSharedPref(AppConstants.LOAN_AMOUNT,getApplicationContext()));
         RestApis restApis = NetworkHandler.getRetrofit().create(RestApis.class);
         Call<Send_MLData_to_ICICI_MODEL> call = restApis.Send_MLData_to_ICICI(pojo);
         call.enqueue(new Callback<Send_MLData_to_ICICI_MODEL>() {

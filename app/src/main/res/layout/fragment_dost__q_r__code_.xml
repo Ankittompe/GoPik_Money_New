@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
->
+    tools:context=".Dealer_Fragment.Dealer_QR_Code_Fragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:background="@color/blue"
             android:orientation="horizontal"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <TextView
                 android:id="@+id/txtOne"
@@ -59,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -105,6 +105,7 @@
                     android:background="@drawable/rectangle_4"
                     android:gravity="start|center"
                     android:padding="@dimen/_5sdp"
+                    android:visibility="gone"
                     android:text="Expected commission (Rs.) "
                     android:textStyle="bold" />
 
@@ -118,6 +119,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/txtTotalScan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="1dp"
@@ -128,6 +130,7 @@
                     tools:ignore="RtlSymmetry" />
 
                 <TextView
+                    android:id="@+id/txtTotalSubmission"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="1dp"
@@ -138,6 +141,7 @@
                     tools:ignore="RtlSymmetry" />
 
                 <TextView
+                    android:id="@+id/txtTotalApprovals"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="1dp"
@@ -148,6 +152,7 @@
                     tools:ignore="RtlSymmetry" />
 
                 <TextView
+                    android:id="@+id/txtTotalExpCommission"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="1dp"
@@ -155,6 +160,7 @@
                     android:gravity="start|center"
                     android:paddingStart="@dimen/_15sdp"
                     android:text="10000"
+                    android:visibility="gone"
                     tools:ignore="RtlSymmetry" />
 
             </LinearLayout>
@@ -164,7 +170,8 @@
             android:background="@color/hero_light_blue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/bannerone" />
+            android:src="@drawable/bannerone"
+            android:visibility="gone"/>
 
         <ScrollView
             android:layout_width="match_parent"
@@ -180,6 +187,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/hero_light_blue"
                     android:orientation="vertical"
+                    android:visibility="gone"
                     tools:ignore="WebViewLayout">
 
 

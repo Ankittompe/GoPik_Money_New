@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -65,15 +66,7 @@ public class Scratch_Activity extends AppCompatActivity implements ScratchListen
             }
         });
 
-        backarrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent it = new Intent(Scratch_Activity.this, Home.class);
-                it.putExtra(AppConstants.ACTFRAG_TYPE_KEY, AppConstants.HOME_FRAGMENT);
-                startActivity(it);
 
-            }
-        });
 
         hometoolbar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -196,5 +189,13 @@ public class Scratch_Activity extends AppCompatActivity implements ScratchListen
 
         });
     }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode== KeyEvent.KEYCODE_BACK)
+            Toast.makeText(getApplicationContext(), "App restricts,back button not allowed on this screen!!",
+                    Toast.LENGTH_LONG).show();
 
+        return false;
+        // Disable back button..............
+    }
 }

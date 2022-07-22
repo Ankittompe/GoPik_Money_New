@@ -58,7 +58,7 @@ import retrofit2.Response;
 public class Po_Generate_Approved_By_Financer_Activity extends AppCompatActivity implements PickiTCallbacks {
     RecyclerView alldetails_recylerview;
     PoDetails_Approve_Financer_Adapter poDetails_approve_financer_adapter;
-    TextView textView3, reject,et_po_id,et_date,et_dealer_name,et_status,et_total_qty,et_total_price;
+    TextView textView3, reject,et_po_id,et_date,et_dealer_name,et_status,et_total_qty,et_total_price,tenure,rateofinterest;
     private int GALLERY = 1, CAMERA = 2;
     public int x = 0, y = 0;
     PickiT pickiT;
@@ -100,7 +100,8 @@ public class Po_Generate_Approved_By_Financer_Activity extends AppCompatActivity
         et_status = (TextView) findViewById(R.id.et_status);
         et_total_qty = (TextView) findViewById(R.id.et_total_qty);
         et_total_price = (TextView) findViewById(R.id.et_total_price);
-
+        rateofinterest = (TextView) findViewById(R.id.rateofinterest);
+        tenure = (TextView) findViewById(R.id.tenure);
 
 
         pickiT = new PickiT(getApplicationContext(), this, Po_Generate_Approved_By_Financer_Activity.this);
@@ -346,7 +347,8 @@ public class Po_Generate_Approved_By_Financer_Activity extends AppCompatActivity
                                 invoicefile.add(response.body().getPayload().get(i).getInvoice_file());
                                 tempp = temp + Integer.valueOf(response.body().getPayload().get(i).getProdt_quantity());
                                 temp = tempp;
-
+                                rateofinterest.setText(response.body().getRoi()+" %");
+                                tenure.setText(response.body().getTenure()+" days");
                                 Log.e("Body", "body3"+temp);
                                 et_po_id.setText(response.body().getPayload().get(i).getPo_id());
                                 et_date.setText(response.body().getPayload().get(i).getDate());

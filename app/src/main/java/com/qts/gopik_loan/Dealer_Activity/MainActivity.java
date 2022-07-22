@@ -1,5 +1,6 @@
 package com.qts.gopik_loan.Dealer_Activity;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -31,8 +32,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.Gson;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
@@ -59,16 +63,21 @@ import com.qts.gopik_loan.R;
 import com.qts.gopik_loan.Retro.NetworkHandler;
 import com.qts.gopik_loan.Retro.RestApis;
 
+
 import java.io.ByteArrayOutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
 
+import eu.dkaratzas.android.inapp.update.Constants;
+import eu.dkaratzas.android.inapp.update.InAppUpdateManager;
+import eu.dkaratzas.android.inapp.update.InAppUpdateStatus;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.http.Url;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements InAppUpdateManager.InAppUpdateHandler {
     NavigationView nav;
     FrameLayout fn;
     ImageView logout, refresh, menus;
@@ -79,7 +88,10 @@ public class MainActivity extends AppCompatActivity {
     ChipNavigationBar chipNavigationBar;
     private WebView mWebVw;
     TextView mTxtUserName;
-    ImageView mImgShare,mImgScanner;
+    ImageView mImgShare, mImgScanner;
+    long pressedTime;
+    private int REQ_CODE_VERSION_UPDATE = 001;
+    InAppUpdateManager inAppUpdateManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
         Menu m = nav.getMenu();
         SubMenu topChannelMenu = m.addSubMenu("App Version " + version);
         topChannelMenu.add("");
+
         nav.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             Fragment temp;
 
@@ -113,19 +126,23 @@ public class MainActivity extends AppCompatActivity {
 
                 switch (item.getItemId()) {
                     case R.id.dealer_home:
+                        showNav();
                         getSupportFragmentManager().beginTransaction().replace(R.id.frameContainer_dealer, new Home_Dealer_Fragment()).commit();
                         /*    bnv.setCurrentItem(0);*/
                         break;
 
                     case R.id.dealer_application:
+                        showNav();
                         getSupportFragmentManager().beginTransaction().replace(R.id.frameContainer_dealer, new Dealer_ApplicationList_Fragment()).commit();
                         /*   bnv.setCurrentItem(2);*/
                         break;
                     case R.id.dealer_wallet:
+                        showNav();
                         getSupportFragmentManager().beginTransaction().replace(R.id.frameContainer_dealer, new Dealer_Wallet_Fragment()).commit();
                         /*   bnv.setCurrentItem(2);*/
                         break;
                     case R.id.dealer_adduser:
+                        showNav();
                         getSupportFragmentManager().beginTransaction().replace(R.id.frameContainer_dealer, new Dealer_Add_User_Fragment()).commit();
                         /*   bnv.setCurrentItem(2);*/
                         break;
@@ -138,6 +155,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.dealer_qrcode:
+                        hideNav();
                         getSupportFragmentManager().beginTransaction().replace(R.id.frameContainer_dealer, new Dealer_QR_Code_Fragment()).commit();
                         break;
 
@@ -150,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
                                     public void onClick(DialogInterface dialog, int which) {
                                         Intent it = new Intent(MainActivity.this, LogIn.class);
                                         startActivity(it);
-                                         dealer_logout();
+                                        dealer_logout();
 
                                     }
 
@@ -208,6 +226,7 @@ public class MainActivity extends AppCompatActivity {
         mImgScanner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                hideNav();
                 mImgScanner.setVisibility(View.GONE);
                 getSupportFragmentManager().beginTransaction().replace(R.id.frameContainer_dealer, new Dealer_QR_Code_Fragment()).commit();
             }
@@ -221,8 +240,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 URL url = null;
                 try {
-                 /*   url = new URL("https://filesamples.com/samples/document/pdf/sample2.pdf");*/
-                    url = new URL("https://gopikmoney.com/public/getPDFlink?user_id="+SharedPref.getStringFromSharedPref(AppConstants.USER_CODE, getApplicationContext()));
+
+                    /*   url = new URL("https://filesamples.com/samples/document/pdf/sample2.pdf");*/
+                    url = new URL("https://gopikmoney.com/public/getPDFlink?user_id=" + SharedPref.getStringFromSharedPref(AppConstants.USER_CODE, getApplicationContext()));
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(String.valueOf(url))));
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -239,12 +259,23 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(Intent.createChooser(share, "Select"));*/
             }
         });
+        showNav();
+        inAppUpdateManager = InAppUpdateManager.Builder(this, REQ_CODE_VERSION_UPDATE)
+                .resumeUpdates(true) // Resume the update, if the update was stalled. Default is true
+                .mode(Constants.UpdateMode.FLEXIBLE)
+                .snackBarMessage("An update has just been downloaded.")
+                .snackBarAction("RESTART")
+                .handler(this);
 
+        inAppUpdateManager.checkForAppUpdate();
     }
-    public void openDrawer(Activity mActivityName){
+
+
+    public void openDrawer(Activity mActivityName) {
         drawerLayout = (DrawerLayout) mActivityName.findViewById(R.id.drwer_dealer);
         drawerLayout.openDrawer(GravityCompat.START);
     }
+
     @SuppressLint("SetJavaScriptEnabled")
     private void generateQRCode() {
         String mUserCode = SharedPref.getStringFromSharedPref(AppConstants.USER_CODE, getApplicationContext());
@@ -255,6 +286,7 @@ public class MainActivity extends AppCompatActivity {
         mWebVw.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         mWebVw.loadUrl(wedData);
     }
+
     private static class MyBrowser extends WebViewClient {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -262,6 +294,7 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
     }
+
     private void profile_details() {
         ProfileDetails_DEALER_POJO pojo = new ProfileDetails_DEALER_POJO(SharedPref.getStringFromSharedPref(AppConstants.PHONENUMBER, getApplicationContext()), SharedPref.getStringFromSharedPref(AppConstants.TOKEN, getApplicationContext()));
         RestApis restApis = NetworkHandler.getRetrofit().create(RestApis.class);
@@ -270,13 +303,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ProfileDetails_DEALER_MODEL> call, Response<ProfileDetails_DEALER_MODEL> response) {
                 if (response.body() != null) {
-                    if (response.body().getCode()==200) {
+                    if (response.body().getCode() == 200) {
                         mTxtUserName.setText(response.body().getPayload().getProfile().get(0).getName());
                     } else {
                         Toast.makeText(getApplicationContext(), "Something went wrong!234!", Toast.LENGTH_LONG).show();
                     }
                 }
             }
+
             @Override
             public void onFailure(Call<ProfileDetails_DEALER_MODEL> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), "Something went wrong!", Toast.LENGTH_LONG).show();
@@ -348,8 +382,7 @@ public class MainActivity extends AppCompatActivity {
             } else if (getIntent().getStringExtra(AppConstants.ACTFRAG_TYPE_KEY).equals(AppConstants.APPLICATION_DEALER_FRAG)) {
                 loadFragment(new Dealer_ApplicationList_Fragment());
 
-            }
-            else if (getIntent().getStringExtra(AppConstants.ACTFRAG_TYPE_KEY).equals(AppConstants.MY_MALL_DEALER_FRAG)) {
+            } else if (getIntent().getStringExtra(AppConstants.ACTFRAG_TYPE_KEY).equals(AppConstants.MY_MALL_DEALER_FRAG)) {
                 loadFragment(new My_Mall_Fragment());
 
             }
@@ -357,7 +390,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
-    @Override
+  /*  @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK)
             Toast.makeText(getApplicationContext(), "App restricts,back button not allowed on this screen!!", Toast.LENGTH_LONG).show();
@@ -366,23 +399,12 @@ public class MainActivity extends AppCompatActivity {
         return false;
         // Disable back button..............
     }
-    @Override
-    public void onBackPressed() {
-        new AlertDialog.Builder(this)
-                .setMessage("Are you sure you want to exit?")
-                .setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        MainActivity.super.onBackPressed();
-                    }
-                })
-                .setNegativeButton("No", null)
-                .show();
-    }
+  */
+
     private void dealer_logout() {
-        Dealer_logoutPOJO pojo = new Dealer_logoutPOJO( SharedPref.getStringFromSharedPref(AppConstants.BRAND,getApplicationContext()),
-                SharedPref.getStringFromSharedPref(AppConstants.MOBILE_NUMBER,getApplicationContext()),
-                SharedPref.getStringFromSharedPref(AppConstants.USER_CODE,getApplicationContext()));
+        Dealer_logoutPOJO pojo = new Dealer_logoutPOJO(SharedPref.getStringFromSharedPref(AppConstants.BRAND, getApplicationContext()),
+                SharedPref.getStringFromSharedPref(AppConstants.MOBILE_NUMBER, getApplicationContext()),
+                SharedPref.getStringFromSharedPref(AppConstants.USER_CODE, getApplicationContext()));
         RestApis restApis = NetworkHandler.getRetrofit().create(RestApis.class);
         Call<Dealer_logout_MODEL> call = restApis.dealer_logout(pojo);
         call.enqueue(new Callback<Dealer_logout_MODEL>() {
@@ -391,7 +413,7 @@ public class MainActivity extends AppCompatActivity {
                 if (response.body() != null) {
                     Log.e(TAG, "onResponse: " + new Gson().toJson(response.body()));
 
-                    if(response.body().getCode().equals("200")) {
+                    if (response.body().getCode().equals("200")) {
                         FirebaseMessaging.getInstance().unsubscribeFromTopic("GoPikType" + SharedPref.getStringFromSharedPref(AppConstants.USER_CODE, getApplicationContext()));
                         Log.e("Body", "body2");
                         SharedPref.saveBooleanInSharedPref(AppConstants.TOKEN, false, getApplicationContext());
@@ -399,9 +421,8 @@ public class MainActivity extends AppCompatActivity {
                         SharedPref.saveStringInSharedPref(AppConstants.NAME_SUBUSER, null, getApplicationContext());
                         SharedPref.saveStringInSharedPref(AppConstants.DEALER_EMAIL, null, getApplicationContext());
 
-                    }
-                    else  {
-                        Toast.makeText(getApplicationContext(),"Something went wrong!!!",Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Something went wrong!!!", Toast.LENGTH_LONG).show();
                     }
 
                 }
@@ -411,24 +432,99 @@ public class MainActivity extends AppCompatActivity {
             public void onFailure(Call<Dealer_logout_MODEL> call, Throwable t) {
 
 
-
-                Toast.makeText(getApplicationContext(),"Something went wrong!",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Something went wrong!", Toast.LENGTH_LONG).show();
             }
 
         });
 
     }
+
     private void getNotificationClickData() {
         String mNotifyData = SharedPref.getStringFromSharedPref(AppConstants.NOTIFICATION_TYPE, getApplicationContext());
         Log.e("Notification Details Type ", mNotifyData);
         if (mNotifyData.equals("0")) {
 //            chipNavigationBar.setItemSelected(R.id.not_dealer, true);
             getSupportFragmentManager().beginTransaction().replace(R.id.frameContainer_dealer, new Dealer_QR_Code_Fragment()).commit();
+            SharedPref.saveStringInSharedPref(AppConstants.NOTIFICATION_TYPE, "10", getApplicationContext());
         } else if (mNotifyData.equals("1")) {
-
+            Log.e("Notification Details Type ", mNotifyData);
             getSupportFragmentManager().beginTransaction().replace(R.id.frameContainer_dealer, new My_Mall_Fragment()).commit();
-
+            SharedPref.saveStringInSharedPref(AppConstants.NOTIFICATION_TYPE, "10", getApplicationContext());
         }
-        SharedPref.saveStringInSharedPref(AppConstants.NOTIFICATION_TYPE, "10", getApplicationContext());  // 10 for no notification
+
+        else {
+            SharedPref.saveStringInSharedPref(AppConstants.NOTIFICATION_TYPE, "10", getApplicationContext());
+        }
+
+        // 10 for no notification
+    }
+
+    public void hideNav() {
+        chipNavigationBar.setVisibility(View.GONE);
+    }
+
+    public void showNav() {
+        chipNavigationBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.frameContainer_dealer);
+        if (fragment instanceof Dealer_QR_Code_Fragment) {
+            mImgScanner.setVisibility(View.VISIBLE);
+            showNav();
+            getSupportFragmentManager().beginTransaction().replace(R.id.frameContainer_dealer, new Home_Dealer_Fragment()).commit();
+        } else {
+            if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+                getSupportFragmentManager().popBackStack();
+            } else {
+                if (pressedTime + 2000 > System.currentTimeMillis()) {
+                    super.onBackPressed();
+                    finish();
+                } else {
+                    Toast.makeText(getBaseContext(), "Press back again to exit", Toast.LENGTH_SHORT).show();
+                }
+                pressedTime = System.currentTimeMillis();
+            }
+        }
+    }
+
+    @Override
+    public void onInAppUpdateError(int code, Throwable error) {
+
+    }
+
+    @Override
+    public void onInAppUpdateStatus(InAppUpdateStatus status) {
+
+        if (status.isDownloaded()) {
+
+            View rootView = getWindow().getDecorView().findViewById(android.R.id.content);
+
+            Snackbar snackbar = Snackbar.make(rootView,
+                    "An update has just been downloaded.",
+                    Snackbar.LENGTH_INDEFINITE);
+
+            snackbar.setAction("RESTART", view -> {
+
+                // Triggers the completion of the update of the app for the flexible flow.
+                inAppUpdateManager.completeUpdate();
+
+            });
+
+            snackbar.show();
+            Toast.makeText(this, "onInAppUpdateStatus "+status.isUpdateAvailable(), Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == REQ_CODE_VERSION_UPDATE) {
+            if (resultCode == Activity.RESULT_CANCELED) {
+                /*   inAppUpdateManager.checkForAppUpdate();*/
+                /* Log.d(TAG, "Update flow failed! Result code: " + resultCode);*/
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

@@ -60,6 +60,8 @@ import com.qts.gopik_loan.Pojo.Pincode_list_POJO;
 import com.qts.gopik_loan.Pojo.Po_add_POJO;
 import com.qts.gopik_loan.Pojo.Po_all_details_POJO;
 import com.qts.gopik_loan.Pojo.Po_add_POJO;
+import com.qts.gopik_loan.Pojo.Po_img_add_POJO;
+import com.qts.gopik_loan.Pojo.Po_products_POJO;
 import com.qts.gopik_loan.Pojo.Product_details_POJO;
 import com.qts.gopik_loan.Pojo.ProfileDetailsPOJO;
 import com.qts.gopik_loan.Pojo.ProfileDetails_DEALER_POJO;
@@ -90,6 +92,7 @@ import com.qts.gopik_loan.Pojo.Wallet_balance_POJO;
 import com.qts.gopik_loan.Pojo.Wallethistory_POJO;
 import com.qts.gopik_loan.Pojo.all_POs_POJO;
 import com.qts.gopik_loan.Pojo.bkr_declrtn_POJO;
+import com.qts.gopik_loan.Pojo.mod_appr_po_status_POJO;
 import com.qts.gopik_loan.Pojo.top_five_POs_POJO;
 
 import java.util.Map;
@@ -741,4 +744,21 @@ public interface RestApis {
 
     @POST("GoatAadharvalidation1")
     Call<GoatAadharvalidation1_MODEL> GoatAadharvalidation1(@Body GoatAadharvalidation1_POJO data);
+
+    @POST("qrsummary")
+    Call<QRSummaryModel> Get_Total_Summary(@Body QR_CODE_POJO data);
+
+    @POST("mod_appr_po_status")
+    Call<mod_appr_po_status_Model> mod_appr_po_status(@Body mod_appr_po_status_POJO data);
+
+
+
+    @Multipart
+    @POST("Po_img_add")
+    Call<Po_img_add_MODEL> Po_img_add(@Part("po_id") RequestBody po_id,
+                                                              @Part MultipartBody.Part po_img);
+
+
+    @POST("po_products")
+    Call<Po_products_Model> po_products(@Body Po_products_POJO data);
 }

@@ -36,6 +36,7 @@ import com.qts.gopik_loan.Dealer_Adapter.WhatsAppStatusListAdapter;
 
 import com.qts.gopik_loan.Model.Dealer_QR_MODEL;
 import com.qts.gopik_loan.Model.ProfileDetails_DEALER_MODEL;
+import com.qts.gopik_loan.Model.QRSummaryModel;
 import com.qts.gopik_loan.Model.QR_DataList_MODEL;
 import com.qts.gopik_loan.Model.QR_ScannedList_MODEL;
 import com.qts.gopik_loan.Model.WhatsAppStatusList_MODEL;
@@ -66,7 +67,6 @@ public class Dealer_QR_Code_Fragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     private String mParam1;
     private String mParam2;
-    private TextView mTxtGenerateQRCode, mTxtShowScannedList, mTxtShowWhatsAppStatus, mTxtName,mTxtUserName;
     ImageView mImgOpenQR,mImgShare;
     WebView mWebVw;
     CustPrograssbar custPrograssbar;
@@ -76,7 +76,8 @@ public class Dealer_QR_Code_Fragment extends Fragment {
     RecyclerView mRecVwScannedList, mRecVwStatusList;
     ScannedQRListAdapter mMyListAdapter;
     WhatsAppStatusListAdapter mWhatsAppStatusListAdapter;
-
+    private TextView mTxtGenerateQRCode, mTxtShowScannedList, mTxtShowWhatsAppStatus, mTxtName, mTxtUserName,
+            mTxtTotalScan, mTxtTotalSubMission, mTxtTotalApprovals, mTxtTotalExpCommission;
     public Dealer_QR_Code_Fragment() {
     }
 
@@ -128,6 +129,8 @@ public class Dealer_QR_Code_Fragment extends Fragment {
         setQRStatus();
         profile_details();
 
+
+
 //        getQRStatus();
 //        getQRCount();
         mTxtShowWhatsAppStatus.setBackground(getResources().getDrawable(R.drawable.button_click, null));
@@ -142,6 +145,7 @@ public class Dealer_QR_Code_Fragment extends Fragment {
             mRecVwScannedList.setVisibility(View.VISIBLE);
             mTxtShowWhatsAppStatus.setBackground(getResources().getDrawable(R.drawable.button_click_grey, null));
             mTxtShowScannedList.setBackground(getResources().getDrawable(R.drawable.button_click, null));
+            getSummaryData();
         });
         mTxtShowWhatsAppStatus.setOnClickListener(view13 -> {
             mRecVwScannedList.setVisibility(View.GONE);
@@ -149,6 +153,7 @@ public class Dealer_QR_Code_Fragment extends Fragment {
             getWhatsAppStatusList();
             mTxtShowScannedList.setBackground(getResources().getDrawable(R.drawable.button_click_grey, null));
             mTxtShowWhatsAppStatus.setBackground(getResources().getDrawable(R.drawable.button_click, null));
+            getSummaryData();
         });
         mImgOpenQR.setOnClickListener(view14 -> {
             MainActivity mainActivity = new MainActivity();
@@ -178,6 +183,13 @@ public class Dealer_QR_Code_Fragment extends Fragment {
                 startActivity(Intent.createChooser(share, "Select"));*/
             }
         });
+
+        mTxtTotalScan = view.findViewById(R.id.txtTotalScan);
+        mTxtTotalApprovals = view.findViewById(R.id.txtTotalApprovals);
+        mTxtTotalSubMission = view.findViewById(R.id.txtTotalSubmission);
+        mTxtTotalExpCommission = view.findViewById(R.id.txtTotalExpCommission);
+
+        getSummaryData();
     }
 
 
@@ -341,5 +353,32 @@ public class Dealer_QR_Code_Fragment extends Fragment {
             }
         });
     }
-
+    private void getSummaryData() {
+        custPrograssbar.prograssCreate(getContext());
+        QR_CODE_POJO pojo = new QR_CODE_POJO(SharedPref.getStringFromSharedPref(AppConstants.USER_CODE, getContext()));
+        RestApis restApis = NetworkHandler.instanceMaker11().create(RestApis.class);
+        Call<QRSummaryModel> call = restApis.Get_Total_Summary(pojo);
+        call.enqueue(new Callback<QRSummaryModel>() {
+            @Override
+            public void onResponse(Call<QRSummaryModel> call, Response<QRSummaryModel> response) {
+                custPrograssbar.closePrograssBar();
+                if (response.code() == 200) {
+                    mTxtTotalScan.setText(""+response.body().getData().getTotalScan());
+                    mTxtTotalApprovals.setText(""+response.body().getData().getTotalApproval());
+                    mTxtTotalSubMission.setText(""+response.body().getData().getTotalSubmission());
+                    mTxtTotalExpCommission.setText(""+response.body().getData().getTotalPending());
+                } else {
+                    mTxtTotalScan.setText("0");
+                    mTxtTotalApprovals.setText("0");
+                    mTxtTotalSubMission.setText("0");
+                    mTxtTotalExpCommission.setText("0");
+                }
+            }
+            @Override
+            public void onFailure(Call<QRSummaryModel> call, Throwable t) {
+                Toast.makeText(getContext(), "Something went wrong!", Toast.LENGTH_LONG).show();
+                custPrograssbar.closePrograssBar();
+            }
+        });
+    }
 }

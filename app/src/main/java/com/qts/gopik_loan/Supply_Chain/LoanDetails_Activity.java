@@ -41,7 +41,7 @@ import retrofit2.Response;
 
 public class LoanDetails_Activity extends AppCompatActivity {
 
-    TextView po_id_tv,disb_amount_tv,disb_date_tv,date_of_closer_tv,loan_id_tv;
+    TextView po_id_tv,disb_amount_tv,disb_date_tv,date_of_closer_tv,loan_id_tv,tenure,rateofinterest;
     Integer temp=0;
     Integer tempp=0;
     Integer tempmod=0;
@@ -70,6 +70,8 @@ public class LoanDetails_Activity extends AppCompatActivity {
     ArrayList<String> financer = new ArrayList<>();
     ArrayList<String> status = new ArrayList<>();
     ArrayList<String> invoicefile = new ArrayList<>();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,6 +91,8 @@ public class LoanDetails_Activity extends AppCompatActivity {
         et_total_qty = findViewById(R.id.et_total_qty);
         et_total_price = findViewById(R.id.et_total_price);
         ok_button = findViewById(R.id.ok_button);
+        tenure=findViewById(R.id.tenure);
+        rateofinterest=findViewById(R.id.rateofinterest);
 
         ok_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -173,7 +177,8 @@ public class LoanDetails_Activity extends AppCompatActivity {
                                 invoicefile.add(response.body().getPayload().get(i).getInvoice_file());
                                 tempp = temp + Integer.valueOf(response.body().getPayload().get(i).getProdt_quantity());
                                 temp = tempp;
-
+                                rateofinterest.setText(response.body().getPayload().get(i).getRoi()+" %");
+                                tenure.setText(response.body().getPayload().get(i).getTenure()+" days");
 
 
                                 Log.e("Body", "body3"+temp);

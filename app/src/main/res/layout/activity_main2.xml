@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drwer_dealer"
-    tools:openDrawer="start"
+    tools:openDrawer="left"
     android:fitsSystemWindows="true"
     android:background="@color/white"
     >

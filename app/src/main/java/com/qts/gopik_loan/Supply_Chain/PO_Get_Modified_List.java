@@ -23,8 +23,10 @@ import com.qts.gopik_loan.Activity.SharedPref;
 import com.qts.gopik_loan.Dealer_Activity.MainActivity;
 import com.qts.gopik_loan.Model.Po_all_details_MODEL;
 import com.qts.gopik_loan.Model.Update_po_status_MODEL;
+import com.qts.gopik_loan.Model.mod_appr_po_status_Model;
 import com.qts.gopik_loan.Pojo.Po_all_details_POJO;
 import com.qts.gopik_loan.Pojo.Update_po_status_POJO;
+import com.qts.gopik_loan.Pojo.mod_appr_po_status_POJO;
 import com.qts.gopik_loan.R;
 import com.qts.gopik_loan.Retro.NetworkHandler;
 import com.qts.gopik_loan.Retro.RestApis;
@@ -133,7 +135,8 @@ public class PO_Get_Modified_List extends AppCompatActivity {
             public void onClick(View v) {
 
                 SharedPref.saveStringInSharedPref(AppConstants.SUPPLYCHAIN_APPROVE,"Approved By Dealer",getApplicationContext());
-                update_po_status();
+               // update_po_status();
+                mod_appr_po_status();
 
             }
         });
@@ -142,7 +145,8 @@ public class PO_Get_Modified_List extends AppCompatActivity {
             public void onClick(View v) {
 
                 SharedPref.saveStringInSharedPref(AppConstants.SUPPLYCHAIN_APPROVE,"Rejected By Dealer",getApplicationContext());
-                update_po_status();
+               // update_po_status();
+                mod_appr_po_status();
             }
         });
         ShowList();
@@ -333,6 +337,52 @@ public class PO_Get_Modified_List extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Update_po_status_MODEL> call, Throwable t) {
+
+
+                Toast.makeText(PO_Get_Modified_List.this, "Something went wrong!", Toast.LENGTH_LONG).show();
+            }
+
+        });
+
+
+    }
+
+
+    private void mod_appr_po_status() {
+
+        custPrograssbar.prograssCreate(this);
+
+        mod_appr_po_status_POJO pojo = new mod_appr_po_status_POJO(SharedPref.getStringFromSharedPref(AppConstants.PO_ID,getApplicationContext()),
+                SharedPref.getStringFromSharedPref(AppConstants.SUPPLYCHAIN_APPROVE,getApplicationContext()),
+                SharedPref.getStringFromSharedPref(AppConstants.MODIFYTOTALPRICE_PO,getApplicationContext()));
+        Log.e("checktopfive","response");
+        RestApis restApis = NetworkHandler.getRetrofit().create(RestApis.class);
+        Call<mod_appr_po_status_Model> call = restApis.mod_appr_po_status(pojo);
+        call.enqueue(new Callback<mod_appr_po_status_Model>() {
+            @Override
+            public void onResponse(Call<mod_appr_po_status_Model> call, Response<mod_appr_po_status_Model> response) {
+                if (response.body() != null) {
+
+                    if (response.body().getCode()==200) {
+                        custPrograssbar.closePrograssBar();
+                        Log.e("Body", "body2");
+                        Intent it = new Intent(PO_Get_Modified_List.this, PO_TOP_FIVE_Activity.class);
+
+                        startActivity(it);
+
+                    } else {
+                        Toast.makeText(PO_Get_Modified_List.this, "Something went wrong!!", Toast.LENGTH_LONG).show();
+                    }
+
+                }
+
+
+            }
+
+
+
+            @Override
+            public void onFailure(Call<mod_appr_po_status_Model> call, Throwable t) {
 
 
                 Toast.makeText(PO_Get_Modified_List.this, "Something went wrong!", Toast.LENGTH_LONG).show();

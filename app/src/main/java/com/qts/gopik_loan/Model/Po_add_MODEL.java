@@ -27,4 +27,16 @@ private String code;
     @Expose
     @SerializedName("message")
     private String message;
+
+    public POGenerate_Model getPayload() {
+        return payload;
+    }
+
+    public void setPayload(POGenerate_Model payload) {
+        this.payload = payload;
+    }
+
+    @Expose
+    @SerializedName("payload")
+    private POGenerate_Model payload;
 }

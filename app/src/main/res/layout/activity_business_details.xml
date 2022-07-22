@@ -13,7 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_alignParentTop="true" />
-
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -195,6 +194,13 @@
                                             android:text="Business Proof"
                                             android:textColor="@color/colorPrimary"
                                             android:textSize="14dp" />
+                                        <ImageView
+                                            android:id="@+id/business_info_button"
+                                            android:src="@drawable/info_icon"
+                                            android:layout_gravity="center"
+                                            android:layout_width="32dp"
+                                            android:padding="8dp"
+                                            android:layout_height="32dp"/>
 
                                         <ImageView
                                             android:id="@+id/dropdown_business_proof"
@@ -331,9 +337,17 @@
                                             android:fontFamily="@font/montserrat_semibold"
                                             android:gravity="center"
                                             android:padding="10dp"
-                                            android:text="UDC"
+                                            android:text="Utility Bill"
                                             android:textColor="@color/colorPrimary"
                                             android:textSize="14dp" />
+                                        <ImageView
+                                            android:id="@+id/util_info_button"
+                                            android:src="@drawable/info_icon"
+                                            android:layout_gravity="center"
+                                            android:layout_width="32dp"
+                                            android:padding="8dp"
+                                            android:layout_height="32dp"/>
+
 
                                         <ImageView
                                             android:id="@+id/dropdown_udc"
@@ -372,7 +386,7 @@
                                         android:fontFamily="@font/coresanscrbold"
                                         android:gravity="left"
                                         android:padding="15dp"
-                                        android:text="6. Upload UDC *"
+                                        android:text="6. Upload Utility Bill *"
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="14sp"
 
@@ -406,7 +420,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:gravity="center"
-                                        android:text="Please upload an UDC image!"
+                                        android:text="Please upload an Utility bill image!"
                                         android:textColor="@color/red"
                                         android:visibility="gone" />
 
@@ -470,9 +484,16 @@
                                             android:fontFamily="@font/montserrat_semibold"
                                             android:gravity="center"
                                             android:padding="10dp"
-                                            android:text="Agreement"
+                                            android:text="Dealer GoPik Agreement"
                                             android:textColor="@color/colorPrimary"
                                             android:textSize="14dp" />
+                                        <ImageView
+                                            android:id="@+id/agrement_info_button"
+                                            android:src="@drawable/info_icon"
+                                            android:layout_gravity="center"
+                                            android:layout_width="32dp"
+                                            android:padding="8dp"
+                                            android:layout_height="32dp"/>
 
                                         <ImageView
                                             android:id="@+id/agreement_dropdown"
@@ -511,7 +532,7 @@
                                         android:fontFamily="@font/coresanscrbold"
                                         android:gravity="left"
                                         android:padding="15dp"
-                                        android:text="7. Upload Agreement *"
+                                        android:text="7. Upload Dealer GoPik Agreement *"
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="14sp"
 
@@ -582,6 +603,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:visibility="gone"
                             android:orientation="horizontal">
 
                             <LinearLayout
@@ -749,9 +771,16 @@
                                             android:fontFamily="@font/montserrat_semibold"
                                             android:gravity="center"
                                             android:padding="10dp"
-                                            android:text="Disburse Bank"
+                                            android:text="Bank Statement"
                                             android:textColor="@color/colorPrimary"
                                             android:textSize="14dp" />
+                                        <ImageView
+                                            android:id="@+id/bank_info_button"
+                                            android:src="@drawable/info_icon"
+                                            android:layout_gravity="center"
+                                            android:layout_width="32dp"
+                                            android:padding="8dp"
+                                            android:layout_height="32dp"/>
 
                                         <ImageView
                                             android:id="@+id/disb_bank_dropdown"
@@ -790,7 +819,7 @@
                                         android:fontFamily="@font/coresanscrbold"
                                         android:gravity="left"
                                         android:padding="15dp"
-                                        android:text="9. Upload Disburse Bank *"
+                                        android:text="9. Upload Bank Statement *"
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="14sp"
 
@@ -898,6 +927,13 @@
                                             android:text="GST"
                                             android:textColor="@color/colorPrimary"
                                             android:textSize="14dp" />
+                                        <ImageView
+                                            android:id="@+id/gst_info_button"
+                                            android:src="@drawable/info_icon"
+                                            android:layout_gravity="center"
+                                            android:layout_width="32dp"
+                                            android:padding="8dp"
+                                            android:layout_height="32dp"/>
 
                                         <ImageView
                                             android:id="@+id/GST_DROPDOWN"

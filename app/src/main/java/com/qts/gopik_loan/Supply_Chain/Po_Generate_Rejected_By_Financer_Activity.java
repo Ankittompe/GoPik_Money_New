@@ -54,7 +54,7 @@ import retrofit2.Response;
 public class Po_Generate_Rejected_By_Financer_Activity extends AppCompatActivity  implements PickiTCallbacks {
     RecyclerView alldetails_recylerview;
     PoDetails_Rejected_Financer_Adapter poDetails_rejected_financer_adapter;
-    TextView textView3, reject,et_po_id,et_date,et_dealer_name,et_status,et_total_qty,et_total_price;
+    TextView textView3, reject,et_po_id,et_date,et_dealer_name,et_status,et_total_qty,et_total_price,reason;
     private int GALLERY = 1, CAMERA = 2;
     PickiT pickiT;
     private static final String IMAGE_DIRECTORY = "/financer";
@@ -100,7 +100,7 @@ public class Po_Generate_Rejected_By_Financer_Activity extends AppCompatActivity
         textView3=(TextView) findViewById(R.id.textView3);
         arrow=(ImageView) findViewById(R.id.arrow);
         hometoolbar=(ImageView) findViewById(R.id.hometoolbar);
-
+        reason=(TextView) findViewById(R.id.reasonofrejection);
         arrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -169,7 +169,7 @@ public class Po_Generate_Rejected_By_Financer_Activity extends AppCompatActivity
                                 financer.add(response.body().getPayload().get(i).getFinancer());
                                 status.add(response.body().getPayload().get(i).getStatus());
                                 invoicefile.add(response.body().getPayload().get(i).getInvoice_file());
-
+                                reason.setText(response.body().getReason_of_rejection());
                                 tempp = temp + Integer.valueOf(response.body().getPayload().get(i).getProdt_quantity());
                                 temp = tempp;
 

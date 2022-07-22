@@ -31,6 +31,7 @@ import com.qts.gopik_loan.Dealer_Fragment.Dealer_QR_Code_Fragment;
 import com.qts.gopik_loan.Model.Broker_profile_details_MODEL;
 import com.qts.gopik_loan.Model.Dealer_QR_MODEL;
 import com.qts.gopik_loan.Model.ProfileDetails_DEALER_MODEL;
+import com.qts.gopik_loan.Model.QRSummaryModel;
 import com.qts.gopik_loan.Model.QR_DataList_MODEL;
 import com.qts.gopik_loan.Model.QR_ScannedList_MODEL;
 import com.qts.gopik_loan.Model.WhatsAppStatusList_MODEL;
@@ -61,7 +62,8 @@ public class Broker_QR_Code_Fragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     private String mParam1;
     private String mParam2;
-    private TextView mTxtGenerateQRCode, mTxtShowScannedList, mTxtShowWhatsAppStatus, mTxtName,mTxtUserName;
+    private TextView mTxtGenerateQRCode, mTxtShowScannedList, mTxtShowWhatsAppStatus, mTxtName, mTxtUserName,
+            mTxtTotalScan, mTxtTotalSubMission, mTxtTotalApprovals, mTxtTotalExpCommission;
     ImageView mImgOpenQR,mImgShare;
     WebView mWebVw;
     CustPrograssbar custPrograssbar;
@@ -187,6 +189,14 @@ public class Broker_QR_Code_Fragment extends Fragment {
                 startActivity(Intent.createChooser(share, "Select"));*/
             }
         });
+
+
+        mTxtTotalScan = view.findViewById(R.id.txtTotalScan);
+        mTxtTotalApprovals = view.findViewById(R.id.txtTotalApprovals);
+        mTxtTotalSubMission = view.findViewById(R.id.txtTotalSubmission);
+        mTxtTotalExpCommission = view.findViewById(R.id.txtTotalExpCommission);
+
+        getSummaryData();
     }
 
 
@@ -344,4 +354,32 @@ public class Broker_QR_Code_Fragment extends Fragment {
         });
     }
 
+    private void getSummaryData() {
+        custPrograssbar.prograssCreate(getContext());
+        QR_CODE_POJO pojo = new QR_CODE_POJO(SharedPref.getStringFromSharedPref(AppConstants.USER_CODE, getContext()));
+        RestApis restApis = NetworkHandler.instanceMaker11().create(RestApis.class);
+        Call<QRSummaryModel> call = restApis.Get_Total_Summary(pojo);
+        call.enqueue(new Callback<QRSummaryModel>() {
+            @Override
+            public void onResponse(Call<QRSummaryModel> call, Response<QRSummaryModel> response) {
+                custPrograssbar.closePrograssBar();
+                if (response.code() == 200) {
+                    mTxtTotalScan.setText(""+response.body().getData().getTotalScan());
+                    mTxtTotalApprovals.setText(""+response.body().getData().getTotalApproval());
+                    mTxtTotalSubMission.setText(""+response.body().getData().getTotalSubmission());
+                    mTxtTotalExpCommission.setText(""+response.body().getData().getTotalPending());
+                } else {
+                    mTxtTotalScan.setText("0");
+                    mTxtTotalApprovals.setText("0");
+                    mTxtTotalSubMission.setText("0");
+                    mTxtTotalExpCommission.setText("0");
+                }
+            }
+            @Override
+            public void onFailure(Call<QRSummaryModel> call, Throwable t) {
+                Toast.makeText(getContext(), "Something went wrong!", Toast.LENGTH_LONG).show();
+                custPrograssbar.closePrograssBar();
+            }
+        });
+    }
 }

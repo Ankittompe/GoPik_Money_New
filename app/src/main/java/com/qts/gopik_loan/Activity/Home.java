@@ -1,5 +1,6 @@
 package com.qts.gopik_loan.Activity;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -31,6 +32,7 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.Gson;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
@@ -56,11 +58,14 @@ import com.qts.gopik_loan.Retro.RestApis;
 
 import java.net.URL;
 
+import eu.dkaratzas.android.inapp.update.Constants;
+import eu.dkaratzas.android.inapp.update.InAppUpdateManager;
+import eu.dkaratzas.android.inapp.update.InAppUpdateStatus;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Home extends AppCompatActivity {
+public class Home extends AppCompatActivity implements InAppUpdateManager.InAppUpdateHandler {
     NavigationView nav;
     BottomNavigationView bnv;
     /*BottomNavigationView bnv;*/
@@ -74,6 +79,9 @@ public class Home extends AppCompatActivity {
     private WebView mWebVw;
     TextView mTxtUserName;
     ImageView mImgShare,mImgScanner;
+    long pressedTime;
+    private int REQ_CODE_VERSION_UPDATE = 001;
+    InAppUpdateManager inAppUpdateManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,12 +122,14 @@ public class Home extends AppCompatActivity {
 
                 switch (item.getItemId()) {
                     case R.id.home:
+                        showNav();
                         getSupportFragmentManager().beginTransaction().replace(R.id.frameContainer, new HomeFragment()).commit();
 
                         break;
 
 
                     case R.id.profile_drawer:
+                        showNav();
                         getSupportFragmentManager().beginTransaction().replace(R.id.frameContainer, new Tab_Fragment()).commit();
                         /*   bnv.setCurrentItem(3);*/
                         break;
@@ -129,18 +139,21 @@ public class Home extends AppCompatActivity {
                         startActivity(it);
                         break;
                     case R.id.wallet:
+                        showNav();
                         Intent itt = new Intent(Home.this, Application_Details.class);
                         itt.putExtra(AppConstants.ACTFRAG_TYPE_KEY, AppConstants.HOME);
                         startActivity(itt);
                         break;
 
                     case R.id.transaction:
+                        showNav();
                         Intent ittt = new Intent(Home.this, Wallet_Activity.class);
                         ittt.putExtra(AppConstants.ACTFRAG_TYPE_KEY, AppConstants.HOME);
                         startActivity(ittt);
 
                         break;
                     case R.id.dost_qrcode:
+                        hideNav();
                         getSupportFragmentManager().beginTransaction().replace(R.id.frameContainer, new Broker_QR_Code_Fragment()).commit();
                         break;
                     case R.id.signout:
@@ -212,6 +225,7 @@ public class Home extends AppCompatActivity {
         mImgScanner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                hideNav();
                 mImgScanner.setVisibility(View.GONE);
                 getSupportFragmentManager().beginTransaction().replace(R.id.frameContainer, new Broker_QR_Code_Fragment()).commit();
             }
@@ -241,6 +255,15 @@ public class Home extends AppCompatActivity {
                 startActivity(Intent.createChooser(share, "Select"));*/
             }
         });
+        inAppUpdateManager = InAppUpdateManager.Builder(this, REQ_CODE_VERSION_UPDATE)
+                .resumeUpdates(true) // Resume the update, if the update was stalled. Default is true
+                .mode(Constants.UpdateMode.FLEXIBLE)
+                .snackBarMessage("An update has just been downloaded.")
+                .snackBarAction("RESTART")
+                .handler(this);
+
+        inAppUpdateManager.checkForAppUpdate();
+        showNav();
 
     }
     public void openDrawer(Activity mActivityName){
@@ -356,19 +379,7 @@ public class Home extends AppCompatActivity {
                 loadFragment(new Reward());}
 
     }
-    @Override
-    public void onBackPressed() {
-        new AlertDialog.Builder(this)
-                .setMessage("Are you sure you want to exit?")
-                .setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        Home.super.onBackPressed();
-                    }
-                })
-                .setNegativeButton("No", null)
-                .show();
-    }
+
     private void dealer_logout() {
         Dealer_logoutPOJO pojo = new Dealer_logoutPOJO( SharedPref.getStringFromSharedPref(AppConstants.BRAND,getApplicationContext()),
                 SharedPref.getStringFromSharedPref(AppConstants.MOBILE_NUMBER,getApplicationContext()),
@@ -420,13 +431,73 @@ public class Home extends AppCompatActivity {
         SharedPref.saveStringInSharedPref(AppConstants.NOTIFICATION_TYPE, "10", getApplicationContext());  // 10 for no notification
     }
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK)
-            Toast.makeText(getApplicationContext(), "App restricts,back button not allowed on this screen!!", Toast.LENGTH_LONG).show();
-        mImgScanner.setVisibility(View.VISIBLE);
-        getSupportFragmentManager().beginTransaction().replace(R.id.frameContainer, new HomeFragment()).commit();
-        return false;
-        // Disable back button..............
+    public void onBackPressed() {
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.frameContainer);
+        if (fragment instanceof Dealer_QR_Code_Fragment) {
+            mImgScanner.setVisibility(View.VISIBLE);
+            showNav();
+            getSupportFragmentManager().beginTransaction().replace(R.id.frameContainer, new HomeFragment()).commit();
+        } else {
+            if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+                getSupportFragmentManager().popBackStack();
+            } else {
+                if (pressedTime + 2000 > System.currentTimeMillis()) {
+                    super.onBackPressed();
+                    finish();
+                } else {
+                    Toast.makeText(getBaseContext(), "Press back again to exit", Toast.LENGTH_SHORT).show();
+                }
+
+                pressedTime = System.currentTimeMillis();
+            }
+        }
+    }
+
+
+    public void showNav() {
+        chipNavigationBar.setVisibility(View.VISIBLE);
+    }
+    public void hideNav() {
+        chipNavigationBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onInAppUpdateError(int code, Throwable error) {
+
+    }
+
+    @Override
+    public void onInAppUpdateStatus(InAppUpdateStatus status) {
+
+        if (status.isDownloaded()) {
+
+            View rootView = getWindow().getDecorView().findViewById(android.R.id.content);
+
+            Snackbar snackbar = Snackbar.make(rootView,
+                    "An update has just been downloaded.",
+                    Snackbar.LENGTH_INDEFINITE);
+
+            snackbar.setAction("RESTART", view -> {
+
+                // Triggers the completion of the update of the app for the flexible flow.
+                inAppUpdateManager.completeUpdate();
+
+            });
+
+            snackbar.show();
+            Toast.makeText(this, "onInAppUpdateStatus "+status.isUpdateAvailable(), Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == REQ_CODE_VERSION_UPDATE) {
+            if (resultCode == Activity.RESULT_CANCELED) {
+                /*   inAppUpdateManager.checkForAppUpdate();*/
+                /* Log.d(TAG, "Update flow failed! Result code: " + resultCode);*/
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }
 

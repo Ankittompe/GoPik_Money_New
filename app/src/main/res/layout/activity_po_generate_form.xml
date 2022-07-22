@@ -21,7 +21,7 @@
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="180dp"
+        android:paddingBottom="240dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logintoolBar">
@@ -373,4 +373,35 @@
         app:layout_constraintStart_toStartOf="parent"
 
         />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        android:paddingLeft="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnTotalPrice"
+        app:layout_constraintStart_toStartOf="@+id/btnTotalPrice">
+
+        <ImageView
+            android:id="@+id/invoicefile_upload_bttn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/camera"
+
+            />
+
+
+        <TextView
+            android:id="@+id/invoice_upload_bttn2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:text="PO doc upload"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

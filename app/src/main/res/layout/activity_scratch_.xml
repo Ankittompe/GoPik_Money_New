@@ -13,7 +13,7 @@
 
         <include
             android:id="@+id/logintoolBar"
-            layout="@layout/logintoolbar"
+            layout="@layout/success_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:layout_alignParentTop="true" />

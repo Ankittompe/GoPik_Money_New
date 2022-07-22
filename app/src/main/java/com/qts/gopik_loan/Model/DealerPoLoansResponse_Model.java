@@ -4,11 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class DealerPoLoansResponse_Model {
-/*"po_id": "PO072285101",
-        "loan_no": "LN095678544534",
-        "Approved_amount": "27300",
-        "start_date": "2022-07-13 07:19:53",
-        "end_date": "2022-07-13 07:19:53"*/
+
 
     public String getPo_id() {
         return po_id;
@@ -64,5 +60,29 @@ public class DealerPoLoansResponse_Model {
     @Expose
     @SerializedName("end_date")
     private String end_date;
+
+    public String getTenure() {
+        return tenure;
+    }
+
+    public void setTenure(String tenure) {
+        this.tenure = tenure;
+    }
+
+    @Expose
+    @SerializedName("tenure")
+    private String tenure;
+
+    public String getRoi() {
+        return roi;
+    }
+
+    public void setRoi(String roi) {
+        this.roi = roi;
+    }
+
+    @Expose
+    @SerializedName("roi")
+    private String roi;
 
 }

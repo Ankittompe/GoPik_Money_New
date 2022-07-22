@@ -202,9 +202,10 @@ public class Profile_Details extends Fragment implements AdapterView.OnItemSelec
             /*    z = 1;
                 y = 1;
                 showPictureDialog();*/
-
+                checkPermission();
+                        checkPermission_version();
                 Log.e("ii", "uu");
-                if (!checkPermission()) {
+             /*   if (!checkPermission()) {
 
                     Log.e("Check", "permission1--->>");
 
@@ -216,13 +217,13 @@ public class Profile_Details extends Fragment implements AdapterView.OnItemSelec
                     Log.e("Check", "permission2--->>");
                     requestPermission();
                 }
-               else {
+               else {*/
                     Log.e("Check", "permission3--->>");
                     showPictureDialog();
                     Log.e("Check", "permission4--->>");
                     z = 1;
                     y = 1;
-                }
+                
 
             }
         });

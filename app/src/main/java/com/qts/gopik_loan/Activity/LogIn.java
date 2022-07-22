@@ -2,12 +2,14 @@ package com.qts.gopik_loan.Activity;
 
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -35,6 +37,7 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.gson.Gson;
 import com.qts.gopik_loan.Model.Login_actPOJO;
@@ -54,11 +57,14 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
+import eu.dkaratzas.android.inapp.update.Constants;
+import eu.dkaratzas.android.inapp.update.InAppUpdateManager;
+import eu.dkaratzas.android.inapp.update.InAppUpdateStatus;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LogIn extends AppCompatActivity implements TextWatcher {
+public class LogIn extends AppCompatActivity implements TextWatcher{
 
     TextInputEditText moblog, user_name;
     TextView btsend;
@@ -75,7 +81,8 @@ public class LogIn extends AppCompatActivity implements TextWatcher {
     public static final int RequestPermissionCode = 7;
     private Location currentLocation;
     FusedLocationProviderClient mFusedLocationProviderClient;
-
+    private int REQ_CODE_VERSION_UPDATE = 001;
+    InAppUpdateManager inAppUpdateManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,6 +136,8 @@ public class LogIn extends AppCompatActivity implements TextWatcher {
             linkTextView2.setLinkTextColor(Color.YELLOW);*/
         RequestMultiplePermission();
         startLocationUpdates();
+
+
 
     }
 
@@ -303,6 +312,7 @@ public class LogIn extends AppCompatActivity implements TextWatcher {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
             if (grantResults.length > 0
                     && grantResults[0] == PackageManager.PERMISSION_GRANTED) {

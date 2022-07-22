@@ -42,7 +42,8 @@ import retrofit2.Response;
 public class Disbursed extends AppCompatActivity {
     RecyclerView alldetails_recylerview;
     DisbursedAdapter disbursedAdapter;
-    TextView textView3, reject, et_po_id, et_date, et_dealer_name, et_status, et_total_qty, et_total_price;
+    TextView textView3, reject, et_po_id, et_date, et_dealer_name, et_status, et_total_qty, et_total_price,    tenure,rateofinterest
+    ;
     CustPrograssbar custPrograssbar;
     ArrayList<String> id = new ArrayList<>();
     ArrayList<String> po_id = new ArrayList<>();
@@ -93,6 +94,8 @@ public class Disbursed extends AppCompatActivity {
         hometoolbar = (ImageView) findViewById(R.id.hometoolbar);
         view = (TextView) findViewById(R.id.view);
         invoice_view = (ImageView) findViewById(R.id.invoice);
+        rateofinterest = (TextView) findViewById(R.id.rateofinterest);
+        tenure = (TextView) findViewById(R.id.tenure);
         invoice_view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -203,7 +206,8 @@ public class Disbursed extends AppCompatActivity {
                                 financer.add(response.body().getPayload().get(i).getFinancer());
                                 status.add(response.body().getPayload().get(i).getStatus());
                                 invoicefile.add(response.body().getPayload().get(i).getInvoice_file());
-
+                                rateofinterest.setText(response.body().getRoi()+" %");
+                                tenure.setText(response.body().getTenure()+" days");
 
                                 tempp = temp + Integer.valueOf(response.body().getPayload().get(i).getProdt_quantity());
                                 temp = tempp;

@@ -28,12 +28,15 @@ public class LoanStatusAdapter extends RecyclerView.Adapter<LoanStatusAdapter.Vi
     ArrayList<String> date_of_closer = new ArrayList<>();
     ArrayList<String> loan_id = new ArrayList<>();
     ArrayList<String> disb_date = new ArrayList<>();
-
+    ArrayList<String> tenure = new ArrayList<>();
+    ArrayList<String> rateofinterest = new ArrayList<>();
     public LoanStatusAdapter(Context context, ArrayList<String> po_id,
                                          ArrayList<String> disb_amount,
                                          ArrayList<String> date_of_closer,
                                          ArrayList<String> loan_id,
-                                         ArrayList<String> disb_date
+                                         ArrayList<String> disb_date,
+                             ArrayList<String> tenure,
+                             ArrayList<String> rateofinterest
 
     ) {
 
@@ -44,6 +47,8 @@ public class LoanStatusAdapter extends RecyclerView.Adapter<LoanStatusAdapter.Vi
         this.date_of_closer = date_of_closer;
         this.loan_id = loan_id;
         this.disb_date = disb_date;
+        this.tenure = tenure;
+        this.rateofinterest = rateofinterest;
 
 
     }
@@ -72,6 +77,8 @@ public class LoanStatusAdapter extends RecyclerView.Adapter<LoanStatusAdapter.Vi
         holder.disb_date_tv.setText(disb_date.get(position));
         holder.date_of_closer_tv.setText(date_of_closer.get(position));
         holder.loan_id_tv.setText(loan_id.get(position));
+        holder.tenure.setText(tenure.get(position)+" days");
+        holder.rateofinterest.setText(rateofinterest.get(position)+" %");
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,7 +101,7 @@ public class LoanStatusAdapter extends RecyclerView.Adapter<LoanStatusAdapter.Vi
     public class ViewHolder extends RecyclerView.ViewHolder {
 
 
-        TextView po_id_tv,disb_amount_tv,date_of_closer_tv,disb_date_tv,loan_id_tv;
+        TextView po_id_tv,disb_amount_tv,date_of_closer_tv,disb_date_tv,loan_id_tv,rateofinterest,tenure;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -107,7 +114,8 @@ public class LoanStatusAdapter extends RecyclerView.Adapter<LoanStatusAdapter.Vi
             date_of_closer_tv=itemView.findViewById(R.id.date_of_closer_tv);
             disb_date_tv=itemView.findViewById(R.id.disb_date_tv);
             loan_id_tv=itemView.findViewById(R.id.loan_id_tv);
-
+            tenure=itemView.findViewById(R.id.tenure);
+            rateofinterest=itemView.findViewById(R.id.rateofinterest);
 
 
         }

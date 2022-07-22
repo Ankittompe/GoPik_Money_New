@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.qts.gopik_loan.Activity.Interfaces.IPoItemClickListener;
 import com.qts.gopik_loan.R;
 import com.qts.gopik_loan.Retro.ItemClickListener;
 import com.qts.gopik_loan.Supply_Chain.PO_Generate_Form_activity;
@@ -20,7 +21,7 @@ import com.qts.gopik_loan.Supply_Chain.PO_Product;
 import java.util.ArrayList;
 
 public class Po_Get_List_Adapter extends RecyclerView.Adapter<Po_Get_List_Adapter.ViewHolder> {
-
+    IPoItemClickListener mIPoItemClickListener;
     PO_Generate_Form_activity po_generate_form_activity;
     ArrayList<PO_Product> mProductArrayList;
     Context context;
@@ -77,7 +78,8 @@ public class Po_Get_List_Adapter extends RecyclerView.Adapter<Po_Get_List_Adapte
                 int position = holder.getAdapterPosition();
                 mProductArrayList.remove(position);
                 notifyItemChanged(position);
-                notifyItemRangeChanged(position,mProductArrayList.size());
+                 notifyItemRangeChanged(position, mProductArrayList.size());
+                itemClickListener.onClick(position, mProductArrayList.get(position));
             }
         });
         // check conditions

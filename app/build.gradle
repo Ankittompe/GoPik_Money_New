@@ -10,7 +10,7 @@ android {
         applicationId "com.qts.gopik_loan"
         minSdkVersion 23
         targetSdkVersion 30
-        versionCode 19
+        versionCode 20
         versionName "3.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -31,6 +31,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
 }
 
 dependencies {
@@ -135,5 +136,13 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.github.HBiSoft:PickiT:2.0.5'
     implementation 'com.google.android.material:material:1.2.0-alpha02'
-    implementation 'com.google.android.play:core:1.7.3'
+
+
+    implementation 'eu.dkaratzas:android-inapp-update:1.0.5'
+
+    // This dependency is downloaded from the Google’s Maven repository.
+    // So, make sure you also include that repository in your project's build.gradle file.
+
+
+
 }

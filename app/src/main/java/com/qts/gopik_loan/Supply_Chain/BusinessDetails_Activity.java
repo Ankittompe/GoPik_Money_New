@@ -24,6 +24,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.hbisoft.pickit.PickiT;
 import com.hbisoft.pickit.PickiTCallbacks;
 import com.qts.gopik_loan.Activity.AppConstants;
@@ -108,14 +109,21 @@ public class BusinessDetails_Activity extends AppCompatActivity implements Picki
     File mGSTFile = null;
     int  mSelectedGSTStatus = 0;
     TextView btsend;
+    ImageView business_info_button,util_info_button,agrement_info_button,bank_info_button,gst_info_button;
     ImageView upld_busines_succss,upld_udc_succss,upld_agreement_succss,upld_ecsrow_succss,upld_disb_bank_succss,upld_Gst_succss;
 
+    TextView Ok_button;
     TextView upld_business_hint,upld_udc_hint,upld_agreement_hint,upld_escrow_hint,upld_disb_bank_hint,upld_Gst_hint;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_business_details);
 
+        business_info_button = findViewById(R.id.business_info_button);
+        util_info_button = findViewById(R.id.util_info_button);
+        agrement_info_button = findViewById(R.id.agrement_info_button);
+        bank_info_button = findViewById(R.id.bank_info_button);
+        gst_info_button = findViewById(R.id.gst_info_button);
 
         Gst_name = findViewById(R.id.Gst_name);
         business_name = findViewById(R.id.business_name);
@@ -192,6 +200,36 @@ public class BusinessDetails_Activity extends AppCompatActivity implements Picki
         upld_escrow_layout = findViewById(R.id.upld_escrow_layout);
         upld_disburse_layout = findViewById(R.id.upld_disburse_layout);
         upld_Gst_layout = findViewById(R.id.upld_Gst_layout);
+        business_info_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BusinessInfoDailog();
+            }
+        });
+        util_info_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UtilInfoDailog();
+            }
+        });
+        agrement_info_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AgreementInfoDailog();
+            }
+        });
+        bank_info_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BankInfoDailog();
+            }
+        });
+        gst_info_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GstInfoDailog();
+            }
+        });
         arrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -505,13 +543,11 @@ public class BusinessDetails_Activity extends AppCompatActivity implements Picki
                 if (!(upload_business_success==1)){
                     Toast.makeText(BusinessDetails_Activity.this, "Please upload a  Business Document!", Toast.LENGTH_SHORT).show();
                 }else if (!(upload_udc_success==1)){
-                    Toast.makeText(BusinessDetails_Activity.this, "Please Upload an UDC Document!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(BusinessDetails_Activity.this, "Please Upload an Utility Bill", Toast.LENGTH_SHORT).show();
                 } else if (!(upload_agreement_success==1)){
-                    Toast.makeText(BusinessDetails_Activity.this, "Please Upload an Agreement Document!", Toast.LENGTH_SHORT).show();
-                } else if (!(upload_escrow_success==1)){
-                    Toast.makeText(BusinessDetails_Activity.this, "Please Upload an Escrow Document !", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(BusinessDetails_Activity.this, "Please Upload an  Dealer GoPik Agreement!", Toast.LENGTH_SHORT).show();
                 } else if (!(upload_disb_bank_success==1)){
-                    Toast.makeText(BusinessDetails_Activity.this, "Please Upload a Disbursal bank Document !", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(BusinessDetails_Activity.this, "Please Upload a Bank Statement !", Toast.LENGTH_SHORT).show();
                 }else if (!(upload_gst_success==1)){
                     Toast.makeText(BusinessDetails_Activity.this, "Please Upload a Gst Document !", Toast.LENGTH_SHORT).show();
                 } else {
@@ -522,6 +558,8 @@ public class BusinessDetails_Activity extends AppCompatActivity implements Picki
             }
         });
     }
+
+
 
     private void DealerESCROWDoc() {
         String musercode = "47436";
@@ -834,6 +872,110 @@ public class BusinessDetails_Activity extends AppCompatActivity implements Picki
             }
 
         });
+
+    }
+    private void BusinessInfoDailog() {
+
+
+        dialogCondition.setContentView(R.layout.business_info_dialog);
+        Ok_button = (TextView) dialogCondition.findViewById(R.id.Ok_button);
+
+        dialogCondition.getWindow().setBackgroundDrawable(
+                new ColorDrawable(Color.WHITE));
+        dialogCondition.setCancelable(true);
+
+        dialogCondition.show();
+
+        Ok_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogCondition.dismiss();
+            }
+        });
+
+
+    }
+    private void UtilInfoDailog() {
+
+
+        dialogCondition.setContentView(R.layout.utility_dialog);
+        Ok_button = (TextView) dialogCondition.findViewById(R.id.Ok_button);
+
+        dialogCondition.getWindow().setBackgroundDrawable(
+                new ColorDrawable(Color.WHITE));
+        dialogCondition.setCancelable(true);
+
+        dialogCondition.show();
+
+        Ok_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogCondition.dismiss();
+            }
+        });
+
+
+    }
+    private void AgreementInfoDailog() {
+
+
+        dialogCondition.setContentView(R.layout.agreement_info_dialog);
+        Ok_button = (TextView) dialogCondition.findViewById(R.id.Ok_button);
+
+        dialogCondition.getWindow().setBackgroundDrawable(
+                new ColorDrawable(Color.WHITE));
+        dialogCondition.setCancelable(true);
+
+        dialogCondition.show();
+
+        Ok_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogCondition.dismiss();
+            }
+        });
+
+
+    }
+    private void BankInfoDailog() {
+
+
+        dialogCondition.setContentView(R.layout.bank_info_dialog);
+        Ok_button = (TextView) dialogCondition.findViewById(R.id.Ok_button);
+
+        dialogCondition.getWindow().setBackgroundDrawable(
+                new ColorDrawable(Color.WHITE));
+        dialogCondition.setCancelable(true);
+
+        dialogCondition.show();
+
+        Ok_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogCondition.dismiss();
+            }
+        });
+
+
+    }
+    private void GstInfoDailog() {
+
+        dialogCondition.setContentView(R.layout.gstinfo_dialog);
+        Ok_button = (TextView) dialogCondition.findViewById(R.id.Ok_button);
+
+        dialogCondition.getWindow().setBackgroundDrawable(
+                new ColorDrawable(Color.WHITE));
+        dialogCondition.setCancelable(true);
+
+        dialogCondition.show();
+
+        Ok_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogCondition.dismiss();
+            }
+        });
+
 
     }
 

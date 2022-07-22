@@ -44,6 +44,8 @@ public class LoanStatus extends AppCompatActivity {
     ArrayList<String> date_of_closer = new ArrayList<>();
     ArrayList<String> loan_id = new ArrayList<>();
     ArrayList<String> disb_date = new ArrayList<>();
+    ArrayList<String> tenure = new ArrayList<>();
+    ArrayList<String> rateofinterest = new ArrayList<>();
     ImageView arrow,hometoolbar;
     String rupee_symbol = "₹";
     @Override
@@ -105,6 +107,8 @@ public class LoanStatus extends AppCompatActivity {
                                 date_of_closer.add(response.body().getPayload().get(i).getEnd_date());
                                 loan_id.add(response.body().getPayload().get(i).getLoan_no());
                                 disb_date.add(response.body().getPayload().get(i).getStart_date());
+                                tenure.add(response.body().getPayload().get(i).getTenure());
+                                rateofinterest.add(response.body().getPayload().get(i).getRoi());
 
 
 
@@ -114,7 +118,8 @@ public class LoanStatus extends AppCompatActivity {
                                     );
 
                                     rclview.setLayoutManager(layoutManager);
-                                    loanStatusAdapter = new LoanStatusAdapter(getApplicationContext(),po_id,disb_amount,date_of_closer,loan_id,disb_date);
+                                    loanStatusAdapter = new LoanStatusAdapter(getApplicationContext(),po_id,disb_amount,date_of_closer,loan_id,disb_date,
+                                            tenure,rateofinterest);
                                     rclview.setAdapter(loanStatusAdapter);
 
 

@@ -186,17 +186,19 @@ public class Profile_Details_Dealer extends Fragment implements AdapterView.OnIt
         pr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!checkPermission()) {
+               /* if (!checkPermission()) {
                     requestPermission();
                 }
                 if (!checkPermission_version()) {
                     requestPermission();
                 }
-                else{
+                else{*/
+                checkPermission();
+                checkPermission_version();
                     showPictureDialog();
                     z=1;
                     y=1;
-                }
+
             }
         });
 
