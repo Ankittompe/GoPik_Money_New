@@ -9,7 +9,7 @@
 
     <!-- href tag is used to add link-->
     <!-- link for home text view-->
-    <string name="hyperlink"><a href="https://www.geeksforgeeks.org/how-to-add-hyperlink-to-textview-in-android/">GoPikMoney </a></string>
+    <string name="hyperlink"><a href="https://policies.gopik.org/privacypolicy.html">GoPikMoney </a></string>
     <string name="hyperlink2"><a href="https://policies.gopik.org/privacypolicy.html"> Privacy Policy </a></string>
     <string name="asset_insurance_coverage_of_twelve_months_for_sum_assured_rs_mrp_provided_by_liberty_general_insurance_ltd" />
     <string name="by_clicking_checkbox_you_agree_the_terms_conditions">By clicking checkbox, you agree the terms &amp; conditions of\n<a href="https://www.geeksforgeeks.org/how-to-add-hyperlink-to-textview-in-android/"> GoPikMoney </a></string>
@@ -22,4 +22,26 @@
     <string name="msg_token_fmt">msg_token</string>
     <string name="generate_qr_code">Generate QR Code</string>
     <string name="catagory">Category</string>
+
+    <string name="mandatory">All Star(*) Mark are Mandatory</string>
+    <string name="review_from_financer">Review From Financer</string>
+    <string name="loan_status">Loan Status</string>
+    <string name="available_loan_amount">Available Loan Amount</string>
+    <string name="total_credit_limit">Total Credit Limit</string>
+    <string name="view_loans">View Loans</string>
+    <string name="loan_status_tv">Status</string>
+    <string name="reason">Reason</string>
+    <string name="title_activity_approved_at_gopik_shopkepper">ApprovedAtGopikShopkepper</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="confirm">Confirm</string>
+    <string name="personal_accident">Personal Accident Insurance Sum Insured Rs. 2,00,000 Provided by Liberty General Insurance.</string>
+
+    <string name="action_settings">Settings</string>
 </resources>

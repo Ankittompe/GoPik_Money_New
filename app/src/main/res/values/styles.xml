@@ -13,7 +13,13 @@
 
 
     </style>
-
+    <style name="keyboard_row">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:divider">@drawable/keyboard_divider</item>
+        <item name="android:gravity">center</item>
+        <item name="android:showDividers">beginning|middle|end</item>
+    </style>
     <style name="TextShadowStyle">
 
         <item name="android:shadowColor">@color/black</item>
@@ -25,5 +31,7 @@
         <item name="android:textSize">@dimen/_14sdp</item>
         <item name="android:textColor">@color/colorGrey2</item>
     </style>
-
+    <style name="CustomAlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
 </resources>

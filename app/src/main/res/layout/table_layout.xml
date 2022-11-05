@@ -1,99 +1,182 @@
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
-    android:stretchColumns="0,1,2,3,4,5">
+    android:orientation="vertical">
 
-
-
-
-
-
-    <TableRow
-        android:layout_width="fill_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="1dp"
+        android:orientation="horizontal">
 
-        android:background="#000000">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_2sdp"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/nameuser"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:layout_column="0"
-            android:layout_margin="1dp"
-            android:background="#FFFFFF"
-            android:gravity="center"
-            android:textColor="@color/colorPrimary"
-            android:text=" Text"
-            />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:text="Name" />
 
-        <TextView
-            android:id="@+id/mobileuser"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:layout_column="1"
-            android:layout_margin="1dp"
-            android:background="#FFFFFF"
-            android:gravity="center"
-            android:textColor="@color/colorPrimary"
-            android:text=" Text"
-            />
+            <TextView
+                android:id="@+id/nameuser"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/rectangle_3"
+                android:gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:textColor="@color/colorPrimary" />
 
-        <TextView
-            android:id="@+id/roleuser"
-            android:layout_width="0dp"
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_2sdp"
             android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:layout_column="2"
-            android:layout_margin="1dp"
-            android:background="#FFFFFF"
-            android:textColor="@color/colorPrimary"
-            android:gravity="center"
-            android:text=" Text"
-            />
-        <TextView
-            android:id="@+id/statususer"
-            android:layout_width="0dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:text="Mobile" />
+
+            <TextView
+                android:id="@+id/mobileuser"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/rectangle_3"
+                android:gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:textColor="@color/colorPrimary" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_2sdp"
             android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:layout_column="2"
-            android:layout_margin="1dp"
-            android:textColor="@color/colorPrimary"
-            android:background="#FFFFFF"
-            android:gravity="center"
-            android:text=" Text"
-            />
-        <TextView
-            android:id="@+id/actionuser"
-            android:layout_width="0dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:text="Action" />
+
+            <TextView
+                android:id="@+id/actionuser"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/rectangle_3"
+                android:gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:textColor="@color/colorPrimary" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_2sdp"
             android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:layout_column="2"
-            android:layout_margin="8dp"
-            android:background="@drawable/approve"
-            android:textColor="@color/white"
-            android:gravity="center"
-            android:textSize="10dp"
-            android:text=" Text"
-            />
-        <TextView
-            android:id="@+id/edit"
-            android:layout_width="0dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:text="Edit" />
+
+            <TextView
+                android:id="@+id/edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_3"
+                android:drawableEnd="@drawable/ic_edit_po_black"
+                android:gravity="center"
+                android:hint="===>"
+                android:padding="@dimen/_5sdp"
+                android:textColor="@color/colorPrimary" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_2sdp"
             android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:layout_column="2"
-            android:layout_margin="1dp"
-            android:background="#FFFFFF"
-            android:textColor="@color/colorPrimary"
-            android:gravity="center"
-            android:text=" Edit"
-            />
-    </TableRow>
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:text="Role" />
+
+            <TextView
+                android:id="@+id/roleuser"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/rectangle_3"
+                android:gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:textColor="@color/colorPrimary" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
 
-</TableLayout>
+        <LinearLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_2sdp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:text="Status" />
+
+            <TextView
+                android:id="@+id/statususer"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/rectangle_3"
+                android:gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:textColor="@color/colorPrimary" />
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_2sdp"
+        android:background="@color/blue" />
+
+</LinearLayout>

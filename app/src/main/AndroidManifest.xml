@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.qts.gopik_loan">
+    package="com.qts.gopik_money">
 
     <uses-permission android:name="android.permission.CAMERA" /> <!-- <uses-permission android:name="android.permission.READ_SMS" /> -->
     <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" /> -->
@@ -21,7 +21,7 @@
     <application
         android:allowBackup="true"
         android:directBootAware="true"
-        android:exported="false"
+        android:exported="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:requestLegacyExternalStorage="true"
@@ -30,284 +30,419 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".Supply_Chain.View_Invoice_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.LoanDetails_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.LoanStatus"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.Disbursed"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.AwaitingDisbursal"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.PersonalDetails_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.BusinessDetails_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.TransactionDetails_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.PoDetail_Rejected_Dealer_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.PoDetail_Approve_Dealer_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.Po_Generate_Rejected_By_Financer_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.Po_Generate_Approved_By_Financer_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.PO_Generate_Pending_OEM_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.Po_Rejected_OEM_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.PoDetail_Approve_OEM_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.ProductCatActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.PO_Get_Modified_List"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.PO_Generate_Form_activity"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.PO_Generate__AllList_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.PO_TOP_FIVE_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.Image_Upload_SupplyChain"
-            android:exported="false" />
-        <activity
-            android:name=".Goat_Activity.Aadhar_Name_Number_Activity"
-            android:exported="true" >
 
-        </activity>
-        <activity
-            android:name=".Dealer_Activity.Aadhar_Otp_Verify"
-            android:exported="true"></activity>
-        <activity
-            android:name=".Dealer_Activity.Aadhar_Name_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Dealer_Activity.Aadhar_Activity"
-            android:exported="true">
 
-        </activity>
-     <!--   <activity
-            android:name=".Supply_Chain.View_Invoice_Activity"
-            android:exported="false" />
+        <receiver
+            android:name="com.razorpay.RzpTokenReceiver"
+            android:exported="true" />
         <activity
-            android:name=".Supply_Chain.LoanDetails_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.LoanStatus"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.Disbursed"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.AwaitingDisbursal"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.PersonalDetails_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.BusinessDetails_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.TransactionDetails_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.PoDetail_Rejected_Dealer_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.PoDetail_Approve_Dealer_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.Po_Generate_Rejected_By_Financer_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.Po_Generate_Approved_By_Financer_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.PO_Generate_Pending_OEM_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.Po_Rejected_OEM_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.PoDetail_Approve_OEM_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.ProductCatActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.PO_Get_Modified_List"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.PO_Generate_Form_activity"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.PO_Generate__AllList_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.PO_TOP_FIVE_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Supply_Chain.Image_Upload_SupplyChain"
-            android:exported="false" />-->
-        <activity
-            android:name=".Dealer_Activity.Resend_OTP_CAP_Otp_DEALER_Verify"
-            android:exported="false" />
-        <activity android:name=".Activity.Property_Loan" />
-        <activity
-            android:name=".Dealer_Activity.Edit_delaer_Profile"
+            android:name="com.razorpay.CheckoutActivity"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Edit_Profile"
+            android:name="com.qts.gopik_money.Supply_Chain.InvoiceTopFiveStatusDealer"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Dealer_Activity.Recharge__Wallet_DEALER_Activity"
+            android:name="com.qts.gopik_money.Shopkeeper.InvoiceTopFive"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity
+            android:name="com.qts.gopik_money.Activity.OEMDetailsActivity"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Dealer_Activity.SubDealerEdit"
+            android:name="com.qts.gopik_money.Shopkeeper.EditShopkeeperProfile"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Dealer_Activity.Success_Dealer"
+            android:name="com.qts.gopik_money.Shopkeeper.RejectedShopkeeper"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Dealer_Activity.Customer_Details_Verification_Dealer"
+            android:name="com.qts.gopik_money.Shopkeeper.ApprovedFinacerShopkeeper"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Dealer_Activity.Additional_KYC_DEALER_Details"
+            android:name="com.qts.gopik_money.Shopkeeper.ShopkeeperLoanDetails"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Dealer_Activity.ImageCapture"
+            android:name="com.qts.gopik_money.Shopkeeper.LoanStatusShopkeeper"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Dealer_Activity.PAN_CARD_Details"
+            android:name="com.qts.gopik_money.Shopkeeper.ViewAllPoShopkeeper"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Dealer_Activity.Voter_ID_CARD_Details"
+            android:name="com.qts.gopik_money.Shopkeeper.TopFivePoShopkeeper"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Dealer_Activity.TermsCondition_DEALER_Activity"
+            android:name="com.qts.gopik_money.Shopkeeper.PendingAtGopik"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Dealer_Activity.CAP_Otp_DEALER_Verify"
+            android:name="com.qts.gopik_money.Shopkeeper.EditShopkeeper"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Dealer_Activity.CustomerAcceptancePolicy_DEALER_Activity"
+            android:name="com.qts.gopik_money.Shopkeeper.Shopkeeper_PO_generate"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Dealer_Activity.Wallet_Details"
+            android:name="com.qts.gopik_money.Shopkeeper.HomeShopkeeper"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Dealer_Activity.Promocode_Activity"
+            android:name="com.qts.gopik_money.Supply_Chain.View_Invoice_Activity"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Dealer_Activity.CashCalculator"
+            android:name="com.qts.gopik_money.Supply_Chain.LoanDetails_Activity"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Dealer_Activity.Emi_Calculator"
+            android:name="com.qts.gopik_money.Supply_Chain.LoanStatus"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Dealer_Activity.ProductDetails_DEALER"
+            android:name="com.qts.gopik_money.Supply_Chain.Disbursed"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Dealer_Activity.Products_DEALER"
+            android:name="com.qts.gopik_money.Supply_Chain.AwaitingDisbursal"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Dealer_Activity.MainActivity"
+            android:name="com.qts.gopik_money.Supply_Chain.PersonalDetails_Activity"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Draft_Activity"
+            android:name="com.qts.gopik_money.Supply_Chain.BusinessDetails_Activity"
+            android:exported="true"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name="com.qts.gopik_money.Supply_Chain.TransactionDetails_Activity"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Wallet_Activity"
+            android:name="com.qts.gopik_money.Supply_Chain.PoDetail_Rejected_Dealer_Activity"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Contest_Activity"
+            android:name="com.qts.gopik_money.Supply_Chain.PoDetail_Approve_Dealer_Activity"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Scratch_Activity"
+            android:name="com.qts.gopik_money.Supply_Chain.Po_Generate_Rejected_By_Financer_Activity"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.KYC_Details"
+            android:name="com.qts.gopik_money.Supply_Chain.Po_Generate_Approved_By_Financer_Activity"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.All_Details_Activity"
+            android:name="com.qts.gopik_money.Supply_Chain.PO_Generate_Pending_OEM_Activity"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Resend_Register_OTP_Verification"
+            android:name="com.qts.gopik_money.Supply_Chain.Po_Rejected_OEM_Activity"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Register_OTP_Verification"
+            android:name="com.qts.gopik_money.Supply_Chain.PoDetail_Approve_OEM_Activity"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Register"
+            android:name="com.qts.gopik_money.Supply_Chain.ProductCatActivity"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.ResendOTPVerify"
+            android:name="com.qts.gopik_money.Supply_Chain.PO_Get_Modified_List"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.SplashActivity"
-            android:screenOrientation="portrait" >
+            android:name="com.qts.gopik_money.Supply_Chain.PO_Generate_Form_activity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Supply_Chain.PO_Generate__AllList_Activity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Supply_Chain.PO_TOP_FIVE_Activity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Supply_Chain.Image_Upload_SupplyChain"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Goat_Activity.Aadhar_Name_Number_Activity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Dealer_Activity.Aadhar_Otp_Verify"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Dealer_Activity.Aadhar_Name_Activity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Dealer_Activity.Aadhar_Activity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Dealer_Activity.Resend_OTP_CAP_Otp_DEALER_Verify"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Activity.Property_Loan"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Dealer_Activity.Edit_delaer_Profile"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Activity.Edit_Profile"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Dealer_Activity.Recharge__Wallet_DEALER_Activity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Dealer_Activity.SubDealerEdit"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Dealer_Activity.Success_Dealer"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Dealer_Activity.Customer_Details_Verification_Dealer"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Dealer_Activity.Additional_KYC_DEALER_Details"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Dealer_Activity.ImageCapture"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Dealer_Activity.PAN_CARD_Details"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Dealer_Activity.Voter_ID_CARD_Details"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Dealer_Activity.TermsCondition_DEALER_Activity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Dealer_Activity.CAP_Otp_DEALER_Verify"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Dealer_Activity.CustomerAcceptancePolicy_DEALER_Activity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Dealer_Activity.Wallet_Details"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Dealer_Activity.Promocode_Activity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Dealer_Activity.CashCalculator"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Dealer_Activity.Emi_Calculator"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Dealer_Activity.ProductDetails_DEALER"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Dealer_Activity.Products_DEALER"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Dealer_Activity.Goat_Customer_Details_Verification_Dealer"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Dealer_Activity.Hero_Additional_KYC_DEALER_Details"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Dealer_Activity.HeroCustomerAcceptancePolicy_DEALER_Activity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Dealer_Activity.Goat_Success_Dealer"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Dealer_Activity.GOAT_Additional_KYC_DEALER_Details"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Dealer_Activity.GOAT_KYC_ImageCapture"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Dealer_Activity.GOAT_PAN_CARD_Details"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Dealer_Activity.Goat_CAP_AADHAR_OTP_DEALER_Verify"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.qts.gopik_money.Dealer_Activity.Hero_CAP_Otp_DEALER_Verify"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Dealer_Activity.GOAT_ProductDetails_DEALER_Activity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.qts.gopik_money.Dealer_Activity.Goat_Emi_Calculator"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Dealer_Activity.Emi_Calculator_Hero"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Dealer_Activity.HeroWallet_DetailsActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Dealer_Activity.Goat_Products_Dealer_Activity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Dealer_Activity.MainActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Activity.Draft_Activity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Activity.Wallet_Activity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Activity.Contest_Activity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Activity.Scratch_Activity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Activity.KYC_Details"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Activity.All_Details_Activity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Activity.Resend_Register_OTP_Verification"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Activity.Register_OTP_Verification"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Activity.Register"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Activity.ResendOTPVerify"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qts.gopik_money.Activity.SplashActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activity.Application_Details"
+            android:name="com.qts.gopik_money.Activity.Application_Details"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Success"
+            android:name="com.qts.gopik_money.Activity.Success"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Document_Upload"
+            android:name="com.qts.gopik_money.Activity.Document_Upload"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Terms_Condition_Activity"
+            android:name="com.qts.gopik_money.Activity.Terms_Condition_Activity"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Home"
+            android:name="com.qts.gopik_money.Activity.Home"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.LogIn_Otp_Verify"
+            android:name="com.qts.gopik_money.Activity.LogIn_Otp_Verify"
+            android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.LogIn"
+            android:name="com.qts.gopik_money.Activity.LogIn"
+            android:exported="true"
             android:screenOrientation="portrait" />
-        <activity android:name=".MainActivity" />
+        <activity
+            android:name="com.qts.gopik_money.MainActivity"
+            android:exported="true"/>
 
         <service
-            android:name=".Utils.LoactionServices"
+            android:name="com.qts.gopik_money.Utils.LoactionServices"
+            android:exported="true"
             android:foregroundServiceType="location"
             tools:ignore="Instantiatable">
-
             <!-- Any inner elements would go here. -->
         </service>
         <service
-            android:name=".Utils.MyFirebase"
-            android:exported="false">
+            android:name="com.qts.gopik_money.Utils.MyFirebase"
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>

@@ -13,39 +13,82 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_50sdp"
         android:layout_margin="5dp"
         android:orientation="horizontal">
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtCustomerName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Name:" />
+
+            <TextView
+                android:id="@+id/txtCustomerNo"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Customer No" />
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:textStyle="bold"
+                    android:id="@+id/txtApplicationStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"/>
+
+                <ImageView
+                    android:id="@+id/reason_button"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@drawable/info_icon"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <ImageButton
+                android:visibility="gone"
+                android:id="@+id/imgGotoDetails"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_arrow_right" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:gravity="center_vertical"
+
                 android:text="Customer Code"
-                android:textColor="@color/hero_green" />
+                android:textColor="@color/hero_green"
+                android:visibility="gone" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:gravity="center_vertical"
-                android:text="Customer Name"
-                android:textColor="@color/hero_green" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:gravity="center_vertical"
-                android:text="Customer Number"
-                android:textColor="@color/hero_green" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -59,10 +102,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:gravity="center_vertical"
+
                 android:text="Loan Amount"
-                android:textColor="@color/hero_green" />
+                android:textColor="@color/hero_green"
+                android:visibility="gone" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -107,12 +151,6 @@
                 android:textColor="@color/hero_green"
                 android:visibility="gone" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:text="Application Status"
-                android:textColor="@color/hero_green" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -144,28 +182,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/txtCustomerCode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:text="Customer Code:" />
+                android:text="Customer Code:"
+                android:visibility="gone" />
 
-            <TextView
-                android:id="@+id/txtCustomerName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:text="Customer Name:" />
-
-            <TextView
-                android:id="@+id/txtCustomerNo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:text="Customer Number:" />
 
             <TextView
                 android:id="@+id/txtLoanType"
@@ -180,7 +207,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:text="Loan Amount:" />
+                android:text="Loan Amount:"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/txtPinNumber"
@@ -222,12 +250,6 @@
                 android:text="Loan Priority"
                 android:visibility="gone" />
 
-            <TextView
-                android:id="@+id/txtApplicationStatus"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:text="Application Status" />
 
             <TextView
                 android:id="@+id/txtCreatedAt"
@@ -255,12 +277,6 @@
 
         </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/imgGotoDetails"
-            android:layout_width="@dimen/_50sdp"
-            android:layout_height="@dimen/_50sdp"
-            android:layout_gravity="center"
-            android:background="@drawable/ic_arrow_right" />
 
     </LinearLayout>
 

@@ -10,9 +10,10 @@
         android:id="@+id/cardView_product"
         android:layout_width="180dp"
         android:layout_height="44dp"
-        android:layout_margin="4dp"
+       android:layout_marginTop="4dp"
         app:cardCornerRadius="12dp"
         app:cardElevation="4dp"
+        android:layout_marginLeft="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -32,8 +33,9 @@
         android:id="@+id/decrease_cardview"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="4dp"
         app:cardCornerRadius="8dp"
+        android:layout_marginRight="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/cardView_product"
         app:layout_constraintStart_toEndOf="@+id/cardView_product"
         app:layout_constraintTop_toTopOf="@+id/cardView_product">
@@ -42,10 +44,11 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/quantity_cardview"
-        android:layout_width="32dp"
+        android:layout_width="48dp"
         android:layout_height="32dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="4dp"
         app:cardCornerRadius="8dp"
+        android:layout_marginRight="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/decrease_cardview"
         app:layout_constraintStart_toEndOf="@+id/decrease_cardview"
         app:layout_constraintTop_toTopOf="@+id/decrease_cardview">
@@ -54,7 +57,7 @@
             android:id="@+id/quantity_tv"
             android:gravity="center"
             android:textStyle="bold"
-            android:text="2"
+            android:text="100"
             android:textSize="16sp"
             android:textColor="@color/black"
             android:layout_width="match_parent"
@@ -65,7 +68,8 @@
         android:layout_width="32dp"
         android:layout_height="32dp"
         app:cardCornerRadius="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="4dp"
         app:layout_constraintBottom_toBottomOf="@+id/quantity_cardview"
         app:layout_constraintStart_toEndOf="@+id/quantity_cardview"
         app:layout_constraintTop_toTopOf="@+id/quantity_cardview">
@@ -76,22 +80,25 @@
         android:id="@+id/add_cardview"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:layout_marginStart="8dp"
-        app:cardCornerRadius="8dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="8dp"
         app:cardBackgroundColor="@color/coloeAccent"
+        app:cardCornerRadius="8dp"
+        android:layout_marginRight="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/increase_cardview"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/increase_cardview"
         app:layout_constraintTop_toTopOf="@+id/increase_cardview">
 
         <ImageView
             android:id="@+id/remove_item"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_margin="6dp"
             android:background="@drawable/ic_delete"
             android:gravity="center"
             android:padding="2dp"
-            android:layout_margin="6dp"
-            android:textColor="@color/white"
-            android:layout_width="20dp"
-            android:layout_height="20dp">
+            android:textColor="@color/white">
 
         </ImageView>
     </androidx.cardview.widget.CardView>

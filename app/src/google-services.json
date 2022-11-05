@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:481973527622:android:1ab79468bfaeb746f39647",
         "android_client_info": {
-          "package_name": "com.qts.gopik_loan"
+          "package_name": "com.qts.gopik_money"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "481973527622-su0j4oc8tlsgo9bnt7ks39nqsflmcq8t.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.qts.gopik_loan",
+            "package_name": "com.qts.gopik_money",
             "certificate_hash": "1cd0903f7db619dcbf5829eb0ebde9e1064e42f2"
           }
         },

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:fillViewport="true"
     android:orientation="vertical">
 
@@ -16,7 +16,7 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/white"
         android:clickable="true"
         android:focusable="true">
@@ -39,6 +39,7 @@
             </LinearLayout>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/doc_cardview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
@@ -155,19 +156,6 @@
                             android:src="@drawable/cap12"
                             android:visibility="gone" />
 
-
-
-
-
-
-
-
-
-
-
-
-
-
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -247,34 +235,74 @@
                                         android:fontFamily="@font/coresanscrbold"
                                         android:gravity="left"
                                         android:padding="15dp"
-                                        android:text="10. Upload Ledger Copy*"
+                                        android:text=""
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="14sp"
 
                                         />
 
-                                    <ImageView
-                                        android:id="@+id/upld_ledger_buton"
-                                        android:layout_width="50dp"
-                                        android:layout_height="50dp"
-                                        android:layout_gravity="center"
-                                        android:layout_marginTop="5dp"
-                                        android:foregroundGravity="center"
-                                        android:scaleType="centerInside"
-                                        android:src="@drawable/camera"
-
-                                        />
-
-                                    <TextView
-                                        android:id="@+id/ledger_name"
+                                    <RelativeLayout
                                         android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                        <ImageView
+                                            android:id="@+id/upld_ledger_buton"
+                                            android:layout_width="50dp"
+                                            android:layout_height="50dp"
+                                            android:layout_centerInParent="true"
+                                            android:layout_gravity="center"
+                                            android:layout_marginTop="5dp"
+                                            android:foregroundGravity="center"
+                                            android:scaleType="centerInside"
+
+                                            android:src="@drawable/camera" />
+
+                                        <ImageButton
+                                            android:id="@+id/delete_ledger_button"
+                                            android:layout_width="50dp"
+                                            android:layout_height="50dp"
+                                            android:visibility="gone"
+                                            android:layout_alignParentRight="true"
+                                            android:layout_centerVertical="true"
+                                            android:layout_marginRight="24dp"
+                                            android:background="@drawable/delete_bg"
+                                            android:foregroundGravity="center_vertical"
+                                            android:padding="4dp"
+                                            android:src="@drawable/ic_baseline_delete_">
+
+                                        </ImageButton>
+
+                                    </RelativeLayout>
+                                    <LinearLayout
                                         android:gravity="center"
-                                        android:text=""
-                                        android:ellipsize="middle"
-                                        android:textColor="@color/red"
-                                        android:visibility="gone"
-                                        />
+                                        android:orientation="vertical"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content">
+                                        <TextView
+                                            android:id="@+id/ledger_name"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:text=""
+                                            android:ellipsize="middle"
+                                            android:textColor="@color/red"
+                                            android:visibility="gone"
+                                            />
+
+
+
+                                        <Button
+                                            android:id="@+id/ledger_view"
+                                            android:text="View"
+                                            android:gravity="center"
+                                            android:visibility="gone"
+                                            android:background="@drawable/button_view"
+                                            android:layout_width="48dp"
+                                            android:textColor="@color/white"
+                                            android:layout_height="32dp"/>
+
+                                    </LinearLayout>
+
 
                                     <TextView
                                         android:id="@+id/upld_ledger_hint"
@@ -540,28 +568,70 @@
 
                                         />
 
-                                    <ImageView
-                                        android:id="@+id/upld_itr_buton"
-                                        android:layout_width="50dp"
-                                        android:layout_height="50dp"
-                                        android:layout_gravity="center"
-                                        android:layout_marginTop="5dp"
-                                        android:foregroundGravity="center"
-                                        android:scaleType="centerInside"
-                                        android:src="@drawable/camera"
-
-                                        />
-
-                                    <TextView
-                                        android:id="@+id/itr_name"
+                                    <RelativeLayout
                                         android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                        <ImageView
+                                            android:id="@+id/upld_itr_buton"
+                                            android:layout_width="50dp"
+                                            android:layout_height="50dp"
+                                            android:layout_centerInParent="true"
+                                            android:layout_gravity="center"
+                                            android:layout_marginTop="5dp"
+                                            android:foregroundGravity="center"
+                                            android:scaleType="centerInside"
+                                            android:src="@drawable/camera"
+
+                                            />
+
+                                        <ImageButton
+                                            android:id="@+id/delete_itr_button"
+                                            android:layout_width="50dp"
+                                            android:layout_height="50dp"
+                                            android:visibility="gone"
+                                            android:layout_alignParentRight="true"
+                                            android:layout_centerVertical="true"
+                                            android:layout_marginRight="24dp"
+                                            android:background="@drawable/delete_bg"
+                                            android:foregroundGravity="center_vertical"
+                                            android:padding="4dp"
+                                            android:src="@drawable/ic_baseline_delete_">
+
+                                        </ImageButton>
+
+
+                                    </RelativeLayout>
+                                    <LinearLayout
                                         android:gravity="center"
-                                        android:text=""
-                                        android:ellipsize="middle"
-                                        android:textColor="@color/red"
-                                        android:visibility="gone"
-                                        />
+                                        android:orientation="vertical"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content">
+                                        <TextView
+                                            android:id="@+id/itr_name"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:text=""
+                                            android:ellipsize="middle"
+                                            android:textColor="@color/red"
+                                            android:visibility="gone"
+                                            />
+
+
+
+                                        <Button
+                                            android:id="@+id/itr_view"
+                                            android:text="View"
+                                            android:gravity="center"
+                                            android:visibility="gone"
+                                            android:background="@drawable/button_view"
+                                            android:layout_width="48dp"
+                                            android:textColor="@color/white"
+                                            android:layout_height="32dp"/>
+
+                                    </LinearLayout>
+
 
                                     <TextView
                                         android:id="@+id/upld_ITR_hint"
@@ -633,7 +703,7 @@
                                             android:fontFamily="@font/montserrat_semibold"
                                             android:gravity="center"
                                             android:padding="10dp"
-                                            android:text="TDS"
+                                            android:text="Audited Financials"
                                             android:textColor="@color/colorPrimary"
                                             android:textSize="14dp" />
                                         <ImageView
@@ -681,34 +751,107 @@
                                         android:fontFamily="@font/coresanscrbold"
                                         android:gravity="left"
                                         android:padding="15dp"
-                                        android:text="13. Upload TDS Copy"
+                                        android:text="13. Upload Audited Financials "
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="14sp"
 
                                         />
 
-                                    <ImageView
-                                        android:id="@+id/upld_tds_buton"
-                                        android:layout_width="50dp"
-                                        android:layout_height="50dp"
-                                        android:layout_gravity="center"
-                                        android:layout_marginTop="5dp"
-                                        android:foregroundGravity="center"
-                                        android:scaleType="centerInside"
-                                        android:src="@drawable/camera"
-
-                                        />
-
-                                    <TextView
-                                        android:id="@+id/tds_name"
+                                    <RelativeLayout
                                         android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                        <ImageView
+                                            android:id="@+id/upld_tds_buton"
+                                            android:layout_width="50dp"
+                                            android:layout_height="50dp"
+                                            android:layout_centerInParent="true"
+
+                                            android:layout_gravity="center"
+                                            android:layout_marginTop="5dp"
+                                            android:foregroundGravity="center"
+                                            android:scaleType="centerInside"
+                                            android:src="@drawable/camera" />
+
+                                        <ImageButton
+                                            android:id="@+id/delete_audited_button1"
+                                            android:layout_width="50dp"
+                                            android:layout_height="50dp"
+                                            android:visibility="gone"
+                                            android:layout_alignParentRight="true"
+                                            android:layout_centerVertical="true"
+                                            android:layout_marginRight="24dp"
+                                            android:background="@drawable/delete_bg"
+                                            android:foregroundGravity="center_vertical"
+                                            android:padding="4dp"
+                                            android:src="@drawable/ic_baseline_delete_">
+
+                                        </ImageButton>
+
+                                    </RelativeLayout>
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content">
+
+                                        <ImageView
+                                            android:id="@+id/upld_audited_buton2"
+                                            android:layout_width="50dp"
+                                            android:layout_height="50dp"
+                                            android:layout_centerInParent="true"
+                                            android:layout_gravity="center"
+                                            android:layout_marginTop="5dp"
+                                            android:foregroundGravity="center"
+                                            android:scaleType="centerInside"
+
+                                            android:src="@drawable/camera" />
+
+                                        <ImageButton
+                                            android:id="@+id/delete_audited_button2"
+                                            android:layout_width="50dp"
+                                            android:layout_height="50dp"
+                                            android:visibility="gone"
+                                            android:layout_alignParentRight="true"
+                                            android:layout_centerVertical="true"
+                                            android:layout_marginRight="24dp"
+                                            android:background="@drawable/delete_bg"
+                                            android:foregroundGravity="center_vertical"
+                                            android:padding="4dp"
+                                            android:src="@drawable/ic_baseline_delete_">
+
+                                        </ImageButton>
+
+                                    </RelativeLayout>
+                                    <LinearLayout
                                         android:gravity="center"
-                                        android:text=""
-                                        android:ellipsize="middle"
-                                        android:textColor="@color/red"
-                                        android:visibility="gone"
-                                        />
+                                        android:orientation="vertical"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content">
+                                        <TextView
+                                            android:id="@+id/tds_name"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:text=""
+                                            android:ellipsize="middle"
+                                            android:textColor="@color/red"
+                                            android:visibility="gone"
+                                            />
+
+
+
+
+                                        <Button
+                                            android:id="@+id/tds_view"
+                                            android:text="View"
+                                            android:gravity="center"
+                                            android:visibility="gone"
+                                            android:background="@drawable/button_view"
+                                            android:layout_width="48dp"
+                                            android:textColor="@color/white"
+                                            android:layout_height="32dp"/>
+
+                                    </LinearLayout>
+
 
                                     <TextView
                                         android:id="@+id/upld_TDS_hint"
@@ -847,18 +990,19 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="5dp"
                             android:orientation="horizontal">
 
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:visibility="gone"
+                                android:visibility="visible"
                                 android:layout_weight="1"
                                 android:background="@drawable/dropdown_shape"
                                 android:orientation="vertical">
 
                                 <LinearLayout
+                                    android:animateLayoutChanges="true"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:orientation="horizontal">
@@ -871,12 +1015,18 @@
                                         android:fontFamily="@font/montserrat_semibold"
                                         android:gravity="center"
                                         android:padding="10dp"
-                                        android:text="Bank Statement"
+                                        android:text="Other Document 1"
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="14dp" />
-
                                     <ImageView
-                                        android:id="@+id/dropdown_margin_photo"
+                                        android:id="@+id/doc1_info_button"
+                                        android:src="@drawable/info_icon"
+                                        android:layout_gravity="center"
+                                        android:layout_width="32dp"
+                                        android:padding="8dp"
+                                        android:layout_height="32dp"/>
+                                    <ImageView
+                                        android:id="@+id/dropdown_other_doc1"
                                         android:layout_width="40dp"
                                         android:layout_height="40dp"
                                         android:layout_marginLeft="5dp"
@@ -884,7 +1034,7 @@
                                         android:visibility="visible" />
 
                                     <ImageView
-                                        android:id="@+id/dropup3"
+                                        android:id="@+id/dropup_other_doc1"
                                         android:layout_width="40dp"
                                         android:layout_height="40dp"
                                         android:layout_marginLeft="5dp"
@@ -895,28 +1045,55 @@
                                 </LinearLayout>
 
                                 <LinearLayout
-                                    android:id="@+id/upload_margin_layout"
+                                    android:id="@+id/upload_otherdoc1_layout"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:orientation="vertical"
                                     android:visibility="gone">
 
-                                    <TextView
-
-                                        android:id="@+id/uploadmargincopy"
+                                    <LinearLayout
+                                        android:orientation="horizontal"
                                         android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:fontFamily="@font/coresanscrbold"
-                                        android:gravity="left"
-                                        android:padding="15dp"
-                                        android:text="3.  Upload Bank Statement *"
-                                        android:textColor="@color/colorPrimary"
-                                        android:textSize="14sp"
+                                        android:layout_height="wrap_content">
+                                        <TextView
 
-                                        />
+                                            android:id="@+id/upload_otherdocument1_tv"
+                                            android:layout_width="0dp"
+                                            android:layout_weight="2"
+                                            android:layout_height="wrap_content"
+                                            android:fontFamily="@font/coresanscrbold"
+                                            android:gravity="left"
+                                            android:padding="15dp"
+                                            android:text="4.Upload Other Document 1"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="14sp"
+
+                                            />
+                                        <RelativeLayout
+                                            android:layout_width="0dp"
+                                            android:layout_weight="1"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_height="wrap_content">
+
+                                            <ImageView
+                                                android:id="@+id/add_more_button"
+                                                android:layout_width="32dp"
+                                                android:layout_height="32dp"
+                                                android:layout_alignParentRight="true"
+                                                android:layout_marginEnd="20dp"
+
+                                                android:background="@drawable/ic_new_document"
+                                                android:text="+ Add"
+                                                android:textColor="@color/white" />
+
+                                        </RelativeLayout>
+
+                                    </LinearLayout>
+
+
 
                                     <ImageView
-                                        android:id="@+id/upload_bank_statement"
+                                        android:id="@+id/upload_otherdocument1_button"
                                         android:layout_width="50dp"
                                         android:layout_height="50dp"
                                         android:layout_gravity="center"
@@ -924,8 +1101,14 @@
                                         android:foregroundGravity="center"
                                         android:scaleType="centerInside"
                                         android:src="@drawable/camera"
+                                        android:visibility="gone"
 
                                         />
+                                    <androidx.recyclerview.widget.RecyclerView
+                                        android:id="@+id/other_document_recyclerview"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"/>
+
 
                                     <LinearLayout
                                         android:orientation="horizontal"
@@ -954,16 +1137,16 @@
                                         android:gravity="center"
                                         android:visibility="gone"/>
                                     <TextView
-                                        android:id="@+id/upld_mrgn_hint"
+                                        android:id="@+id/upld_otherdoc1_hint"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:gravity="center"
-                                        android:text="Please upload a Bank statement"
+                                        android:text="Please upload Other document 1"
                                         android:textColor="@color/red"
                                         android:visibility="gone" />
 
                                     <TextView
-                                        android:id="@+id/save3"
+                                        android:id="@+id/save_other_document1"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_marginLeft="20dp"
@@ -982,7 +1165,7 @@
                             </LinearLayout>
 
                             <ImageView
-                                android:id="@+id/upld_mrgn_succ"
+                                android:id="@+id/upld_doc1_success"
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
                                 android:layout_gravity="center"
@@ -993,6 +1176,7 @@
 
 
                         <LinearLayout
+                            android:visibility="gone"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
@@ -1004,7 +1188,7 @@
                                 android:layout_weight="1"
                                 android:background="@drawable/dropdown_shape"
                                 android:gravity="center"
-                                android:visibility="gone"
+                                android:visibility="visible"
                                 android:orientation="vertical">
 
                                 <LinearLayout
@@ -1021,12 +1205,19 @@
                                         android:fontFamily="@font/montserrat_semibold"
                                         android:gravity="center"
                                         android:padding="10dp"
-                                        android:text="Salary Slip"
+                                        android:text="Other Document 2"
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="14dp" />
+                                    <ImageView
+                                        android:id="@+id/doc2_info_button"
+                                        android:src="@drawable/info_icon"
+                                        android:layout_gravity="center"
+                                        android:layout_width="32dp"
+                                        android:padding="8dp"
+                                        android:layout_height="32dp"/>
 
                                     <ImageView
-                                        android:id="@+id/dropdown_income_photo"
+                                        android:id="@+id/dropdown_other_doc2"
                                         android:layout_width="40dp"
                                         android:layout_height="40dp"
                                         android:layout_gravity="right"
@@ -1037,7 +1228,7 @@
                                         android:visibility="visible" />
 
                                     <ImageView
-                                        android:id="@+id/dropup4"
+                                        android:id="@+id/dropup_other_doc2"
                                         android:layout_width="40dp"
                                         android:layout_height="40dp"
                                         android:layout_marginLeft="5dp"
@@ -1048,27 +1239,27 @@
                                 </LinearLayout>
 
                                 <LinearLayout
-                                    android:id="@+id/upload_income_layout"
+                                    android:id="@+id/upload_otherdoc2_layout"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:orientation="vertical"
                                     android:visibility="gone">
 
                                     <TextView
-                                        android:id="@+id/employmentproof"
+                                        android:id="@+id/upload_otherdocument2_tv"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:fontFamily="@font/coresanscrbold"
                                         android:gravity="left"
                                         android:padding="15dp"
-                                        android:text="4. Upload Salary Slip *"
+                                        android:text="5. Upload Other Document 2"
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="14sp"
 
                                         />
 
                                     <ImageView
-                                        android:id="@+id/upload_salaryslip"
+                                        android:id="@+id/upload_otherdocument2_button"
                                         android:layout_width="50dp"
                                         android:layout_height="50dp"
                                         android:layout_gravity="center"
@@ -1088,17 +1279,17 @@
                                         android:gravity="center"
                                         android:visibility="gone"/>
                                     <TextView
-                                        android:id="@+id/upld_income_proof"
+                                        android:id="@+id/upld_otherdoc2_hint"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:gravity="center"
-                                        android:text="Please upload a Salary slip"
+                                        android:text="Please upload Other document 2"
                                         android:textColor="@color/red"
                                         android:visibility="gone" />
 
 
                                     <TextView
-                                        android:id="@+id/save4"
+                                        android:id="@+id/save_other_document2"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_marginLeft="20dp"
@@ -1116,7 +1307,7 @@
                             </LinearLayout>
 
                             <ImageView
-                                android:id="@+id/income_success_img"
+                                android:id="@+id/upld_doc2_success"
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
                                 android:layout_gravity="center"
@@ -1154,24 +1345,62 @@
 
 
             </androidx.cardview.widget.CardView>
-
-            <TextView
-                android:id="@+id/btsend1"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginBottom="20dp"
+                android:layout_above="@+id/button_layout"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:text="@string/mandatory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/button_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/doc_cardview"
                 android:layout_alignParentBottom="true"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/button_round"
-                android:fontFamily="@font/montserrat_semibold"
-                android:gravity="center"
-                android:padding="10dp"
+                android:orientation="vertical">
 
-                android:text="Save &amp; Submit"
-                android:textColor="@color/white"
-                android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/btsend1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/button_round"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:visibility="gone"
+                    android:text="Save &amp; Submit"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/send_to_financer_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/button_round"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Send to Financer"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
 
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>

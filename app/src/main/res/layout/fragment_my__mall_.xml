@@ -83,7 +83,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1.5"
-                                android:text="Loan Status"
+                                android:text="Status"
                                 android:textColor="@color/blue"
                                 android:textSize="12dp"
                                 android:textStyle="bold" />
@@ -117,26 +117,43 @@
                             android:layout_marginTop="10dp"
                             android:orientation="horizontal">
 
-                            <TextView
-                                android:id="@+id/loan_status_tv"
+                            <LinearLayout
+                                android:orientation="horizontal"
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1.5"
-                                android:text="20000"
-                                android:gravity="left"
-                                android:paddingRight="24dp"
-                                android:textColor="@color/green"
-                                android:textSize="12dp"
-                                android:textStyle="bold" />
+                                android:layout_weight="2"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:id="@+id/loan_status_tv"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Active"
+                                    android:gravity="left"
+                                    android:paddingRight="24dp"
+                                    android:textColor="@color/green"
+                                    android:textSize="12dp"
+                                    android:textStyle="bold" />
+                                <ImageView
+                                    android:visibility="gone"
+                                    android:id="@+id/info_button"
+                                    android:padding="2dp"
+                                    android:background="@drawable/info_icon"
+                                    android:layout_gravity="center"
+                                    android:layout_width="16dp"
+                                    android:layout_marginRight="64dp"
+                                    android:layout_height="16dp">
+
+                                </ImageView>
+                            </LinearLayout>
+
 
                             <TextView
                                 android:id="@+id/total_loan_limit_tv"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="2"
-                                android:text="00"
+                                android:text="₹00"
                                 android:gravity="right"
-                                android:paddingRight="24dp"
+                                android:paddingRight="32dp"
                                 android:textColor="@color/black"
                                 android:textSize="12dp"
                                 android:textStyle="bold" />
@@ -146,16 +163,123 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1.5"
-                                android:text="00"
+                                android:text="₹00"
                                 android:gravity="right"
                                 android:textColor="@color/black"
                                 android:textSize="12dp"
-                                android:paddingRight="24dp"
+                                android:paddingRight="20dp"
+                                android:textStyle="bold" />
+
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:background="@color/colorGrey"
+                            android:layout_width="match_parent"
+                            android:layout_height="0.8dp"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.5"
+                                android:text="Financer name"
+                                android:textColor="@color/blue"
+                                android:textSize="12dp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:text="Rate of Interest"
+                                android:textColor="@color/blue"
+                                android:textSize="12dp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tenureTv"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.5"
+                                android:text="Tenure"
+                                android:textColor="@color/blue"
+                                android:textSize="12dp"
                                 android:textStyle="bold" />
 
 
                         </LinearLayout>
 
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="0dp"
+                                android:layout_weight="2"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:id="@+id/financerNametxt"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="name"
+                                    android:gravity="left"
+                                    android:paddingRight="24dp"
+                                    android:textColor="@color/green"
+                                    android:textSize="12dp"
+                                    android:textStyle="bold" />
+                                <ImageView
+                                    android:visibility="gone"
+                                    android:id="@+id/info_button2"
+                                    android:padding="2dp"
+                                    android:background="@drawable/info_icon"
+                                    android:layout_gravity="center"
+                                    android:layout_width="16dp"
+                                    android:layout_marginRight="64dp"
+                                    android:layout_height="16dp">
+
+                                </ImageView>
+                            </LinearLayout>
+
+
+                            <TextView
+                                android:id="@+id/RoiText"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:text="0%"
+                                android:gravity="center"
+                                android:paddingRight="32dp"
+                                android:textColor="@color/black"
+                                android:textSize="12dp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/TenureTxt"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.5"
+                                android:text="3Month"
+                                android:gravity="left"
+                                android:textColor="@color/black"
+                                android:textSize="12dp"
+                                android:paddingRight="20dp"
+                                android:textStyle="bold" />
+
+
+                        </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -266,7 +390,7 @@
                             android:layout_width="50dp"
                             android:layout_height="50dp"
                             android:layout_marginTop="16dp"
-                            android:background="@drawable/inventory"
+                            android:background="@drawable/personal"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -275,7 +399,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            android:text="Inventory"
+                            android:text="Loan"
                             android:textSize="14sp"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="@+id/imageView4"
@@ -292,6 +416,7 @@
                     android:layout_marginTop="16dp"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="8dp"
+                    android:visibility="gone"
                     app:layout_constraintStart_toStartOf="@+id/cardView6"
                     app:layout_constraintTop_toBottomOf="@+id/cardView8">
 
@@ -338,7 +463,18 @@
                         android:id="@+id/po_layout"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
-
+                        <TextView
+                            android:visibility="gone"
+                            android:id="@+id/txtNewPo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@color/red"
+                            android:padding="@dimen/_5sdp"
+                            android:text="New"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            tools:ignore="MissingConstraints" />
                         <ImageView
                             android:id="@+id/po_button"
                             android:layout_width="50dp"
@@ -353,7 +489,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            android:text="PO Generate"
+                            android:text="PO"
                             android:textSize="14sp"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="@+id/po_button"
@@ -377,15 +513,16 @@
                     app:layout_constraintTop_toBottomOf="@+id/cardView7">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/invoiceButton"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
                         <ImageView
-                            android:id="@+id/imageView3"
+                            android:id="@+id/invoice_button"
                             android:layout_width="50dp"
                             android:layout_height="50dp"
                             android:layout_marginTop="16dp"
-                            android:background="@drawable/wheel"
+                            android:background="@drawable/ic_billing"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -394,12 +531,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            android:text="Parts/Accessories"
+                            android:text="Invoice"
                             android:textSize="14sp"
                             android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="@+id/imageView3"
-                            app:layout_constraintStart_toStartOf="@+id/imageView3"
-                            app:layout_constraintTop_toBottomOf="@+id/imageView3">
+                            app:layout_constraintEnd_toEndOf="@+id/invoice_button"
+                            app:layout_constraintStart_toStartOf="@+id/invoice_button"
+                            app:layout_constraintTop_toBottomOf="@+id/invoice_button">
 
                         </TextView>
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -413,7 +550,7 @@
                     app:cardCornerRadius="10dp"
                     app:cardElevation="8dp"
                     app:layout_constraintEnd_toEndOf="@+id/cardView9"
-                    app:layout_constraintStart_toStartOf="@+id/cardView9"
+                    app:layout_constraintStart_toStartOf="@+id/cardView8"
                     app:layout_constraintTop_toBottomOf="@+id/cardView9">
 
                     <androidx.constraintlayout.widget.ConstraintLayout

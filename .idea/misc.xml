@@ -3,49 +3,112 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/OfficeProject/TestingProjects/21Sep22/androidcode/app/src/main/res/layout/activity_business_details.xml" value="0.19196237708422403" />
+        <entry key="..\:/OfficeProject/TestingProjects/21Sep22/androidcode/app/src/main/res/layout/activity_hero_wallet_details.xml" value="0.2975630611372381" />
+        <entry key="..\:/OfficeProject/TestingProjects/21Sep22/androidcode/app/src/main/res/layout/bank_document_adapter.xml" value="0.2975630611372381" />
+        <entry key="..\:/OfficeProject/TestingProjects/21Sep22/androidcode/app/src/main/res/layout/catagoryitemname.xml" value="0.15" />
+        <entry key="..\:/OfficeProject/TestingProjects/21Sep22/androidcode/app/src/main/res/layout/goat_activity_emi_calculator.xml" value="0.2975630611372381" />
+        <entry key="..\:/OfficeProject/TestingProjects/21Sep22/androidcode/app/src/main/res/layout/goat_product_details.xml" value="0.2975630611372381" />
+        <entry key="..\:/OfficeProject/TestingProjects/21Sep22/androidcode/app/src/main/res/layout/goat_products_add_items_list.xml" value="0.19196237708422403" />
+        <entry key="..\:/OfficeProject/TestingProjects/21Sep22/androidcode/app/src/main/res/layout/goat_products_items_list.xml" value="0.22" />
+        <entry key="..\:/OfficeProject/TestingProjects/21Sep22/androidcode/app/src/main/res/layout/hero_activity_customer_acceptance_policy__d_e_a_l_e_r_.xml" value="0.2975630611372381" />
+        <entry key="..\:/OfficeProject/TestingProjects/21Sep22/androidcode/app/src/main/res/layout/upload_image_custom_dialog.xml" value="0.33" />
+        <entry key="..\:/OfficeProject/TestingProjects/2Sep22/androidcode/app/src/main/res/drawable/button_round.xml" value="0.2625" />
+        <entry key="..\:/OfficeProject/TestingProjects/2Sep22/androidcode/app/src/main/res/drawable/ic_plus.xml" value="0.2625" />
+        <entry key="..\:/OfficeProject/TestingProjects/2Sep22/androidcode/app/src/main/res/drawable/ic_plus_green.xml" value="0.2625" />
+        <entry key="..\:/OfficeProject/TestingProjects/2Sep22/androidcode/app/src/main/res/drawable/rectangle_green.xml" value="0.2625" />
+        <entry key="..\:/OfficeProject/TestingProjects/2Sep22/androidcode/app/src/main/res/drawable/rectview.xml" value="0.2625" />
+        <entry key="..\:/OfficeProject/TestingProjects/2Sep22/androidcode/app/src/main/res/layout/activity_business_details.xml" value="0.2975630611372381" />
+        <entry key="..\:/OfficeProject/TestingProjects/2Sep22/androidcode/app/src/main/res/layout/activity_po_generate_form.xml" value="0.2975630611372381" />
+        <entry key="..\:/OfficeProject/TestingProjects/2Sep22/androidcode/app/src/main/res/layout/fragment_bottomsheet.xml" value="0.15220179563916203" />
+        <entry key="..\:/OfficeProject/TestingProjects/2Sep22/androidcode/app/src/main/res/layout/fragment_my__mall_.xml" value="0.44416081684747927" />
+        <entry key="..\:/OfficeProject/TestingProjects/2Sep22/androidcode/app/src/main/res/layout/goat_activity_c_a_p__otp__d_e_a_l_e_r__verify.xml" value="0.2975630611372381" />
+        <entry key="..\:/OfficeProject/TestingProjects/2Sep22/androidcode/app/src/main/res/layout/goat_activity_image_capture.xml" value="0.2975630611372381" />
+        <entry key="..\:/OfficeProject/TestingProjects/2Sep22/androidcode/app/src/main/res/layout/hero_activity_p_a_n__c_a_r_d__details.xml" value="0.2975630611372381" />
+        <entry key="..\:/OfficeProject/TestingProjects/2Sep22/androidcode/app/src/main/res/layout/po_form_cardview.xml" value="0.2975630611372381" />
+        <entry key="..\:/OfficeProject/TestingProjects/2Sep22/androidcode/app/src/main/res/layout/upload_image_custom_dialog.xml" value="0.2975630611372381" />
+        <entry key="..\:/OfficeProject/TestingProjects/GoPik_18_Aug_onwards/androidcode/app/src/main/res/layout/activity_po_detail.xml" value="0.1671654553227875" />
+        <entry key="..\:/OfficeProject/TestingProjects/GoPik_18_Aug_onwards/androidcode/app/src/main/res/layout/podetails_details_bottom_sheet_layout.xml" value="0.1671654553227875" />
+        <entry key="..\:/OfficeProject/TestingProjects/GoPik_27Sept22/androidcode/app/src/main/res/drawable/button_green.xml" value="0.264" />
+        <entry key="..\:/OfficeProject/TestingProjects/GoPik_27Sept22/androidcode/app/src/main/res/layout/activity_aadhar.xml" value="0.2975630611372381" />
+        <entry key="..\:/OfficeProject/TestingProjects/GoPik_27Sept22/androidcode/app/src/main/res/layout/activity_aadhar_otp_verify.xml" value="0.2975630611372381" />
+        <entry key="..\:/OfficeProject/TestingProjects/GoPik_27Sept22/androidcode/app/src/main/res/layout/activity_business_details.xml" value="0.33" />
+        <entry key="..\:/OfficeProject/TestingProjects/GoPik_27Sept22/androidcode/app/src/main/res/layout/activity_emi_calculator_hero.xml" value="0.2975630611372381" />
+        <entry key="..\:/OfficeProject/TestingProjects/GoPik_27Sept22/androidcode/app/src/main/res/layout/activity_personal_details.xml" value="0.2975630611372381" />
+        <entry key="..\:/OfficeProject/TestingProjects/GoPik_27Sept22/androidcode/app/src/main/res/layout/bank_document_adapter.xml" value="0.2975630611372381" />
+        <entry key="..\:/OfficeProject/TestingProjects/GoPik_27Sept22/androidcode/app/src/main/res/layout/fragment_my__mall_.xml" value="0.2975630611372381" />
+        <entry key="..\:/OfficeProject/TestingProjects/GoPik_27Sept22/androidcode/app/src/main/res/layout/goat_activity_aadhar_capture.xml" value="0.33" />
+        <entry key="..\:/OfficeProject/TestingProjects/GoPik_27Sept22/androidcode/app/src/main/res/layout/goat_activity_additional__k_y_c__d_e_a_l_e_r__details.xml" value="0.18683197947840957" />
+        <entry key="..\:/OfficeProject/TestingProjects/GoPik_27Sept22/androidcode/app/src/main/res/layout/goat_activity_image_capture.xml" value="0.33" />
+        <entry key="..\:/OfficeProject/TestingProjects/GoPik_27Sept22/androidcode/app/src/main/res/layout/hero_activity_p_a_n__c_a_r_d__details.xml" value="0.2975630611372381" />
+        <entry key="..\:/OfficeProject/TestingProjects/GoPik_27Sept22/androidcode/app/src/main/res/layout/upload_image_dailog.xml" value="0.2975630611372381" />
+        <entry key="..\:/OfficeProject/TestingProjects/GoPik_27Sept22/androidcode/app/src/main/res/layout/whatsapp_list_item.xml" value="0.2975630611372381" />
+        <entry key="..\:/OfficeProject/TestingProjects/GoPik_27Sept22/androidcode/app/src/main/res/layout/whatsapp_status_details_bottom_sheet_layout.xml" value="0.1" />
+        <entry key="..\:/androidcode/app/src/main/res/drawable-v24/adapter_layout.xml" value="0.1" />
         <entry key="..\:/androidcode/app/src/main/res/drawable/approved_layout.xml" value="0.1025" />
         <entry key="..\:/androidcode/app/src/main/res/drawable/button_click.xml" value="0.108" />
         <entry key="..\:/androidcode/app/src/main/res/drawable/button_click_grey.xml" value="0.108" />
         <entry key="..\:/androidcode/app/src/main/res/drawable/dailog_layout.xml" value="0.1" />
+        <entry key="..\:/androidcode/app/src/main/res/drawable/ic_add.xml" value="0.1595" />
         <entry key="..\:/androidcode/app/src/main/res/drawable/ic_arrow_right.xml" value="0.108" />
+        <entry key="..\:/androidcode/app/src/main/res/drawable/ic_baseline_delete_forever.xml" value="0.1595" />
+        <entry key="..\:/androidcode/app/src/main/res/drawable/ic_edit_po_black.xml" value="0.1595" />
         <entry key="..\:/androidcode/app/src/main/res/drawable/ic_qr_code_scanner.xml" value="0.108" />
         <entry key="..\:/androidcode/app/src/main/res/drawable/ic_qr_code_scanner_white.xml" value="0.1" />
+        <entry key="..\:/androidcode/app/src/main/res/drawable/ic_remove.xml" value="0.1595" />
+        <entry key="..\:/androidcode/app/src/main/res/drawable/ic_round_arrow_drop_down.xml" value="0.1595" />
         <entry key="..\:/androidcode/app/src/main/res/drawable/ic_share.xml" value="0.129" />
         <entry key="..\:/androidcode/app/src/main/res/drawable/ic_verified.xml" value="0.129" />
         <entry key="..\:/androidcode/app/src/main/res/drawable/pending_financer.xml" value="0.1618421052631579" />
         <entry key="..\:/androidcode/app/src/main/res/drawable/pending_layout.xml" value="0.1025" />
         <entry key="..\:/androidcode/app/src/main/res/drawable/rectangle_3.xml" value="0.108" />
         <entry key="..\:/androidcode/app/src/main/res/drawable/rectangle_4.xml" value="0.129" />
+        <entry key="..\:/androidcode/app/src/main/res/drawable/rectangle_blue.xml" value="0.1595" />
+        <entry key="..\:/androidcode/app/src/main/res/drawable/rectangle_green.xml" value="0.1595" />
+        <entry key="..\:/androidcode/app/src/main/res/drawable/rectangle_red.xml" value="0.1595" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_aadhar_name2.xml" value="0.15576192486281132" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_additional__k_y_c__d_e_a_l_e_r__details.xml" value="0.14722222222222223" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_additional_kyc_dost_details.xml" value="0.1618421052631579" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/activity_approved_at_gopik_shopkeeper.xml" value="0.14621633176571183" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/activity_approved_finacer_shopkeeper.xml" value="0.18" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/activity_awaiting_disbursal.xml" value="0.15775972637879435" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_business_details.xml" value="0.15775972637879435" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_c_a_p__otp__d_e_a_l_e_r__verify.xml" value="0.1618421052631579" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_cap_otp_dealer_verify_dost.xml" value="0.1618421052631579" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_customer_acceptance_policy__d_e_a_l_e_r_.xml" value="0.1618421052631579" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_customer_acceptance_policy_dost.xml" value="0.1618421052631579" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_customer_details_verification_dost.xml" value="0.1618421052631579" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/activity_disbursed.xml" value="0.2" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_dost_home.xml" value="0.17192982456140352" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_dost_main.xml" value="0.16096491228070176" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/activity_draft.xml" value="0.10750695088044486" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_edit__profile.xml" value="0.17962962962962964" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_edit_delaer__profile.xml" value="0.1921875" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/activity_edit_shopkeeper.xml" value="0.15775972637879435" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/activity_edit_shopkeeper_profile.xml" value="0.1569046601111586" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_emi__calculator.xml" value="0.14722222222222223" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_emi_calculator_dost.xml" value="0.1618421052631579" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_home.xml" value="0.14722222222222223" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_image_capture.xml" value="0.1921875" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_image_capture_dost.xml" value="0.1618421052631579" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/activity_loan_details.xml" value="0.15" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_loan_status.xml" value="0.18" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/activity_loan_status_shopkeeper.xml" value="0.1" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_log_in.xml" value="0.1574074074074074" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/activity_log_in__otp__verify.xml" value="0.15775972637879435" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_main2.xml" value="0.17962962962962964" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_p_a_n__c_a_r_d__details.xml" value="0.1618421052631579" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_pan_card_details_dost.xml" value="0.1618421052631579" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/activity_pending_at_gopik.xml" value="0.2" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/activity_personal_details.xml" value="0.10750695088044486" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_po_detail.xml" value="0.14722222222222223" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_po_detail_approve_dealer.xml" value="0.1618421052631579" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_po_detail_rejected_dealer.xml" value="0.1618421052631579" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_po_generate.xml" value="0.14722222222222223" />
-        <entry key="..\:/androidcode/app/src/main/res/layout/activity_po_generate_approved_by_financer.xml" value="0.14722222222222223" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/activity_po_generate_all_list.xml" value="0.15775972637879435" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/activity_po_generate_approved_by_financer.xml" value="0.1" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_po_generate_form.xml" value="0.1" />
-        <entry key="..\:/androidcode/app/src/main/res/layout/activity_po_generate_pending_oem.xml" value="0.1618421052631579" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/activity_po_generate_pending_oem.xml" value="0.25" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_po_generate_rejected_by_financer.xml" value="0.1618421052631579" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_po_get_list.xml" value="0.14722222222222223" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_po_rejected_oem.xml" value="0.14722222222222223" />
@@ -53,8 +116,15 @@
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_product_details_dost.xml" value="0.1618421052631579" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_products__d_e_a_l_e_r.xml" value="0.1574074074074074" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_products_dost.xml" value="0.14805194805194805" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/activity_property__loan.xml" value="0.10750695088044486" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_recharge___wallet__d_e_a_l_e_r_.xml" value="0.1574074074074074" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_recharge_wallet_dost.xml" value="0.1618421052631579" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/activity_rejected_shopkeeper.xml" value="0.21" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/activity_scratch_.xml" value="0.10750695088044486" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/activity_shopkeeper_home.xml" value="0.15775972637879435" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/activity_shopkeeper_home2.xml" value="0.10750695088044486" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/activity_shopkeeper_loan_details.xml" value="0.15775972637879435" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/activity_shopkeeper_po_generate.xml" value="0.15775972637879435" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_splash.xml" value="0.1" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_sub_category_dost.xml" value="0.1618421052631579" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_success.xml" value="0.15775972637879435" />
@@ -62,11 +132,15 @@
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_success_dost.xml" value="0.15" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_terms_condition__d_e_a_l_e_r_.xml" value="0.1618421052631579" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_terms_condition_dost.xml" value="0.1618421052631579" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/activity_top_five_po_shopkeeper.xml" value="0.15775972637879435" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/activity_top_five_po_shopkeeper2.xml" value="0.18" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_transaction_details.xml" value="0.15775972637879435" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/activity_view_all_po_shopkeeper.xml" value="0.15775972637879435" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_voter__i_d__c_a_r_d__details.xml" value="0.1574074074074074" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_voter_id_card_details_dost.xml" value="0.16096491228070176" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_wallet__details.xml" value="0.1618421052631579" />
         <entry key="..\:/androidcode/app/src/main/res/layout/activity_wallet_details_dost.xml" value="0.1618421052631579" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/agreement_info_dialog.xml" value="0.15775972637879435" />
         <entry key="..\:/androidcode/app/src/main/res/layout/all_list_cardview.xml" value="0.14722222222222223" />
         <entry key="..\:/androidcode/app/src/main/res/layout/allcontent.xml" value="0.14722222222222223" />
         <entry key="..\:/androidcode/app/src/main/res/layout/allcontent_dealer.xml" value="0.17962962962962964" />
@@ -74,24 +148,32 @@
         <entry key="..\:/androidcode/app/src/main/res/layout/appbar.xml" value="0.15775972637879435" />
         <entry key="..\:/androidcode/app/src/main/res/layout/appbar_delaer.xml" value="0.1618421052631579" />
         <entry key="..\:/androidcode/app/src/main/res/layout/appbar_dost.xml" value="0.16096491228070176" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/appbar_shopkeeper.xml" value="0.15775972637879435" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/approve_po_dialog.xml" value="0.15775972637879435" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/bank_info_dialog.xml" value="0.15775972637879435" />
         <entry key="..\:/androidcode/app/src/main/res/layout/banner_layout.xml" value="0.1574074074074074" />
         <entry key="..\:/androidcode/app/src/main/res/layout/banner_layout_dost.xml" value="0.16096491228070176" />
         <entry key="..\:/androidcode/app/src/main/res/layout/business_dailog.xml" value="0.15775972637879435" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/business_info_dialog.xml" value="0.15775972637879435" />
         <entry key="..\:/androidcode/app/src/main/res/layout/catagoryitemname.xml" value="0.1574074074074074" />
         <entry key="..\:/androidcode/app/src/main/res/layout/category_dost_layout.xml" value="0.16096491228070176" />
         <entry key="..\:/androidcode/app/src/main/res/layout/category_dost_recylerview.xml" value="0.16096491228070176" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/custom_dialog2.xml" value="0.15775972637879435" />
         <entry key="..\:/androidcode/app/src/main/res/layout/fragment_bank__details.xml" value="0.17037037037037037" />
         <entry key="..\:/androidcode/app/src/main/res/layout/fragment_bank__details__dealer.xml" value="0.1921875" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/fragment_bank__details__shopkeeper.xml" value="0.15775972637879435" />
         <entry key="..\:/androidcode/app/src/main/res/layout/fragment_contest.xml" value="0.11862835959221502" />
         <entry key="..\:/androidcode/app/src/main/res/layout/fragment_dealer__profile_.xml" value="0.1921875" />
         <entry key="..\:/androidcode/app/src/main/res/layout/fragment_dealer__q_r__code.xml" value="0.15775972637879435" />
-        <entry key="..\:/androidcode/app/src/main/res/layout/fragment_dealer__q_r__code_.xml" value="0.1618421052631579" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/fragment_dealer__q_r__code_.xml" value="0.16" />
         <entry key="..\:/androidcode/app/src/main/res/layout/fragment_dost__application_.xml" value="0.15" />
         <entry key="..\:/androidcode/app/src/main/res/layout/fragment_dost__notification_.xml" value="0.15" />
         <entry key="..\:/androidcode/app/src/main/res/layout/fragment_dost__q_r__code_.xml" value="0.1" />
         <entry key="..\:/androidcode/app/src/main/res/layout/fragment_dost__wallet_.xml" value="0.15" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/fragment_home2.xml" value="0.1334569045412419" />
         <entry key="..\:/androidcode/app/src/main/res/layout/fragment_home__dost_.xml" value="0.1618421052631579" />
         <entry key="..\:/androidcode/app/src/main/res/layout/fragment_home__kirloskar_.xml" value="0.1574074074074074" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/fragment_kirloskar__add__user_.xml" value="0.15775972637879435" />
         <entry key="..\:/androidcode/app/src/main/res/layout/fragment_kirloskar__application_list_.xml" value="0.1618421052631579" />
         <entry key="..\:/androidcode/app/src/main/res/layout/fragment_kirloskar__notificarion_.xml" value="0.1618421052631579" />
         <entry key="..\:/androidcode/app/src/main/res/layout/fragment_kirloskar__wallet_.xml" value="0.1574074074074074" />
@@ -99,46 +181,106 @@
         <entry key="..\:/androidcode/app/src/main/res/layout/fragment_profile.xml" value="0.17037037037037037" />
         <entry key="..\:/androidcode/app/src/main/res/layout/fragment_profile__details.xml" value="0.1921875" />
         <entry key="..\:/androidcode/app/src/main/res/layout/fragment_profile__details__dealer.xml" value="0.1921875" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/fragment_profile__details__shopkeeper.xml" value="0.15775972637879435" />
         <entry key="..\:/androidcode/app/src/main/res/layout/fragment_reward.xml" value="0.1921875" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/fragment_shopkeeper_home.xml" value="0.15775972637879435" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/fragment_shopkeeper_my_mall.xml" value="0.15775972637879435" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/fragment_shopkeeper_profile.xml" value="0.15775972637879435" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/fragment_shopkeeper_q_r_scan.xml" value="0.15775972637879435" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/fragment_sub_dealer_list.xml" value="0.15775972637879435" />
         <entry key="..\:/androidcode/app/src/main/res/layout/fragment_tab_.xml" value="0.17037037037037037" />
         <entry key="..\:/androidcode/app/src/main/res/layout/fragment_tab___dealer.xml" value="0.1921875" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/fragment_tab___shopkeeper.xml" value="0.15775972637879435" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/gstinfo_dialog.xml" value="0.15775972637879435" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/invoice_dailog.xml" value="0.15775972637879435" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/itr_info_dialog.xml" value="0.15775972637879435" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/ledger_info_dialog.xml" value="0.15775972637879435" />
         <entry key="..\:/androidcode/app/src/main/res/layout/list_item.xml" value="0.1" />
-        <entry key="..\:/androidcode/app/src/main/res/layout/loanstatusadapterxml.xml" value="0.22" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/loanstatusadapterxml.xml" value="0.14" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/loginshopkeepertoolbar.xml" value="0.1569046601111586" />
         <entry key="..\:/androidcode/app/src/main/res/layout/logintoolbar.xml" value="0.1574074074074074" />
         <entry key="..\:/androidcode/app/src/main/res/layout/logintoolbar_dost.xml" value="0.1618421052631579" />
         <entry key="..\:/androidcode/app/src/main/res/layout/main_layout_content_dealer.xml" value="0.1574074074074074" />
         <entry key="..\:/androidcode/app/src/main/res/layout/main_layout_content_dost.xml" value="0.16096491228070176" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/main_layout_content_shopkeeper.xml" value="0.15775972637879435" />
         <entry key="..\:/androidcode/app/src/main/res/layout/menuui.xml" value="0.15775972637879435" />
         <entry key="..\:/androidcode/app/src/main/res/layout/menuui_dealer.xml" value="0.1618421052631579" />
         <entry key="..\:/androidcode/app/src/main/res/layout/menuui_dost.xml" value="0.1618421052631579" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/modify_po_dialog.xml" value="0.15775972637879435" />
         <entry key="..\:/androidcode/app/src/main/res/layout/pending_details.xml" value="0.1574074074074074" />
         <entry key="..\:/androidcode/app/src/main/res/layout/pending_details_dost.xml" value="0.1618421052631579" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/po_dailog_for_doc_upload.xml" value="0.33" />
         <entry key="..\:/androidcode/app/src/main/res/layout/po_details_cardview.xml" value="0.14722222222222223" />
         <entry key="..\:/androidcode/app/src/main/res/layout/po_form_cardview.xml" value="0.16" />
         <entry key="..\:/androidcode/app/src/main/res/layout/po_list_cardview.xml" value="0.21" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/po_list_item.xml" value="0.15775972637879435" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/po_list_item_details.xml" value="0.15775972637879435" />
         <entry key="..\:/androidcode/app/src/main/res/layout/po_rejected_cardview.xml" value="0.15576192486281132" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/podetails_details_bottom_sheet_layout.xml" value="0.15775972637879435" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/popup_dialog.xml" value="0.15775972637879435" />
         <entry key="..\:/androidcode/app/src/main/res/layout/product_details.xml" value="0.1574074074074074" />
         <entry key="..\:/androidcode/app/src/main/res/layout/product_details_dost_recylerview.xml" value="0.1618421052631579" />
         <entry key="..\:/androidcode/app/src/main/res/layout/product_dost_layout.xml" value="0.16096491228070176" />
         <entry key="..\:/androidcode/app/src/main/res/layout/productitems.xml" value="0.1618421052631579" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/rectangle_green.xml" value="0.15775972637879435" />
         <entry key="..\:/androidcode/app/src/main/res/layout/scratch_dailog.xml" value="0.19114583333333332" />
         <entry key="..\:/androidcode/app/src/main/res/layout/scratch_layout.xml" value="0.1921875" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/shopkeeper_allcontent.xml" value="0.15775972637879435" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/shopkeeper_po_details_cardview.xml" value="0.15775972637879435" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/shopkeeper_toolbar.xml" value="0.15775972637879435" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/shopkeeper_viewall_ui.xml" value="0.14" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/shopkeeperloanstatusui.xml" value="0.1334569045412419" />
         <entry key="..\:/androidcode/app/src/main/res/layout/subcategory_dost_layout.xml" value="0.1618421052631579" />
         <entry key="..\:/androidcode/app/src/main/res/layout/subcategory_dost_recylerview.xml" value="0.16096491228070176" />
         <entry key="..\:/androidcode/app/src/main/res/layout/success_toolbar.xml" value="0.1921875" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/table_layout.xml" value="0.15775972637879435" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/tds_info_dialog.xml" value="0.15775972637879435" />
         <entry key="..\:/androidcode/app/src/main/res/layout/top_five_cardview.xml" value="0.1" />
         <entry key="..\:/androidcode/app/src/main/res/layout/topthree_applicationlist_dealer.xml" value="0.1574074074074074" />
         <entry key="..\:/androidcode/app/src/main/res/layout/topthree_applicationlist_dost.xml" value="0.1618421052631579" />
         <entry key="..\:/androidcode/app/src/main/res/layout/upload_image_dailog.xml" value="0.15775972637879435" />
-        <entry key="..\:/androidcode/app/src/main/res/layout/whatsapp_list_item.xml" value="0.1" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/utility_dialog.xml" value="0.15775972637879435" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/whatsapp_list_item.xml" value="0.22" />
         <entry key="..\:/androidcode/app/src/main/res/layout/whatsapp_status_details_bottom_sheet_layout.xml" value="0.1" />
+        <entry key="..\:/androidcode/app/src/main/res/layout/wp_rejection_dialog.xml" value="0.15775972637879435" />
         <entry key="..\:/androidcode/app/src/main/res/menu/icon_menu_dealer.xml" value="0.1921875" />
         <entry key="..\:/androidcode/app/src/main/res/menu/icon_menu_dost.xml" value="0.1618421052631579" />
+        <entry key="..\:/androidcode/app/src/main/res/menu/icon_menu_shopkeeper.xml" value="0.15775972637879435" />
         <entry key="..\:/androidcode/app/src/main/res/menu/iconmenu.xml" value="0.1" />
         <entry key="..\:/androidcode/app/src/main/res/menu/iconmenu_dealer.xml" value="0.1574074074074074" />
         <entry key="..\:/androidcode/app/src/main/res/menu/iconmenu_dost.xml" value="0.1618421052631579" />
+        <entry key="..\:/androidcode/app/src/main/res/menu/iconmenu_shopkeeper.xml" value="0.15775972637879435" />
         <entry key="..\:/androidcode/app/src/main/res/menu/menuui_dealer.xml" value="0.15775972637879435" />
         <entry key="..\:/androidcode/app/src/main/res/menu/menuui_dost.xml" value="0.1618421052631579" />
+        <entry key="..\:/rakheegopik/GoPik_18_Aug_onwards/androidcode/app/src/main/res/drawable/button_view.xml" value="0.1095" />
+        <entry key="..\:/rakheegopik/GoPik_18_Aug_onwards/androidcode/app/src/main/res/drawable/ic_billing.xml" value="0.169" />
+        <entry key="..\:/rakheegopik/GoPik_18_Aug_onwards/androidcode/app/src/main/res/layout/activity_approved_finacer_shopkeeper.xml" value="0.15775972637879435" />
+        <entry key="..\:/rakheegopik/GoPik_18_Aug_onwards/androidcode/app/src/main/res/layout/activity_awaiting_disbursal.xml" value="0.15775972637879435" />
+        <entry key="..\:/rakheegopik/GoPik_18_Aug_onwards/androidcode/app/src/main/res/layout/activity_business_details.xml" value="0.15775972637879435" />
+        <entry key="..\:/rakheegopik/GoPik_18_Aug_onwards/androidcode/app/src/main/res/layout/activity_disbursed.xml" value="0.15775972637879435" />
+        <entry key="..\:/rakheegopik/GoPik_18_Aug_onwards/androidcode/app/src/main/res/layout/activity_pending_at_gopik.xml" value="0.22" />
+        <entry key="..\:/rakheegopik/GoPik_18_Aug_onwards/androidcode/app/src/main/res/layout/activity_personal_details.xml" value="0.15775972637879435" />
+        <entry key="..\:/rakheegopik/GoPik_18_Aug_onwards/androidcode/app/src/main/res/layout/activity_po_detail.xml" value="0.15775972637879435" />
+        <entry key="..\:/rakheegopik/GoPik_18_Aug_onwards/androidcode/app/src/main/res/layout/activity_po_detail_approve_dealer.xml" value="0.15775972637879435" />
+        <entry key="..\:/rakheegopik/GoPik_18_Aug_onwards/androidcode/app/src/main/res/layout/activity_po_generate_form.xml" value="0.15775972637879435" />
+        <entry key="..\:/rakheegopik/GoPik_18_Aug_onwards/androidcode/app/src/main/res/layout/activity_po_get_list.xml" value="0.15775972637879435" />
+        <entry key="..\:/rakheegopik/GoPik_18_Aug_onwards/androidcode/app/src/main/res/layout/activity_rejected_shopkeeper.xml" value="0.15775972637879435" />
+        <entry key="..\:/rakheegopik/GoPik_18_Aug_onwards/androidcode/app/src/main/res/layout/activity_shopkeeper_loan_details.xml" value="0.15775972637879435" />
+        <entry key="..\:/rakheegopik/GoPik_18_Aug_onwards/androidcode/app/src/main/res/layout/activity_shopkeeper_po_generate.xml" value="0.18" />
+        <entry key="..\:/rakheegopik/GoPik_18_Aug_onwards/androidcode/app/src/main/res/layout/activity_transaction_details.xml" value="0.12013681060282172" />
+        <entry key="..\:/rakheegopik/GoPik_18_Aug_onwards/androidcode/app/src/main/res/layout/appbar_delaer.xml" value="0.15775972637879435" />
+        <entry key="..\:/rakheegopik/GoPik_18_Aug_onwards/androidcode/app/src/main/res/layout/bottomsheet_upload_image_dailog.xml" value="0.15775972637879435" />
+        <entry key="..\:/rakheegopik/GoPik_18_Aug_onwards/androidcode/app/src/main/res/layout/fragment_my__mall_.xml" value="0.15576192486281132" />
+        <entry key="..\:/rakheegopik/GoPik_18_Aug_onwards/androidcode/app/src/main/res/layout/fragment_shopkeeper_my_mall.xml" value="0.22" />
+        <entry key="..\:/rakheegopik/GoPik_18_Aug_onwards/androidcode/app/src/main/res/layout/goat_products_add_items_list.xml" value="0.15775972637879435" />
+        <entry key="..\:/rakheegopik/GoPik_18_Aug_onwards/androidcode/app/src/main/res/layout/invoice_dailog.xml" value="0.15775972637879435" />
+        <entry key="..\:/rakheegopik/GoPik_18_Aug_onwards/androidcode/app/src/main/res/layout/name_layout.xml" value="0.15576192486281132" />
+        <entry key="..\:/rakheegopik/GoPik_18_Aug_onwards/androidcode/app/src/main/res/layout/popup_dialog.xml" value="0.15775972637879435" />
+        <entry key="..\:/rakheegopik/GoPik_18_Aug_onwards/androidcode/app/src/main/res/layout/upload_image_dailog.xml" value="0.1" />
+        <entry key="..\:/rakheegopik/GoPik_18_Aug_onwards/androidcode/app/src/main/res/layout/whatsapp_list_item.xml" value="0.15775972637879435" />
+        <entry key="..\:/rakheegopik/GoPik_18_Aug_onwards/androidcode/app/src/main/res/menu/icon_menu_shopkeeper.xml" value="0.15775972637879435" />
+        <entry key="..\:/rakheegopik/GoPik_18_Aug_onwards/androidcode/app/src/main/res/xml/paths.xml" value="0.15775972637879435" />
+        <entry key="..\:/rakheegopik/androidcode/app/src/main/res/layout/activity_po_detail.xml" value="0.15576192486281132" />
       </map>
     </option>
   </component>

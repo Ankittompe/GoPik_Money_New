@@ -24,12 +24,12 @@
         >
 
         <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navigationview_dealer"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/navigationview_dealer"
-            app:menu="@menu/iconmenu_dealer"
+            android:layout_gravity="start"
             app:itemIconTint="@color/coloeAccent"
-            android:layout_gravity="start"/>
+            app:menu="@menu/iconmenu_dealer" />
 
     </RelativeLayout>
 

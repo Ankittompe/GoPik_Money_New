@@ -21,16 +21,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/dailog_layout"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
+                android:id="@+id/doc_status_tv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:gravity="center"
                 android:paddingTop="@dimen/_16sdp"
                 android:paddingBottom="@dimen/_16sdp"
-                android:text="Please upload your documents first !"
+                android:textSize="13dp"
+                android:text="You Can't Generate PO until Your Documents are Approved by the Financer"
                 android:textColor="@color/black"/>
 
 

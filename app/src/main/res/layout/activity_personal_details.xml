@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:fillViewport="true"
     android:orientation="vertical">
 
@@ -16,7 +16,7 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/white"
         android:clickable="true"
         android:focusable="true">
@@ -24,7 +24,7 @@
         <RelativeLayout
             android:id="@+id/trendingbike"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="40dp">
 
 
@@ -39,6 +39,7 @@
             </LinearLayout>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/doc_cardview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
@@ -160,6 +161,7 @@
                             android:orientation="horizontal">
 
                             <LinearLayout
+                                android:animateLayoutChanges="false"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -179,6 +181,7 @@
                                         android:orientation="horizontal">
 
                                         <TextView
+                                            android:id="@+id/selfie_show_hide_button"
                                             android:layout_width="0dp"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center_vertical"
@@ -217,7 +220,6 @@
                                     android:layout_height="wrap_content"
                                     android:orientation="vertical"
                                     android:visibility="gone">
-
                                     <TextView
                                         android:id="@+id/uploadselfie_tv"
                                         android:layout_width="match_parent"
@@ -225,24 +227,46 @@
                                         android:fontFamily="@font/coresanscrbold"
                                         android:gravity="left"
                                         android:padding="15dp"
-                                        android:text="1. Take a Selfie *"
+                                        android:text=""
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="14sp"
 
                                         />
 
+                                    <RelativeLayout
 
-                                    <ImageView
-                                        android:id="@+id/upload_selfie"
-                                        android:layout_width="50dp"
-                                        android:layout_height="50dp"
-                                        android:layout_gravity="center"
-                                        android:layout_marginTop="5dp"
-                                        android:foregroundGravity="center"
-                                        android:scaleType="centerInside"
-                                        android:src="@drawable/camera"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content">
 
-                                        />
+                                        <ImageView
+                                            android:id="@+id/upload_selfie"
+                                            android:layout_width="50dp"
+                                            android:layout_height="50dp"
+                                            android:layout_centerInParent="true"
+                                            android:layout_gravity="center"
+                                            android:layout_marginTop="5dp"
+                                            android:foregroundGravity="center"
+                                            android:scaleType="centerInside"
+                                            android:src="@drawable/camera" />
+
+                                        <ImageButton
+                                            android:id="@+id/delete_selfie_button"
+                                            android:layout_width="50dp"
+                                            android:layout_height="50dp"
+                                            android:visibility="gone"
+                                            android:layout_alignParentRight="true"
+                                            android:layout_centerVertical="true"
+                                            android:layout_marginRight="24dp"
+                                            android:background="@drawable/delete_bg"
+                                            android:foregroundGravity="center_vertical"
+                                            android:padding="4dp"
+                                            android:src="@drawable/ic_baseline_delete_">
+
+                                        </ImageButton>
+                                    </RelativeLayout>
+
+
+
 
                                     <TextView
                                         android:id="@+id/upld_selfie_hint"
@@ -253,9 +277,11 @@
                                         android:textColor="@color/red"
                                         android:visibility="gone" />
 
+
                                     <TextView
                                         android:id="@+id/save_selfie"
                                         android:layout_width="match_parent"
+
                                         android:layout_height="wrap_content"
                                         android:layout_marginLeft="20dp"
                                         android:layout_marginTop="20dp"
@@ -268,6 +294,9 @@
                                         android:text="Save"
                                         android:textColor="@color/white"
                                         android:textSize="14sp" />
+
+
+
                                 </LinearLayout>
 
                             </LinearLayout>
@@ -289,6 +318,7 @@
                             android:orientation="horizontal">
 
                             <LinearLayout
+                                android:animateLayoutChanges="false"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -309,6 +339,7 @@
                                         android:orientation="horizontal">
 
                                         <TextView
+                                            android:id="@+id/adhar_front_show_hide_button"
                                             android:layout_width="0dp"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center_vertical"
@@ -342,6 +373,7 @@
                                 </LinearLayout>
 
                                 <LinearLayout
+
                                     android:id="@+id/upload_adhaar_front_layout"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -355,23 +387,43 @@
                                         android:fontFamily="@font/coresanscrbold"
                                         android:gravity="left"
                                         android:padding="15dp"
-                                        android:text="2. Upload Adhaar Card Front *"
+                                        android:text=""
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="14sp"
 
                                         />
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content">
 
-                                    <ImageView
-                                        android:id="@+id/upload_adhaar"
-                                        android:layout_width="50dp"
-                                        android:layout_height="50dp"
-                                        android:layout_gravity="center"
-                                        android:layout_marginTop="5dp"
-                                        android:foregroundGravity="center"
-                                        android:scaleType="centerInside"
-                                        android:src="@drawable/camera"
+                                        <ImageView
+                                            android:id="@+id/upload_adhaar"
+                                            android:layout_width="50dp"
+                                            android:layout_height="50dp"
+                                            android:layout_centerInParent="true"
+                                            android:layout_gravity="center"
 
-                                        />
+                                            android:layout_marginTop="5dp"
+                                            android:foregroundGravity="center"
+                                            android:scaleType="centerInside"
+                                            android:src="@drawable/camera" />
+
+                                        <ImageButton
+                                            android:id="@+id/delete_adharfront_button"
+                                            android:layout_width="50dp"
+                                            android:layout_height="50dp"
+                                            android:visibility="gone"
+                                            android:layout_alignParentRight="true"
+                                            android:layout_centerVertical="true"
+                                            android:layout_marginRight="24dp"
+                                            android:background="@drawable/delete_bg"
+                                            android:foregroundGravity="center_vertical"
+                                            android:src="@drawable/ic_baseline_delete_">
+
+                                        </ImageButton>
+
+                                    </RelativeLayout>
+
                                     <TextView
                                         android:id="@+id/adhar_front_err_msg"
                                         android:layout_width="match_parent"
@@ -427,6 +479,7 @@
                             android:orientation="horizontal">
 
                             <LinearLayout
+                                android:animateLayoutChanges="false"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -447,6 +500,7 @@
                                         android:orientation="horizontal">
 
                                         <TextView
+                                            android:id="@+id/adhar_back_show_hide_button"
                                             android:layout_width="0dp"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center_vertical"
@@ -480,6 +534,7 @@
                                 </LinearLayout>
 
                                 <LinearLayout
+                                    android:animateLayoutChanges="true"
                                     android:id="@+id/adhaar_back_layout"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -493,23 +548,43 @@
                                         android:fontFamily="@font/coresanscrbold"
                                         android:gravity="left"
                                         android:padding="15dp"
-                                        android:text="3. Upload Adhaar Card Back *"
+                                        android:text=""
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="14sp"
 
                                         />
 
-                                    <ImageView
-                                        android:id="@+id/upload_adhaar_back"
-                                        android:layout_width="50dp"
-                                        android:layout_height="50dp"
-                                        android:layout_gravity="center"
-                                        android:layout_marginTop="5dp"
-                                        android:foregroundGravity="center"
-                                        android:scaleType="centerInside"
-                                        android:src="@drawable/camera"
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content">
 
-                                        />
+                                        <ImageView
+                                            android:id="@+id/upload_adhaar_back"
+                                            android:layout_width="50dp"
+                                            android:layout_height="50dp"
+                                            android:layout_centerInParent="true"
+                                            android:layout_gravity="center"
+                                            android:layout_marginTop="5dp"
+                                            android:foregroundGravity="center"
+                                            android:scaleType="centerInside"
+
+                                            android:src="@drawable/camera" />
+
+                                        <ImageButton
+                                            android:id="@+id/delete_adharback_button"
+                                            android:layout_width="50dp"
+                                            android:layout_height="50dp"
+                                            android:visibility="gone"
+                                            android:layout_alignParentRight="true"
+                                            android:layout_centerVertical="true"
+                                            android:layout_marginRight="24dp"
+                                            android:background="@drawable/delete_bg"
+                                            android:foregroundGravity="center_vertical"
+                                            android:src="@drawable/ic_baseline_delete_">
+
+                                        </ImageButton>
+
+                                    </RelativeLayout>
                                     <TextView
                                         android:id="@+id/adhar_back_err_msg"
                                         android:layout_width="match_parent"
@@ -564,6 +639,7 @@
                             android:orientation="horizontal">
 
                             <LinearLayout
+                                android:animateLayoutChanges="false"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
@@ -582,6 +658,7 @@
                                         android:orientation="horizontal">
 
                                         <TextView
+                                            android:id="@+id/pan_show_hide_button"
                                             android:layout_width="0dp"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center_vertical"
@@ -617,6 +694,7 @@
 
 
                                 <LinearLayout
+                                    android:animateLayoutChanges="true"
                                     android:id="@+id/pan_front_layout"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -624,29 +702,51 @@
                                     android:visibility="gone">
 
                                     <TextView
-                                        android:id="@+id/applicationphptograph"
+                                        android:id="@+id/upload_pancard_txt"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:fontFamily="@font/coresanscrbold"
                                         android:gravity="left"
                                         android:padding="15dp"
-                                        android:text="4. Upload Pan Card *"
+                                        android:text=""
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="14sp"
 
                                         />
 
-                                    <ImageView
-                                        android:id="@+id/upload_pancard_front_button"
-                                        android:layout_width="50dp"
-                                        android:layout_height="50dp"
-                                        android:layout_gravity="center"
-                                        android:layout_marginTop="5dp"
-                                        android:foregroundGravity="center"
-                                        android:scaleType="centerInside"
-                                        android:src="@drawable/camera"
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content">
 
-                                        />
+                                        <ImageView
+                                            android:id="@+id/upload_pancard_front_button"
+                                            android:layout_width="50dp"
+                                            android:layout_height="50dp"
+                                            android:layout_gravity="center"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_centerInParent="true"
+                                            android:foregroundGravity="center"
+                                            android:scaleType="centerInside"
+                                            android:src="@drawable/camera"
+
+                                            />
+
+                                        <ImageButton
+                                            android:id="@+id/delete_pan_button"
+                                            android:layout_width="50dp"
+                                            android:layout_height="50dp"
+                                            android:visibility="gone"
+                                            android:layout_alignParentRight="true"
+                                            android:layout_centerVertical="true"
+                                            android:layout_marginRight="24dp"
+                                            android:background="@drawable/delete_bg"
+                                            android:foregroundGravity="center_vertical"
+                                            android:src="@drawable/ic_baseline_delete_">
+
+                                        </ImageButton>
+
+
+                                    </RelativeLayout>
 
                                     <TextView
                                         android:id="@+id/pan_front_err_msg"
@@ -864,23 +964,80 @@
 
 
             </androidx.cardview.widget.CardView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginBottom="20dp"
+                android:layout_above="@+id/button_layout"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:text="@string/mandatory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/submit_prsnl_button"
+            <LinearLayout
+                android:id="@+id/button_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/doc_cardview"
                 android:layout_alignParentBottom="true"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/button_round"
-                android:fontFamily="@font/montserrat_semibold"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="Save &amp; Submit"
-                android:textColor="@color/white"
-                android:textSize="14sp" />
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/submit_prsnl_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/button_round"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Save &amp; Next"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+
+            </LinearLayout>
+            <!-- <TextView
+                 android:id="@+id/submit_prsnl_button"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_alignParentBottom="true"
+                 android:layout_marginLeft="20dp"
+                 android:layout_marginTop="20dp"
+                 android:layout_marginRight="20dp"
+                 android:layout_marginBottom="20dp"
+                 android:background="@drawable/button_round"
+                 android:fontFamily="@font/montserrat_semibold"
+                 android:gravity="center"
+                 android:padding="10dp"
+                 android:text="Save &amp; Submit"
+                 android:textColor="@color/white"
+                 android:textSize="14sp" />-->
+            <!--
+                        <TextView
+                            android:id="@+id/send_to_financer"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginBottom="20dp"
+                            android:background="@drawable/button_round"
+                            android:fontFamily="@font/montserrat_semibold"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="Save &amp; Submit"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+            -->
 
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
