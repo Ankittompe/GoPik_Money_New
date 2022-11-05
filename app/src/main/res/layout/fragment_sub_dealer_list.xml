@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".Dealer_Fragment.Dealer_QR_Code_Fragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <com.qts.gopik_money.Utils.CustomRegularTextView
+            android:id="@+id/txtBackPoList"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:background="@color/hero_green"
+            android:drawableStart="@drawable/ic_baseline_arrow_back_24"
+            android:gravity="center"
+            android:padding="@dimen/_5sdp"
+            android:text="Sub Dealer PO List"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/_50sdp">
+
+            <LinearLayout
+                android:id="@+id/lindata"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="@dimen/_10sdp"
+                android:orientation="horizontal">
+
+                <com.qts.gopik_money.Utils.CustomRegularTextView
+                    android:id="@+id/txtMore"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:background="@drawable/rectangle_green"
+                    android:drawableEnd="@drawable/ic_round_arrow_drop_down"
+                    android:gravity="center"
+                    android:padding="@dimen/_5sdp"
+                    android:text="More   " />
+
+                <com.qts.gopik_money.Utils.CustomRegularTextView
+                    android:id="@+id/txtTop5"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:background="@drawable/rectangle_green"
+                    android:drawableEnd="@drawable/ic_arrow_drop_up_black_24dp"
+                    android:gravity="center"
+                    android:padding="@dimen/_5sdp"
+                    android:text="Top 5"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recVwSubDealerPoList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lindata"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottomSheetLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="@dimen/_50sdp"
+    android:background="@color/colorgrey1">
+
+    <com.qts.gopik_money.Utils.CustomRegularTextView
+        android:id="@+id/mTxtBack"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:background="@color/hero_green"
+        android:drawableStart="@drawable/ic_baseline_arrow_back_24"
+        android:gravity="center"
+        android:padding="@dimen/_5sdp"
+        android:text="PO Details"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/poBottom"
+        android:layout_below="@+id/mTxtBack">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp"
+                app:cardCornerRadius="@dimen/_15sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:lineSpacingExtra="0sp"
+                                android:padding="@dimen/_10sdp"
+                                android:text="PO ID"
+                                android:textStyle="bold" />
+
+                            <com.qts.gopik_money.Utils.CustomRegularTextView
+                                android:id="@+id/txtPOIdDetails"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="center_vertical"
+                                android:paddingStart="@dimen/_10sdp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:lineSpacingExtra="0sp"
+                                android:padding="@dimen/_10sdp"
+                                android:text="PO Date"
+                                android:textAppearance="@style/text_style_one"
+                                android:textStyle="bold"
+                                app:layout_constraintHorizontal_bias="0.492"
+                                tools:ignore="MissingConstraints" />
+
+                            <com.qts.gopik_money.Utils.CustomRegularTextView
+                                android:id="@+id/txtPODate"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="center_vertical"
+                                android:paddingStart="@dimen/_10sdp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/colorGrey" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:lineSpacingExtra="0sp"
+                                android:padding="@dimen/_10sdp"
+                                android:text="Dealer Name"
+                                android:textAppearance="@style/text_style_one"
+                                android:textStyle="bold"
+                                app:layout_constraintHorizontal_bias="0.492"
+                                tools:ignore="MissingConstraints" />
+
+                            <com.qts.gopik_money.Utils.CustomRegularTextView
+                                android:id="@+id/txtPODealerName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="center_vertical"
+                                android:paddingStart="@dimen/_10sdp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:lineSpacingExtra="0sp"
+                                android:padding="@dimen/_10sdp"
+                                android:text="Status"
+                                android:textAppearance="@style/text_style_one"
+                                android:textStyle="bold"
+                                app:layout_constraintHorizontal_bias="0.492"
+                                tools:ignore="MissingConstraints" />
+
+                            <com.qts.gopik_money.Utils.CustomRegularTextView
+                                android:id="@+id/txtPOStatus"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="center_vertical"
+                                android:paddingStart="@dimen/_10sdp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/colorGrey" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp"
+                app:cardCornerRadius="@dimen/_15sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:lineSpacingExtra="0sp"
+                            android:padding="@dimen/_10sdp"
+                            android:text="Product Name"
+                            android:textAppearance="@style/text_style_one"
+                            android:textStyle="bold"
+                            app:layout_constraintHorizontal_bias="0.492"
+                            tools:ignore="MissingConstraints" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:lineSpacingExtra="0sp"
+                            android:padding="@dimen/_10sdp"
+                            android:text="Product Quantity"
+                            android:textAppearance="@style/text_style_one"
+                            android:textStyle="bold"
+                            app:layout_constraintHorizontal_bias="0.492"
+                            tools:ignore="MissingConstraints" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/colorGrey" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recPODetails"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_200sdp"
+                        android:padding="@dimen/_10sdp" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp"
+                app:cardCornerRadius="@dimen/_15sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:lineSpacingExtra="0sp"
+                            android:padding="@dimen/_10sdp"
+                            android:text="Total Quantity"
+                            android:textAppearance="@style/text_style_one"
+                            android:textStyle="bold"
+                            app:layout_constraintHorizontal_bias="0.492"
+                            tools:ignore="MissingConstraints" />
+
+                        <com.qts.gopik_money.Utils.CustomRegularTextView
+                            android:id="@+id/txtPOTotalQuantity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:paddingRight="@dimen/_50sdp"
+                            android:text="1" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:lineSpacingExtra="0sp"
+                            android:padding="@dimen/_10sdp"
+                            android:text="Est. Price"
+                            android:textAppearance="@style/text_style_one"
+                            android:textStyle="bold"
+                            app:layout_constraintHorizontal_bias="0.492"
+                            tools:ignore="MissingConstraints" />
+
+                        <EditText
+                            android:id="@+id/txtPOEstPrice"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/rectangle_4"
+                            android:gravity="end|center"
+                            android:inputType="number"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:paddingRight="@dimen/_50sdp"
+                            android:text="0"
+                            android:textColor="@color/colorGrey2" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_2sdp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtUploadPoInvoice"
+                    android:layout_width="@dimen/_200sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:background="@drawable/rectangle_green"
+                    android:drawableEnd="@drawable/ic_arrow_right"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/_10sdp"
+                    android:text="Upload Invoice"
+                    android:textColor="@color/colorGrey2"
+                    android:textStyle="bold" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_100sdp"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="@dimen/_10sdp">
+
+                    <ImageView
+                        android:id="@+id/imgInvoice"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_100sdp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/file" />
+
+                    <TextView
+                        android:id="@+id/txtPdfPath"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:lineSpacingExtra="0sp"
+                        android:padding="@dimen/_10sdp"
+                        android:text="Invoice Number"
+                        android:textAppearance="@style/text_style_one"
+                        android:textStyle="bold"
+                        android:visibility="gone"
+                        app:layout_constraintHorizontal_bias="0.492"
+                        tools:ignore="MissingConstraints" />
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/linViewPo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_2sdp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtViewPoInvoice"
+                    android:layout_width="@dimen/_200sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:background="@drawable/rectangle_green"
+                    android:drawableEnd="@drawable/ic_arrow_right"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/_10sdp"
+                    android:text="SubDealer PO Image"
+                    android:textColor="@color/colorGrey2"
+                    android:textStyle="bold" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_100sdp"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="@dimen/_10sdp">
+
+                    <ImageView
+                        android:id="@+id/imgSubDealerInvoice"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_100sdp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/file" />
+
+                    <TextView
+                        android:id="@+id/txtSubDealerPdfPath"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:lineSpacingExtra="0sp"
+                        android:padding="@dimen/_10sdp"
+                        android:text="Invoice path"
+                        android:textAppearance="@style/text_style_one"
+                        android:textStyle="bold"
+                        android:visibility="gone"
+                        app:layout_constraintHorizontal_bias="0.492"
+                        tools:ignore="MissingConstraints" />
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:lineSpacingExtra="0sp"
+                    android:padding="@dimen/_10sdp"
+                    android:text="Invoice Number"
+                    android:textAppearance="@style/text_style_one"
+                    android:textStyle="bold"
+                    app:layout_constraintHorizontal_bias="0.492"
+                    tools:ignore="MissingConstraints" />
+
+                <EditText
+                    android:id="@+id/edtInvoiceNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rectangle_4"
+                    android:gravity="end|center"
+                    android:hint="Enter Invoice No"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingRight="@dimen/_30sdp"
+                    android:textColor="@color/colorGrey2" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/poBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtRejectPO"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:background="@color/red"
+                android:gravity="center"
+                android:padding="@dimen/_15sdp"
+                android:text="Reject"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtModifyPO"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:background="@color/blue"
+                android:gravity="center"
+                android:padding="@dimen/_15sdp"
+                android:text="Modify"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtApprovePO"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/_5sdp"
+            android:background="@drawable/button_click"
+            android:gravity="center"
+            android:padding="@dimen/_15sdp"
+            android:text="Approve"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</RelativeLayout>

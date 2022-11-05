@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/logintoolBar"
+        layout="@layout/logintoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentTop="true" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:clickable="true"
+        android:focusable="true">
+
+        <LinearLayout
+            android:id="@+id/trendingbike"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Upload Aadhar Documents"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="5dp"
+                app:cardMaxElevation="10dp"
+                app:cardPreventCornerOverlap="true"
+                app:cardUseCompatPadding="false">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/coresanscrbold"
+                            android:padding="15dp"
+                            android:text="1. Upload Aadhar Card Front Image"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:id="@+id/imgAnimalFront"
+                            android:layout_width="@dimen/_200sdp"
+                            android:layout_height="@dimen/_150sdp"
+                            android:layout_gravity="center"
+                            android:foregroundGravity="center"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/camera" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_margin="@dimen/_2sdp"
+                        android:background="@color/black" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/coresanscrbold"
+                            android:padding="15dp"
+                            android:text="2. Upload Aadhar Card Back Side Image "
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:id="@+id/imgAnimalSide"
+                            android:layout_width="@dimen/_200sdp"
+                            android:layout_height="@dimen/_150sdp"
+                            android:layout_gravity="center"
+                            android:foregroundGravity="center"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/camera" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_margin="@dimen/_2sdp"
+                        android:background="@color/black" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/coresanscrbold"
+                            android:padding="15dp"
+                            android:text="3. Upload Invoice Copy"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:id="@+id/imgFarmerPhoto"
+                            android:layout_width="@dimen/_200sdp"
+                            android:layout_height="@dimen/_150sdp"
+                            android:layout_gravity="center"
+                            android:foregroundGravity="center"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/camera" />
+
+                        <TextView
+                            android:visibility="gone"
+                            android:textColor="@color/red"
+                            android:text="filepath"
+                            android:id="@+id/txtInvoiceFile"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/_15sdp"
+                            android:foregroundGravity="center"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/camera" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/coresanscrbold"
+                            android:padding="15dp"
+                            android:text="3. Bank Passbook Photo"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:id="@+id/bankPassbook_Photo"
+                            android:layout_width="@dimen/_100sdp"
+                            android:layout_height="@dimen/_100sdp"
+                            android:layout_gravity="center"
+                            android:foregroundGravity="center"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/camera" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/btnSend"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:background="@drawable/button_click"
+                android:drawableEnd="@drawable/ic_arrow_right_white"
+                android:fontFamily="@font/montserrat_semibold"
+                android:gravity="center"
+                android:padding="15dp"
+                android:text="Save &amp; Submit"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

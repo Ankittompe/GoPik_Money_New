@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativelogin"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/white_background"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/logintoolBar"
+        layout="@layout/logintoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentTop="true" />
+
+    <TextView
+        android:id="@+id/tlog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:padding="@dimen/_10sdp"
+        android:text="Loan Calculator"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:background="@color/white"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:animateLayoutChanges="true"
+                android:elevation="10dp"
+                android:gravity="center|top"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:visibility="visible">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:background="@color/hero_light_grey"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/recVwGoatData"/>
+
+                <TextView
+                    android:id="@+id/txtAddRow"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:background="@color/hero_light_blue"
+                    android:padding="@dimen/_5sdp"
+                    android:text="Add Row"
+                    android:textColor="@color/white" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.qts.gopik_money.Utils.CustomRegularTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:lineSpacingExtra="0sp"
+                        android:padding="@dimen/_5sdp"
+                        android:text="Gross Amount(₹)"
+                        android:textAppearance="@style/text_style_one"
+                        app:layout_constraintHorizontal_bias="0.492"
+                        tools:ignore="MissingConstraints" />
+
+                    <com.qts.gopik_money.Utils.CustomRegularTextView
+                        android:id="@+id/customer_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/rectangle_3"
+                        android:gravity="center_vertical"
+                        android:padding="10dp"
+                        android:text=""
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:lineSpacingExtra="0sp"
+                        android:padding="@dimen/_5sdp"
+                        android:text="Down Payment(₹)"
+                        android:textAppearance="@style/text_style_one"
+                        app:layout_constraintHorizontal_bias="0.492"
+                        tools:ignore="MissingConstraints" />
+
+                    <EditText
+                        android:id="@+id/down_payment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/rectangle_3"
+                        android:hint="Enter the Down Payment "
+                        android:inputType="number"
+                        android:padding="10dp"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.qts.gopik_money.Utils.CustomRegularTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:lineSpacingExtra="0sp"
+                        android:padding="@dimen/_5sdp"
+                        android:text="Loan Tenure in (Months)"
+                        android:textAppearance="@style/text_style_one"
+                        app:layout_constraintHorizontal_bias="0.492"
+                        tools:ignore="MissingConstraints" />
+
+                    <LinearLayout
+                        android:id="@+id/linearspinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rectangle_3"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <Spinner
+                            android:id="@+id/choosehubb"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.8"
+                            android:backgroundTint="@color/green"
+                            android:gravity="start"
+                            android:popupBackground="@color/white" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linLayoutSubsidy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <com.qts.gopik_money.Utils.CustomRegularTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:lineSpacingExtra="0sp"
+                        android:padding="@dimen/_5sdp"
+                        android:text="Subsidy(%)"
+                        android:textAppearance="@style/text_style_one"
+                        app:layout_constraintHorizontal_bias="0.492"
+                        tools:ignore="MissingConstraints" />
+
+
+                    <EditText
+                        android:id="@+id/subsidy"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/rectangle_3"
+                        android:hint="Enter Subsidy "
+                        android:inputType="number"
+                        android:padding="10dp"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <com.qts.gopik_money.Utils.CustomRegularTextView
+                    android:id="@+id/txtGoatCalculate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/button_click"
+                    android:gravity="center"
+                    android:padding="15dp"
+                    android:text="Calculate"
+                    android:textAppearance="@style/text_style_one"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearlayout_aftercalculation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:animateLayoutChanges="true"
+                android:elevation="10dp"
+                android:gravity="center|top"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.qts.gopik_money.Utils.CustomRegularTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:lineSpacingExtra="0sp"
+                        android:padding="@dimen/_5sdp"
+                        android:text="Down Payment(₹)"
+                        android:textAppearance="@style/text_style_one"
+                        app:layout_constraintHorizontal_bias="0.492"
+                        tools:ignore="MissingConstraints" />
+
+                    <com.qts.gopik_money.Utils.CustomRegularTextView
+                        android:id="@+id/txtDownPayment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/rectangle_3"
+                        android:gravity="center_vertical"
+                        android:padding="10dp"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.qts.gopik_money.Utils.CustomRegularTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:lineSpacingExtra="0sp"
+                        android:padding="@dimen/_5sdp"
+                        android:text="Vaccination And Health Kit(₹)"
+                        android:textAppearance="@style/text_style_one"
+                        app:layout_constraintHorizontal_bias="0.492"
+                        tools:ignore="MissingConstraints" />
+
+                    <com.qts.gopik_money.Utils.CustomRegularTextView
+                        android:id="@+id/txtVaccination"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/rectangle_3"
+                        android:gravity="center_vertical"
+                        android:padding="10dp"
+                        android:text="100"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.qts.gopik_money.Utils.CustomRegularTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:lineSpacingExtra="0sp"
+                        android:padding="@dimen/_5sdp"
+                        android:text="Loan Amount(₹)"
+                        android:textAppearance="@style/text_style_one"
+                        app:layout_constraintHorizontal_bias="0.492"
+                        tools:ignore="MissingConstraints" />
+
+                    <com.qts.gopik_money.Utils.CustomRegularTextView
+                        android:id="@+id/loan_amount_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/rectangle_3"
+                        android:gravity="center_vertical"
+                        android:padding="10dp"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.qts.gopik_money.Utils.CustomRegularTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:lineSpacingExtra="0sp"
+                        android:padding="@dimen/_5sdp"
+                        android:text="Disbursal Amount(₹)"
+                        android:textAppearance="@style/text_style_one"
+                        app:layout_constraintHorizontal_bias="0.492"
+                        tools:ignore="MissingConstraints" />
+
+                    <com.qts.gopik_money.Utils.CustomRegularTextView
+                        android:id="@+id/txtDisbursalAmount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/rectangle_3"
+                        android:gravity="center_vertical"
+                        android:padding="10dp"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.qts.gopik_money.Utils.CustomRegularTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:padding="10dp"
+                        android:text="Processing Fees(₹)" />
+
+                    <com.qts.gopik_money.Utils.CustomRegularTextView
+                        android:id="@+id/processing_fees"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/rectangle_3"
+                        android:gravity="center_vertical"
+                        android:padding="10dp"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.qts.gopik_money.Utils.CustomRegularTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:lineSpacingExtra="0sp"
+                        android:padding="@dimen/_5sdp"
+                        android:text="GoPik Fees(₹)"
+                        android:textAppearance="@style/text_style_one"
+                        app:layout_constraintHorizontal_bias="0.492"
+                        tools:ignore="MissingConstraints" />
+
+                    <com.qts.gopik_money.Utils.CustomRegularTextView
+                        android:id="@+id/txtGopikFees"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/rectangle_3"
+                        android:gravity="center_vertical"
+                        android:padding="10dp"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.qts.gopik_money.Utils.CustomRegularTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:padding="10dp"
+                        android:text="GoPik Protect Insurance(₹)" />
+
+                    <com.qts.gopik_money.Utils.CustomRegularTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:padding="5dp"
+                        android:text="@string/personal_accident"
+                        android:textColor="@color/black"
+                        android:textSize="10sp" />
+
+                    <com.qts.gopik_money.Utils.CustomRegularTextView
+                        android:id="@+id/gopik_protect_insurance"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/rectangle_3"
+                        android:gravity="center_vertical"
+                        android:padding="10dp"
+                        android:text="0"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.qts.gopik_money.Utils.CustomRegularTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:padding="10dp"
+                        android:text="Upfront Payment by Customer (₹)" />
+
+                    <com.qts.gopik_money.Utils.CustomRegularTextView
+                        android:id="@+id/upfront_payment_by_customer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/rectangle_3"
+                        android:gravity="center_vertical"
+                        android:padding="10dp"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/linLayConvenience"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.qts.gopik_money.Utils.CustomRegularTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:padding="10dp"
+                        android:text="GoPik Convenience Fee(₹)" />
+
+                    <com.qts.gopik_money.Utils.CustomRegularTextView
+                        android:id="@+id/gopik_convience_fee"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/rectangle_3"
+                        android:gravity="center_vertical"
+                        android:padding="10dp"
+                        android:text="200"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.qts.gopik_money.Utils.CustomRegularTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:padding="10dp"
+                        android:text="EMI(₹)" />
+
+                    <com.qts.gopik_money.Utils.CustomRegularTextView
+                        android:id="@+id/emi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/rectangle_3"
+                        android:gravity="center_vertical"
+                        android:padding="10dp"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.qts.gopik_money.Utils.CustomRegularTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:padding="10dp"
+                        android:text="Interest per annum (%)" />
+
+                    <com.qts.gopik_money.Utils.CustomRegularTextView
+                        android:id="@+id/interst_per_annum"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/rectangle_3"
+                        android:gravity="center_vertical"
+                        android:padding="10dp"
+                        android:text="23"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edittext_kyc_background"
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    android:visibility="gone">
+
+                    <EditText
+                        android:id="@+id/couponcode"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:gravity="center"
+                        android:hint="Use coupons"
+                        android:textColorHint="@color/colorPrimary"
+                        android:textSize="14sp" />
+
+                    <com.qts.gopik_money.Utils.CustomRegularTextView
+                        android:id="@+id/applycoupon"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:gravity="center"
+                        android:text="Apply Now"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <com.qts.gopik_money.Utils.CustomRegularTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:padding="5dp"
+                    android:text="Above all values are approximate final loan values will be shared
+                    by the financer at the time of approval/disbursal"
+                    android:textSize="10sp" />
+
+                <com.qts.gopik_money.Utils.CustomRegularTextView
+                    android:id="@+id/apply"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_click"
+                    android:gravity="center"
+                    android:padding="15dp"
+                    android:text="Apply Now"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

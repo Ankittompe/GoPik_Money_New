@@ -1,0 +1,89 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:nestedScrollingEnabled="true"
+    >
+
+    <include
+        android:id="@+id/logintoolBar"
+        layout="@layout/loginshopkeepertoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        />
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swiperefreshlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@+id/logintoolBar"
+        >
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/_50sdp">
+
+            <LinearLayout
+                android:id="@+id/lindata"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="@dimen/_10sdp"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/pogen"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="@dimen/_30sdp"
+                    android:gravity="center"
+                    android:layout_marginLeft="15dp"
+                    android:padding="@dimen/_5sdp"
+                    android:textColor="@color/white"
+                    android:layout_marginRight="180dp"
+                    android:visibility="invisible"
+                    android:background="@color/coloeAccent"
+                    android:text="Add Po " />
+
+                <TextView
+                    android:id="@+id/txtMore"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="@dimen/_30sdp"
+                    android:gravity="center"
+                    android:padding="@dimen/_5sdp"
+                    android:textColor="@color/white"
+                    android:layout_marginRight="15dp"
+                    android:background="@color/coloeAccent"
+                    android:text="More   " />
+
+                <TextView
+                    android:id="@+id/txtTop5"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="@dimen/_30sdp"
+                    android:drawableEnd="@drawable/ic_arrow_drop_up_black_24dp"
+                    android:gravity="center"
+                    android:padding="@dimen/_5sdp"
+                    android:text="Top 5"
+                    android:layout_marginRight="15dp"
+                    android:textColor="@color/white"
+                    android:background="@color/coloeAccent"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/top_five_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lindata"/>
+
+        </RelativeLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</LinearLayout>
+

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:background="@color/colorPrimary">
+
+    <item android:id="@+id/homebtn_shopkeeper"
+        android:icon="@drawable/ic_mall"
+        android:title="My Mall"
+
+        />
+
+    <!--  <item android:id="@+id/profile"
+          android:icon="@drawable/ic_baseline_account_circle_24"
+          android:title="Profile"
+          />-->
+    <item android:id="@+id/myprofile_shopkeeper_btn"
+        android:icon="@drawable/ic_baseline_account_circle_24"
+        android:title="My Profile"
+        />
+
+    <item android:id="@+id/qrcode_shopkeeper"
+        android:icon="@drawable/ic_qr_code_scanner"
+        android:title="QR Scan"
+        />
+
+</menu>

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_5sdp"
+    android:background="@drawable/bg_card_gray"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/linLayoutData2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_4sdp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtGoatDataCount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:lineSpacingExtra="0sp"
+                android:padding="@dimen/_5sdp"
+                android:text="GoatData :- "
+                android:textColor="@color/black"
+                android:textSize="@dimen/_15sdp"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints" />
+
+            <com.qts.gopik_money.Utils.CustomRegularTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:lineSpacingExtra="0sp"
+                android:padding="@dimen/_5sdp"
+                android:text="Breed / Variety"
+                android:textAppearance="@style/text_style_one"
+                app:layout_constraintHorizontal_bias="0.492"
+                tools:ignore="MissingConstraints" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_3"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <Spinner
+                    android:id="@+id/spinnerBreed"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@color/green"
+                    android:popupBackground="@color/white" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_4sdp"
+            android:orientation="vertical">
+
+            <com.qts.gopik_money.Utils.CustomRegularTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:lineSpacingExtra="0sp"
+                android:padding="@dimen/_5sdp"
+                android:text="Tag ID"
+                android:textAppearance="@style/text_style_one"
+                app:layout_constraintHorizontal_bias="0.492"
+                tools:ignore="MissingConstraints" />
+
+            <EditText
+                android:id="@+id/edtListTagId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/rectangle_3"
+                android:gravity="center_vertical"
+                android:padding="10dp"
+                android:text=""
+                android:textColor="@color/colorPrimary"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_4sdp"
+            android:orientation="vertical">
+
+            <com.qts.gopik_money.Utils.CustomRegularTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:lineSpacingExtra="0sp"
+                android:padding="@dimen/_5sdp"
+                android:text="Per KG Price (₹)"
+                android:textAppearance="@style/text_style_one"
+                app:layout_constraintHorizontal_bias="0.492"
+                tools:ignore="MissingConstraints" />
+
+            <EditText
+                android:id="@+id/edtListPerKgPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/rectangle_3"
+                android:gravity="center_vertical"
+                android:padding="10dp"
+                android:inputType="number"
+                android:text=""
+                android:textColor="@color/colorPrimary"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_4sdp"
+            android:orientation="vertical">
+
+            <com.qts.gopik_money.Utils.CustomRegularTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:lineSpacingExtra="0sp"
+                android:padding="@dimen/_5sdp"
+                android:text="Gender"
+                android:textAppearance="@style/text_style_one"
+                app:layout_constraintHorizontal_bias="0.492"
+                tools:ignore="MissingConstraints" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_3"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <Spinner
+                    android:id="@+id/spinnerGender"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@color/green"
+                    android:popupBackground="@color/white" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_4sdp"
+            android:orientation="vertical">
+
+            <com.qts.gopik_money.Utils.CustomRegularTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:lineSpacingExtra="0sp"
+                android:padding="@dimen/_5sdp"
+                android:text="Weight"
+                android:textAppearance="@style/text_style_one"
+                app:layout_constraintHorizontal_bias="0.492"
+                tools:ignore="MissingConstraints" />
+
+            <EditText
+                android:id="@+id/edtListWeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/rectangle_3"
+                android:inputType="numberDecimal"
+                android:gravity="center_vertical"
+                android:padding="10dp"
+                android:text=""
+                android:textColor="@color/colorPrimary"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <Button
+            android:visibility="gone"
+            android:id="@+id/btnRemove"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_margin="@dimen/_5sdp"
+            android:background="@drawable/button_layout_red"
+            android:text="Remove"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+</LinearLayout>

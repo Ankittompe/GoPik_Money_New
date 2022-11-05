@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:nestedScrollingEnabled="true"
+    android:orientation="vertical"
+    tools:context=".Dealer_Fragment.My_Mall_Fragment">
+    <include
+        layout="@layout/loginshopkeepertoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:id="@+id/logintoolBar"
+        />
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Po Generate Form"
+    android:gravity="center"
+    android:layout_marginTop="20dp"
+    android:textColor="@color/blue"
+    android:textSize="16dp"
+    android:textStyle="bold"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:padding="@dimen/_5sdp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:lineSpacingExtra="0sp"
+                    android:padding="@dimen/_10sdp"
+                    android:text="Tax Invoice Number:"
+                    android:textAppearance="@style/text_style_one"
+                    android:textSize="@dimen/_15sdp"
+                    android:textStyle="bold"
+                    app:layout_constraintHorizontal_bias="0.492"
+                    tools:ignore="MissingConstraints" />
+
+                <EditText
+                    android:id="@+id/taxinvoicenumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/rectangle_4"
+                    android:hint="Enter Here"
+                    android:inputType="textPersonName"
+                    android:paddingStart="@dimen/_10sdp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:padding="@dimen/_5sdp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:lineSpacingExtra="0sp"
+                    android:padding="@dimen/_10sdp"
+                    android:text="Tax Invoice Amount(exc. GST):"
+                    android:textAppearance="@style/text_style_one"
+                    android:textSize="@dimen/_15sdp"
+                    android:textStyle="bold"
+                    app:layout_constraintHorizontal_bias="0.492"
+                    tools:ignore="MissingConstraints" />
+
+                <EditText
+                    android:id="@+id/texinvoiceprice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/rectangle_4"
+                    android:hint="Enter Here"
+                    android:inputType="number"
+                    android:paddingStart="@dimen/_10sdp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:padding="@dimen/_5sdp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:lineSpacingExtra="0sp"
+                    android:padding="@dimen/_10sdp"
+                    android:text="Tax Invoice Copy:"
+                    android:textAppearance="@style/text_style_one"
+                    android:textSize="@dimen/_15sdp"
+                    android:textStyle="bold"
+                    app:layout_constraintHorizontal_bias="0.492"
+                    tools:ignore="MissingConstraints" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/taxinvoiceimg"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_gravity="center"
+                android:src="@drawable/camera" />
+            <LinearLayout
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/pdf_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text=""
+                    android:ellipsize="middle"
+                    android:textColor="@color/red"
+                    android:visibility="gone"
+                    />
+                <Button
+                    android:id="@+id/invoice_view"
+                    android:text="View"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    android:background="@drawable/button_view"
+                    android:layout_width="48dp"
+                    android:textColor="@color/white"
+                    android:layout_height="32dp"/>
+
+            </LinearLayout>
+
+
+            <Button
+                android:layout_marginTop="16dp"
+                android:id="@+id/txtSubmitDetails"
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/button_click"
+                android:gravity="center"
+                android:padding="@dimen/_15sdp"
+                android:text="Submit"
+                android:textColor="@color/white" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_2sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@color/hero_light_blue" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>
